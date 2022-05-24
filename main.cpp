@@ -42,12 +42,7 @@ int main()
 	setlocale(LC_ALL,"Spanish");
 
 	checkArchivo();
-	int pos = 0;
-
-	while (admin.leerDeDisco(pos++))
-	{
-		admin.mostrar();
-	}
+	admin.cargar();
 
 	return 0;
 }
