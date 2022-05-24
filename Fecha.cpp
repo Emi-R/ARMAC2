@@ -1,7 +1,7 @@
 #include "Fecha.h"
 #include <ctime>
 
-// DESARROLLO DE METODOS Y CONSTRUCTOR
+/// Constructor
 Fecha::Fecha() {
 	time_t rawtime;
 	struct tm* timeinfo;
@@ -13,15 +13,17 @@ Fecha::Fecha() {
 	_anio = timeinfo->tm_year + 1900;
 }
 
+/// Setters
 void Fecha::setDia(int dia) { _dia = dia; }
 void Fecha::setMes(int mes) { _mes = mes; }
 void Fecha::setAnio(int anio) { _anio = anio; }
 
+/// Getters
 int  Fecha::getDia() { return _dia; }
 int  Fecha::getMes() { return _mes; }
 int  Fecha::getAnio() { return _anio; }
 
-// Desarrollo cargar
+/// Desarrollo cargar
 void Fecha::cargarFecha() {
 
 	Fecha actual;
@@ -67,12 +69,16 @@ void Fecha::cargarFecha() {
 
 }
 
+/// Desarrollo Mostrar
+
 void Fecha::mostrarFecha() {
 	cout << this->getDia() << "/" << this->getMes() << "/" << this->getAnio();
 
 }
 
-///FUNCIONES GLOBALES DE FECHA
+/////////////////////////////////////
+// Funciones globales Administrador
+/////////////////////////////////////
 
 bool validaDia(int mes, int dia, int anio) {
 

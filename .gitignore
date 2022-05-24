@@ -11,3 +11,14 @@ ARMAC++/.vs/ARMAC++/v17/.suo
 .vs/ARMAC++/v17/.suo
 *.obj
 *.cbp
+null
+*.exe
+*.recipe
+*.ilk
+*.log
+*.pdb
+*.lastbuildstate
+*.tlog
+*.txt
+*.idb
+administradores.dat

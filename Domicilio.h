@@ -14,7 +14,7 @@ private:
 public:
 	Domicilio();
 
-	//Setters
+	/// Setters
 	void setPais(const char* pais);
 	void setProvincia(const char* provincia);
 	void setLocalidad(const char* localidad);
@@ -24,7 +24,7 @@ public:
 	void setCP(int cp);
 	void setEstado(bool estado);
 
-	//Getters
+	/// Getters
 	const char* getPais();
 	const char* getProvincia();
 	const char* getLocalidad();

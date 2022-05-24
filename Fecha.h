@@ -9,20 +9,20 @@ private:
 	int _dia, _mes, _anio;
 
 public:
-	//Constructor
+	///Constructor
 	Fecha();
 
-	// Setters
+	///Setters
 	void setDia(int dia);
 	void setMes(int mes);
 	void setAnio(int anio);
 
-	//Getters
+	///Getters
 	int getDia();
 	int getMes();
 	int getAnio() ;
 
-	//CARGAR Y MOSTRAR
+	///CARGAR Y MOSTRAR
 
 	void cargarFecha();
 	void mostrarFecha();

@@ -3,6 +3,7 @@
 
 class Administrador
 {
+
 private:
 	int _idAdministrador;
 	int _dni;
@@ -10,10 +11,12 @@ private:
 	char _nombre[30];
 	char _contrasenia[30];
 	bool _estado;
-public:
-	Administrador();
 
-	//Setters
+public:
+	/// Constructor
+	Administrador(int, int, const char*, const char*, const char*, bool);
+
+	/// Setters
 	void setIdAdmin(int);
 	void setDNI(int);
 	void setNombre(const char*);
@@ -21,10 +24,10 @@ public:
 	void setContraseña(const char*);
 	void setEstado(bool);
 
-	//Getters
+	/// Getters
 	int getIdAdmin();
 	int getDNI();
-	const char * getContraseña();
+	const char* getContraseña();
 	const char* getApellido();
 	const char* getNombre();
 	bool getEstado();
@@ -36,3 +39,10 @@ public:
 	bool leerDeDisco(int);
 };
 
+/////////////////////////////////////
+// Funciones globales Administrador
+/////////////////////////////////////
+
+bool buscarAdministradorPorDni(int);
+
+bool buscarAdministradorPorID(int);
