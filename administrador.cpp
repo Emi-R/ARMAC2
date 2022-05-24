@@ -224,7 +224,7 @@ bool Administrador::leerDeDisco(int pos)
 
 bool Administrador::modificarEnDisco(int pos)
 {
-	FILE* fReg = fopen("administradores.dat", "ab");
+	FILE* fReg = fopen("administradores.dat", "rb+");
 
 	if (fReg == NULL)
 	{
