@@ -21,13 +21,13 @@ public:
 	void setDNI(int);
 	void setNombre(const char*);
 	void setApellido(const char*);
-	void setContraseña(const char*);
+	void setContrasenia(const char*);
 	void setEstado(bool);
 
 	/// Getters
 	int getIdAdmin();
 	int getDNI();
-	const char* getContraseña();
+	const char* getContrasenia();
 	const char* getApellido();
 	const char* getNombre();
 	bool getEstado();

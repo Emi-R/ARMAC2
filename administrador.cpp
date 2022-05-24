@@ -38,7 +38,7 @@ void Administrador::setApellido(const char* apellido)
 	strcpy(_apellido, apellido);
 }
 
-void Administrador::setContraseña(const char* contrasenia)
+void Administrador::setContrasenia(const char* contrasenia)
 {
 	strcpy(_contrasenia, contrasenia);
 }
@@ -59,7 +59,7 @@ int Administrador::getDNI()
 	return _dni;
 }
 
-const char* Administrador::getContraseña()
+const char* Administrador::getContrasenia()
 {
 	return _contrasenia;
 }
@@ -123,7 +123,7 @@ void Administrador::cargar()
 		cout << "Ingrese contraseña nueva (máximo 15 caracteres): ";
 		cin >> aux2;
 
-		if (strlen(aux2) >= 15)
+		if (strlen(aux2) > 15)
 		{
 			cout << "Contraseña demasiado larga." << endl << endl;
 			flag = false;
@@ -146,7 +146,7 @@ void Administrador::cargar()
 
 	} while (!flag);
 
-	this->setContraseña(aux2);
+	this->setContrasenia(aux2);
 
 	do
 	{
@@ -172,7 +172,7 @@ void Administrador::cargar()
 	cout << "Apellido: " << this->getApellido() << endl << endl;
 	cout << " - Datos para iniciar sesión: " << endl << endl;
 	cout << "ID: " << this->getIdAdmin() << endl;
-	cout << "Contraseña: " << this->getContraseña() << endl;
+	cout << "Contraseña: " << this->getContrasenia() << endl;
 
 }
 
