@@ -14,7 +14,7 @@ private:
 
 public:
 	/// Constructor
-	Administrador(int, int, const char*, const char*, const char*, bool);
+	Administrador(int id = 0, int dni = 0, const char* apellido = "-", const char* nombre = "-", const char* contrasenia = "-", bool estado = false);
 
 	/// Setters
 	void setIdAdmin(int);

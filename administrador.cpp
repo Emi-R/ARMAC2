@@ -7,7 +7,7 @@
 using namespace std;
 
 ///Constructor
-Administrador::Administrador(int id = 0, int dni=0, const char* apellido="-", const char* nombre="-", const char* contrasenia="-", bool estado=false)
+Administrador::Administrador(int id, int dni, const char* apellido, const char* nombre, const char* contrasenia, bool estado)
 {
 	_idAdministrador = id;
 	_dni = dni;
