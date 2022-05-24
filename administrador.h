@@ -37,6 +37,7 @@ public:
 
 	bool grabarEnDisco();
 	bool leerDeDisco(int);
+	bool modificarEnDisco(int pos);
 };
 
 /////////////////////////////////////

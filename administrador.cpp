@@ -148,8 +148,7 @@ void Administrador::cargar()
 
 	this->setContrasenia(aux2);
 
-	do
-	{
+	do {
 		aux = 1 + rand() % 9999;
 
 		if (buscarAdministradorPorID(aux))
@@ -217,6 +216,26 @@ bool Administrador::leerDeDisco(int pos)
 	fseek(fReg, pos * sizeof(Administrador), SEEK_SET);
 
 	int escribio = fread(this, sizeof(Administrador), 1, fReg);
+
+	fclose(fReg);
+
+	return escribio;
+}
+
+bool Administrador::modificarEnDisco(int pos)
+{
+	FILE* fReg = fopen("administradores.dat", "ab");
+
+	if (fReg == NULL)
+	{
+		cout << "No se puede abrir el archivo.";
+		system("PAUSE < null");
+		return false;
+	}
+
+	fseek(fReg, pos * sizeof(Administrador), SEEK_SET);
+
+	int escribio = fwrite(this, sizeof(Administrador), 1, fReg);
 
 	fclose(fReg);
 
