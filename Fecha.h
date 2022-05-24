@@ -22,8 +22,6 @@ public:
 	int getMes();
 	int getAnio() ;
 
-	///CARGAR Y MOSTRAR
-
 	void cargarFecha();
 	void mostrarFecha();
 };
