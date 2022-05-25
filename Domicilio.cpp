@@ -3,6 +3,7 @@
 #include <iomanip>
 #include <clocale>
 #include <windows.h>
+#include <string>
 #include "Domicilio.h"
 
 using std::setprecision;
@@ -95,13 +96,15 @@ void Domicilio::cargarDomicilio() {
 		}
 	} while (_altura > 0);
 
+	int  longitud = 0;
 	do {
-		cout << "Ingrese el dpto: ";
-		cin >> _dpto;
-		if (_dpto < 0) {
+		cout << "Ingrese el departamento, si  no vive en uno ingrese  0: ";
+		 cin.getline (_dpto,9);
+		longitud = strlen(_dpto);
+		if (longitud==0) {
 			cout << "El depto ingresado es incorrecto. Inserte nuevamente: ";
 		}
-	} while (_dpto > 0);
+	} while ( longitud == 0);
 
 	do {
 		cout << "Ingrese el Código Postal: ";

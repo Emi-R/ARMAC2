@@ -143,14 +143,22 @@
     <ClCompile Include="Domicilio.cpp" />
     <ClCompile Include="Fecha.cpp" />
     <ClCompile Include="main.cpp" />
+<<<<<<< HEAD
     <ClCompile Include="Pais.cpp" />
+=======
+    <ClCompile Include="Persona.cpp" />
+>>>>>>> b8a9955c89eb2539173561cf668dc4d4c3e2bb85
     <ClCompile Include="Solicitud.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="administrador.h" />
     <ClInclude Include="Domicilio.h" />
     <ClInclude Include="Fecha.h" />
+<<<<<<< HEAD
     <ClInclude Include="Pais.h" />
+=======
+    <ClInclude Include="Persona.h" />
+>>>>>>> b8a9955c89eb2539173561cf668dc4d4c3e2bb85
     <ClInclude Include="Solicitud.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
