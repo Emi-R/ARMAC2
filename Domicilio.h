@@ -34,5 +34,9 @@ public:
 	int getCP();
 	bool getEstado();
 
+	//Cargar y mostrar
+	void cargarDomicilio();
+	void mostrarDomicilio();
+
 };
 
