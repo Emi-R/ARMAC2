@@ -48,6 +48,8 @@ int main()
 
 	Persona.CargarPersona();
 
+	cout << "Primer comentario Majo";
+
 
 	return 0;
 }
