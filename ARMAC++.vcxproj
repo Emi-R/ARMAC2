@@ -140,6 +140,7 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="administrador.cpp" />
+    <ClCompile Include="Arma.cpp" />
     <ClCompile Include="Domicilio.cpp" />
     <ClCompile Include="Fecha.cpp" />
     <ClCompile Include="main.cpp" />
@@ -149,6 +150,7 @@
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="administrador.h" />
+    <ClInclude Include="Arma.h" />
     <ClInclude Include="Domicilio.h" />
     <ClInclude Include="Fecha.h" />
     <ClInclude Include="Pais.h" />
