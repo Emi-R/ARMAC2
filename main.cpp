@@ -1,6 +1,7 @@
 #include <iostream>
 #include "Fecha.h"
 #include "Administrador.h"
+#include "Persona.h"
 
 using namespace std;
 
