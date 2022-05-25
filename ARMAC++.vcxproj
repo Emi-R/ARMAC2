@@ -144,6 +144,7 @@
     <ClCompile Include="Fecha.cpp" />
     <ClCompile Include="main.cpp" />
     <ClCompile Include="Pais.cpp" />
+    <ClCompile Include="Persona.cpp" />
     <ClCompile Include="Solicitud.cpp" />
   </ItemGroup>
   <ItemGroup>
@@ -151,6 +152,7 @@
     <ClInclude Include="Domicilio.h" />
     <ClInclude Include="Fecha.h" />
     <ClInclude Include="Pais.h" />
+    <ClInclude Include="Persona.h" />
     <ClInclude Include="Solicitud.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
