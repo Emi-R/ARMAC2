@@ -3,6 +3,7 @@
 #include "Fecha.h"
 #include"Domicilio.h"
 #include <cstring>
+
 class Persona
 {
 private:
@@ -17,6 +18,7 @@ private:
 
 public:
 	Persona();
+	//Setters
 	void setDni(int dni);
 	void setNombre(char* nombre);
 	void setApellido(char* apelldo);
@@ -25,6 +27,7 @@ public:
 	void setEmail(char* email);
 	void setTelefono(char* telefono);
 	void setEstado(bool estado);
+	// Getters
 	int getDni();
 	const char* getNombre();
 	const char* getApellido();
@@ -33,6 +36,10 @@ public:
 	const char* getEmail();
 	const char* getTelefono();
 	bool getEstado();
+
+	//Cargar y Mostrar
+	void CargarPersona();
+	void MostrarPersona();
 
 };
 

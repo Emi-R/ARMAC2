@@ -39,11 +39,15 @@ int checkArchivo() {
 int main() 
 {
 	Administrador admin;
+	Persona Persona;
 
 	setlocale(LC_ALL,"Spanish");
 
-	checkArchivo();
-	admin.cargar();
+	//checkArchivo();
+	//admin.cargar();
+
+	Persona.CargarPersona();
+
 
 	return 0;
 }

@@ -1,4 +1,7 @@
 #include "Persona.h"
+#include <iostream>
+using namespace std;
+
 
 Persona::Persona() {
 
@@ -21,3 +24,46 @@ Domicilio Persona::getDomicilio() { return _domicilio; }
 const char* Persona::getEmail() { return _email; }
 const char* Persona::getTelefono() { return _telefono; }
 bool Persona::getEstado() { return _estado; }
+
+//	MOSTRAR Y CARGAR
+void Persona::CargarPersona() {
+
+	do {
+		cout << "Ingrese el dni:" << endl;
+		cin >> _dni;
+
+		if (_dni < 1000000)
+		{
+			cout << " El dni ingresado es incorrecto, intente nuevamente" << endl;
+		}
+	} while (_dni < 1000000);
+
+	cout << "Ingrese el nombre  : ";
+	cin.ignore();
+	cin.getline(_nombre, 29);
+	cout << "Ingrese el apellido: ";
+	cin.getline(_apellido, 29);
+	cout << "Ingrese la fecha de nacimiento: ";
+	_fecha_nacimiento.cargarFecha();
+	cout << "Ingrese el domicilio: ";
+	cout << "Ingrese la casilla de email : ";
+	cin.getline(_email, 30);
+	cout << "Ingrese el telefono : ";
+	cin.getline(_telefono, 14);
+	_estado = true;
+}
+void Persona::MostrarPersona() {}
+cout << "Ingrese el nombre  : ";
+cin.ignore();
+cin.getline(_nombre, 29);
+cout << "Ingrese el apellido: ";
+cin.getline(_apellido, 29);
+cout << "Ingrese la fecha de nacimiento: ";
+_fecha_nacimiento.cargarFecha();
+cout << "Ingrese el domicilio: ";
+cout << "Ingrese la casilla de email : ";
+cin.getline(_email, 30)
+cout << "Ingrese el telefono : ";
+cin.getline(_telefono, 14);
+_estado = true;
+}
