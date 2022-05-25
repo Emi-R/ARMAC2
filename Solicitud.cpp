@@ -96,10 +96,11 @@ void Solicitud::mostrarSolicitud() {
 
 };
 
-
-bool Solicitud::verificarIdSocio(int id) {
+//FUNCIONES GLOBLAES
+bool verificarIdSocio(int id) {
 
 	int opc;
+	
 
 	if (id < 0) {
 		cout << "El Id del Socio es inválido. Por favor ingrese un ID mayor a 0.";
@@ -131,7 +132,7 @@ bool Solicitud::verificarIdSocio(int id) {
 	}
 }
 
-bool Solicitud::verificarIdAdmin(int id) {
+bool verificarIdAdmin(int id) {
 
 	Administrador admin;
 	int pos = 0;

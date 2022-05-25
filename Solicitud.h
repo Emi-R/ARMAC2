@@ -36,8 +36,8 @@ public:
 	void cargarSolicitud();
 	void mostrarSolicitud();
 
+};
+
 	//FUNCIONES GLOBALES 
 	bool verificarIdSocio(int id);
 	bool verificarIdAdmin(int id);
-};
-
