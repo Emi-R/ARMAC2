@@ -1,18 +1,10 @@
 #include "Persona.h"
 #include <iostream>
-#include <cstring>
 using namespace std;
 
 
 Persona::Persona() {
-	_dni = 0;
-	strcpy(_nombre,"Sin datos");
-	strcpy(_apellido, "Sin datos");
-	_fecha_nacimiento;
-	_domicilio;
-	strcpy(_email,"Sin datos");
-	strcpy(_telefono, "Sin datos");
-	_estado=false;
+
 }
 //SETTER
 void Persona::setDni(int dni) { _dni = dni; }
