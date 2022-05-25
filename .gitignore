@@ -22,3 +22,5 @@ null
 *.txt
 *.idb
 administradores.dat
+/.vs/ARMAC2/v17
+/.vs
