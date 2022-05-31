@@ -5,12 +5,12 @@
 
 using namespace std;
 
-Solicitud::Solicitud(int idSolicitud, int idAdmin, int idSocio, bool estado) {
+Solicitud::Solicitud(int idSolicitud, int idAdmin, int idSocio, bool estado, int idArma) {
 	_idSolicitud = idSolicitud;
 	_idAdministrador = idAdmin;
 	_idSocio = idSocio;
 	_FechaSolicitud;
-	_ArmaRegistro;
+	_idArma = idArma;
 	_estado = estado;
 };
 
@@ -26,8 +26,8 @@ void Solicitud::setIdSocio(int idSocio) {
 	_idSocio = idSocio;
 };
 
-void Solicitud::setArma(Arma ArmaRegistro) {
-	_ArmaRegistro = ArmaRegistro;
+void Solicitud::setIdArma(int idArma) {
+	_idArma = idArma;
 };
 
 void Solicitud::setFechaSolicitud(Fecha FechaSolicitud) {
@@ -45,7 +45,7 @@ int Solicitud::getIdAdministrador() { return _idAdministrador; };
 
 int Solicitud::getIdSocio() { return _idSocio; };
 
-Arma Solicitud::getArma() { return _ArmaRegistro; };
+int Solicitud::getIdArma() { return _idArma; };
 
 Fecha Solicitud::getFechaSolicitud() { return _FechaSolicitud; };
 
@@ -55,6 +55,7 @@ void Solicitud::cargarSolicitud() {
 
 	int aux;
 	bool verifica;
+	Arma armaRegistro;
 
 	do {
 		cout << "Ingrese el ID del Socio: ";
@@ -64,13 +65,18 @@ void Solicitud::cargarSolicitud() {
 
 	this->setIdSocio(aux);
 
-	cout << "Ingrese el Arma a Registrar: ";
-	_ArmaRegistro.cargarArma();
+	armaRegistro.cargarArma();
+	armaRegistro.grabarEnDisco();
+
+	this->setIdArma(armaRegistro.getIdArma());
 
 	do {
 		cout << "Ingrese el Id del Administrador: ";
 		cin >> aux;
-		verifica = verificarIdAdmin(aux);
+		verifica = buscarAdministradorPorID(aux);
+		if (!verifica) {
+			cout << "El Id del Administrador es inválido. Por favor ingrese un ID correcto.";
+		}
 	} while (verifica == false);
 
 	this->setIdAdministrador(aux);
@@ -81,14 +87,16 @@ void Solicitud::cargarSolicitud() {
 
 void Solicitud::mostrarSolicitud() {
 
+	Arma arma;
+
 	cout << "Id de la Solicitud: " << this->getIdSolicitud();
 	cout << endl;
 	cout << "Id del Socio: " << this->getIdSocio();
 	cout << endl;
 	cout << "Id del Administrador: " << this->getIdAdministrador();
 	cout << endl;
-	//cout << "Arma Registrada: ";
-	//_Arma.mostrarArma();
+	arma.leerDeDisco(this->getIdArma());
+	arma.mostrarArma();
 	cout << endl;
 	cout << "Fecha en la que se Registró la Solicitud: ";
 	this->_FechaSolicitud.mostrarFecha();
@@ -96,59 +104,22 @@ void Solicitud::mostrarSolicitud() {
 
 };
 
-//FUNCIONES GLOBLAES
-bool verificarIdSocio(int id) {
 
-	int opc;
-	
+bool Solicitud::grabarEnDisco() {
 
-	if (id < 0) {
-		cout << "El Id del Socio es inválido. Por favor ingrese un ID mayor a 0.";
+	FILE* soliReg = fopen("solicitudes.dat", "wb+");
+
+	if (soliReg == NULL)
+	{
+		cout << "No se puede abrir el archivo.";
+		system("PAUSE < null");
 		return false;
 	}
-	//acá es donde debería la condición que busca al Socio en el Archivo de SociosRegistrados
-	else if (1 == 0) {
 
-		cout << "El Id del Socio ingresado no es válido";
-		cout << endl;
-		cout << "Por favor Ingrese:" << endl;
-		cout << "1. Si desea Registrar a un nuevo Socio." << endl;
-		cout << "2. Si desea volver a Ingresar el Id del Socio. " << endl;
-		cout << "Opción: ";
+	int escribio = fwrite(this, sizeof(Solicitud), 1, soliReg);
 
-		cin >> opc;
+	fclose(soliReg);
 
-		switch (opc) {
-			//case 1: registrarSocio();
-		case 2: return false;
-			break;
-		default: return false;
-			break;
-		}
+	return escribio;
 
-	}
-	else {
-		return true;
-	}
-}
-
-bool verificarIdAdmin(int id) {
-
-	Administrador admin;
-	int pos = 0;
-
-	if (id < 0) {
-		cout << "El Id del Administrador es inválido. Por favor ingrese un ID mayor a 0.";
-		return false;
-	}
-	else {
-		while (admin.leerDeDisco(pos++)) {
-			if (admin.getIdAdmin() == id)
-			{
-				return true;
-			}
-		}
-		cout << "El Id del Administrador es inválido. Por favor ingrese un ID correcto.";
-		return false;
-	}
 }
