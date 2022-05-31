@@ -31,7 +31,7 @@ void Fecha::cargarFecha() {
 	const int MayorEdad = actual.getAnio() - 18;
 
 	do {
-		cout << "Ingrese el año:" << endl;
+		cout << "Año: ";
 		cin >> aux;
 
 		if (aux <1900 || aux > MayorEdad) 
@@ -43,7 +43,7 @@ void Fecha::cargarFecha() {
 	this->setAnio(aux);
 
 	do {
-		cout << "Ingrese el mes:" << endl;
+		cout << "Mes: ";
 		cin >> aux;
 
 		if (aux <= 0 || aux > 12)
@@ -56,7 +56,7 @@ void Fecha::cargarFecha() {
 	this->setMes(aux);
 
 	do {
-		cout << "Ingrese el dia:" << endl;
+		cout << "Dia: ";
 		cin >> aux;
 
 		if (!validaDia(this->getMes(), aux, this->getAnio())) 

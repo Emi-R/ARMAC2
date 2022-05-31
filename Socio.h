@@ -1,10 +1,14 @@
 #pragma once
+
 #include "Persona.h"
+
 class Socio :public Persona
 {
 protected:
 	int _idsocio;
 	bool _estado;
+	Persona socio;
+
 public:
 	Socio();
 	void setIdsocio(int idsocio);
@@ -13,12 +17,12 @@ public:
 	bool getEstado();
 
 	// METODOS DE DISCO
-	bool grabarendisco();
-	bool leerdedisco(int pos);
-	bool modificarendisco(int pos);
+	bool grabarEnDisco();
+	bool leerDeDisco(int pos);
+	bool modificarEnDisco(int pos);
 
-	void cargarsocio();
-	void mostrarsocio();
+	void cargar();
+	void mostrar();
 };
 
 bool buscarSocioPorID(int id);

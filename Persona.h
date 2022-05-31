@@ -1,5 +1,5 @@
 #pragma once
-#pragma once
+
 #include "Fecha.h"
 #include"Domicilio.h"
 #include <cstring>

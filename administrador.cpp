@@ -290,17 +290,16 @@ int checkArchivoAdmins() {
 
 		if (fReg == NULL)
 		{
-			cout << "Error al crear o leer archivo de administradores.";
+			cout << "Error al crear o leer archivo de administradores." << endl;
 			system("PAUSE > null");
-			system("cls");
+
 			return -1;
 		}
 		else
 		{
 			fclose(fReg);
-			cout << "Archivo de administradores creado correctamente";
-			system("PAUSE > null");
-			system("cls");
+			cout << "Archivo de administradores creado correctamente" << endl;
+
 			return 0;
 		}
 	}

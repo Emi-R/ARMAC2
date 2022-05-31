@@ -22,7 +22,7 @@ bool Socio::getEstado() {
 }
 
 //METODOS DE DISCO
-bool Socio::grabarendisco() {
+bool Socio::grabarEnDisco() {
 	FILE* fReg = fopen("socios.dat", "ab");
 
 	if (fReg == NULL)
@@ -39,7 +39,7 @@ bool Socio::grabarendisco() {
 	return escribio;
 }
 
-bool Socio::leerdedisco(int pos) {
+bool Socio::leerDeDisco(int pos) {
 	FILE* fReg = fopen("socios.dat", "rb");
 
 	if (fReg == NULL)
@@ -58,8 +58,8 @@ bool Socio::leerdedisco(int pos) {
 	return escribio;
 }
 
-bool Socio::modificarendisco(int pos) {
-	FILE* fReg = fopen("socio.dat", "rb+");
+bool Socio::modificarEnDisco(int pos) {
+	FILE* fReg = fopen("socios.dat", "rb+");
 
 	if (fReg == NULL)
 	{
@@ -78,20 +78,42 @@ bool Socio::modificarendisco(int pos) {
 }
 
 //Cargar y Mostrar
-void Socio::cargarsocio() {
+void Socio::cargar() {
 
-	CargarPersona();
+	Persona persona;
 
-	cout << "Ingrese el ID de socio" << endl;
-	cin >> _idsocio;
+	bool flag = false;
+	int aux;
+
+	persona.CargarPersona();
+
+	do {
+		aux = 1 + rand() % 9999;
+
+		if (buscarSocioPorID(aux))
+		{
+			flag = false;
+		}
+		else
+		{
+			flag = true;
+		}
+
+	} while (!flag);
+
+	this->setIdsocio(aux);
+
 	_estado = true;
+
+	this->mostrar();
 }
 
-void Socio::mostrarsocio() {
+void Socio::mostrar() {
 
 	MostrarPersona();
+
 	cout << "ID socio: " << _idsocio << endl;
-	
+
 }
 
 bool buscarSocioPorID(int id)
@@ -99,7 +121,7 @@ bool buscarSocioPorID(int id)
 	Socio socio;
 	int pos = 0;
 
-	while (socio.leerdedisco(pos++))
+	while (socio.leerDeDisco(pos++))
 	{
 		if (socio.getIdsocio() == id)
 		{
@@ -120,7 +142,7 @@ int checkArchivoSocios() {
 
 		if (fReg == NULL)
 		{
-			cout << "Error al crear o leer archivo de socios.";
+			cout << "Error al crear o leer archivo de socios." << endl;
 			system("PAUSE > null");
 			system("cls");
 			return -1;
@@ -128,9 +150,7 @@ int checkArchivoSocios() {
 		else
 		{
 			fclose(fReg);
-			cout << "Archivo de socios creado correctamente";
-			system("PAUSE > null");
-			system("cls");
+			cout << "Archivo de socios creado correctamente" << endl;
 			return 0;
 		}
 	}

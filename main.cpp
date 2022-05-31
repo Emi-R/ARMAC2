@@ -6,13 +6,22 @@
 
 using namespace std;
 
+void instalacion()
+{
+	checkArchivoSocios();
+
+	checkArchivoAdmins();
+
+	system("PAUSE > null");
+	system("cls");
+}
 
 int main()
 {
 
 	setlocale(LC_ALL, "Spanish");
 
-	checkArchivoSocios();
+	instalacion();
 
 	/*--Prueba Admin: todo OK
 
@@ -26,10 +35,20 @@ int main()
 	Persona.MostrarPersona();*/
 
 
-	/*--Prueba Solicitud
+	/*--Prueba Solicitud: probar primero socio
+	* 
 	Solicitud solic;
 	solic.cargarSolicitud();
 	solic.mostrarSolicitud();*/
+
+	/*Prueba socio*/
+
+	Socio socio;
+
+	socio.cargar();
+	socio.grabarEnDisco();
+
+	socio.mostrar();
 
 
 

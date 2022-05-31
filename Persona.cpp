@@ -29,7 +29,7 @@ bool Persona::getEstado() { return _estado; }
 void Persona::CargarPersona() {
 
 	do {
-		cout << "Ingrese el dni:" << endl;
+		cout << "Ingrese el dni: ";
 		cin >> _dni;
 
 		if (_dni < 1000000)
@@ -38,21 +38,22 @@ void Persona::CargarPersona() {
 		}
 	} while (_dni < 1000000);
 
-	cout << "Ingrese el nombre  : ";
+	cout << "Ingrese el nombre: ";
 	cin.ignore();
 	cin.getline(_nombre, 29);
 	cout << "Ingrese el apellido: ";
 	cin.getline(_apellido, 29);
-	cout << "Ingrese la fecha de nacimiento: ";
+	cout << "- Ingrese la fecha de nacimiento -" << endl;
 	_fecha_nacimiento.cargarFecha();
-	cout << "Ingrese el domicilio: ";
+	cout << "- Domicilio -" << endl;
 	_domicilio.cargarDomicilio();
-	cout << "Ingrese la casilla de email : ";
+	cout << "Ingrese email: ";
 	cin.ignore();
 	cin.getline(_email, 30);
-	cout << "Ingrese el telefono : ";
+	cout << "Ingrese el telefono: ";
 	cin.ignore();
 	cin.getline(_telefono, 14);
+
 	_estado = true;
 }
 
