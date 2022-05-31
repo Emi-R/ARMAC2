@@ -47,6 +47,7 @@ int main()
 	//admin.cargar();
 
 	Persona.CargarPersona();
+	Persona.MostrarPersona();
 
 
 

@@ -48,22 +48,27 @@ void Persona::CargarPersona() {
 	cout << "Ingrese el domicilio: ";
 	_domicilio.cargarDomicilio();
 	cout << "Ingrese la casilla de email : ";
+	cin.ignore();
 	cin.getline(_email, 30);
 	cout << "Ingrese el telefono : ";
+	cin.ignore();
 	cin.getline(_telefono, 14);
 	_estado = true;
 }
 
 void Persona::MostrarPersona() {
+
 	if (_estado) {
-		cout << "Dni: " << _dni << endl;
+		cout << endl << "Dni: " << _dni << endl;
 		cout << "Nombre: " << _nombre << endl;
 		cout << "Apellido: " << _apellido << endl;
 		cout << "Fecha nacimiento: ";
 		_fecha_nacimiento.mostrarFecha();
+		cout << endl;
 		cout << "Domicilio: ";
 		_domicilio.mostrarDomicilio();
-		cout << "Email : " << _email;
-		cout << "Ingrese el telefono: " << _telefono << endl;
+		cout << endl;
+		cout << "Email : " << _email << endl;
+		cout << "Telefono: " << _telefono << endl;
 	}
 }

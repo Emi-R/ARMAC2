@@ -1,4 +1,6 @@
 #pragma once
+#include <iostream>
+
 class Domicilio
 {
 private:
@@ -34,7 +36,7 @@ public:
 	int getCP();
 	bool getEstado();
 
-	//Cargar y mostrar
+	///Cargar y mostrar
 	void cargarDomicilio();
 	void mostrarDomicilio();
 
