@@ -28,11 +28,13 @@ int main()
 	Administrador admin;
 	admin.cargar();*/
 
+
 	/*--Prueba Persona: todo OK
 	*
 	Persona Persona;
 	Persona.CargarPersona();
 	Persona.MostrarPersona();*/
+
 
 	/*Prueba socio*: Esta OK pero no toma el primer caracter en algunas cadenas
 
