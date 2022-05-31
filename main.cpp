@@ -24,12 +24,12 @@ int main()
 	instalacion();
 
 	/*--Prueba Admin: todo OK
-
+	*
 	Administrador admin;
 	admin.cargar();*/
 
 	/*--Prueba Persona: todo OK
-
+	*
 	Persona Persona;
 	Persona.CargarPersona();
 	Persona.MostrarPersona();*/
@@ -47,10 +47,6 @@ int main()
 
 	socio.cargar();
 	socio.grabarEnDisco();
-
-	socio.mostrar();
-
-
 
 	return 0;
 }

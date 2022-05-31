@@ -1,6 +1,10 @@
 #pragma once
 
 #include <cstring>
+#include <iostream>
+#include <cstring>
+#include <stdlib.h>
+#include <time.h>
 
 class Administrador
 {

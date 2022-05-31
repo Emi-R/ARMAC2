@@ -1,7 +1,9 @@
 #include "Socio.h"
 
 Socio::Socio() {
+
 	Persona();
+	Fecha _fechaIngreso;
 	_idsocio = 0;
 	_estado = false;
 }
@@ -13,13 +15,24 @@ void Socio::setEstado(bool estado) {
 	_estado = estado;
 }
 
+void Socio::setFechaIngreso(Fecha fechaIng)
+{
+	_fechaIngreso = fechaIng;
+}
+
 int	 Socio::getIdsocio() {
 	return _idsocio;
+}
+
+Fecha Socio::getFechaIngreso()
+{
+	return _fechaIngreso;
 }
 
 bool Socio::getEstado() {
 	return _estado;
 }
+
 
 //METODOS DE DISCO
 bool Socio::grabarEnDisco() {
@@ -80,12 +93,16 @@ bool Socio::modificarEnDisco(int pos) {
 //Cargar y Mostrar
 void Socio::cargar() {
 
-	Persona persona;
-
 	bool flag = false;
 	int aux;
 
-	persona.CargarPersona();
+	srand(time(NULL));
+
+	socio.CargarPersona();
+
+	Fecha fechaActual;
+
+	this->setFechaIngreso(fechaActual);
 
 	do {
 		aux = 1 + rand() % 9999;
@@ -105,15 +122,20 @@ void Socio::cargar() {
 
 	_estado = true;
 
+	cout << endl << " -- Socio creado correctamente --" << endl << endl;
+
 	this->mostrar();
 }
 
 void Socio::mostrar() {
 
-	MostrarPersona();
+	cout << "ID de socio: " << this->getIdsocio() << endl;
 
-	cout << "ID socio: " << _idsocio << endl;
+	socio.MostrarPersona();
 
+	cout << "Fecha de ingreso: ";
+
+	_fechaIngreso.mostrarFecha();
 }
 
 bool buscarSocioPorID(int id)
@@ -158,5 +180,17 @@ int checkArchivoSocios() {
 	fclose(fReg);
 
 	return 1;
+
+}
+
+void listadoSocios()
+{
+	Socio socio;
+	int pos = 0;
+
+	while (socio.leerDeDisco(pos++))
+	{
+		socio.mostrar();
+	}
 
 }

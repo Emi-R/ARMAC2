@@ -18,6 +18,7 @@ protected:
 
 public:
 	Persona();
+
 	//Setters
 	void setDni(int dni);
 	void setNombre(char* nombre);
@@ -27,11 +28,12 @@ public:
 	void setEmail(char* email);
 	void setTelefono(char* telefono);
 	void setEstado(bool estado);
+
 	// Getters
 	int getDni();
 	const char* getNombre();
 	const char* getApellido();
-	Fecha getFecha();
+	Fecha getFechaNacimiento();
 	Domicilio getDomicilio();
 	const char* getEmail();
 	const char* getTelefono();

@@ -1,8 +1,5 @@
 #include "administrador.h"
-#include <iostream>
-#include <cstring>
-#include <stdlib.h>
-#include <time.h>
+
 
 using namespace std;
 

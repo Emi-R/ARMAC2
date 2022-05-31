@@ -19,7 +19,7 @@ void Persona::setEstado(bool estado) { _estado = estado; }
 int  Persona::getDni() { return _dni; }
 const char* Persona::getNombre() { return _nombre; }
 const char* Persona::getApellido() { return _apellido; }
-Fecha Persona::getFecha() { return _fecha_nacimiento; }
+Fecha Persona::getFechaNacimiento() { return _fecha_nacimiento; }
 Domicilio Persona::getDomicilio() { return _domicilio; }
 const char* Persona::getEmail() { return _email; }
 const char* Persona::getTelefono() { return _telefono; }
@@ -60,16 +60,15 @@ void Persona::CargarPersona() {
 void Persona::MostrarPersona() {
 
 	if (_estado) {
-		cout << endl << "Dni: " << _dni << endl;
-		cout << "Nombre: " << _nombre << endl;
-		cout << "Apellido: " << _apellido << endl;
+		cout << endl << "Dni: " << this->getDni() << endl;
+		cout << "Nombre: " << this->_nombre << endl;
+		cout << "Apellido: " << this->_apellido << endl;
 		cout << "Fecha nacimiento: ";
 		_fecha_nacimiento.mostrarFecha();
 		cout << endl;
-		cout << "Domicilio: ";
 		_domicilio.mostrarDomicilio();
 		cout << endl;
-		cout << "Email : " << _email << endl;
-		cout << "Telefono: " << _telefono << endl;
+		cout << "Email : " << this->getEmail() << endl;
+		cout << "Telefono: " << this->getTelefono() << endl;
 	}
 }
