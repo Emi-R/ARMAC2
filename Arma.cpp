@@ -4,11 +4,11 @@
 
 using namespace std;
 
-Arma::Arma(int idArma, const char* modelo, float calibre, int tipoArma, int numSerie, bool estado) {
+Arma::Arma(int idArma, const char* modelo, float calibre, int tipoArma, int numSerie, bool estado, int _idPais) {
 	_idArma = idArma;
 	strcpy(_modelo, modelo);
 	_calibre = calibre;
-	_PaisFabricacion;
+	_idPaisFabricacion = _idPais;
 	_tipoArma = tipoArma;
 	_numSerie = numSerie;
 	_estado = estado;
@@ -26,9 +26,10 @@ void Arma::setCalibre(float calibre) {
 	_calibre = calibre;
 };
 
-void Arma::setPaisFabricacion(Pais _PaisFabricacion) {
-
+void Arma::setidPaisFabricacion(int idPaisFabricacion) {
+	_idPaisFabricacion = idPaisFabricacion;
 };
+
 void Arma::setTipoArma(int tipoArma) {
 	_tipoArma = tipoArma;
 };
@@ -54,7 +55,7 @@ float Arma::getCalibre() {
 };
 
 int Arma::getidPaisFabricacion() {
-	return _PaisFabricacion;
+	return _idPaisFabricacion;
 };
 
 int Arma::getTipoArma() {
