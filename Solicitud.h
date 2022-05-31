@@ -1,8 +1,9 @@
 #pragma once
+#include <cstring>
+#include <iostream>
 #include "Fecha.h"
 #include "Arma.h"
 #include "Socio.h"
-#include <cstring>
 
 class Solicitud
 {

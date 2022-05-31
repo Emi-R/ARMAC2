@@ -22,3 +22,5 @@ public:
 };
 
 bool buscarSocioPorID(int id);
+
+int checkArchivoSocios();

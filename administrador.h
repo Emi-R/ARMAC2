@@ -47,3 +47,5 @@ public:
 bool buscarAdministradorPorDni(int);
 
 bool buscarAdministradorPorID(int);
+
+int checkArchivoAdmins();

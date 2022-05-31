@@ -2,53 +2,34 @@
 #include "Fecha.h"
 #include "Administrador.h"
 #include "Persona.h"
+#include "Solicitud.h"
 
 using namespace std;
 
-int checkArchivo() {
 
-	FILE* fReg = fopen("administradores.dat", "rb");
-
-	if (fReg == NULL)
-	{
-		fReg = fopen("administradores.dat", "wb");
-
-		if (fReg == NULL)
-		{
-			cout << "Error al crear o leer archivo de administradores.";
-			system("PAUSE > null");
-			system("cls");
-			return -1;
-		}
-		else
-		{
-			fclose(fReg);
-			cout << "Archivo de administradores creado correctamente";
-			system("PAUSE > null");
-			system("cls");
-			return 0;
-		}
-	}
-
-	fclose(fReg);
-
-	return 1;
-
-}
-
-int main() 
+int main()
 {
+
+	setlocale(LC_ALL, "Spanish");
+
+	checkArchivoSocios();
+
+	/*--Prueba Admin: todo OK
+
 	Administrador admin;
+	admin.cargar();*/
+
+	/*--Prueba Persona: todo OK
+
 	Persona Persona;
-
-	setlocale(LC_ALL,"Spanish");
-
-	//checkArchivo();
-	//admin.cargar();
-
 	Persona.CargarPersona();
-	Persona.MostrarPersona();
+	Persona.MostrarPersona();*/
 
+
+	/*--Prueba Solicitud
+	Solicitud solic;
+	solic.cargarSolicitud();
+	solic.mostrarSolicitud();*/
 
 
 

@@ -109,3 +109,34 @@ bool buscarSocioPorID(int id)
 
 	return false;
 }
+
+int checkArchivoSocios() {
+
+	FILE* fReg = fopen("socios.dat", "rb");
+
+	if (fReg == NULL)
+	{
+		fReg = fopen("socios.dat", "wb");
+
+		if (fReg == NULL)
+		{
+			cout << "Error al crear o leer archivo de socios.";
+			system("PAUSE > null");
+			system("cls");
+			return -1;
+		}
+		else
+		{
+			fclose(fReg);
+			cout << "Archivo de socios creado correctamente";
+			system("PAUSE > null");
+			system("cls");
+			return 0;
+		}
+	}
+
+	fclose(fReg);
+
+	return 1;
+
+}

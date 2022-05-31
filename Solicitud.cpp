@@ -1,7 +1,6 @@
 #include "Solicitud.h"
 #include "administrador.h"
-#include <cstring>
-#include <iostream>
+#include "Fecha.h"
 
 using namespace std;
 
@@ -9,7 +8,7 @@ Solicitud::Solicitud(int idSolicitud, int idAdmin, int idSocio, bool estado, int
 	_idSolicitud = idSolicitud;
 	_idAdministrador = idAdmin;
 	_idSocio = idSocio;
-	_FechaSolicitud;
+	Fecha _FechaSolicitud;
 	_idArma = idArma;
 	_estado = estado;
 };
@@ -56,15 +55,17 @@ void Solicitud::cargarSolicitud() {
 	int aux;
 	bool verifica;
 	Arma armaRegistro;
+	Fecha fechaSolicitud;
 
 	do {
 		cout << "Ingrese el ID del Socio: ";
 		cin >> aux;
+
 		verifica = buscarSocioPorID(aux);
 
 		if (!verifica)
 		{
-			cout << "El ID de socio no esta registrado o es incorrecto. Ingrese de nuevo por favor.";
+			cout << "El ID de socio no esta registrado o es incorrecto. Ingrese de nuevo por favor." << endl;
 		}
 		else
 		{
@@ -83,15 +84,20 @@ void Solicitud::cargarSolicitud() {
 	do {
 		cout << "Ingrese el Id del Administrador: ";
 		cin >> aux;
+
 		verifica = buscarAdministradorPorID(aux);
-		if (!verifica) {
+
+		if (!verifica) 
+		{
 			cout << "El Id del Administrador es inválido. Por favor, ingrese un ID correcto.";
 		}
+
 	} while (verifica == false);
 
 	this->setIdAdministrador(aux);
 
-	_FechaSolicitud;
+	this->setFechaSolicitud(fechaSolicitud);
+
 	_estado = true;
 }
 
@@ -105,15 +111,16 @@ void Solicitud::mostrarSolicitud() {
 	cout << endl;
 	cout << "Id del Administrador: " << this->getIdAdministrador();
 	cout << endl;
+
 	arma.leerDeDisco(this->getIdArma());
 	arma.mostrarArma();
+
 	cout << endl;
 	cout << "Fecha en la que se Registró la Solicitud: ";
 	this->_FechaSolicitud.mostrarFecha();
 	cout << endl;
 
 };
-
 
 bool Solicitud::grabarEnDisco() {
 
