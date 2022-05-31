@@ -81,46 +81,46 @@ bool Domicilio::getEstado() {
 
 // Cargar y Mostrar
 void Domicilio::cargarDomicilio() {
-	cout << "Ingrese el país: ";
+	cout << "Ingrese el país:";
 	cin.ignore();
 	cin.getline(_pais, 49);
 
-	cout << "Ingrese la provincia: ";
+	cout << "Ingrese la provincia:";
 	cin.ignore();
 	cin.getline(_provincia, 49);
 
-	cout << "Ingrese la localidad: ";
+	cout << "Ingrese la localidad:";
 	cin.ignore();
 	cin.getline(_localidad, 49);
 
-	cout << "Ingrese la calle: ";
+	cout << "Ingrese la calle:";
 	cin.ignore();
 	cin.getline(_calle, 49);
 	do {
-		cout << "Ingrese la altura: ";
+		cout << "Ingrese la altura:";
 		cin >> _altura;
 		if (_altura <= 0) {
-			cout << "La altura es incorrecta. Inserte nuevamente: ";
+			cout << "La altura es incorrecta. Ingrese nuevamente: ";
 		}
 	} while (_altura < 0);
 
 	//int longitud = 0;
 
 	do {
-		cout << "Ingrese el departamento: ";
+		cout << "Ingrese el departamento:";
 		cin.ignore();
 		cin.getline(_dpto, 9);
 		//longitud = strlen(_dpto);
 		if (strlen(_dpto) < 0) {
-			cout << "El depto ingresado es incorrecto. Inserte nuevamente: ";
+			cout << "El depto ingresado es incorrecto. Ingrese nuevamente: ";
 		}
 	} while (strlen(_dpto) < 0);
 
 	do {
-		cout << "Ingrese el Código Postal: ";
+		cout << "Ingrese el Código Postal:";
 		cin >> _cp;
 		if (_cp <= 0) {
-			cout << "El código postal ingresado es incorrecto. Inserte nuevamente: ";
+			cout << "El código postal ingresado es incorrecto. Ingrese nuevamente: ";
 		}
 	} while (_cp <= 0);
 

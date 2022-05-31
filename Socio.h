@@ -11,6 +11,7 @@ public:
 	void setEstado(bool estado);
 	int getIdsocio();
 	bool getEstado();
+
 	// METODOS DE DISCO
 	bool grabarendisco();
 	bool leerdedisco(int pos);

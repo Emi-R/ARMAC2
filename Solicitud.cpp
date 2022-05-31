@@ -1,7 +1,7 @@
 #include "Solicitud.h"
 #include "administrador.h"
-#include <iostream>
 #include <cstring>
+#include <iostream>
 
 using namespace std;
 
@@ -61,6 +61,16 @@ void Solicitud::cargarSolicitud() {
 		cout << "Ingrese el ID del Socio: ";
 		cin >> aux;
 		verifica = buscarSocioPorID(aux);
+
+		if (!verifica)
+		{
+			cout << "El ID de socio no esta registrado o es incorrecto. Ingrese de nuevo por favor.";
+		}
+		else
+		{
+			verifica = true;
+		}
+
 	} while (verifica == false);
 
 	this->setIdSocio(aux);
@@ -75,7 +85,7 @@ void Solicitud::cargarSolicitud() {
 		cin >> aux;
 		verifica = buscarAdministradorPorID(aux);
 		if (!verifica) {
-			cout << "El Id del Administrador es inválido. Por favor ingrese un ID correcto.";
+			cout << "El Id del Administrador es inválido. Por favor, ingrese un ID correcto.";
 		}
 	} while (verifica == false);
 
@@ -107,7 +117,7 @@ void Solicitud::mostrarSolicitud() {
 
 bool Solicitud::grabarEnDisco() {
 
-	FILE* soliReg = fopen("solicitudes.dat", "wb+");
+	FILE* soliReg = fopen("solicitudes.dat", "ab");
 
 	if (soliReg == NULL)
 	{

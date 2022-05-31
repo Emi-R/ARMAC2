@@ -77,7 +77,7 @@ void Fecha::mostrarFecha() {
 }
 
 /////////////////////////////////////
-// Funciones globales Administrador
+// Funciones globales Fecha
 /////////////////////////////////////
 
 bool validaDia(int mes, int dia, int anio) {

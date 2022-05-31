@@ -1,4 +1,5 @@
 #include "Socio.h"
+
 Socio::Socio() {
 	Persona();
 	_idsocio = 0;
@@ -7,15 +8,19 @@ Socio::Socio() {
 void Socio::setIdsocio(int idsocio) {
 	_idsocio = idsocio;
 }
+
 void Socio::setEstado(bool estado) {
 	_estado = estado;
 }
+
 int	 Socio::getIdsocio() {
 	return _idsocio;
 }
+
 bool Socio::getEstado() {
 	return _estado;
 }
+
 //METODOS DE DISCO
 bool Socio::grabarendisco() {
 	FILE* fReg = fopen("socios.dat", "ab");
@@ -33,6 +38,7 @@ bool Socio::grabarendisco() {
 
 	return escribio;
 }
+
 bool Socio::leerdedisco(int pos) {
 	FILE* fReg = fopen("socios.dat", "rb");
 
@@ -51,6 +57,7 @@ bool Socio::leerdedisco(int pos) {
 
 	return escribio;
 }
+
 bool Socio::modificarendisco(int pos) {
 	FILE* fReg = fopen("socio.dat", "rb+");
 
@@ -72,12 +79,16 @@ bool Socio::modificarendisco(int pos) {
 
 //Cargar y Mostrar
 void Socio::cargarsocio() {
+
 	CargarPersona();
+
 	cout << "Ingrese el ID de socio" << endl;
 	cin >> _idsocio;
 	_estado = true;
 }
+
 void Socio::mostrarsocio() {
+
 	MostrarPersona();
 	cout << "ID socio: " << _idsocio << endl;
 	
