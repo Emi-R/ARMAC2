@@ -1,6 +1,7 @@
 #pragma once
 #include "Fecha.h"
 #include "Arma.h"
+#include "Socio.h"
 #include <cstring>
 
 class Solicitud

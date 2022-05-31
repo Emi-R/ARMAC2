@@ -20,3 +20,4 @@ public:
 	void mostrarsocio();
 };
 
+bool buscarSocioPorID(int id);

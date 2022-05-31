@@ -60,7 +60,7 @@ void Solicitud::cargarSolicitud() {
 	do {
 		cout << "Ingrese el ID del Socio: ";
 		cin >> aux;
-		verifica = verificarIdSocio(aux);
+		verifica = buscarSocioPorID(aux);
 	} while (verifica == false);
 
 	this->setIdSocio(aux);

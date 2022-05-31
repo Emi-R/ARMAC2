@@ -82,3 +82,19 @@ void Socio::mostrarsocio() {
 	cout << "ID socio: " << _idsocio << endl;
 	
 }
+
+bool buscarSocioPorID(int id)
+{
+	Socio socio;
+	int pos = 0;
+
+	while (socio.leerdedisco(pos++))
+	{
+		if (socio.getIdsocio() == id)
+		{
+			return true;
+		}
+	}
+
+	return false;
+}
