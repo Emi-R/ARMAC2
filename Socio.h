@@ -1,5 +1,5 @@
 #pragma once
-
+#include <iomanip>
 #include "Persona.h"
 
 
@@ -30,6 +30,8 @@ public:
 
 	void cargar();
 	void mostrar();
+
+	void listar();
 };
 
 bool buscarSocioPorID(int id);

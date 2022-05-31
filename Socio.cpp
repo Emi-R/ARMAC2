@@ -204,9 +204,28 @@ void listadoSocios()
 	Socio socio;
 	int pos = 0;
 
+	cout << left;
+	cout << setw(5) << "ID";
+	cout << setw(15) << "DNI";
+	cout << setw(30) << "NOMBRE";
+	cout << setw(30) << "APELLIDO";
+	cout << setw(15) << "FECHA INGRESO" << endl;
+
 	while (socio.leerDeDisco(pos++))
 	{
-		socio.mostrar();
+		socio.listar();
 	}
 
+}
+
+void Socio::listar() {
+
+	cout << left;
+	cout << setw(5) << this->getIdsocio();
+	cout << setw(15) << socio.getDni();
+	cout << setw(30) << socio.getNombre();
+	cout << setw(30) << socio.getApellido();
+	//setw(15);
+	this->getFechaIngreso().mostrarFecha();
+	cout << endl;
 }

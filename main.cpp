@@ -41,12 +41,12 @@ int main()
 	Socio socio;
 
 	listadoSocios();
-	socio.cargar();
-	socio.grabarEnDisco();
+	//socio.cargar();
+	//socio.grabarEnDisco();
 
 
 	/*--Prueba Solicitud: probar primero socio
-	* 
+	*
 	Solicitud solic;
 	solic.cargarSolicitud();
 	solic.mostrarSolicitud();*/
