@@ -34,6 +34,8 @@ public:
 
 bool buscarSocioPorID(int id);
 
+bool buscarSocioPorDNI(int dni);
+
 int checkArchivoSocios();
 
 void listadoSocios();

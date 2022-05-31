@@ -36,13 +36,13 @@ int main()
 	Persona.MostrarPersona();*/
 
 
-	/*Prueba socio*: Esta OK pero no toma el primer caracter en algunas cadenas
+	/*Prueba socio*: Esta OK pero no toma el primer caracter en algunas cadenas*/
 
 	Socio socio;
 
+	listadoSocios();
 	socio.cargar();
 	socio.grabarEnDisco();
-	*/
 
 
 	/*--Prueba Solicitud: probar primero socio

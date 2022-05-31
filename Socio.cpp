@@ -154,6 +154,22 @@ bool buscarSocioPorID(int id)
 	return false;
 }
 
+bool buscarSocioPorDNI(int dni)
+{
+	Socio socio;
+	int pos = 0;
+
+	while (socio.leerDeDisco(pos++))
+	{
+		if (socio.getDni() == dni)
+		{
+			return true;
+		}
+	}
+
+	return false;
+}
+
 int checkArchivoSocios() {
 
 	FILE* fReg = fopen("socios.dat", "rb");

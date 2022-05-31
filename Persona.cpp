@@ -1,4 +1,5 @@
 #include "Persona.h"
+#include "Socio.h"
 #include <iostream>
 using namespace std;
 
@@ -28,15 +29,31 @@ bool Persona::getEstado() { return _estado; }
 //	MOSTRAR Y CARGAR
 void Persona::CargarPersona() {
 
+	bool flag = false;
+	int aux;
+
 	do {
 		cout << "Ingrese el dni: ";
-		cin >> _dni;
+		cin >> aux;
 
-		if (_dni < 1000000)
+		if (aux < 1000000)
 		{
-			cout << " El dni ingresado es incorrecto, intente nuevamente" << endl;
+			cout << " El dni ingresado es incorrecto, intente nuevamente." << endl;
+			flag = false;
 		}
-	} while (_dni < 1000000);
+		else if (buscarSocioPorDNI(aux))
+		{
+			cout << "El socio ya se encuentra registrado." << endl;
+			flag = false;
+		}
+		else
+		{
+			flag = true;
+		}
+
+	} while (!flag);
+
+	this->setDni(aux);
 
 	cout << "Ingrese el nombre: ";
 	cin.ignore();
