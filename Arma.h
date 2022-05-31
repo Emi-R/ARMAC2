@@ -35,9 +35,11 @@ public:
 	void mostrarArma();
 
 	bool leerDeDisco(int pos);
+	bool grabarEnDisco();
+	bool modificarEnDisco(int pos);
 
-	int generarId();
-	bool buscarArmaPorID(int id);
 
 };
 
+	int generarId();
+	bool buscarArmaPorID(int id);

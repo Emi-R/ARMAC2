@@ -114,3 +114,59 @@ int generarId() {
 
 	return id;
 }
+
+
+//Metodos de disco
+
+bool Arma::grabarEnDisco() {
+	FILE* fReg = fopen("armas.dat", "ab");
+
+	if (fReg == NULL)
+	{
+		cout << "No se puede abrir el archivo.";
+		system("PAUSE < null");
+		return false;
+	}
+
+	int escribio = fwrite(this, sizeof(Arma), 1, fReg);
+
+	fclose(fReg);
+
+	return escribio;
+}
+bool Arma::leerDeDisco (int pos) {
+	FILE* fReg = fopen("armas.dat", "rb");
+
+	if (fReg == NULL)
+	{
+		cout << "No se puede abrir el archivo.";
+		system("PAUSE < null");
+		return false;
+	}
+
+	fseek(fReg, pos * sizeof(Arma), SEEK_SET);
+
+	int escribio = fread(this, sizeof(Arma), 1, fReg);
+
+	fclose(fReg);
+
+	return escribio;
+}
+bool Arma::modificarEnDisco(int pos) {
+	FILE* fReg = fopen("armas.dat", "rb+");
+
+	if (fReg == NULL)
+	{
+		cout << "No se puede abrir el archivo.";
+		system("PAUSE < null");
+		return false;
+	}
+
+	fseek(fReg, pos * sizeof(Arma), SEEK_SET);
+
+	int escribio = fwrite(this, sizeof(Arma), 1, fReg);
+
+	fclose(fReg);
+
+	return escribio;
+}
