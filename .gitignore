@@ -25,3 +25,6 @@ administradores.dat
 /.vs/ARMAC2/v17
 /.vs
 *.enc
+*.sqlite
+*.lock
+*.vsidx
