@@ -6,7 +6,7 @@
 
 class Persona
 {
-private:
+protected:
 	int _dni;
 	char _nombre[30];
 	char _apellido[30];

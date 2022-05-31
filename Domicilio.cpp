@@ -9,6 +9,10 @@
 using std::setprecision;
 using namespace std;
 
+Domicilio::Domicilio() {
+
+}
+
 /// Setters
 void Domicilio::setPais(const char* pais) {
 	strcpy(_pais, pais);

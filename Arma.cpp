@@ -53,7 +53,7 @@ float Arma::getCalibre() {
 	return _calibre;
 };
 
-Pais Arma::getPaisFabricacion() {
+int Arma::getidPaisFabricacion() {
 	return _PaisFabricacion;
 };
 

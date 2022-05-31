@@ -48,9 +48,7 @@ int main()
 
 	Persona.CargarPersona();
 
-	cout << "Primer comentario Majo";
-	system("color 80");
-	cout << "Sale una fresca" << endl;
+
 
 
 	return 0;

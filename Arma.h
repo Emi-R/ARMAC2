@@ -7,7 +7,7 @@ private:
 	int _idArma;
 	char _modelo[30];
 	float _calibre;
-	Pais _PaisFabricacion;
+	int  _idPaisFabricacion;
 	int _tipoArma;
 	int _numSerie;
 	bool _estado;
@@ -18,7 +18,7 @@ public:
 	void setIdArma(int idArma);
 	void setModelo(const char* modelo);
 	void setCalibre(float _calibre);
-	void setPaisFabricacion(Pais _PaisFabricacion);
+	void setPaisFabricacion(int _PaisFabricacion);
 	void setTipoArma(int tipoArma);
 	void setNumSerie(int numSerie);
 	void setEstado(bool estado);
@@ -26,7 +26,7 @@ public:
 	int getIdArma();
 	const char* getModelo();
 	float getCalibre();
-	Pais getPaisFabricacion();
+	int  getidPaisFabricacion();
 	int getTipoArma();
 	int getNumSerie();
 	bool getEstado();
