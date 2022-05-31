@@ -6,22 +6,20 @@
 class Solicitud
 {
 private:
-	int _idSolicitud, _idAdministrador, _idSocio;
-	Arma _ArmaRegistro;
+	int _idSolicitud, _idAdministrador, _idSocio, _idArma;
 	Fecha _FechaSolicitud;
 	bool _estado;
 
 public:
 
-
 	//CONSTRUCTOR
-	Solicitud(int idSolicitud = 0, int idAdmin = 0, int idSocio = 0, bool estado = 0);
+	Solicitud(int idSolicitud = 0, int idAdmin = 0, int idSocio = 0, bool estado = 0, int idArma = 0);
 
 	//SETTERS
 	void setIdSolicitud(int idSolicitud);
 	void setIdAdministrador(int idAdmin);
 	void setIdSocio(int idSocio);
-	void setArma(Arma ArmaRegistro);
+	void setIdArma(int idArma);
 	void setFechaSolicitud(Fecha FechaSolicitud);
 	void setEstado(bool estado);
 
@@ -29,15 +27,12 @@ public:
 	int getIdSolicitud();
 	int getIdAdministrador();
 	int getIdSocio();
-	Arma getArma();
+	int getIdArma();
 	Fecha getFechaSolicitud();
 	bool getEstado();
 
 	void cargarSolicitud();
 	void mostrarSolicitud();
 
+	bool grabarEnDisco();
 };
-
-	//FUNCIONES GLOBALES 
-	bool verificarIdSocio(int id);
-	bool verificarIdAdmin(int id);
