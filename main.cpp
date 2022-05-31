@@ -6,7 +6,7 @@
 
 using namespace std;
 
-void instalacion()
+void instalacionArchivos()
 {
 	checkArchivoSocios();
 
@@ -21,7 +21,7 @@ int main()
 
 	setlocale(LC_ALL, "Spanish");
 
-	instalacion();
+	instalacionArchivos();
 
 	/*--Prueba Admin: todo OK
 	*
@@ -34,19 +34,20 @@ int main()
 	Persona.CargarPersona();
 	Persona.MostrarPersona();*/
 
+	/*Prueba socio*: Esta OK pero no toma el primer caracter en algunas cadenas
+
+	Socio socio;
+
+	socio.cargar();
+	socio.grabarEnDisco();
+	*/
+
 
 	/*--Prueba Solicitud: probar primero socio
 	* 
 	Solicitud solic;
 	solic.cargarSolicitud();
 	solic.mostrarSolicitud();*/
-
-	/*Prueba socio*/
-
-	Socio socio;
-
-	socio.cargar();
-	socio.grabarEnDisco();
 
 	return 0;
 }
