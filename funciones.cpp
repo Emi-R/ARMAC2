@@ -252,7 +252,7 @@ void mostrarMenuAdmins() {
 		rlutil::setColor(rlutil::WHITE);
 		rlutil::setBackgroundColor(rlutil::DARKGREY);
 		rlutil::cls();
-		cout << "\t Administradores" << endl;
+		cout << "\tAdministradores" << endl;
 		cout << "--------------------------" << endl;
 		cout << "1 - Crear nuevo administrador " << endl;
 		cout << "2 - Modificar administrador " << endl;
