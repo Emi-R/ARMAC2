@@ -14,9 +14,9 @@ int main()
 
 	instalacionArchivos();
 
-	//login();
+	login();
 
-	mostrarMenu();
+	menuPrincipal();
 
 	/*--Prueba Admin: todo OK
 	*/

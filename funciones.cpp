@@ -90,7 +90,7 @@ void login()
 
 }
 
-void mostrarMenu() {
+void menuPrincipal() {
 
 	int opcion;
 	char confirmarSalida;
@@ -118,15 +118,16 @@ void mostrarMenu() {
 
 		switch (opcion) {
 		case 1:
-			mostrarMenuSocios();
+			menuSocios();
 			break;
 		case 2:
-			mostrarMenuAdmins();
+			menuAdmins();
 			break;
 		case 3:
-			mostrarMenuSolicitudes();
+			menuArmas();
 			break;
 		case 4:
+			menuSolicitudes();
 
 			break;
 		case 0:
@@ -142,7 +143,11 @@ void mostrarMenu() {
 
 }
 
-void mostrarMenuSocios() {
+
+////////////////////////////
+/// Menu Socios y submenus
+////////////////////////////
+void menuSocios() {
 
 	int opcion;
 	char confirmarSalida;
@@ -177,7 +182,7 @@ void mostrarMenuSocios() {
 
 			break;
 		case 4:
-			MenuListadosSocios();
+			menuListadosSocios();
 			break;
 		case 0:
 			cout << "¿Volver al menu anterior? (S/N) ";
@@ -192,13 +197,13 @@ void mostrarMenuSocios() {
 
 }
 
-void MenuListadosSocios()
+void menuListadosSocios()
 {
 	int opcion;
 	char confirmarSalida;
 	bool salir = false;
 
-	while (!false) {
+	while (!salir) {
 		rlutil::setColor(rlutil::WHITE);
 		rlutil::setBackgroundColor(rlutil::DARKGREY);
 		rlutil::cls();
@@ -242,7 +247,12 @@ void MenuListadosSocios()
 	}
 }
 
-void mostrarMenuAdmins() {
+
+////////////////////////////
+/// Menu Administradores y submenus
+////////////////////////////
+
+void menuAdmins() {
 
 	int opcion;
 	char confirmarSalida;
@@ -287,7 +297,11 @@ void mostrarMenuAdmins() {
 
 }
 
-void mostrarMenuSolicitudes() {
+
+////////////////////////////
+///Menu Solicitudes y submenus
+////////////////////////////
+void menuSolicitudes() {
 
 	int opcion;
 	char confirmarSalida;
@@ -332,5 +346,55 @@ void mostrarMenuSolicitudes() {
 			salir = (tolower(confirmarSalida) == 's');
 			break;
 		}
+	}
+}
+
+
+////////////////////////////
+///Menu Armas y submenus
+////////////////////////////
+
+void menuArmas()
+{
+	int opcion;
+	char confirmarSalida;
+	bool salir = false;
+
+	while (!salir) {
+		rlutil::setColor(rlutil::WHITE);
+		rlutil::setBackgroundColor(rlutil::DARKGREY);
+		rlutil::cls();
+
+		cout << "\tArmas" << endl;
+		cout << "--------------------------" << endl;
+		cout << "1 - Crear nueva arma " << endl;
+		cout << "2 - Modificar arma " << endl;
+		cout << "3 - Eliminar arma " << endl;
+		cout << "--------------------------" << endl;
+		cout << "0 - Volver al menú principal" << endl << endl;
+
+		cout << "Opción: ";
+		cin >> opcion;
+
+		rlutil::cls();
+
+		switch (opcion) {
+		case 1:
+			crear_nueva_arma();
+			break;
+		case 2:
+
+			break;
+		case 3:
+
+			break;
+		case 0:
+			cout << "¿Volver al menu anterior? (S/N) ";
+			cin >> confirmarSalida;
+
+			salir = (tolower(confirmarSalida) == 's');
+			break;
+		}
+
 	}
 }

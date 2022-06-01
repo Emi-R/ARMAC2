@@ -3,6 +3,8 @@
 #include <cstring>
 
 using namespace std;
+using namespace rlutil;
+
 
 Arma::Arma(int idArma, const char* modelo, float calibre, int tipoArma, int numSerie, bool estado, int _idPais) {
 	_idArma = idArma;
@@ -72,25 +74,79 @@ bool Arma::getEstado() {
 
 void Arma::cargarArma() {
 
-	//Pais pais;
+	int aux;
+	bool flag = false;
 
 	cout << "Ingrese el Modelo del Arma: ";
-	cin >> _modelo;
+	cin.ignore();
+	cin.getline(_modelo, 29);
 
 	cout << "Ingrese el Calibre del Arma: ";
 	cin >> _calibre;
 
-	//cout << "Ingrese el Pais de Fabricacion: ";
-	//pais.CargarPais();
+	do {
+		cout << "Ingrese el Pais de Fabricacion: ";
+		cin >> aux;
 
-	cout << "Ingrese el Tipo de Arma: ";
-	cin >> _tipoArma;
+		if (aux < 0)
+		{
+			cout << "ID de pais incorrecto." << endl;
+			flag = false;
+		}
+		else
+		{
+			flag = true;
+		}
 
-	cout << "Ingrese el Numero de Serie: ";
-	cin >> _numSerie;
+	} while (!flag);
 
-	_idArma = generarId() + 1;
+	this->setidPaisFabricacion(aux);
+
+	do {
+		cout << "Ingrese el tipo de arma: ";
+		cin >> aux;
+
+		if (aux < 0)
+		{
+			cout << "Tipo de arma inválido." << endl;
+			flag = false;
+		}
+		else
+		{
+			flag = true;
+		}
+
+	} while (!flag);
+
+	this->setTipoArma(aux);
+
+	do {
+		cout << "Ingrese número de serie: ";
+		cin >> aux;
+
+		if (aux < 0)
+		{
+			cout << "Número de serie inválido." << endl;
+			flag = false;
+		}
+		else
+		{
+			flag = true;
+		}
+
+	} while (!flag);
+
+	this->setNumSerie(aux);
+
+	this->setIdArma(generarId() + 1);
+
 	_estado = true;
+
+	cout << endl << "-- Arma agregada con exito. --" << endl << endl;
+
+	this->mostrarArma();
+
+	anykey();
 
 };
 
@@ -102,13 +158,12 @@ void Arma::mostrarArma() {
 	cout << endl;
 	cout << "Calibre del Arma: " << this->getCalibre();
 	cout << endl;
-	//cout << "Pais de Fabricacion: " << this->getidPaisFabricacion();
-	//cout << endl;
+	cout << "Pais de Fabricacion: " << this->getidPaisFabricacion();
+	cout << endl;
 	cout << "Tipo de Arma: " << this->getTipoArma();
 	cout << endl;
 	cout << "Numero de Serie: " << this->getNumSerie();
 	cout << endl;
-	cout << "Estado: " << this->getEstado();
 
 };
 
@@ -124,7 +179,6 @@ int generarId() {
 
 	return id;
 }
-
 
 //Metodos de disco
 
@@ -223,5 +277,14 @@ int buscarArmaPorId(int id) {
 	}
 
 	return -1;
+
+}
+
+void crear_nueva_arma()
+{
+	Arma arma;
+
+	arma.cargarArma();
+	arma.grabarEnDisco();
 
 }

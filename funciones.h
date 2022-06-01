@@ -5,14 +5,21 @@ void instalacionArchivos();
 
 void login();
 
-/// Menues
-void mostrarMenu();
-void mostrarMenuSocios();
-void MenuListadosSocios();
-void mostrarMenuAdmins();
-void mostrarMenuSolicitudes();
-char confirmarSalir();
-void confirmarVolver();
+/// Menu
+void menuPrincipal();
+
+/// Menu Socios y submenus
+void menuSocios();
+void menuListadosSocios();
+
+///Menu Administradores y submenus
+void menuAdmins();
+
+///Menu Solicitudes y submenus
+void menuSolicitudes();
+
+///Menu Armas y submenus
+void menuArmas();
 
 
 #endif // FUNCIONES_H_INCLUDED

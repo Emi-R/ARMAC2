@@ -1,5 +1,6 @@
 #pragma once
 #include "Pais.h"
+#include "rlutil.h"
 
 class Arma
 {
@@ -37,12 +38,12 @@ public:
 	bool leerDeDisco(int pos);
 	bool grabarEnDisco();
 	bool modificarEnDisco(int pos);
-
-
 };
 
 int generarId();
 int checkArchivoArmas();
 
 int buscarArmaPorId(int );
+
+void crear_nueva_arma();
 
