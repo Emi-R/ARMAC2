@@ -14,8 +14,8 @@ using namespace rlutil;
 
 void instalacionArchivos()
 {
-	rlutil::setColor(rlutil::WHITE);
-	rlutil::setBackgroundColor(rlutil::DARKGREY);
+	setColor(WHITE);
+	setBackgroundColor(DARKGREY);
 
 	checkArchivoSocios();
 	checkArchivoAdmins();
@@ -26,8 +26,8 @@ void instalacionArchivos()
 	system("cls");
 }
 
-void login()
-{
+void login() {
+
 	int aux;
 	char aux2[30];
 
@@ -85,9 +85,7 @@ void login()
 				flag = true;
 			}
 		}
-
 	} while (!flag);
-
 }
 
 void menuPrincipal() {
@@ -97,9 +95,10 @@ void menuPrincipal() {
 	bool salir = false;
 
 	while (!salir) {
-		rlutil::setColor(rlutil::WHITE);
-		rlutil::setBackgroundColor(rlutil::DARKGREY);
-		rlutil::cls();
+
+		setColor(WHITE);
+		setBackgroundColor(DARKGREY);
+		cls();
 		cout << "\tSistema ARMAC" << endl;
 		cout << "--------------------------" << endl;
 		cout << "1 - Menú Socios" << endl;
@@ -114,7 +113,7 @@ void menuPrincipal() {
 		cout << "Opción: ";
 		cin >> opcion;
 
-		rlutil::cls();
+		cls();
 
 		switch (opcion) {
 		case 1:
@@ -135,12 +134,10 @@ void menuPrincipal() {
 			cin >> confirmarSalida;
 
 			salir = (tolower(confirmarSalida) == 's');
-			
+
 			break;
 		}
-
 	}
-
 }
 
 
@@ -154,9 +151,10 @@ void menuSocios() {
 	bool salir = false;
 
 	while (!salir) {
-		rlutil::setColor(rlutil::WHITE);
-		rlutil::setBackgroundColor(rlutil::DARKGREY);
-		rlutil::cls();
+
+		setColor(WHITE);
+		setBackgroundColor(DARKGREY);
+		cls();
 		cout << "\tSocios" << endl;
 		cout << "--------------------------" << endl;
 		cout << "1 - Cargar nuevo socio" << endl;
@@ -169,7 +167,7 @@ void menuSocios() {
 		cout << "Opción: ";
 		cin >> opcion;
 
-		rlutil::cls();
+		cls();
 
 		switch (opcion) {
 		case 1:
@@ -193,20 +191,18 @@ void menuSocios() {
 			break;
 		}
 	}
-
-
 }
 
-void menuListadosSocios()
-{
+void menuListadosSocios() {
 	int opcion;
 	char confirmarSalida;
 	bool salir = false;
 
 	while (!salir) {
-		rlutil::setColor(rlutil::WHITE);
-		rlutil::setBackgroundColor(rlutil::DARKGREY);
-		rlutil::cls();
+
+		setColor(WHITE);
+		setBackgroundColor(DARKGREY);
+		cls();
 		cout << "\tListados Socios" << endl;
 		cout << "--------------------------" << endl;
 		cout << "1 - Listar todos los socios" << endl;
@@ -218,7 +214,7 @@ void menuListadosSocios()
 		cout << "Opción: ";
 		cin >> opcion;
 
-		rlutil::cls();
+		cls();
 
 		switch (opcion) {
 		case 1:
@@ -243,7 +239,6 @@ void menuListadosSocios()
 
 			break;
 		}
-
 	}
 }
 
@@ -259,9 +254,10 @@ void menuAdmins() {
 	bool salir = false;
 
 	while (!salir) {
-		rlutil::setColor(rlutil::WHITE);
-		rlutil::setBackgroundColor(rlutil::DARKGREY);
-		rlutil::cls();
+
+		setColor(WHITE);
+		setBackgroundColor(DARKGREY);
+		cls();
 		cout << "\tAdministradores" << endl;
 		cout << "--------------------------" << endl;
 		cout << "1 - Crear nuevo administrador " << endl;
@@ -273,7 +269,7 @@ void menuAdmins() {
 		cout << "Opción: ";
 		cin >> opcion;
 
-		rlutil::cls();
+		cls();
 
 		switch (opcion) {
 		case 1:
@@ -292,9 +288,7 @@ void menuAdmins() {
 			salir = (tolower(confirmarSalida) == 's');
 			break;
 		}
-
 	}
-
 }
 
 
@@ -308,9 +302,10 @@ void menuSolicitudes() {
 	bool salir = false;
 
 	while (!salir) {
-		rlutil::setColor(rlutil::WHITE);
-		rlutil::setBackgroundColor(rlutil::DARKGREY);
-		rlutil::cls();
+
+		setColor(WHITE);
+		setBackgroundColor(DARKGREY);
+		cls();
 		cout << "\tSolicitudes" << endl;
 		cout << "--------------------------" << endl;
 		cout << "1 - Crear nueva solicitud" << endl;
@@ -322,7 +317,7 @@ void menuSolicitudes() {
 		cout << "Opción: ";
 		cin >> opcion;
 
-		rlutil::cls();
+		cls();
 
 		switch (opcion) {
 		case 1:
@@ -354,16 +349,17 @@ void menuSolicitudes() {
 ///Menu Armas y submenus
 ////////////////////////////
 
-void menuArmas()
-{
+void menuArmas() {
+
 	int opcion;
 	char confirmarSalida;
 	bool salir = false;
 
 	while (!salir) {
-		rlutil::setColor(rlutil::WHITE);
-		rlutil::setBackgroundColor(rlutil::DARKGREY);
-		rlutil::cls();
+
+		setColor(WHITE);
+		setBackgroundColor(DARKGREY);
+		cls();
 
 		cout << "\tArmas" << endl;
 		cout << "--------------------------" << endl;
@@ -376,7 +372,7 @@ void menuArmas()
 		cout << "Opción: ";
 		cin >> opcion;
 
-		rlutil::cls();
+		cls();
 
 		switch (opcion) {
 		case 1:
@@ -395,6 +391,5 @@ void menuArmas()
 			salir = (tolower(confirmarSalida) == 's');
 			break;
 		}
-
 	}
 }
