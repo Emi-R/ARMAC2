@@ -17,6 +17,7 @@ void menuAdmins();
 
 ///Menu Solicitudes y submenus
 void menuSolicitudes();
+void menuListadosSolicitudes();
 
 ///Menu Armas y submenus
 void menuArmas();

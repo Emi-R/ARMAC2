@@ -311,6 +311,7 @@ void menuSolicitudes() {
 		cout << "2 - Modificar Solicitud" << endl;
 		cout << "3 - Eliminar Solicitud" << endl;
 		cout << "--------------------------" << endl;
+		cout << "4 - Listados"<<endl;
 		cout << "0 - Volver al menú principal" << endl << endl;
 
 		cout << "Opción: ";
@@ -320,13 +321,59 @@ void menuSolicitudes() {
 
 		switch (opcion) {
 		case 1:
-			system("pause");
+			cargarNuevaSolicitud();
 			break;
 		case 2:
 
 			break;
 		case 3:
 
+
+			break;
+		case 4:
+			menuListadosSolicitudes();
+
+			break;
+		case 0:
+			cout << "¿Volver al menu anterior? (S/N) ";
+			cin >> confirmarSalida;
+
+			salir = (tolower(confirmarSalida) == 's');
+			break;
+		}
+	}
+}
+
+void menuListadosSolicitudes() {
+	int opcion;
+	char confirmarSalida;
+	bool salir = false;
+
+	while (!salir) {
+
+		setColor(WHITE);
+		setBackgroundColor(DARKGREY);
+		cls();
+		cout << "\tListados Solicitudes" << endl;
+		cout << "--------------------------" << endl;
+		cout << "1 - Listar todas las Solicitudes" << endl;
+		cout << "--------------------------" << endl;
+		cout << "0 - Volver al menú principal" << endl << endl;
+
+		cout << "Opción: ";
+		cin >> opcion;
+
+		cls();
+
+		switch (opcion) {
+		case 1:
+			listadoSolicitudes();
+			anykey();
+			break;
+		case 2:
+			anykey();
+			break;
+		case 3:
 
 			break;
 		case 4:

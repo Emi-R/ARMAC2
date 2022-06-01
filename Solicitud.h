@@ -3,6 +3,7 @@
 #include <cstring>
 #include <iostream>
 #include <iomanip>
+#include "rlutil.h"
 #include "Fecha.h"
 #include "Arma.h"
 #include "Socio.h"
@@ -45,6 +46,8 @@ public:
 	void listarSolicitud();
 };
 
-int generarIdSolicitud();
 int checkArchivoSolicitud();
+void cargarNuevaSolicitud();
+int generarIdSolicitud();
+
 void listadoSolicitudes();

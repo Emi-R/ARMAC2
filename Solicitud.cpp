@@ -1,9 +1,12 @@
 #include "Solicitud.h"
 #include "administrador.h"
+#include "rlutil.h"
+#include <iostream>
 #include "Fecha.h"
 #include "Arma.h"
 
 using namespace std;
+using namespace rlutil;
 
 Solicitud::Solicitud(int idSolicitud, int idAdmin, int idSocio, bool estado, int idArma) {
 	_idSolicitud = idSolicitud;
@@ -251,4 +254,20 @@ void Solicitud::listarSolicitud() {
 	this->getFechaSolicitud().mostrarFecha();
 
 	cout << endl;
+}
+
+void cargarNuevaSolicitud() {
+
+	Solicitud solicitud;
+
+	solicitud.cargarSolicitud();
+	if (solicitud.grabarEnDisco()) {
+		cout << "La Solicitud " << solicitud.getIdSolicitud() << " fue Ingresada correctamente.";
+		cout << endl;
+	}
+	else {
+		cout << "Hubo un Error al crear la Solicitud." << endl;
+	}
+
+	anykey();
 }
