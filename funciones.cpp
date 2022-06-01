@@ -162,11 +162,11 @@ void mostrarMenuSocios() {
 
 		switch (opcion) {
 		case 1:
-
-			system("pause");
+			cargar_nuevo_socio();
 			break;
 		case 2:
-
+			listadoSocios();
+			anykey();
 			break;
 		case 3:
 

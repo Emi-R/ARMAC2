@@ -95,12 +95,11 @@ void Socio::cargar() {
 
 	bool flag = false;
 	int aux;
+	Fecha fechaActual;
 
 	srand(time(NULL));
 
 	CargarPersona();
-
-	Fecha fechaActual;
 
 	this->setFechaIngreso(fechaActual);
 
@@ -116,12 +115,11 @@ void Socio::cargar() {
 void Socio::mostrar() {
 
 	cout << "ID de socio: " << this->getIdsocio() << endl;
+	cout << "Fecha de ingreso: ";
+	_fechaIngreso.mostrarFecha();
 
 	MostrarPersona();
 
-	cout << "Fecha de ingreso: ";
-
-	_fechaIngreso.mostrarFecha();
 }
 
 int generarIDSocio()
@@ -231,4 +229,12 @@ void Socio::listar() {
 	//setw(15);
 	this->getFechaIngreso().mostrarFecha();
 	cout << endl;
+}
+
+void cargar_nuevo_socio()
+{
+	Socio aux;
+
+	aux.cargar();
+	aux.grabarEnDisco();
 }
