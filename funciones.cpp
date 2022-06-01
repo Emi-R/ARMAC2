@@ -90,13 +90,13 @@ void login()
 
 }
 
-
 void mostrarMenu() {
 
 	int opcion;
 	char confirmarSalida;
+	bool salir = false;
 
-	while (true) {
+	while (!salir) {
 		rlutil::setColor(rlutil::WHITE);
 		rlutil::setBackgroundColor(rlutil::DARKGREY);
 		rlutil::cls();
@@ -130,11 +130,14 @@ void mostrarMenu() {
 
 			break;
 		case 0:
-			confirmarSalir();
+			cout << "¿Confirma salir? (S/N) ";
+			cin >> confirmarSalida;
+
+			salir = (tolower(confirmarSalida) == 's');
+			
 			break;
 		}
-		cin.ignore();
-		rlutil::anykey();
+
 	}
 
 }
@@ -143,7 +146,9 @@ void mostrarMenuSocios() {
 
 	int opcion;
 	char confirmarSalida;
-	while (true) {
+	bool salir = false;
+
+	while (!salir) {
 		rlutil::setColor(rlutil::WHITE);
 		rlutil::setBackgroundColor(rlutil::DARKGREY);
 		rlutil::cls();
@@ -175,11 +180,13 @@ void mostrarMenuSocios() {
 			MenuListadosSocios();
 			break;
 		case 0:
-			confirmarVolver();
+			cout << "¿Volver al menu anterior? (S/N) ";
+			cin >> confirmarSalida;
+
+			salir = (tolower(confirmarSalida) == 's');
+
 			break;
 		}
-		cin.ignore();
-		//rlutil::anykey();
 	}
 
 
@@ -189,7 +196,9 @@ void MenuListadosSocios()
 {
 	int opcion;
 	char confirmarSalida;
-	while (true) {
+	bool salir = false;
+
+	while (!false) {
 		rlutil::setColor(rlutil::WHITE);
 		rlutil::setBackgroundColor(rlutil::DARKGREY);
 		rlutil::cls();
@@ -222,11 +231,14 @@ void MenuListadosSocios()
 
 			break;
 		case 0:
-			confirmarVolver();
+			cout << "¿Volver al menu anterior? (S/N) ";
+			cin >> confirmarSalida;
+
+			salir = (tolower(confirmarSalida) == 's');
+
 			break;
 		}
-		cin.ignore();
-		//rlutil::anykey();
+
 	}
 }
 
@@ -234,11 +246,13 @@ void mostrarMenuAdmins() {
 
 	int opcion;
 	char confirmarSalida;
-	while (true) {
+	bool salir = false;
+
+	while (!salir) {
 		rlutil::setColor(rlutil::WHITE);
 		rlutil::setBackgroundColor(rlutil::DARKGREY);
 		rlutil::cls();
-		cout << "\t Administradores" << endl;
+		cout << "\tAdministradores" << endl;
 		cout << "--------------------------" << endl;
 		cout << "1 - Crear nuevo administrador " << endl;
 		cout << "2 - Modificar administrador " << endl;
@@ -262,13 +276,14 @@ void mostrarMenuAdmins() {
 
 			break;
 		case 0:
-			confirmarVolver();
+			cout << "¿Volver al menu anterior? (S/N) ";
+			cin >> confirmarSalida;
+
+			salir = (tolower(confirmarSalida) == 's');
 			break;
 		}
-		cin.ignore();
-		//rlutil::anykey();
-	}
 
+	}
 
 }
 
@@ -276,7 +291,9 @@ void mostrarMenuSolicitudes() {
 
 	int opcion;
 	char confirmarSalida;
-	while (true) {
+	bool salir = false;
+
+	while (!salir) {
 		rlutil::setColor(rlutil::WHITE);
 		rlutil::setBackgroundColor(rlutil::DARKGREY);
 		rlutil::cls();
@@ -309,33 +326,11 @@ void mostrarMenuSolicitudes() {
 
 			break;
 		case 0:
-			confirmarVolver();
+			cout << "¿Volver al menu anterior? (S/N) ";
+			cin >> confirmarSalida;
+
+			salir = (tolower(confirmarSalida) == 's');
 			break;
 		}
-		cin.ignore();
-		//rlutil::anykey();
 	}
 }
-
-char confirmarSalir() {
-
-	char confirmarSalida;
-
-	cout << "¿Confirma salir? (S/N) ";
-	cin >> confirmarSalida;
-	if (tolower(confirmarSalida) == 's') {
-		return 0;
-	}
-
-}
-
-void confirmarVolver() {
-	char confirmarVolver;
-	cout << "¿Volver al menú anterior ? (S/N) ";
-	cin >> confirmarVolver;
-	if (tolower(confirmarVolver) == 's') {
-		mostrarMenu();
-	}
-
-}
-
