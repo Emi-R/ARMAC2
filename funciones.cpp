@@ -12,6 +12,20 @@
 using namespace std;
 using namespace rlutil;
 
+void instalacionArchivos()
+{
+	rlutil::setColor(rlutil::WHITE);
+	rlutil::setBackgroundColor(rlutil::DARKGREY);
+
+	checkArchivoSocios();
+	checkArchivoAdmins();
+	checkArchivoSolicitud();
+	checkArchivoArmas();
+
+	system("PAUSE > null");
+	system("cls");
+}
+
 void login()
 {
 	int aux;
@@ -34,10 +48,12 @@ void login()
 		{
 			cls();
 			locate(1, 6);
+			setBackgroundColor(LIGHTRED);
 			setColor(RED);
 			cout << "\tID incorrecto." << endl;
 			flag = false;
 			setColor(WHITE);
+			setBackgroundColor(DARKGREY);
 			locate(1, 1);
 		}
 		else
@@ -58,8 +74,12 @@ void login()
 			else
 			{
 				locate(1, 6);
+				setBackgroundColor(GREEN);
 				setColor(LIGHTGREEN);
 				cout << "\tID y Contraseña correctos. Bienvenido!" << endl;
+				cout << "\t";
+				setColor(WHITE);
+				setBackgroundColor(DARKGREY);
 				system("PAUSE");
 				cls();
 				flag = true;
@@ -70,19 +90,6 @@ void login()
 
 }
 
-void instalacionArchivos()
-{
-	rlutil::setColor(rlutil::WHITE);
-	rlutil::setBackgroundColor(rlutil::DARKGREY);
-
-	checkArchivoSocios();
-	checkArchivoAdmins();
-	checkArchivoSolicitud();
-	checkArchivoArmas();
-
-	system("PAUSE > null");
-	system("cls");
-}
 
 void mostrarMenu() {
 
