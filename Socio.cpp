@@ -200,7 +200,7 @@ int checkArchivoSocios() {
 
 }
 
-void listadoSocios()
+void listadoGeneralSocios()
 {
 	Socio socio;
 	int pos = 0;
@@ -211,6 +211,7 @@ void listadoSocios()
 	cout << setw(30) << "NOMBRE";
 	cout << setw(30) << "APELLIDO";
 	cout << setw(15) << "FECHA INGRESO" << endl;
+	cout << "----------------------------------------------------------------------------------------------------------------------" << endl;
 
 	while (socio.leerDeDisco(pos++))
 	{

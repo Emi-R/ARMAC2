@@ -153,6 +153,7 @@ void mostrarMenuSocios() {
 		cout << "2 - Modificar socio" << endl;
 		cout << "3 - Eliminar socio" << endl;
 		cout << "--------------------------" << endl;
+		cout << "4 - Listados" << endl;
 		cout << "0 - Volver al menú principal" << endl << endl;
 
 		cout << "Opción: ";
@@ -165,7 +166,52 @@ void mostrarMenuSocios() {
 			cargar_nuevo_socio();
 			break;
 		case 2:
-			listadoSocios();
+			anykey();
+			break;
+		case 3:
+
+			break;
+		case 4:
+			MenuListadosSocios();
+			break;
+		case 0:
+			confirmarVolver();
+			break;
+		}
+		cin.ignore();
+		//rlutil::anykey();
+	}
+
+
+}
+
+void MenuListadosSocios()
+{
+	int opcion;
+	char confirmarSalida;
+	while (true) {
+		rlutil::setColor(rlutil::WHITE);
+		rlutil::setBackgroundColor(rlutil::DARKGREY);
+		rlutil::cls();
+		cout << "\tListados Socios" << endl;
+		cout << "--------------------------" << endl;
+		cout << "1 - Listar todos los socios" << endl;
+		cout << "2 - Listar socios por ID" << endl;
+		cout << "3 - Listar socios por antigüedad" << endl;
+		cout << "--------------------------" << endl;
+		cout << "0 - Volver al menú principal" << endl << endl;
+
+		cout << "Opción: ";
+		cin >> opcion;
+
+		rlutil::cls();
+
+		switch (opcion) {
+		case 1:
+			listadoGeneralSocios();
+			anykey();
+			break;
+		case 2:
 			anykey();
 			break;
 		case 3:
@@ -182,8 +228,6 @@ void mostrarMenuSocios() {
 		cin.ignore();
 		//rlutil::anykey();
 	}
-
-
 }
 
 void mostrarMenuAdmins() {

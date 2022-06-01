@@ -14,7 +14,7 @@ int main()
 
 	instalacionArchivos();
 
-	login();
+	//login();
 
 	mostrarMenu();
 

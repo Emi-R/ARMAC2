@@ -8,6 +8,7 @@ void login();
 /// Menues
 void mostrarMenu();
 void mostrarMenuSocios();
+void MenuListadosSocios();
 void mostrarMenuAdmins();
 void mostrarMenuSolicitudes();
 char confirmarSalir();

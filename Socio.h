@@ -41,6 +41,6 @@ bool buscarSocioPorDNI(int dni);
 
 int checkArchivoSocios();
 
-void listadoSocios();
+void listadoGeneralSocios();
 
 void cargar_nuevo_socio();
