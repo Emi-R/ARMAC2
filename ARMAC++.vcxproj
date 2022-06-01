@@ -143,6 +143,7 @@
     <ClCompile Include="Arma.cpp" />
     <ClCompile Include="Domicilio.cpp" />
     <ClCompile Include="Fecha.cpp" />
+    <ClCompile Include="funciones.cpp" />
     <ClCompile Include="main.cpp" />
     <ClCompile Include="Pais.cpp" />
     <ClCompile Include="Persona.cpp" />
@@ -154,6 +155,7 @@
     <ClInclude Include="Arma.h" />
     <ClInclude Include="Domicilio.h" />
     <ClInclude Include="Fecha.h" />
+    <ClInclude Include="funciones.h" />
     <ClInclude Include="Pais.h" />
     <ClInclude Include="Persona.h" />
     <ClInclude Include="Socio.h" />

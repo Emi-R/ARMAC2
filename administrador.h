@@ -5,6 +5,7 @@
 #include <cstring>
 #include <stdlib.h>
 #include <time.h>
+#include "rlutil.h"
 
 class Administrador
 {
@@ -48,6 +49,8 @@ public:
 /////////////////////////////////////
 // Funciones globales Administrador
 /////////////////////////////////////
+
+void crear_nuevo_admin();
 
 bool buscarAdministradorPorDni(int);
 

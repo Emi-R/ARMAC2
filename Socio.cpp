@@ -98,7 +98,7 @@ void Socio::cargar() {
 
 	srand(time(NULL));
 
-	socio.CargarPersona();
+	CargarPersona();
 
 	Fecha fechaActual;
 
@@ -131,7 +131,7 @@ void Socio::mostrar() {
 
 	cout << "ID de socio: " << this->getIdsocio() << endl;
 
-	socio.MostrarPersona();
+	MostrarPersona();
 
 	cout << "Fecha de ingreso: ";
 
@@ -192,6 +192,10 @@ int checkArchivoSocios() {
 			return 0;
 		}
 	}
+	else
+	{
+		cout << "Archivo de socios cargado correctamente" << endl;
+	}
 
 	fclose(fReg);
 
@@ -222,9 +226,9 @@ void Socio::listar() {
 
 	cout << left;
 	cout << setw(5) << this->getIdsocio();
-	cout << setw(15) << socio.getDni();
-	cout << setw(30) << socio.getNombre();
-	cout << setw(30) << socio.getApellido();
+	cout << setw(15) << this->getDni();
+	cout << setw(30) << this->getNombre();
+	cout << setw(30) << this->getApellido();
 	//setw(15);
 	this->getFechaIngreso().mostrarFecha();
 	cout << endl;

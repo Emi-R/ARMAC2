@@ -177,7 +177,7 @@ int checkArchivoArmas() {
 
 		if (solicReg == NULL)
 		{
-			cout << "Error al crear o leer archivo de Armas." << endl;
+			cout << "Error al crear o leer archivo de armas." << endl;
 			system("PAUSE > null");
 
 			return -1;
@@ -185,10 +185,14 @@ int checkArchivoArmas() {
 		else
 		{
 			fclose(solicReg);
-			cout << "Archivo de Armas creado correctamente" << endl;
+			cout << "Archivo de armas creado correctamente" << endl;
 
 			return 0;
 		}
+	}
+	else
+	{
+		cout << "Archivo de armas cargado correctamente" << endl;
 	}
 
 	fclose(solicReg);

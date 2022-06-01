@@ -6,7 +6,6 @@
 class Socio :public Persona
 {
 protected:
-	Persona socio;
 	Fecha _fechaIngreso;
 	int _idsocio;
 	bool _estado;

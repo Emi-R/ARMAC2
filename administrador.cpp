@@ -107,17 +107,17 @@ void Administrador::cargar()
 	this->setDNI(aux);
 
 	cout << "Ingrese apellido: ";
-	cin >> aux2;
-
-	this->setApellido(aux2);
+	cin.ignore();
+	cin.getline(_apellido, 29);
 
 	cout << "Ingrese nombre: ";
 	cin >> aux2;
 
-	this->setNombre(aux2);
+	cin.ignore();
+	cin.getline(_nombre, 29);
 
 	do {
-		cout << "Ingrese contraseña nueva (máximo 15 caracteres): ";
+		cout << "Ingrese contraseña nueva (sin espacios, máximo 15 caracteres): ";
 		cin >> aux2;
 
 		if (strlen(aux2) > 15)
@@ -300,9 +300,22 @@ int checkArchivoAdmins() {
 			return 0;
 		}
 	}
+	else
+	{
+		cout << "Archivo de administradores cargado correctamente" << endl;
+	}
 
 	fclose(fReg);
 
 	return 1;
 
+}
+
+void crear_nuevo_admin()
+{
+	Administrador aux;
+
+	aux.cargar();
+	aux.grabarEnDisco();
+	rlutil::anykey();
 }

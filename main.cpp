@@ -3,19 +3,9 @@
 #include "Administrador.h"
 #include "Persona.h"
 #include "Solicitud.h"
+#include "funciones.h"
 
 using namespace std;
-
-void instalacionArchivos()
-{
-	checkArchivoSocios();
-
-	checkArchivoAdmins();
-	checkArchivoSolicitud();
-	checkArchivoArmas();
-	system("PAUSE > null");
-	system("cls");
-}
 
 int main()
 {
@@ -41,9 +31,9 @@ int main()
 
 	/*Prueba socio*: Esta OK pero no toma el primer caracter en algunas cadenas*/
 
-	Socio socio;
+	//Socio socio;
 
-	listadoSocios();
+	//listadoSocios();
 	//socio.cargar();
 	//socio.grabarEnDisco();
 
@@ -52,6 +42,8 @@ int main()
 
 	//Solicitud solic;
 	//solic.cargarSolicitud();
+
+	mostrarMenu();
 
 	return 0;
 }
