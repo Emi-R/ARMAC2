@@ -41,5 +41,7 @@ public:
 
 };
 
-	int generarId();
-	bool buscarArmaPorID(int id);
+int generarId();
+bool buscarArmaPorId(int id);
+int checkArchivoArmas();
+

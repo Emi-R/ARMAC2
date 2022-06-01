@@ -1,6 +1,7 @@
 #include "Solicitud.h"
 #include "administrador.h"
 #include "Fecha.h"
+#include "Arma.h"
 
 using namespace std;
 
@@ -87,7 +88,7 @@ void Solicitud::cargarSolicitud() {
 
 		verifica = buscarAdministradorPorID(aux);
 
-		if (!verifica) 
+		if (!verifica)
 		{
 			cout << "El Id del Administrador es inválido. Por favor, ingrese un ID correcto.";
 		}
@@ -104,7 +105,7 @@ void Solicitud::cargarSolicitud() {
 void Solicitud::mostrarSolicitud() {
 
 	Arma arma;
-
+	cout << endl;
 	cout << "Id de la Solicitud: " << this->getIdSolicitud();
 	cout << endl;
 	cout << "Id del Socio: " << this->getIdSocio();
@@ -112,8 +113,7 @@ void Solicitud::mostrarSolicitud() {
 	cout << "Id del Administrador: " << this->getIdAdministrador();
 	cout << endl;
 
-	arma.leerDeDisco(this->getIdArma());
-	arma.mostrarArma();
+	//Falta mostrar el Arma de la Solicitud
 
 	cout << endl;
 	cout << "Fecha en la que se Registró la Solicitud: ";
@@ -124,19 +124,68 @@ void Solicitud::mostrarSolicitud() {
 
 bool Solicitud::grabarEnDisco() {
 
-	FILE* soliReg = fopen("solicitudes.dat", "ab");
-
-	if (soliReg == NULL)
+	FILE* solicReg = fopen("solicitudes.dat", "ab");
+	if (solicReg == NULL)
 	{
 		cout << "No se puede abrir el archivo.";
 		system("PAUSE < null");
 		return false;
 	}
-
-	int escribio = fwrite(this, sizeof(Solicitud), 1, soliReg);
-
-	fclose(soliReg);
+	bool escribio = fwrite(this, sizeof(Solicitud), 1, solicReg);
+	fclose(solicReg);
 
 	return escribio;
+}
 
+bool Solicitud::leerDeDisco(int pos) {
+	FILE* solicReg = fopen("solicitudes.dat", "rb");
+	if (solicReg == NULL) {
+		cout << "No se puede abrir el archivo.";
+		return false;
+	}
+	fseek(solicReg, pos * sizeof(Solicitud), SEEK_SET);
+	bool leyo = fread(this, sizeof(Solicitud), 1, solicReg);
+	fclose(solicReg);
+
+	return leyo;
+}
+
+bool Solicitud::modificarEnDisco(int pos) {
+	FILE* solicReg = fopen("solicitudes.dat", "rb+");
+	if (solicReg == NULL) {
+		cout << "No se puede abrir el archivo.";
+		return false;
+	}
+	fseek(solicReg, pos * sizeof(Solicitud), SEEK_SET);
+	bool leyo = fwrite(this, sizeof(Solicitud), 1, solicReg);
+	fclose(solicReg);
+	return leyo;
+}
+
+int checkArchivoSolicitud() {
+
+	FILE* solicReg = fopen("solicitudes.dat", "rb");
+
+	if (solicReg == NULL)
+	{
+		solicReg = fopen("solicitudes.dat", "wb");
+
+		if (solicReg == NULL)
+		{
+			cout << "Error al crear o leer archivo de Solicitudes." << endl;
+			system("PAUSE > null");
+
+			return -1;
+		}
+		else
+		{
+			fclose(solicReg);
+			cout << "Archivo de Solicitudes creado correctamente" << endl;
+
+			return 0;
+		}
+	}
+
+	fclose(solicReg);
+	return 1;
 }

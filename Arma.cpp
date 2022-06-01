@@ -134,16 +134,14 @@ bool Arma::grabarEnDisco() {
 
 	return escribio;
 }
-bool Arma::leerDeDisco (int pos) {
+bool Arma::leerDeDisco(int pos) {
 	FILE* fReg = fopen("armas.dat", "rb");
-
 	if (fReg == NULL)
 	{
 		cout << "No se puede abrir el archivo.";
 		system("PAUSE < null");
 		return false;
 	}
-
 	fseek(fReg, pos * sizeof(Arma), SEEK_SET);
 
 	int escribio = fread(this, sizeof(Arma), 1, fReg);
@@ -152,21 +150,62 @@ bool Arma::leerDeDisco (int pos) {
 
 	return escribio;
 }
-bool Arma::modificarEnDisco(int pos) {
-	FILE* fReg = fopen("armas.dat", "rb+");
 
-	if (fReg == NULL)
+bool Arma::modificarEnDisco(int pos) {
+	FILE* armaReg = fopen("armas.dat", "rb+");
+
+	if (armaReg == NULL)
 	{
 		cout << "No se puede abrir el archivo.";
 		system("PAUSE < null");
 		return false;
 	}
-
-	fseek(fReg, pos * sizeof(Arma), SEEK_SET);
-
-	int escribio = fwrite(this, sizeof(Arma), 1, fReg);
-
-	fclose(fReg);
+	fseek(armaReg, pos * sizeof(Arma), SEEK_SET);
+	int escribio = fwrite(this, sizeof(Arma), 1, armaReg);
+	fclose(armaReg);
 
 	return escribio;
+}
+
+int checkArchivoArmas() {
+
+	FILE* solicReg = fopen("armas.dat", "rb");
+
+	if (solicReg == NULL)
+	{
+		solicReg = fopen("armas.dat", "wb");
+
+		if (solicReg == NULL)
+		{
+			cout << "Error al crear o leer archivo de Armas." << endl;
+			system("PAUSE > null");
+
+			return -1;
+		}
+		else
+		{
+			fclose(solicReg);
+			cout << "Archivo de Armas creado correctamente" << endl;
+
+			return 0;
+		}
+	}
+
+	fclose(solicReg);
+	return 1;
+}
+
+bool buscarArmaPorId(int id) {
+	Arma arma;
+	int pos = 0;
+
+	while (arma.leerDeDisco(pos++))
+	{
+		if (arma.getIdArma() == id)
+		{
+			return true;
+		}
+	}
+
+	return false;
 }

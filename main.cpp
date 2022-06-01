@@ -11,7 +11,8 @@ void instalacionArchivos()
 	checkArchivoSocios();
 
 	checkArchivoAdmins();
-
+	checkArchivoSolicitud();
+	checkArchivoArmas();
 	system("PAUSE > null");
 	system("cls");
 }
@@ -24,9 +25,11 @@ int main()
 	instalacionArchivos();
 
 	/*--Prueba Admin: todo OK
-	*
-	Administrador admin;
-	admin.cargar();*/
+	*/
+	//Administrador admin;
+	//admin.cargar();
+	//admin.grabarEnDisco();
+	//admin.mostrar();
 
 
 	/*--Prueba Persona: todo OK
@@ -45,11 +48,10 @@ int main()
 	//socio.grabarEnDisco();
 
 
-	/*--Prueba Solicitud: probar primero socio
-	*
-	Solicitud solic;
-	solic.cargarSolicitud();
-	solic.mostrarSolicitud();*/
+	//Prueba Solicitud: probar primero socio
+
+	//Solicitud solic;
+	//solic.cargarSolicitud();
 
 	return 0;
 }
