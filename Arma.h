@@ -44,5 +44,5 @@ public:
 int generarId();
 int checkArchivoArmas();
 
-int buscarArmaPorId(int id);
+int buscarArmaPorId(int );
 
