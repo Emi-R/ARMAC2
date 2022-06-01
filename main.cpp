@@ -42,11 +42,11 @@ int main()
 	//socio.grabarEnDisco();
 
 
-	//Prueba Solicitud: probar primero socio
+	//Prueba Solicitud: probar primero socio-creo que está bien, falta chequear el set para Pais de fabricacion del Arma
 
 	//Solicitud solic;
 	//solic.cargarSolicitud();
-
+	//listadoSolicitudes();
 
 	return 0;
 }

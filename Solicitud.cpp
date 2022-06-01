@@ -100,13 +100,18 @@ void Solicitud::cargarSolicitud() {
 	this->setFechaSolicitud(fechaSolicitud);
 
 	_estado = true;
+	this->setIdSolicitud(generarIdSolicitud() + 1);
 }
 
 void Solicitud::mostrarSolicitud() {
 
 	Arma arma;
+	int posArma;
+
 	cout << endl;
-	cout << "Id de la Solicitud: " << this->getIdSolicitud();
+	cout << "SOLICITUD N° " << this->getIdSolicitud();
+	cout << endl;
+	cout << "Id de Solicitud: " << this->getIdSolicitud();
 	cout << endl;
 	cout << "Id del Socio: " << this->getIdSocio();
 	cout << endl;
@@ -114,6 +119,15 @@ void Solicitud::mostrarSolicitud() {
 	cout << endl;
 
 	//Falta mostrar el Arma de la Solicitud
+	posArma = buscarArmaPorId(this->getIdArma());
+	if (posArma == -1) {
+		cout << "Hubo un error. No se encontró el Arma de La Solicitud: " << this->getIdSolicitud();
+		cout << endl;
+	}
+	else {
+		arma.leerDeDisco(posArma);
+		arma.mostrarArma();
+	}
 
 	cout << endl;
 	cout << "Fecha en la que se Registró la Solicitud: ";
@@ -188,4 +202,53 @@ int checkArchivoSolicitud() {
 
 	fclose(solicReg);
 	return 1;
+}
+
+
+int generarIdSolicitud() {
+
+	Solicitud soli;
+	int id = 0;
+	int pos = 0;
+
+	while (soli.leerDeDisco(pos++)) {
+		id = soli.getIdArma();
+	};
+
+	return id;
+}
+
+void listadoSolicitudes() {
+
+	Solicitud solic;
+	int p = 0;
+	cout << endl;
+
+	cout << "LISTADO DE SOLICITUDES" << endl;
+	cout << "---------------------------------------------------------------------------------" << endl;
+	cout << left;
+	cout << setw(15) << "ID SOLICITUD";
+	cout << setw(20) << "ID ADMINISTRADOR";
+	cout << setw(15) << "ID SOCIO";
+	cout << setw(15) << "ID ARMA";
+	cout << setw(15) << "FECHA CREACION" << endl;
+
+	while (solic.leerDeDisco(p++))
+	{
+		solic.listarSolicitud();
+	}
+}
+
+
+void Solicitud::listarSolicitud() {
+
+	cout << left;
+	cout << setw(15) << this->getIdSolicitud();
+	cout << setw(20) << this->getIdAdministrador();
+	cout << setw(15) << this->getIdSocio();
+	cout << setw(15) << this->getIdArma();
+	/*cout << setw(15) <<*/
+	this->getFechaSolicitud().mostrarFecha();
+
+	cout << endl;
 }

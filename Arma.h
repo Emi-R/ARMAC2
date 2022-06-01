@@ -42,6 +42,7 @@ public:
 };
 
 int generarId();
-bool buscarArmaPorId(int id);
 int checkArchivoArmas();
+
+int buscarArmaPorId(int id);
 

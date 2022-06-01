@@ -2,6 +2,7 @@
 
 #include <cstring>
 #include <iostream>
+#include <iomanip>
 #include "Fecha.h"
 #include "Arma.h"
 #include "Socio.h"
@@ -40,6 +41,10 @@ public:
 	bool grabarEnDisco();
 	bool leerDeDisco(int pos);
 	bool modificarEnDisco(int pos);
+
+	void listarSolicitud();
 };
 
+int generarIdSolicitud();
 int checkArchivoSolicitud();
+void listadoSolicitudes();

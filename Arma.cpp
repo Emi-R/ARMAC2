@@ -72,8 +72,16 @@ bool Arma::getEstado() {
 
 void Arma::cargarArma() {
 
+	//Pais pais;
+
 	cout << "Ingrese el Modelo del Arma: ";
 	cin >> _modelo;
+
+	cout << "Ingrese el Calibre del Arma: ";
+	cin >> _calibre;
+
+	//cout << "Ingrese el Pais de Fabricacion: ";
+	//pais.CargarPais();
 
 	cout << "Ingrese el Tipo de Arma: ";
 	cin >> _tipoArma;
@@ -94,6 +102,8 @@ void Arma::mostrarArma() {
 	cout << endl;
 	cout << "Calibre del Arma: " << this->getCalibre();
 	cout << endl;
+	//cout << "Pais de Fabricacion: " << this->getidPaisFabricacion();
+	//cout << endl;
 	cout << "Tipo de Arma: " << this->getTipoArma();
 	cout << endl;
 	cout << "Numero de Serie: " << this->getNumSerie();
@@ -199,17 +209,19 @@ int checkArchivoArmas() {
 	return 1;
 }
 
-bool buscarArmaPorId(int id) {
+//Funcion que busca el Arma por su ID y retorna su posición en el Archivo, si no encuentra el Arma con ese ID retorna -1 
+int buscarArmaPorId(int id) {
 	Arma arma;
 	int pos = 0;
-
-	while (arma.leerDeDisco(pos++))
+	while (arma.leerDeDisco(pos))
 	{
 		if (arma.getIdArma() == id)
 		{
-			return true;
+			return pos;
 		}
+		pos++;
 	}
 
-	return false;
+	return -1;
+
 }
