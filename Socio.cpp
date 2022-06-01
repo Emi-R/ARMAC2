@@ -104,21 +104,7 @@ void Socio::cargar() {
 
 	this->setFechaIngreso(fechaActual);
 
-	do {
-		aux = 1 + rand() % 9999;
-
-		if (buscarSocioPorID(aux))
-		{
-			flag = false;
-		}
-		else
-		{
-			flag = true;
-		}
-
-	} while (!flag);
-
-	this->setIdsocio(aux);
+	this->setIdsocio(generarIDSocio() + 1);
 
 	_estado = true;
 
@@ -136,6 +122,19 @@ void Socio::mostrar() {
 	cout << "Fecha de ingreso: ";
 
 	_fechaIngreso.mostrarFecha();
+}
+
+int generarIDSocio()
+{
+	Socio socio;
+	int id = 0;
+	int pos = 0;
+
+	while (socio.leerDeDisco(pos++)) {
+		id = socio.getIdsocio();
+	};
+
+	return id;
 }
 
 bool buscarSocioPorID(int id)

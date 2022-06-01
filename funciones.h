@@ -3,6 +3,8 @@
 
 void instalacionArchivos();
 
+void login();
+
 /// Menues
 void mostrarMenu();
 void mostrarMenuSocios();

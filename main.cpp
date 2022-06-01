@@ -14,6 +14,10 @@ int main()
 
 	instalacionArchivos();
 
+	login();
+
+	mostrarMenu();
+
 	/*--Prueba Admin: todo OK
 	*/
 	//Administrador admin;
@@ -43,7 +47,6 @@ int main()
 	//Solicitud solic;
 	//solic.cargarSolicitud();
 
-	mostrarMenu();
 
 	return 0;
 }

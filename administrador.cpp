@@ -277,6 +277,22 @@ bool buscarAdministradorPorID(int id)
 	return false;
 }
 
+bool checkContrasenia(const char* pass)
+{
+	Administrador admin;
+	int pos = 0;
+
+	while (admin.leerDeDisco(pos++))
+	{
+		if (strcmp(admin.getContrasenia(), pass) == 0)
+		{
+			return true;
+		}
+	}
+
+	return false;
+}
+
 int checkArchivoAdmins() {
 
 	FILE* fReg = fopen("administradores.dat", "rb");

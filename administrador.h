@@ -56,4 +56,6 @@ bool buscarAdministradorPorDni(int);
 
 bool buscarAdministradorPorID(int);
 
+bool checkContrasenia(const char*);
+
 int checkArchivoAdmins();

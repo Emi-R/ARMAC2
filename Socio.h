@@ -33,6 +33,8 @@ public:
 	void listar();
 };
 
+int generarIDSocio();
+
 bool buscarSocioPorID(int id);
 
 bool buscarSocioPorDNI(int dni);
