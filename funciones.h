@@ -20,6 +20,6 @@ void menuSolicitudes();
 
 ///Menu Armas y submenus
 void menuArmas();
-
+void menuListadosArmas();
 
 #endif // FUNCIONES_H_INCLUDED

@@ -33,6 +33,10 @@ public:
 	void listar();
 };
 
+/////////////////////////////////////
+// Funciones globales Socio
+/////////////////////////////////////
+
 int generarIDSocio();
 
 bool buscarSocioPorID(int id);

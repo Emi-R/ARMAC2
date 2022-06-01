@@ -122,6 +122,23 @@ void Socio::mostrar() {
 
 }
 
+void Socio::listar() {
+
+	cout << left;
+	cout << setw(5) << this->getIdsocio();
+	cout << setw(15) << this->getDni();
+	cout << setw(30) << this->getNombre();
+	cout << setw(30) << this->getApellido();
+	//setw(15);
+	this->getFechaIngreso().mostrarFecha();
+	cout << endl;
+}
+
+
+/////////////////////////////////////
+// Funciones globales Socio
+/////////////////////////////////////
+
 int generarIDSocio()
 {
 	Socio socio;
@@ -220,17 +237,6 @@ void listadoGeneralSocios()
 
 }
 
-void Socio::listar() {
-
-	cout << left;
-	cout << setw(5) << this->getIdsocio();
-	cout << setw(15) << this->getDni();
-	cout << setw(30) << this->getNombre();
-	cout << setw(30) << this->getApellido();
-	//setw(15);
-	this->getFechaIngreso().mostrarFecha();
-	cout << endl;
-}
 
 void cargar_nuevo_socio()
 {

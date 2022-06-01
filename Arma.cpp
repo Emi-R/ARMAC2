@@ -138,7 +138,7 @@ void Arma::cargarArma() {
 
 	this->setNumSerie(aux);
 
-	this->setIdArma(generarId() + 1);
+	this->setIdArma(generarIdArma() + 1);
 
 	_estado = true;
 
@@ -167,20 +167,18 @@ void Arma::mostrarArma() {
 
 };
 
-int generarId() {
+void Arma::listar()
+{
+	cout << left;
+	cout << setw(5) << this->getIdArma();
+	cout << setw(18) << this->getModelo();
+	cout << setw(10) << this->getCalibre();
+	cout << setw(15) << this->getidPaisFabricacion();
+	cout << setw(15) << this->getTipoArma();
+	cout << setw(15) << this->getNumSerie();
+	cout << endl;
 
-	Arma arma;
-	int id = 0;
-	int pos = 0;
-
-	while (arma.leerDeDisco(pos++)) {
-		id = arma.getIdArma();
-	};
-
-	return id;
 }
-
-//Metodos de disco
 
 bool Arma::grabarEnDisco() {
 	FILE* fReg = fopen("armas.dat", "ab");
@@ -198,6 +196,7 @@ bool Arma::grabarEnDisco() {
 
 	return escribio;
 }
+
 bool Arma::leerDeDisco(int pos) {
 	FILE* fReg = fopen("armas.dat", "rb");
 	if (fReg == NULL)
@@ -229,6 +228,23 @@ bool Arma::modificarEnDisco(int pos) {
 	fclose(armaReg);
 
 	return escribio;
+}
+
+/////////////////////////////////////
+// Funciones globales Armas
+/////////////////////////////////////
+
+int generarIdArma() {
+
+	Arma arma;
+	int id = 0;
+	int pos = 0;
+
+	while (arma.leerDeDisco(pos++)) {
+		id = arma.getIdArma();
+	};
+
+	return id;
 }
 
 int checkArchivoArmas() {
@@ -287,4 +303,26 @@ void crear_nueva_arma()
 	arma.cargarArma();
 	arma.grabarEnDisco();
 
+}
+
+void listadoGeneralArmas()
+{
+	Arma arma;
+	int pos = 0;
+
+	cout << left;
+	cout << setw(5) << "ID";
+	cout << setw(18) << "MODELO";
+	cout << setw(10) << "CALIBRE";
+	cout << setw(15) << "ID PAIS FABR.";
+	cout << setw(15) << "TIPO DE ARMA";
+	cout << setw(15) << "NÚMERO DE SERIE" << endl;
+	cout << "----------------------------------------------------------------------------" << endl;
+
+	while (arma.leerDeDisco(pos++))
+	{
+		arma.listar();
+	}
+
+	anykey();
 }

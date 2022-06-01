@@ -1,4 +1,6 @@
 #pragma once
+
+#include <iomanip>
 #include "Pais.h"
 #include "rlutil.h"
 
@@ -34,16 +36,23 @@ public:
 
 	void cargarArma();
 	void mostrarArma();
+	void listar();
 
 	bool leerDeDisco(int pos);
 	bool grabarEnDisco();
 	bool modificarEnDisco(int pos);
 };
 
-int generarId();
+/////////////////////////////////////
+// Funciones globales Armas
+/////////////////////////////////////
+
+int generarIdArma();
+
 int checkArchivoArmas();
 
 int buscarArmaPorId(int );
 
 void crear_nueva_arma();
 
+void listadoGeneralArmas();
