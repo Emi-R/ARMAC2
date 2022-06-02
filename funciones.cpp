@@ -184,7 +184,6 @@ void menuSocios() {
 			anykey();
 			break;
 		case 3:
-
 			break;
 		case 4:
 			menuListadosSocios();
@@ -229,6 +228,7 @@ void menuListadosSocios() {
 		switch (opcion) {
 		case 1:
 			listadoGeneralSocios();
+			anykey();
 			break;
 		case 2:
 			anykey();
@@ -666,6 +666,7 @@ void menuListadosArmas() {
 		switch (opcion) {
 		case 1:
 			listadoGeneralArmas();//Falta desarrollar
+
 			break;
 		case 2:
 			//listadoCantidadArmasPorID();//Falta desarrollar

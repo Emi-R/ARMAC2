@@ -1,6 +1,5 @@
 #include "administrador.h"
 
-
 using namespace std;
 
 ///Constructor

@@ -68,7 +68,6 @@ void Persona::CargarPersona() {
 	cin.ignore();
 	cin.getline(_email, 30);
 	cout << "Ingrese el telefono: ";
-	cin.ignore();
 	cin.getline(_telefono, 14);
 
 	_estado = true;

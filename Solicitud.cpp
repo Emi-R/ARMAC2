@@ -215,7 +215,7 @@ int generarIdSolicitud() {
 	int pos = 0;
 
 	while (soli.leerDeDisco(pos++)) {
-		id = soli.getIdArma();
+		id = soli.getIdSolicitud();
 	};
 
 	return id;
