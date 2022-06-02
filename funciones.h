@@ -11,18 +11,22 @@ void menuPrincipal();
 /// Menu Socios y submenus
 void menuSocios();
 void menuListadosSocios();
+void menuConsultasSocios();
 
 ///Menu Administradores y submenus
 void menuAdmins();
-void menuListadoAdmin();
+void menuListadosAdmin();
+void menuConsultasAdmin();
 
 ///Menu Solicitudes y submenus
 void menuSolicitudes();
 void menuListadosSolicitudes();
+void menuConsultasSolicitudes();
 
 ///Menu Armas y submenus
 void menuArmas();
 void menuListadosArmas();
+void menuConsultasArmas();
 
 //Menu Informes
 void menuInformes();
