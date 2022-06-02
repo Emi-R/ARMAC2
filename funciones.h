@@ -14,6 +14,7 @@ void menuListadosSocios();
 
 ///Menu Administradores y submenus
 void menuAdmins();
+void menuListadoAdmin();
 
 ///Menu Solicitudes y submenus
 void menuSolicitudes();

@@ -270,6 +270,7 @@ void menuAdmins() {
 		cout << "2 - Modificar administrador " << endl;
 		cout << "3 - Eliminar administrador " << endl;
 		cout << "--------------------------" << endl;
+		cout << "4- Listados de Administradores" << endl;
 		cout << "0 - Volver al menú principal" << endl << endl;
 
 		cout << "Opción: ";
@@ -287,6 +288,8 @@ void menuAdmins() {
 		case 3:
 
 			break;
+		case 4: menuListadoAdmin();
+
 		case 0:
 			cout << "¿Volver al menu anterior? (S/N) ";
 			cin >> confirmarSalida;
@@ -296,7 +299,42 @@ void menuAdmins() {
 		}
 	}
 }
+void menuListadoAdmin() {
+	int opcion;
+	char confirmarSalida;
+	bool salir = false;
 
+	while (!salir) {
+
+		setColor(WHITE);
+		setBackgroundColor(DARKGREY);
+		cls();
+		cout << "\t Listados administradores" << endl;
+		cout << "--------------------------" << endl;
+		cout << "1 - Listados por ID administrador " << endl;
+		cout << "2 - Listados por recaudacion " << endl;
+		cout << "--------------------------" << endl;
+		cout << "0 - Volver al menú principal" << endl << endl;
+
+		cout << "Opción: ";
+		cin >> opcion;
+
+		cls();
+
+		switch (opcion) {
+		case 1:
+			break;
+		case 2:
+			break;
+		case 0:
+			cout << "¿Volver al menu anterior? (S/N) ";
+			cin >> confirmarSalida;
+
+			salir = (tolower(confirmarSalida) == 's');
+			break;
+		}
+	}
+}
 
 ////////////////////////////
 ///Menu Solicitudes y submenus
@@ -318,7 +356,7 @@ void menuSolicitudes() {
 		cout << "2 - Modificar Solicitud" << endl;
 		cout << "3 - Eliminar Solicitud" << endl;
 		cout << "--------------------------" << endl;
-		cout << "4 - Listados"<<endl;
+		cout << "4 - Listados" << endl;
 		cout << "0 - Volver al menú principal" << endl << endl;
 
 		cout << "Opción: ";
@@ -350,7 +388,6 @@ void menuSolicitudes() {
 		}
 	}
 }
-
 void menuListadosSolicitudes() {
 	int opcion;
 	char confirmarSalida;
@@ -532,14 +569,14 @@ void menuInformes() {
 
 		switch (opcion) {
 		case 1:
-			
+
 			break;
 		case 2:
-			
+
 			break;
 		case 3:
 
-		
+
 			break;
 		case 0:
 			cout << "¿Volver al menu anterior? (S/N) ";
