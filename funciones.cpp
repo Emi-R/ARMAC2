@@ -118,6 +118,7 @@ void menuPrincipal() {
 		switch (opcion) {
 		case 1:
 			menuSocios();
+			system("pause");
 			break;
 		case 2:
 			menuAdmins();
@@ -127,6 +128,12 @@ void menuPrincipal() {
 			break;
 		case 4:
 			menuSolicitudes();
+			break;
+		case 5:
+			menuInformes();
+			break;
+		case 6:
+			menuConfiguracion();
 			break;
 		case 0:
 			cout << "¿Confirma salir? (S/N) ";
@@ -482,6 +489,104 @@ void menuListadosArmas() {
 
 			break;
 		case 4:
+
+
+			break;
+		case 0:
+			cout << "¿Volver al menu anterior? (S/N) ";
+			cin >> confirmarSalida;
+
+			salir = (tolower(confirmarSalida) == 's');
+
+			break;
+		}
+	}
+}
+
+////////////////////////////
+///Menu Informes
+////////////////////////////
+void menuInformes() {
+
+	int opcion;
+	char confirmarSalida;
+	bool salir = false;
+
+	while (!salir) {
+
+		setColor(WHITE);
+		setBackgroundColor(DARKGREY);
+		cls();
+		cout << "\tInformes" << endl;
+		cout << "--------------------------" << endl;
+		cout << "1 - Recaudacion anual" << endl;
+		cout << "2 - Modificar por socio" << endl;
+		cout << "3 - Recaudacion por tipo de arma" << endl;
+		cout << "--------------------------" << endl;
+		cout << "0 - Volver al menú principal" << endl << endl;
+
+		cout << "Opción: ";
+		cin >> opcion;
+
+		cls();
+
+		switch (opcion) {
+		case 1:
+			
+			break;
+		case 2:
+			
+			break;
+		case 3:
+
+		
+			break;
+		case 0:
+			cout << "¿Volver al menu anterior? (S/N) ";
+			cin >> confirmarSalida;
+
+			salir = (tolower(confirmarSalida) == 's');
+
+			break;
+		}
+	}
+}
+
+////////////////////////////
+///Menu Configuracion
+////////////////////////////
+void menuConfiguracion() {
+
+	int opcion;
+	char confirmarSalida;
+	bool salir = false;
+
+	while (!salir) {
+
+		setColor(WHITE);
+		setBackgroundColor(DARKGREY);
+		cls();
+		cout << "\tConfiguraciones" << endl;
+		cout << "--------------------------" << endl;
+		cout << "1 - Realizar copia de seguridad" << endl;
+		cout << "2 - Restaurar copia de seguridad" << endl;
+		cout << "3 - Exportar archivo CSV" << endl;
+		cout << "--------------------------" << endl;
+		cout << "0 - Volver al menú principal" << endl << endl;
+
+		cout << "Opción: ";
+		cin >> opcion;
+
+		cls();
+
+		switch (opcion) {
+		case 1:
+
+			break;
+		case 2:
+
+			break;
+		case 3:
 
 
 			break;

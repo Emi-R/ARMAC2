@@ -23,4 +23,11 @@ void menuListadosSolicitudes();
 void menuArmas();
 void menuListadosArmas();
 
+//Menu Informes
+void menuInformes();
+
+//Menu Configuracion
+void menuConfiguracion();
+
+
 #endif // FUNCIONES_H_INCLUDED
