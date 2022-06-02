@@ -440,6 +440,7 @@ void menuSolicitudes() {
 		}
 	}
 }
+
 void menuListadosSolicitudes() {
 	int opcion;
 	char confirmarSalida;
@@ -510,6 +511,7 @@ void menuArmas() {
 		cout << "3 - Eliminar arma " << endl;
 		cout << "--------------------------" << endl;
 		cout << "4 - Listados" << endl;
+		cout << "5 - Consultas" << endl;
 		cout << "0 - Volver al menú principal" << endl << endl;
 
 		cout << "Opción: ";
@@ -528,7 +530,10 @@ void menuArmas() {
 
 			break;
 		case 4:
-			menuListadosArmas();
+			menuListadosArmas();//Falta desarrollar
+			break;
+		case 5:
+			menuConsultasArmas();//Falta desarrollar
 			break;
 		case 0:
 			cout << "¿Volver al menu anterior? (S/N) ";
@@ -539,7 +544,7 @@ void menuArmas() {
 		}
 	}
 }
-
+//Case 4 del menú ARMAS
 void menuListadosArmas() {
 
 	int opcion;
@@ -554,8 +559,8 @@ void menuListadosArmas() {
 		cout << "\tListados Armas" << endl;
 		cout << "--------------------------" << endl;
 		cout << "1 - Listar todas los armas" << endl;
-		cout << "2 - Listar armas por ID" << endl;
-		cout << "3 - Listar por número de serie" << endl;
+		cout << "2 - Listar cantidad de armas por ID" << endl;
+		cout << "3 - Listar por nombre de arma" << endl;
 		cout << "4 - Listar por tipo de arma" << endl;
 		cout << "5 - Listar armas por calibre" << endl;
 		cout << "--------------------------" << endl;
@@ -568,19 +573,72 @@ void menuListadosArmas() {
 
 		switch (opcion) {
 		case 1:
-			listadoGeneralArmas();
+			listadoGeneralArmas();//Falta desarrollar
 			anykey();
 			break;
 		case 2:
+			//listadoCantidadArmasPorID();//Falta desarrollar
+
 			anykey();
 			break;
 		case 3:
-
+			//listadoPorNombreDeArma();//Falta desarrollar
+			anykey();
 			break;
 		case 4:
+			//();//Falta desarrollar
 
+			anykey();
+			break;
+		case 5:
+			//listadoPorCalibre(); //Falta desarrollar
+			anykey();
+			break;
+		case 0:
+			cout << "¿Volver al menu anterior? (S/N) ";
+			cin >> confirmarSalida;
+
+			salir = (tolower(confirmarSalida) == 's');
 
 			break;
+		}
+	}
+}
+
+//Case 5 del menú ARMAS
+void menuConsultasArmas() {
+
+	int opcion;
+	char confirmarSalida;
+	bool salir = false;
+
+	while (!salir) {
+
+		setColor(WHITE);
+		setBackgroundColor(DARKGREY);
+		cls();
+		cout << "\tConsultas Armas" << endl;
+		cout << "--------------------------" << endl;
+		cout << "1 - Consultas de armas por número de serie" << endl;
+		cout << "2 - Consultas por ID de armas" << endl;
+		cout << "--------------------------" << endl;
+		cout << "0 - Volver al menú principal" << endl << endl;
+
+		cout << "Opción: ";
+		cin >> opcion;
+
+		cls();
+
+		switch (opcion) {
+		case 1:
+			//consultasPorNumeroSerie(); //Falta desarrollar
+			anykey();
+			break;
+		case 2:
+			//consultasPorIDArmas(); //Falta desarrollar
+			anykey();
+			break;
+
 		case 0:
 			cout << "¿Volver al menu anterior? (S/N) ";
 			cin >> confirmarSalida;
