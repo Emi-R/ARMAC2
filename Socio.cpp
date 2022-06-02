@@ -1,4 +1,7 @@
 #include "Socio.h"
+#include "rlutil.h"
+
+using namespace rlutil;
 
 Socio::Socio() {
 
@@ -110,6 +113,8 @@ void Socio::cargar() {
 	cout << endl << " -- Socio creado correctamente --" << endl << endl;
 
 	this->mostrar();
+
+	anykey();
 }
 
 void Socio::mostrar() {

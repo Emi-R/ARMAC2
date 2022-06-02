@@ -82,19 +82,15 @@ bool Domicilio::getEstado() {
 // Cargar y Mostrar
 void Domicilio::cargarDomicilio() {
 	cout << "País: ";
-	cin.ignore();
 	cin.getline(_pais, 49);
 
 	cout << "Provincia: ";
-	cin.ignore();
 	cin.getline(_provincia, 49);
 
 	cout << "Localidad: ";
-	cin.ignore();
 	cin.getline(_localidad, 49);
 
 	cout << "Calle: ";
-	cin.ignore();
 	cin.getline(_calle, 49);
 
 	do {

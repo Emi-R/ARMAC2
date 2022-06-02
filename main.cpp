@@ -9,12 +9,11 @@ using namespace std;
 
 int main()
 {
-
 	setlocale(LC_ALL, "Spanish");
 
 	instalacionArchivos();
 
-	//login();
+	login();
 
 	menuPrincipal();
 
