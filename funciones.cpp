@@ -168,6 +168,8 @@ void menuSocios() {
 		cout << "3 - Eliminar socio" << endl;
 		cout << "--------------------------" << endl;
 		cout << "4 - Listados" << endl;
+		cout << "5 - Consultas" << endl;
+		cout << "--------------------------" << endl;
 		cout << "0 - Volver al menú principal" << endl << endl;
 
 		cout << "Opción: ";
@@ -188,6 +190,8 @@ void menuSocios() {
 		case 4:
 			menuListadosSocios();
 			break;
+		case 5:
+			menuConsultasSocios();
 		case 0:
 			cout << "¿Volver al menu anterior? (S/N) ";
 			cin >> confirmarSalida;
@@ -248,6 +252,54 @@ void menuListadosSocios() {
 	}
 }
 
+void menuConsultasSocios() {
+	int opcion;
+	char confirmarSalida;
+	bool salir = false;
+
+	while (!salir) {
+
+		setColor(WHITE);
+		setBackgroundColor(DARKGREY);
+		cls();
+		cout << "\tConsultas Socios" << endl;
+		cout << "--------------------------" << endl;
+		cout << "1 - Consulta por DNI" << endl;
+		cout << "2 - Consulta por ID" << endl;
+		cout << "3 - Consulta por Apellido" << endl;
+		cout << "--------------------------" << endl;
+		cout << "0 - Volver al menú principal" << endl << endl;
+
+		cout << "Opción: ";
+		cin >> opcion;
+
+		cls();
+
+		switch (opcion) {
+		case 1:
+
+			anykey();
+			break;
+		case 2:
+			anykey();
+			break;
+		case 3:
+
+			break;
+		case 4:
+
+
+			break;
+		case 0:
+			cout << "¿Volver al menu anterior? (S/N) ";
+			cin >> confirmarSalida;
+
+			salir = (tolower(confirmarSalida) == 's');
+
+			break;
+		}
+	}
+}
 
 ////////////////////////////
 /// Menu Administradores y submenus
