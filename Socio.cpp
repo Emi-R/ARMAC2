@@ -110,11 +110,11 @@ void Socio::cargar() {
 
 	_estado = true;
 
-	cout << endl << " -- Socio creado correctamente --" << endl << endl;
+	/*cout << endl << " -- Socio creado correctamente --" << endl << endl;
 
 	this->mostrar();
 
-	anykey();
+	anykey();*/
 }
 
 void Socio::mostrar() {
@@ -157,7 +157,7 @@ int generarIDSocio()
 	return id;
 }
 
-bool buscarSocioPorID(int id)
+int buscarSocioPorID(int id)
 {
 	Socio socio;
 	int pos = 0;
@@ -166,11 +166,11 @@ bool buscarSocioPorID(int id)
 	{
 		if (socio.getIdsocio() == id)
 		{
-			return true;
+			return pos;
 		}
 	}
 
-	return false;
+	return -1;
 }
 
 bool buscarSocioPorDNI(int dni)
@@ -237,11 +237,13 @@ void listadoGeneralSocios()
 
 	while (socio.leerDeDisco(pos++))
 	{
-		socio.listar();
+		if (socio.getEstado())
+		{
+			socio.listar();
+		}
 	}
 
 }
-
 
 void cargar_nuevo_socio()
 {
@@ -249,4 +251,353 @@ void cargar_nuevo_socio()
 
 	aux.cargar();
 	aux.grabarEnDisco();
+}
+
+/////////////////////////////////////
+// Funciones globales ModificarSocio
+/////////////////////////////////////
+
+void ModificarDNISocio(Socio aux, int pos)
+{
+	int newDni;
+	bool flag = false;
+	char confirm;
+	bool confirmar = false;
+
+	do {
+		cout << "Ingrese el dni nuevo (0 para volver al menu anterior): ";
+		cin >> newDni;
+
+		if (newDni == 0)
+		{
+			cls();
+			return;
+		}
+
+		if (newDni < 1000000)
+		{
+			cout << " El dni ingresado es incorrecto, intente nuevamente." << endl;
+			flag = false;
+		}
+		else
+			if (buscarSocioPorDNI(newDni))
+			{
+				cout << "El socio ya se encuentra registrado." << endl;
+				flag = false;
+			}
+			else
+			{
+				cls();
+				cout << "Nuevo DNI: " << newDni << endl << endl;
+				cout << "¿Confirma los cambios? (S/N): ";
+				cin >> confirm;
+
+				confirm = (tolower(confirm));
+
+				if (confirm == 's')
+				{
+					flag = true;
+				}
+				else
+				{
+					cls();
+					flag = false;
+				}
+			}
+
+	} while (!flag);
+
+	aux.setDni(newDni);
+	aux.modificarEnDisco(pos);
+
+	cout << " -- Los cambios han sido guardados -- " << endl;
+	anykey();
+	cls();
+}
+
+void ModificarApellidoSocio(Socio aux, int pos)
+{
+	char newName[30];
+	char confirm;
+	bool flag = false;
+
+	do
+	{
+		cout << "Ingrese apellido nuevo: ";
+		cin.ignore();
+		cin.getline(newName, 29);
+		cls();
+		cout << "Nuevo apellido: " << newName << endl << endl;
+
+		cout << "¿Confirma los cambios? (S/N): ";
+		cin >> confirm;
+
+		confirm = (tolower(confirm));
+
+		if (confirm == 's')
+		{
+			flag = true;
+		}
+		else
+		{
+			cls();
+			flag = false;
+		}
+	} while (!flag);
+
+	aux.setApellido(newName);
+	aux.modificarEnDisco(pos);
+
+	cout << " -- Los cambios han sido guardados -- " << endl;
+	anykey();
+	cls();
+}
+
+void ModificarNombreSocio(Socio aux, int pos)
+{
+	char newName[30];
+	char confirm;
+	bool flag = false;
+
+	do
+	{
+		cout << "Ingrese nombre nuevo: ";
+		cin.ignore();
+		cin.getline(newName, 29);
+		cls();
+		cout << "Nuevo nombre: " << newName << endl << endl;
+
+		cout << "¿Confirma los cambios? (S/N): ";
+		cin >> confirm;
+
+		confirm = (tolower(confirm));
+
+		if (confirm == 's')
+		{
+			flag = true;
+		}
+		else
+		{
+			cls();
+			flag = false;
+		}
+	} while (!flag);
+
+	aux.setNombre(newName);
+	aux.modificarEnDisco(pos);
+
+	cout << " -- Los cambios han sido guardados -- " << endl;
+	anykey();
+	cls();
+}
+
+void ModificarFechaNac(Socio aux, int pos)
+{
+	Fecha nuevaFecha;
+	char confirm;
+	bool flag = false;
+
+	do {
+		nuevaFecha.cargarFecha();
+		cls();
+
+		cout << "Nueva fecha: ";
+		nuevaFecha.mostrarFecha();
+
+		cout << endl << "¿Confirma los cambios? (S/N): ";
+		cin >> confirm;
+
+		confirm = (tolower(confirm));
+
+		if (confirm == 's')
+		{
+			flag = true;
+		}
+		else
+		{
+			cls();
+			flag = false;
+		}
+	} while (!flag);
+
+
+	aux.setFechanacimiento(nuevaFecha);
+	aux.modificarEnDisco(pos);
+
+	cout << endl << " -- Los cambios han sido guardados -- " << endl;
+	anykey();
+	cls();
+}
+
+void ModificarDomicilio(Socio aux, int pos)
+{
+	Domicilio nuevoDomicilio;
+	char confirm;
+	bool flag = false;
+	bool ok = false;
+
+	do {
+		nuevoDomicilio.cargarDomicilio();
+		cls();
+
+		cout << " -- Nuevo domicilio -- " << endl << endl;
+		nuevoDomicilio.mostrarDomicilio();
+
+		cout << endl << "¿Confirma los cambios? (S/N): ";
+		cin >> confirm;
+
+		confirm = (tolower(confirm));
+
+		if (confirm == 's')
+		{
+			flag = true;
+		}
+		else
+		{
+			cls();
+			flag = false;
+		}
+	} while (!flag);
+
+	aux.setDomicilio(nuevoDomicilio);
+	aux.modificarEnDisco(pos);
+	cout << endl << " -- Los cambios han sido guardados -- " << endl;
+	anykey();
+	cls();
+}
+
+void ModificarEmail(Socio aux, int pos)
+{
+	char confirm;
+	bool flag = false;
+	bool ok = false;
+	char newMail[30];
+
+	do {
+		cout << "Ingrese nuevo E-Mail: ";
+		cin.ignore();
+		cin.getline(newMail, 29);
+		cls();
+
+		cout << "Nuevo E-mail: " << newMail << endl << endl;
+
+		cout << endl << "¿Confirma los cambios? (S/N): ";
+		cin >> confirm;
+
+		confirm = (tolower(confirm));
+
+		if (confirm == 's')
+		{
+			flag = true;
+		}
+		else
+		{
+			cls();
+			flag = false;
+		}
+	} while (!flag);
+
+	aux.setEmail(newMail);
+	aux.modificarEnDisco(pos);
+	cout << endl << " -- Los cambios han sido guardados -- " << endl;
+	anykey();
+	cls();
+}
+
+void ModificarTelefono(Socio aux, int pos)
+{
+	char confirm;
+	bool flag = false;
+	bool ok = false;
+	char tel[15];
+
+	do {
+		cout << "Ingrese nuevo telefono: ";
+		cin.ignore();
+		cin.getline(tel, 14);
+		cls();
+
+		cout << "Nuevo telefono: " << tel << endl << endl;
+
+		cout << endl << "¿Confirma los cambios? (S/N): ";
+		cin >> confirm;
+
+		confirm = (tolower(confirm));
+
+		if (confirm == 's')
+		{
+			flag = true;
+		}
+		else
+		{
+			cls();
+			flag = false;
+		}
+	} while (!flag);
+
+	aux.setTelefono(tel);
+	aux.modificarEnDisco(pos);
+	cout << endl << " -- Los cambios han sido guardados -- " << endl;
+	anykey();
+	cls();
+}
+
+void bajaSocio()
+{
+	Socio aux;
+	int id;
+	bool flag = false;
+	int pos = 0;
+	char confirm;
+
+	do {
+		do {
+			cout << "Ingrese ID de socio a eliminar (0 para volver al menu Socios): ";
+			cin >> id;
+
+			if (id == 0)
+			{
+				return;
+			}
+
+			pos = buscarSocioPorID(id) - 1;
+
+			if (pos <= -1 && id != 0)
+			{
+				cout << "El ID no se encuentra. Reintente por favor." << endl << endl;
+			}
+			else
+			{
+				flag = true;
+			}
+		} while (!flag);
+
+		cls();
+
+		aux.leerDeDisco(pos);
+		aux.mostrar();
+		cout << endl;
+
+		cout << "¿Desea eliminar el socio " << id << "? (S/N): ";
+		cin >> confirm;
+
+		confirm = (tolower(confirm));
+
+		if (confirm == 's')
+		{
+			flag = true;
+		}
+		else
+		{
+			cls();
+			flag = false;
+		}
+	} while (!flag);
+
+	aux.setEstado(false);
+	aux.modificarEnDisco(pos);
+	cout << endl << " -- El socio ha sido eliminado -- " << endl;
+	anykey();
+	cls();
+
 }

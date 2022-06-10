@@ -12,6 +12,7 @@ void menuPrincipal();
 void menuSocios();
 void menuListadosSocios();
 void menuConsultasSocios();
+void modificar_socio();
 
 ///Menu Administradores y submenus
 void menuAdmins();

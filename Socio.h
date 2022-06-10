@@ -39,7 +39,7 @@ public:
 
 int generarIDSocio();
 
-bool buscarSocioPorID(int id);
+int buscarSocioPorID(int);
 
 bool buscarSocioPorDNI(int dni);
 
@@ -48,3 +48,19 @@ int checkArchivoSocios();
 void listadoGeneralSocios();
 
 void cargar_nuevo_socio();
+
+void ModificarDNISocio(Socio aux, int pos);
+
+void ModificarNombreSocio(Socio aux, int pos);
+
+void ModificarApellidoSocio(Socio aux, int pos);
+
+void ModificarFechaNac(Socio aux, int pos);
+
+void ModificarDomicilio(Socio aux, int pos);
+
+void ModificarEmail(Socio aux, int pos);
+
+void ModificarTelefono(Socio aux, int pos);
+
+void bajaSocio();

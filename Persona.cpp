@@ -12,7 +12,7 @@ void Persona::setDni(int dni) { _dni = dni; }
 void Persona::setNombre(char* nombre) { strcpy(_nombre, nombre); }
 void Persona::setApellido(char* apelldo) { strcpy(_apellido, apelldo); }
 void Persona::setFechanacimiento(Fecha fecha_nacimiento) { _fecha_nacimiento = fecha_nacimiento; }
-void Persona::setDomicilio(Domicilio domicilio) { _domicilio, domicilio; }
+void Persona::setDomicilio(Domicilio domicilio) { _domicilio = domicilio; }
 void Persona::setEmail(char* email) { strcpy(_email, email); }
 void Persona::setTelefono(char* telefono) { strcpy(_telefono, telefono); }
 void Persona::setEstado(bool estado) { _estado = estado; }
