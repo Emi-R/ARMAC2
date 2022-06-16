@@ -1,7 +1,10 @@
 #include "Socio.h"
 #include "rlutil.h"
+#include "Pago.h"
 
 using namespace rlutil;
+
+const float valorCuota = 500;
 
 Socio::Socio() {
 
@@ -23,6 +26,16 @@ void Socio::setFechaIngreso(Fecha fechaIng)
 	_fechaIngreso = fechaIng;
 }
 
+void Socio::setDeudor(bool d)
+{
+	_deudor = d;
+}
+
+void Socio::setUltimoPago(Fecha pago)
+{
+	_UltimoPago = pago;
+}
+
 int	 Socio::getIdsocio() {
 	return _idsocio;
 }
@@ -34,6 +47,16 @@ Fecha Socio::getFechaIngreso()
 
 bool Socio::getEstado() {
 	return _estado;
+}
+
+bool Socio::getDeudor()
+{
+	return _deudor;
+}
+
+Fecha Socio::getUltimoPago()
+{
+	return _UltimoPago;
 }
 
 
@@ -100,6 +123,8 @@ void Socio::cargar() {
 	int aux;
 	Fecha fechaActual;
 
+	const float valorCuota = 500;
+
 	srand(time(NULL));
 
 	CargarPersona();
@@ -108,13 +133,25 @@ void Socio::cargar() {
 
 	this->setIdsocio(generarIDSocio() + 1);
 
+	this->setUltimoPago(fechaActual);
+
+	this->setDeudor(false);
+
 	_estado = true;
 
-	/*cout << endl << " -- Socio creado correctamente --" << endl << endl;
+	int idCuota = generarIDCuota();
 
+	PagoCuota cuotaInicial(this->getIdsocio() , valorCuota, idCuota);
+
+	cuotaInicial.grabarEnDisco();
+
+	cout << endl << " -- Valor de cuota a pagar: $ " << valorCuota << " --" << endl; 
+	system("PAUSE");
+
+	cout << endl << " -- Socio creado correctamente --" << endl << endl;
 	this->mostrar();
 
-	anykey();*/
+	anykey();
 }
 
 void Socio::mostrar() {
@@ -132,13 +169,16 @@ void Socio::listar() {
 	cout << left;
 	cout << setw(5) << this->getIdsocio();
 	cout << setw(15) << this->getDni();
-	cout << setw(30) << this->getNombre();
-	cout << setw(30) << this->getApellido();
-	//setw(15);
+	cout << setw(20) << this->getNombre();
+	cout << setw(20) << this->getApellido();
+	cout << setw(20);
+
+	if (this->getDeudor()) { cout << "    ADEUDA"; }
+	else { cout << "    AL DIA"; }
+
 	this->getFechaIngreso().mostrarFecha();
 	cout << endl;
 }
-
 
 /////////////////////////////////////
 // Funciones globales Socio
@@ -229,10 +269,11 @@ void listadoGeneralSocios()
 
 	cout << left;
 	cout << setw(5) << "ID";
-	cout << setw(15) << "DNI";
-	cout << setw(30) << "NOMBRE";
-	cout << setw(30) << "APELLIDO";
-	cout << setw(15) << "FECHA INGRESO" << endl;
+	cout << setw(15) << "  DNI";
+	cout << setw(20) << "    NOMBRE";
+	cout << setw(20) << "   APELLIDO";
+	cout << setw(20) << "ESTADO DE CUOTA";
+	cout << setw(10) << " FECHA INGRESO" << endl;
 	cout << "----------------------------------------------------------------------------------------------------------------------" << endl;
 
 	while (socio.leerDeDisco(pos++))

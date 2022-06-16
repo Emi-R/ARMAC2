@@ -8,6 +8,7 @@
 #include "Administrador.h"
 #include "Persona.h"
 #include "Solicitud.h"
+#include "Pago.h"
 
 using namespace std;
 using namespace rlutil;
@@ -21,6 +22,7 @@ void instalacionArchivos()
 	checkArchivoAdmins();
 	checkArchivoSolicitud();
 	checkArchivoArmas();
+	checkArchivoCuotas();
 
 	system("PAUSE > null");
 	system("cls");
@@ -165,9 +167,10 @@ void menuSocios() {
 		cout << "1 - Cargar nuevo socio" << endl;
 		cout << "2 - Modificar socio" << endl;
 		cout << "3 - Eliminar socio" << endl;
+		cout << "4 - Cobrar cuota" << endl;
 		cout << "--------------------------" << endl;
-		cout << "4 - Listados" << endl;
-		cout << "5 - Consultas" << endl;
+		cout << "5 - Listados" << endl;
+		cout << "6 - Consultas" << endl;
 		cout << "--------------------------" << endl;
 		cout << "0 - Volver al menú principal" << endl << endl;
 
@@ -179,11 +182,7 @@ void menuSocios() {
 		int i = 0;
 		switch (opcion) {
 		case 1:
-			while (i < 100)
-			{
-				cargar_nuevo_socio();
-				i++;
-			}
+			cargar_nuevo_socio();
 			break;
 		case 2:
 			modificar_socio();
@@ -192,9 +191,16 @@ void menuSocios() {
 			bajaSocio();
 			break;
 		case 4:
-			menuListadosSocios();
+			/// Pedir ID
+			/// Mostrar Valor
+			/// Modificar bool deudor
+			/// Modificar fecha ultimo pago
+			/// Grabar
 			break;
 		case 5:
+			menuListadosSocios();
+			break;
+		case 6:
 			menuConsultasSocios();
 			break;
 		case 0:

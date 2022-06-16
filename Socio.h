@@ -8,6 +8,8 @@ class Socio :public Persona
 protected:
 	Fecha _fechaIngreso;
 	int _idsocio;
+	Fecha _UltimoPago;
+	bool _deudor;
 	bool _estado;
 
 public:
@@ -16,11 +18,15 @@ public:
 	void setIdsocio(int idsocio);
 	void setEstado(bool estado);
 	void setFechaIngreso(Fecha fechaIng);
+	void setDeudor(bool d);
+	void setUltimoPago(Fecha pago);
 
 	///Getters
 	Fecha getFechaIngreso();
 	int getIdsocio();
 	bool getEstado();
+	bool getDeudor();
+	Fecha getUltimoPago();
 
 	// METODOS DE DISCO
 	bool grabarEnDisco();

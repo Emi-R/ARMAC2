@@ -72,7 +72,7 @@ void Fecha::cargarFecha() {
 /// Desarrollo Mostrar
 
 void Fecha::mostrarFecha() {
-	cout << this->getDia() << "/" << this->getMes() << "/" << this->getAnio();
+	cout << "   " << this->getDia() << "/" << this->getMes() << "/" << this->getAnio();
 
 }
 

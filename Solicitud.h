@@ -12,13 +12,15 @@ class Solicitud
 {
 private:
 	int _idSolicitud, _idAdministrador, _idSocio, _idArma;
+	int _aprobado;
 	Fecha _FechaSolicitud;
 	bool _estado;
+
 
 public:
 
 	//CONSTRUCTOR
-	Solicitud(int idSolicitud = 0, int idAdmin = 0, int idSocio = 0, bool estado = 0, int idArma = 0);
+	Solicitud(int idSolicitud = 0, int idAdmin = 0, int idSocio = 0, bool estado = 0, int idArma = 0, int aprobado = 0);
 
 	//SETTERS
 	void setIdSolicitud(int idSolicitud);
@@ -26,6 +28,7 @@ public:
 	void setIdSocio(int idSocio);
 	void setIdArma(int idArma);
 	void setFechaSolicitud(Fecha FechaSolicitud);
+	void setAprobado(int a);
 	void setEstado(bool estado);
 
 	//GETTERS
@@ -34,6 +37,7 @@ public:
 	int getIdSocio();
 	int getIdArma();
 	Fecha getFechaSolicitud();
+	int getAprobado();
 	bool getEstado();
 
 	void cargarSolicitud();

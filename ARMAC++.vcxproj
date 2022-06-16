@@ -145,6 +145,8 @@
     <ClCompile Include="Fecha.cpp" />
     <ClCompile Include="funciones.cpp" />
     <ClCompile Include="main.cpp" />
+    <ClCompile Include="Pago.cpp" />
+    <ClCompile Include="PagoSolicitud.cpp" />
     <ClCompile Include="Pais.cpp" />
     <ClCompile Include="Persona.cpp" />
     <ClCompile Include="Socio.cpp" />
@@ -156,6 +158,8 @@
     <ClInclude Include="Domicilio.h" />
     <ClInclude Include="Fecha.h" />
     <ClInclude Include="funciones.h" />
+    <ClInclude Include="Pago.h" />
+    <ClInclude Include="PagoSolicitud.h" />
     <ClInclude Include="Pais.h" />
     <ClInclude Include="Persona.h" />
     <ClInclude Include="Socio.h" />

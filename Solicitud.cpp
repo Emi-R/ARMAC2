@@ -4,16 +4,19 @@
 #include <iostream>
 #include "Fecha.h"
 #include "Arma.h"
+#include "PagoSolicitud.h"
 
 using namespace std;
 using namespace rlutil;
 
-Solicitud::Solicitud(int idSolicitud, int idAdmin, int idSocio, bool estado, int idArma) {
+Solicitud::Solicitud(int idSolicitud, int idAdmin, int idSocio, bool estado, int idArma, int a) {
+
 	_idSolicitud = idSolicitud;
 	_idAdministrador = idAdmin;
 	_idSocio = idSocio;
 	Fecha _FechaSolicitud;
 	_idArma = idArma;
+	_aprobado = a;
 	_estado = estado;
 };
 
@@ -35,6 +38,11 @@ void Solicitud::setIdArma(int idArma) {
 
 void Solicitud::setFechaSolicitud(Fecha FechaSolicitud) {
 	_FechaSolicitud = FechaSolicitud;
+}
+
+void Solicitud::setAprobado(int a)
+{
+	_aprobado = a;
 };
 
 void Solicitud::setEstado(bool estado) {
@@ -42,15 +50,17 @@ void Solicitud::setEstado(bool estado) {
 };
 
 
-int Solicitud::getIdSolicitud() { return _idSolicitud; };
+int Solicitud::getIdSolicitud() { return _idSolicitud; }
 
-int Solicitud::getIdAdministrador() { return _idAdministrador; };
+int Solicitud::getIdAdministrador() { return _idAdministrador; }
 
-int Solicitud::getIdSocio() { return _idSocio; };
+int Solicitud::getIdSocio() { return _idSocio; }
 
-int Solicitud::getIdArma() { return _idArma; };
+int Solicitud::getIdArma() { return _idArma; }
 
-Fecha Solicitud::getFechaSolicitud() { return _FechaSolicitud; };
+Fecha Solicitud::getFechaSolicitud() { return _FechaSolicitud; }
+
+int Solicitud::getAprobado() { return _aprobado;}
 
 bool Solicitud::getEstado() { return _estado; }
 
