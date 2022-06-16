@@ -329,8 +329,60 @@ void listarSolicitudesPorIdDesc() {
 
 	if (solicitudes == NULL) { return; }
 
+	copiarSolicitudes(solicitudes, cantSolicitudes);
+	ordernarVecSolicPorIdDesc(solicitudes, cantSolicitudes);
+	mostrarSolicitudes(solicitudes, cantSolicitudes);
+
+	delete solicitudes;
+}
+
+void ordernarVecSolicPorIdDesc(Solicitud *vSolicitudes, int tam) {
+	Solicitud aux;
+	for (int i = 0; i < tam - 1; i++) {
+		for (int j = i + 1; j < tam; j++) {
+			if (vSolicitudes[i].getIdSolicitud() < vSolicitudes[j].getIdSolicitud()) {
+				aux = vSolicitudes[i];
+				vSolicitudes[i] = vSolicitudes[j];
+				vSolicitudes[j] = aux;
+			}
+		}
+	}
+}
+void listarSolicitudPorFechaDesc() {
+	int cantReg = buscarCantidadSolicitudes();
+
+	if (cantReg == 0) {
+		cout << "No hay Solicitudes registradas";
+		anykey();
+		return;
+	}
+
+	Solicitud* vSolicitudes;
+	vSolicitudes = new Solicitud[cantReg];
+	if (vSolicitudes == NULL) return;
+
+	copiarSolicitudes(vSolicitudes, cantReg);
+	ordernarVectorSolicPorFechaDesc(vSolicitudes, cantReg);
+	mostrarSolicitudes(vSolicitudes, cantReg);
+
+	delete vSolicitudes;
+
+}
+
+void ordernarVectorSolicPorFechaDesc(Solicitud* vec, int tam) {
 	Solicitud aux;
 
+	for (int i = 0; i < tam - 1; i++) {
+		for (int j = i + 1; j < tam; j++) {
+			if (vec[i].getFechaSolicitud() >  vec[j].getFechaSolicitud()) {
+				aux = vec[i];
+				vec[i] = vec[j];
+				vec[j] = aux;
+			}
+		}
+	}
+}
+void mostrarSolicitudes(Solicitud *vSolicitudes, int tam) {
 	cout << "LISTADO DE SOLICITUDES" << endl;
 	cout << "---------------------------------------------------------------------------------" << endl;
 	cout << left;
@@ -341,26 +393,10 @@ void listarSolicitudesPorIdDesc() {
 	cout << setw(15) << "ESTADO";
 	cout << setw(15) << "FECHA CREACION" << endl;
 
-	for (int i = 0; i < cantSolicitudes; i++) {
-		solicitudes[i].leerDeDisco(i);
+	for (int i = 0; i < tam; i++) {
+		vSolicitudes[i].listarSolicitud();
 	}
-
-	for (int i = 0; i < cantSolicitudes - 1; i++) {
-		for (int j = i + 1; j < cantSolicitudes; j++) {
-			if (solicitudes[i].getIdSolicitud() < solicitudes[j].getIdSolicitud()) {
-				aux = solicitudes[i];
-				solicitudes[i] = solicitudes[j];
-				solicitudes[j] = aux;
-			}
-		}
-	}
-
-	for (int i = 0; i < cantSolicitudes; i++) {
-		solicitudes[i].listarSolicitud();
-	}
-
-	delete solicitudes;
-}
+};
 
 int buscarCantidadSolicitudes() {
 

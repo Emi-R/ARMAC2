@@ -67,7 +67,14 @@ void listadoSolicitudes();
 void mostrarEstadoApSolicitud(int estadoAprobacion);
 
 void listarSolicitudesPorIdDesc();
+void ordernarVecSolicPorIdDesc(Solicitud* vSolicitudes, int tam);
+
 int buscarCantidadSolicitudes();
+
+void listarSolicitudPorFechaDesc();
+void mostrarSolicitudes(Solicitud* vSolicitudes, int tam);
+
+void ordernarVectorSolicPorFechaDesc(Solicitud *vec, int tam);
 
 void consultaSolicitudesPorAnio();
 void mostrarConsultasPorAnio(Solicitud* vecSolicitudes, int tam, int anioConsulta);

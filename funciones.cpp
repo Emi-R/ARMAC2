@@ -521,7 +521,8 @@ void menuListadosSolicitudes() {
 		cout << "\tListados Solicitudes" << endl;
 		cout << "--------------------------" << endl;
 		cout << "1 - Listar todas las Solicitudes" << endl;
-		cout << "2 - Listar solicitudes orden descendente" << endl;
+		cout << "2 - Listar Solicitudes orden descendente" << endl;
+		cout << "3 - Listar Solicitudes por Fecha Descendente" << endl;
 		cout << "--------------------------" << endl;
 		cout << "0 - Volver al menú principal" << endl << endl;
 
@@ -540,7 +541,8 @@ void menuListadosSolicitudes() {
 			anykey();
 			break;
 		case 3:
-
+			listarSolicitudPorFechaDesc();
+			anykey();
 			break;
 		case 4:
 
