@@ -11,12 +11,18 @@ using namespace rlutil;
 
 int main()
 {
-
-	Fecha aux;
-	Fecha aux2;
+	Administrador aux;
+	int pos = 0;
 	setlocale(LC_ALL, "Spanish");
 
 	instalacionArchivos();
+
+	//while (aux.leerDeDisco(pos++) && !aux.getEstado())
+	//{
+	//	aux.listar();
+	//}
+	//anykey();
+	//
 
 	///login();
 

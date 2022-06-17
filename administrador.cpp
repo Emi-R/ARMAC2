@@ -1,3 +1,4 @@
+#include <iomanip>
 #include "rlutil.h"
 #include "administrador.h"
 
@@ -74,7 +75,7 @@ const char* Administrador::getNombre()
 
 bool Administrador::getEstado()
 {
-	return false;
+	return _estado;
 }
 
 void Administrador::cargar()
@@ -94,7 +95,7 @@ void Administrador::cargar()
 		{
 			cout << "DNI inválido. Por favor, reintente." << endl << endl;
 		}
-		else if (buscarAdministradorPorDni(aux))
+		else if (buscarAdministradorPorDni(aux) > -1)
 		{
 			cout << "El DNI ya ha sido registrado anteriormente." << endl << endl;
 		}
@@ -112,9 +113,6 @@ void Administrador::cargar()
 	cin.getline(_apellido, 29);
 
 	cout << "Ingrese nombre: ";
-	cin >> aux2;
-
-	cin.ignore();
 	cin.getline(_nombre, 29);
 
 	do {
@@ -149,7 +147,7 @@ void Administrador::cargar()
 	do {
 		aux = 1 + rand() % 9999;
 
-		if (buscarAdministradorPorID(aux))
+		if (buscarAdministradorPorID(aux)>-1)
 		{
 			flag = false;
 		}
@@ -160,9 +158,9 @@ void Administrador::cargar()
 
 	} while (!flag);
 
-	aux = aux + 0000;
-
 	this->setIdAdmin(aux);
+
+	this->setEstado(true);
 
 	cout << endl << " -- Administrador creado correctamente --" << endl << endl;
 	cout << "Nombre: " << this->getNombre() << endl;
@@ -180,6 +178,21 @@ void Administrador::mostrar()
 	cout << "ID: " << this->getIdAdmin() << endl;
 	cout << "Nombre: " << this->getNombre() << endl;
 	cout << "Apellido: " << this->getApellido() << endl;
+
+}
+
+void Administrador::listar()
+{
+	if (this->getEstado()==true)
+	{
+
+	cout << left;
+	cout << setw(5) << this->getIdAdmin();
+	cout << setw(15) << this->getDNI();
+	cout << setw(20) << this->getNombre();
+	cout << setw(20) << this->getApellido();
+	cout << endl;
+	}
 
 }
 
@@ -268,7 +281,7 @@ int buscarAdministradorPorID(int id)
 	Administrador admin;
 	int pos = 0;
 
-	while (admin.leerDeDisco(pos++))
+	while (admin.leerDeDisco(pos++) && admin.getEstado())
 	{
 		if (admin.getIdAdmin() == id)
 		{
@@ -466,11 +479,30 @@ void baja_admin()
 		}
 	} while (!flag);
 
-	aux.setEstado(false);
+	aux.setEstado(!aux.getEstado());
 	aux.modificarEnDisco(pos);
 	cout << endl << " -- El administrador ha sido dado de baja -- " << endl;
 	anykey();
 	cls();
+}
+
+void listado_general_admin()
+{
+	Administrador admin;
+	int pos = 0;
+
+	cout << left;
+	cout << setw(5) << "ID";
+	cout << setw(15) << "  DNI";
+	cout << setw(20) << "    NOMBRE";
+	cout << setw(20) << "   APELLIDO" << endl;
+
+	cout << "------------------------------------------------------" << endl;
+
+	while (admin.leerDeDisco(pos++))
+	{
+		admin.listar();
+	}
 }
 
 void ModificarDNIAdmin(Administrador aux, int pos)

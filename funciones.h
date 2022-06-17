@@ -12,13 +12,11 @@ void menuPrincipal();
 void menuSocios();
 void menuListadosSocios();
 void menuConsultasSocios();
-void modificar_socio();
 
 ///Menu Administradores y submenus
 void menuAdmins();
 void menuListadosAdmin();
 void menuConsultasAdmin();
-
 
 ///Menu Solicitudes y submenus
 void menuSolicitudes();

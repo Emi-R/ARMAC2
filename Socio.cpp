@@ -313,6 +313,154 @@ void cargar_nuevo_socio()
 	aux.grabarEnDisco();
 }
 
+void bajaSocio()
+{
+	Socio aux;
+	int id;
+	bool flag = false;
+	int pos = 0;
+	char confirm;
+
+	do {
+		do {
+			cout << "Ingrese ID de socio a dar de baja (0 para volver al menu Socios): ";
+			cin >> id;
+
+			if (id == 0)
+			{
+				return;
+			}
+
+			pos = buscarSocioPorID(id) - 1;
+
+			if (pos <= -1 && id != 0)
+			{
+				cout << "El ID no se encuentra. Reintente por favor." << endl << endl;
+			}
+			else
+			{
+				flag = true;
+			}
+		} while (!flag);
+
+		cls();
+
+		aux.leerDeDisco(pos);
+		aux.mostrar();
+		cout << endl;
+
+		cout << "¿Desea dar de baja el socio  N°" << id << "? (S/N): ";
+		cin >> confirm;
+
+		confirm = (tolower(confirm));
+
+		if (confirm == 's')
+		{
+			flag = true;
+		}
+		else
+		{
+			cls();
+			flag = false;
+		}
+	} while (!flag);
+
+	aux.setEstado(false);
+	aux.modificarEnDisco(pos);
+	cout << endl << " -- El socio ha sido eliminado -- " << endl;
+	anykey();
+	cls();
+
+}
+
+void modificar_socio()
+{
+	int opcion;
+	char confirmarSalida;
+	bool salir = false;
+	bool flag = false;
+	int idaux;
+	int pos = 0;
+	Socio aux;
+
+	while (!salir) {
+
+		do
+		{
+			cout << "Ingrese ID de socio a modificar (0 para volver al menu Socios): ";
+			cin >> idaux;
+
+			pos = buscarSocioPorID(idaux) - 1;
+
+			if (pos <= -1 && idaux != 0)
+			{
+				cout << "El ID no se encuentra. Reintente por favor." << endl << endl;
+			}
+			else if (idaux == 0)
+			{
+				return;
+			}
+			else
+			{
+				flag = true;
+			}
+		} while (!flag);
+
+		cls();
+
+		aux.leerDeDisco(pos);
+		aux.mostrar();
+		cout << endl;
+
+		cout << "\tSeleccione campo a modificar" << endl;
+		cout << "--------------------------" << endl;
+		cout << "1 - Modificar DNI " << endl;
+		cout << "2 - Modificar nombre " << endl;
+		cout << "3 - Modificar apellido " << endl;
+		cout << "4 - Modificar fecha de nacimiento" << endl;
+		cout << "5 - Modificar domicilio" << endl;
+		cout << "6 - Modificar email" << endl;
+		cout << "7 - Modificar telefono" << endl;
+		cout << "--------------------------" << endl;
+		cout << "0 - Volver al menú Socios" << endl << endl;
+
+		cout << "Opción: ";
+		cin >> opcion;
+
+		cls();
+
+		switch (opcion) {
+		case 1:
+			ModificarDNISocio(aux, pos);
+			break;
+		case 2:
+			ModificarNombreSocio(aux, pos);
+			break;
+		case 3:
+			ModificarApellidoSocio(aux, pos);
+			break;
+		case 4:
+			ModificarFechaNac(aux, pos);
+			break;
+		case 5:
+			ModificarDomicilio(aux, pos);
+			break;
+		case 6:
+			ModificarEmail(aux, pos);
+			break;
+		case 7:
+			ModificarTelefono(aux, pos);
+			break;
+		case 0:
+			cout << "¿Volver al menu anterior? (S/N) ";
+			cin >> confirmarSalida;
+
+			salir = (tolower(confirmarSalida) == 's');
+			break;
+		}
+	}
+}
+
 /////////////////////////////////////
 // Funciones globales ModificarSocio
 /////////////////////////////////////
@@ -602,65 +750,6 @@ void ModificarTelefono(Socio aux, int pos)
 	cls();
 }
 
-void bajaSocio()
-{
-	Socio aux;
-	int id;
-	bool flag = false;
-	int pos = 0;
-	char confirm;
-
-	do {
-		do {
-			cout << "Ingrese ID de socio a dar de baja (0 para volver al menu Socios): ";
-			cin >> id;
-
-			if (id == 0)
-			{
-				return;
-			}
-
-			pos = buscarSocioPorID(id) - 1;
-
-			if (pos <= -1 && id != 0)
-			{
-				cout << "El ID no se encuentra. Reintente por favor." << endl << endl;
-			}
-			else
-			{
-				flag = true;
-			}
-		} while (!flag);
-
-		cls();
-
-		aux.leerDeDisco(pos);
-		aux.mostrar();
-		cout << endl;
-
-		cout << "¿Desea dar de baja el socio  N°" << id << "? (S/N): ";
-		cin >> confirm;
-
-		confirm = (tolower(confirm));
-
-		if (confirm == 's')
-		{
-			flag = true;
-		}
-		else
-		{
-			cls();
-			flag = false;
-		}
-	} while (!flag);
-
-	aux.setEstado(false);
-	aux.modificarEnDisco(pos);
-	cout << endl << " -- El socio ha sido eliminado -- " << endl;
-	anykey();
-	cls();
-
-}
 
 void listarSocioAlfabeticamente() {
 
@@ -777,3 +866,67 @@ void ordenarVectorPorFecha(Socio* vec, int tam) {
 		}
 	}
 }
+
+void consulta_Por_Id() {
+	int ID = 0;
+	int pos = 0;
+	Socio socio;
+
+	cout << "Ingrese el ID a consultar: " << endl;
+	cin >> ID;
+
+	pos = BuscarIdArchivo(ID);
+	if (pos > -1) {
+		socio.leerDeDisco(pos);
+		socio.mostrar();
+	}
+	else {
+		cout << "El ID no fue encontrado en el archivo de socios" << endl;
+
+	}
+}
+
+int BuscarIdArchivo(int Id) {
+	Socio reg;
+	int pos = 0;
+	while (reg.leerDeDisco(pos))
+	{
+		if (reg.getIdsocio() == Id)return pos;
+		pos++;
+	}
+	return -1;
+}
+
+void consultaPorDni() {
+
+	int dniConsulta = 0;
+	int pos = 0;
+	Socio socio;
+
+	cout << "Ingrese el dni a consultar: " << endl;
+	cin >> dniConsulta;
+
+	pos = BuscarDniArchivo(dniConsulta);
+	if (pos > -1) {
+		socio.leerDeDisco(pos);
+		socio.mostrar();
+	}
+	else {
+		cout << "El dni no fue encontrado en el archivo de socios" << endl;
+
+	}
+
+}
+
+int BuscarDniArchivo(int dniconsulta)
+{
+	Socio reg;
+	int pos = 0;
+	while (reg.leerDeDisco(pos))
+	{
+		if (reg.getDni() == dniconsulta)return pos;
+		pos++;
+	}
+	return -1;
+}
+

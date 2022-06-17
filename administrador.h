@@ -40,6 +40,7 @@ public:
 
 	void cargar();
 	void mostrar();
+	void listar();
 
 	bool grabarEnDisco();
 	bool leerDeDisco(int);
@@ -55,6 +56,8 @@ void crear_nuevo_admin();
 void modificar_admin();
 
 void baja_admin();
+
+void listado_general_admin();
 
 int buscarAdministradorPorDni(int);
 

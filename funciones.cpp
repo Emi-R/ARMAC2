@@ -293,10 +293,11 @@ void menuConsultasSocios() {
 
 		switch (opcion) {
 		case 1:
-
+			consultaPorDni();
 			anykey();
 			break;
 		case 2:
+			consulta_Por_Id();
 			anykey();
 			break;
 		case 3:
@@ -317,93 +318,7 @@ void menuConsultasSocios() {
 	}
 }
 
-void modificar_socio()
-{
-	int opcion;
-	char confirmarSalida;
-	bool salir = false;
-	bool flag = false;
-	int idaux;
-	int pos = 0;
-	Socio aux;
 
-	while (!salir) {
-
-		do
-		{
-			cout << "Ingrese ID de socio a modificar (0 para volver al menu Socios): ";
-			cin >> idaux;
-
-			pos = buscarSocioPorID(idaux) - 1;
-
-			if (pos <= -1 && idaux != 0)
-			{
-				cout << "El ID no se encuentra. Reintente por favor." << endl << endl;
-			}
-			else if (idaux == 0)
-			{
-				return;
-			}
-			else
-			{
-				flag = true;
-			}
-		} while (!flag);
-
-		cls();
-
-		aux.leerDeDisco(pos);
-		aux.mostrar();
-		cout << endl;
-
-		cout << "\tSeleccione campo a modificar" << endl;
-		cout << "--------------------------" << endl;
-		cout << "1 - Modificar DNI " << endl;
-		cout << "2 - Modificar nombre " << endl;
-		cout << "3 - Modificar apellido " << endl;
-		cout << "4 - Modificar fecha de nacimiento" << endl;
-		cout << "5 - Modificar domicilio" << endl;
-		cout << "6 - Modificar email" << endl;
-		cout << "7 - Modificar telefono" << endl;
-		cout << "--------------------------" << endl;
-		cout << "0 - Volver al menú Socios" << endl << endl;
-
-		cout << "Opción: ";
-		cin >> opcion;
-
-		cls();
-
-		switch (opcion) {
-		case 1:
-			ModificarDNISocio(aux, pos);
-			break;
-		case 2:
-			ModificarNombreSocio(aux, pos);
-			break;
-		case 3:
-			ModificarApellidoSocio(aux, pos);
-			break;
-		case 4:
-			ModificarFechaNac(aux, pos);
-			break;
-		case 5:
-			ModificarDomicilio(aux, pos);
-			break;
-		case 6:
-			ModificarEmail(aux, pos);
-			break;
-		case 7:
-			ModificarTelefono(aux, pos);
-			break;
-		case 0:
-			cout << "¿Volver al menu anterior? (S/N) ";
-			cin >> confirmarSalida;
-
-			salir = (tolower(confirmarSalida) == 's');
-			break;
-		}
-	}
-}
 
 ////////////////////////////
 /// Menu Administradores y submenus
@@ -443,7 +358,7 @@ void menuAdmins() {
 			modificar_admin();
 			break;
 		case 3:
-			//eliminar_admin();
+			baja_admin();
 			break;
 		case 4: menuListadosAdmin();
 			break;
@@ -469,8 +384,8 @@ void menuListadosAdmin() {
 		cls();
 		cout << "\t Listados administradores" << endl;
 		cout << "--------------------------" << endl;
-		cout << "1 - Listados por ID administrador " << endl;
-		cout << "2 - Listados por recaudacion " << endl;
+		cout << "1 - Listados general de administradores" << endl;
+		cout << "2 - Listados por recaudacion" << endl;
 		cout << "--------------------------" << endl;
 		cout << "0 - Volver al menú principal" << endl << endl;
 
@@ -481,6 +396,8 @@ void menuListadosAdmin() {
 
 		switch (opcion) {
 		case 1:
+			listado_general_admin();
+			anykey();
 			break;
 		case 2:
 			break;
@@ -530,7 +447,6 @@ void menuConsultasAdmin()
 		}
 	}
 }
-
 
 ////////////////////////////
 ///Menu Solicitudes y submenus

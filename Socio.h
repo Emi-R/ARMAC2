@@ -56,6 +56,10 @@ void listadoGeneralSocios();
 
 void cargar_nuevo_socio();
 
+void modificar_socio();
+
+void bajaSocio();
+
 void ModificarDNISocio(Socio aux, int pos);
 
 void ModificarNombreSocio(Socio aux, int pos);
@@ -70,8 +74,6 @@ void ModificarEmail(Socio aux, int pos);
 
 void ModificarTelefono(Socio aux, int pos);
 
-void bajaSocio();
-
 void listarSocioAlfabeticamente();
 
 void copiarSocios(Socio* vec, int tam);
@@ -85,3 +87,11 @@ int CantidadRegistrosSocio();
 void listarSocioPorFecha();
 
 void ordenarVectorPorFecha(Socio* vec, int tam);
+
+void consulta_Por_Id();
+
+int BuscarIdArchivo(int Id);
+
+void consultaPorDni();
+
+int BuscarDniArchivo(int dniconsulta);
