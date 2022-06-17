@@ -59,7 +59,7 @@ int Solicitud::getIdArma() { return _idArma; }
 
 Fecha Solicitud::getFechaSolicitud() { return _FechaSolicitud; }
 
-int Solicitud::getAprobado() { return _aprobado;}
+int Solicitud::getAprobado() { return _aprobado; }
 
 bool Solicitud::getEstado() { return _estado; }
 
@@ -243,6 +243,7 @@ void listadoSolicitudes() {
 	cout << setw(20) << "ID ADMINISTRADOR";
 	cout << setw(15) << "ID SOCIO";
 	cout << setw(15) << "ID ARMA";
+	cout << setw(15) << "ESTADO";
 	cout << setw(15) << "FECHA CREACION" << endl;
 
 	while (solic.leerDeDisco(p++))
@@ -254,16 +255,36 @@ void listadoSolicitudes() {
 
 void Solicitud::listarSolicitud() {
 
-	cout << left;
-	cout << setw(15) << this->getIdSolicitud();
-	cout << setw(20) << this->getIdAdministrador();
-	cout << setw(15) << this->getIdSocio();
-	cout << setw(15) << this->getIdArma();
-	/*cout << setw(15) <<*/
-	this->getFechaSolicitud().mostrarFecha();
+	if (this->getEstado()) {
+		cout << left;
+		cout << setw(15) << this->getIdSolicitud();
+		cout << setw(20) << this->getIdAdministrador();
+		cout << setw(15) << this->getIdSocio();
+		cout << setw(15) << this->getIdArma();
+		cout << setw(15);
+		mostrarEstadoApSolicitud(this->getAprobado());
+		this->getFechaSolicitud().mostrarFecha();
 
-	cout << endl;
+		cout << endl;
+	}
 }
+
+void mostrarEstadoApSolicitud(int estadoAprobacion) {
+	switch (estadoAprobacion)
+	{
+	case -1:
+		cout << "PENDIENTE";
+		break;
+	case 0:
+		cout << "DESAPROBADA";
+		break;
+	case 1:
+		cout << "APROBADA";
+		break;
+	default:
+		break;
+	}
+};
 
 void cargarNuevaSolicitud() {
 
@@ -285,9 +306,10 @@ void listarSolicitudesPorIdDesc() {
 
 	int cantSolicitudes = buscarCantidadSolicitudes();
 
-	if (cantSolicitudes == 0) { 
+	if (cantSolicitudes == 0) {
 		cout << "No hay solicitudes registradas.";
-		return; }
+		return;
+	}
 
 	Solicitud* solicitudes = new Solicitud[cantSolicitudes];
 
@@ -342,4 +364,53 @@ int buscarCantidadSolicitudes() {
 	unsigned int cantidadSolic = bytes / sizeof Solicitud;
 
 	return cantidadSolic;
+}
+
+void consultaSolicitudesPorAnio() {
+
+	int cantidadSolicitudes = buscarCantidadSolicitudes();
+	if (cantidadSolicitudes <= 0) {
+		cout << "No hay Solicitudes Registradas.";
+		return;
+	}
+
+	Solicitud* vecSolicitudes;
+
+	vecSolicitudes = new Solicitud[cantidadSolicitudes];
+
+	if (vecSolicitudes == NULL) { return; }
+
+	for (int i = 0; i < cantidadSolicitudes; i++) {
+		vecSolicitudes[i].leerDeDisco(i);
+	}
+
+	int anioConsulta;
+
+	cout << " - Listado de Solicitudes por Año - ";
+	cout << endl;
+	cout << "Ingrese el Año: ";
+
+	cin >> anioConsulta;
+
+	mostrarConsultasPorAnio(vecSolicitudes, cantidadSolicitudes, anioConsulta);
+
+	delete vecSolicitudes;
+}
+
+void mostrarConsultasPorAnio(Solicitud* vecSolicitudes, int tam, int anioConsulta) {
+
+	cout << "CONSULTA DE SOLICITUDES" << endl;
+	cout << "-----------------------------------------------------------------------------------" << endl;
+	cout << left;
+	cout << setw(15) << "ID SOLICITUD";
+	cout << setw(20) << "ID ADMINISTRADOR";
+	cout << setw(15) << "ID SOCIO";
+	cout << setw(15) << "ID ARMA";
+	cout << setw(15) << "FECHA CREACION" << endl;
+
+	for (int i = 0; i < tam; i++) {
+		if (vecSolicitudes[i].getFechaSolicitud().getAnio() == anioConsulta) {
+			vecSolicitudes[i].listarSolicitud();
+		}
+	}
 }

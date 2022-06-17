@@ -55,6 +55,10 @@ void cargarNuevaSolicitud();
 int generarIdSolicitud();
 
 void listadoSolicitudes();
+void mostrarEstadoApSolicitud(int estadoAprobacion);
 
 void listarSolicitudesPorIdDesc();
 int buscarCantidadSolicitudes();
+
+void consultaSolicitudesPorAnio();
+void mostrarConsultasPorAnio(Solicitud* vecSolicitudes, int tam, int anioConsulta);
