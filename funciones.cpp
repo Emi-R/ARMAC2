@@ -36,7 +36,7 @@ void login() {
 
 	bool flag = false;
 
-	
+
 
 	do {
 
@@ -49,7 +49,7 @@ void login() {
 		locate(19, 3);
 		cin >> aux;
 
-		if (buscarAdministradorPorID(aux)==-1)
+		if (buscarAdministradorPorID(aux) == -1)
 		{
 			cls();
 			locate(1, 6);
@@ -484,11 +484,10 @@ void menuSolicitudes() {
 			cargarNuevaSolicitud();
 			break;
 		case 2:
-
+			modificar_solicitud();
 			break;
 		case 3:
-
-
+			anykey();
 			break;
 		case 4:
 			menuListadosSolicitudes();
@@ -595,8 +594,8 @@ void menuConsultasSolicitudes()
 			anykey();
 			break;
 		case 4:
-			
-			
+
+
 			break;
 		case 0:
 			cout << "¿Volver al menu anterior? (S/N) ";
@@ -870,7 +869,7 @@ void menuConfiguracion() {
 	}
 }
 
-void todoAMayus(char *apellido)
+void todoAMayus(char* apellido)
 {
 
 	int len = strlen(apellido);

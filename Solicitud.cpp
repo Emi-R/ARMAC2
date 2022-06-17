@@ -45,6 +45,11 @@ void Solicitud::setAprobado(int a)
 	_aprobado = a;
 };
 
+void Solicitud::setEditable(bool e)
+{
+	_editable = e;
+}
+
 void Solicitud::setEstado(bool estado) {
 	_estado = estado;
 };
@@ -61,23 +66,44 @@ Fecha Solicitud::getFechaSolicitud() { return _FechaSolicitud; }
 
 int Solicitud::getAprobado() { return _aprobado; }
 
+bool Solicitud::getEditable() {return _editable;}
+
 bool Solicitud::getEstado() { return _estado; }
 
 void Solicitud::cargarSolicitud() {
 
 	int aux;
-	int estadoPendiente = -1;
-	bool verifica;
+	int estadoPendiente = 0;
 	Arma armaRegistro;
 	Fecha fechaSolicitud;
+	bool verifica = false;
+
+	do {
+		cout << "Ingrese el Id del Administrador: ";
+		cin >> aux;
+
+		if (buscarAdministradorPorID(aux) == -1)
+		{
+			cout << "El Id del Administrador es inválido. Por favor, ingrese un ID correcto." << endl;
+			anykey();
+			cls();
+			verifica = false;
+		}
+		else
+		{
+			verifica = true;
+		}
+
+	} while (verifica == false);
+
+	this->setIdAdministrador(aux);
+	verifica = false;
 
 	do {
 		cout << "Ingrese el ID del Socio: ";
 		cin >> aux;
 
-		verifica = buscarSocioPorID(aux);
-
-		if (!verifica)
+		if (buscarSocioPorID(aux) == -1)
 		{
 			cout << "El ID de socio no esta registrado o es incorrecto. Ingrese de nuevo por favor." << endl;
 		}
@@ -91,30 +117,17 @@ void Solicitud::cargarSolicitud() {
 	this->setIdSocio(aux);
 
 	armaRegistro.cargarArma();
-	armaRegistro.grabarEnDisco();
 
 	this->setIdArma(armaRegistro.getIdArma());
-
-	do {
-		cout << "Ingrese el Id del Administrador: ";
-		cin >> aux;
-
-		verifica = buscarAdministradorPorID(aux);
-
-		if (!verifica)
-		{
-			cout << "El Id del Administrador es inválido. Por favor, ingrese un ID correcto.";
-		}
-
-	} while (verifica == false);
-
-	this->setIdAdministrador(aux);
 
 	this->setFechaSolicitud(fechaSolicitud);
 
 	_estado = true;
 	this->setAprobado(estadoPendiente);
 	this->setIdSolicitud(generarIdSolicitud() + 1);
+	this->setEditable(true);
+
+	armaRegistro.grabarEnDisco();
 }
 
 void Solicitud::mostrarSolicitud() {
@@ -218,7 +231,6 @@ int checkArchivoSolicitud() {
 	return 1;
 }
 
-
 int generarIdSolicitud() {
 
 	Solicitud soli;
@@ -254,7 +266,6 @@ void listadoSolicitudes() {
 	}
 }
 
-
 void Solicitud::listarSolicitud() {
 
 	if (this->getEstado()) {
@@ -275,10 +286,10 @@ void mostrarEstadoApSolicitud(int estadoAprobacion) {
 	switch (estadoAprobacion)
 	{
 	case -1:
-		cout << "PENDIENTE";
+		cout << "DESAPROBADA";
 		break;
 	case 0:
-		cout << "DESAPROBADA";
+		cout << "PENDIENTE";
 		break;
 	case 1:
 		cout << "APROBADA";
@@ -293,6 +304,7 @@ void cargarNuevaSolicitud() {
 	Solicitud solicitud;
 
 	solicitud.cargarSolicitud();
+
 	if (solicitud.grabarEnDisco()) {
 		cout << "La Solicitud " << solicitud.getIdSolicitud() << " fue Ingresada correctamente.";
 		cout << endl;
@@ -458,7 +470,7 @@ int buscarSolicitudPorId(int id) {
 	int pos = 0;
 
 	while (solicitud.leerDeDisco(pos++)) {
-		if (solicitud.getIdSolicitud() == id) {
+		if (solicitud.getIdSolicitud() == id && solicitud.getEstado()) {
 			return pos;
 		}
 	}
@@ -520,62 +532,154 @@ void mostrarConsultasPorFecha(Solicitud* vecSolicitudes, int tam, Fecha fechaCon
 	}
 }
 
-void bajaSolicitud()
+void bajaSolicitud(Solicitud aux, int pos)
 {
-	Solicitud aux;
 	int id;
 	bool flag = false;
-	int pos = 0;
 	char confirm;
 
-	do {
-		do {
-			cout << "Ingrese ID de solicitud a dar de baja (0 para volver al menu Socios): ";
-			cin >> id;
+	cout << "¿Desea dar de baja la solicitud  N°" << aux.getIdSolicitud() << "? (S/N): ";
+	cin >> confirm;
 
-			if (id == 0)
+	confirm = (tolower(confirm));
+
+	if (confirm == 's')
+	{
+		aux.setEstado(false);
+		aux.modificarEnDisco(pos);
+		cout << endl << " -- La solicitud ha sido eliminada -- " << endl;
+		anykey();
+	}
+	cls();
+}
+
+void modificar_solicitud()
+{
+	int opcion;
+	char confirmarSalida;
+	bool salir = false;
+	bool flag = false;
+	int idaux;
+	int pos = 0;
+	Solicitud aux;
+
+	while (!salir) {
+
+		do
+		{
+			cout << "Ingrese ID de solicitud a modificar (0 para volver al menu Solicitud): ";
+			cin >> idaux;
+
+			pos = buscarSolicitudPorId(idaux) - 1;
+
+			if (pos <= -1 && idaux != 0)
+			{
+				cout << "La Solicitud no se encuentra. Reintente por favor." << endl << endl;
+			}
+			else if (idaux == 0)
 			{
 				return;
 			}
-
-			pos = buscarSolicitudPorId(id) - 1;
-
-			if (pos <= -1 && id != 0)
-			{
-				cout << "El ID no se encuentra. Reintente por favor." << endl << endl;
-			}
 			else
 			{
-				flag = true;
+				aux.leerDeDisco(pos);
+
+				if (aux.getEditable())
+				{
+					flag = true;
+				}
+				else
+				{
+					cout << endl << " -- La solicitud ya ha sido aprobada o desaprobada. No se puede editar --" << endl;
+					anykey();
+					cls();
+					flag = false;
+				}
 			}
+		
 		} while (!flag);
 
 		cls();
 
-		aux.leerDeDisco(pos);
-		aux.mostrarSolicitud ();
+		aux.mostrarSolicitud();
 		cout << endl;
 
-		cout << "¿Desea dar de baja el socio  N°" << id << "? (S/N): ";
-		cin >> confirm;
+		cout << "\tSeleccione opción" << endl;
+		cout << "--------------------------" << endl;
+		cout << "1 - Aprobar solicitud " << endl;
+		cout << "2 - Desaprobar solicitud " << endl;
+		cout << "3 - Eliminar registro de solicitud" << endl;
+		cout << "--------------------------" << endl;
+		cout << "0 - Volver al menú Solicitudes" << endl << endl;
 
-		confirm = (tolower(confirm));
+		cout << "Opción: ";
+		cin >> opcion;
 
-		if (confirm == 's')
-		{
-			flag = true;
+		cls();
+
+		switch (opcion) {
+		case 1:
+			aprobarSolicitud(aux,pos);
+			break;
+		case 2:
+			desaprobarSolicitud(aux,pos);
+			break;
+		case 3:
+			bajaSolicitud(aux, pos);
+			break;
+		case 7:
+			//ModificarTelefono(aux, pos);
+			break;
+		case 0:
+			cout << "¿Volver al menu anterior? (S/N) ";
+			cin >> confirmarSalida;
+
+			salir = (tolower(confirmarSalida) == 's');
+			break;
 		}
-		else
-		{
-			cls();
-			flag = false;
-		}
-	} while (!flag);
+	}
+}
 
-	aux.setEstado(false);
-	aux.modificarEnDisco(pos);
-	cout << endl << " -- El socio ha sido eliminado -- " << endl;
-	anykey();
+void aprobarSolicitud(Solicitud aux,int pos)
+{
+	int id;
+	bool flag = false;
+	char confirm;
+
+	cout << "¿Desea aprobar la solicitud  N°" << aux.getIdSolicitud() << "? (S/N): ";
+	cin >> confirm;
+
+	confirm = (tolower(confirm));
+
+	if (confirm == 's')
+	{
+		aux.setAprobado(1);
+		aux.setEditable(false);
+		aux.modificarEnDisco(pos);
+		cout << endl << " -- La solicitud ha sido aprobada -- " << endl;
+		anykey();
+	}
 	cls();
+}
 
+void desaprobarSolicitud(Solicitud aux, int pos)
+{
+	int id;
+	bool flag = false;
+	char confirm;
+
+	cout << "¿Desea desaprobar la solicitud  N°" << aux.getIdSolicitud() << "? (S/N): ";
+	cin >> confirm;
+
+	confirm = (tolower(confirm));
+
+	if (confirm == 's')
+	{
+		aux.setAprobado(-1);
+		aux.setEditable(false);
+		aux.modificarEnDisco(pos);
+		cout << endl << " -- La solicitud ha sido desaprobada -- " << endl;
+		anykey();
+	}
+	cls();
 }

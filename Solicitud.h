@@ -14,6 +14,7 @@ private:
 	int _idSolicitud, _idAdministrador, _idSocio, _idArma;
 	int _aprobado;
 	Fecha _FechaSolicitud;
+	bool _editable;
 	bool _estado;
 
 
@@ -29,6 +30,7 @@ public:
 	void setIdArma(int idArma);
 	void setFechaSolicitud(Fecha FechaSolicitud);
 	void setAprobado(int a);
+	void setEditable(bool e);
 	void setEstado(bool estado);
 
 	//GETTERS
@@ -38,6 +40,7 @@ public:
 	int getIdArma();
 	Fecha getFechaSolicitud();
 	int getAprobado();
+	bool getEditable();
 	bool getEstado();
 
 	void cargarSolicitud();
@@ -51,7 +54,13 @@ public:
 };
 
 int checkArchivoSolicitud();
+
 void cargarNuevaSolicitud();
+void modificar_solicitud();
+void bajaSolicitud(Solicitud ,int );
+void aprobarSolicitud(Solicitud, int);
+void desaprobarSolicitud(Solicitud ,int);
+
 int generarIdSolicitud();
 
 void listadoSolicitudes();
@@ -69,4 +78,3 @@ void mostrarConsultasPorFecha(Solicitud* vecSolicitudes, int tam, Fecha fechaCon
 void consultaSolicitudesPorId();
 int buscarSolicitudPorId(int id);
 void copiarSolicitudes(Solicitud* vecSoli, int tam);
-void bajaSolicitud();

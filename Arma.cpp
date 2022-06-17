@@ -146,8 +146,6 @@ void Arma::cargarArma() {
 
 	this->mostrarArma();
 
-	anykey();
-
 };
 
 void Arma::mostrarArma() {

@@ -216,6 +216,7 @@ int generarIDSocio()
 
 	return id;
 }
+
 int buscarSocioPorID(int id)
 {
 	Socio socio;
