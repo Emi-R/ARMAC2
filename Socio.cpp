@@ -872,12 +872,13 @@ void consulta_Por_Id() {
 	int pos = 0;
 	Socio socio;
 
-	cout << "Ingrese el ID a consultar: " << endl;
+	cout << "Ingrese el ID a consultar: ";
 	cin >> ID;
 
 	pos = BuscarIdArchivo(ID);
 	if (pos > -1) {
 		socio.leerDeDisco(pos);
+		cout << endl;
 		socio.mostrar();
 	}
 	else {
@@ -903,12 +904,13 @@ void consultaPorDni() {
 	int pos = 0;
 	Socio socio;
 
-	cout << "Ingrese el dni a consultar: " << endl;
+	cout << "Ingrese el dni a consultar: ";
 	cin >> dniConsulta;
 
 	pos = BuscarDniArchivo(dniConsulta);
 	if (pos > -1) {
 		socio.leerDeDisco(pos);
+		cout << endl;
 		socio.mostrar();
 	}
 	else {
