@@ -81,3 +81,7 @@ void ordenarVector(Socio* vec, int tam);
 void MostrarVector(Socio* vec, int tam);
 
 int CantidadRegistrosSocio();
+
+void listarSocioPorFecha();
+
+void ordenarVectorPorFecha(Socio* vec, int tam);

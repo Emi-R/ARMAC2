@@ -254,7 +254,7 @@ int buscarAdministradorPorDni(int DNI)
 
 	while (admin.leerDeDisco(pos++))
 	{
-		if (admin.getDNI() == DNI)
+		if (admin.getDNI() == DNI && admin.getEstado())
 		{
 			return pos;
 		}
@@ -328,7 +328,6 @@ int checkArchivoAdmins() {
 	return 1;
 
 }
-
 
 void crear_nuevo_admin()
 {
@@ -413,6 +412,65 @@ void modificar_admin()
 			break;
 		}
 	}
+}
+
+void baja_admin()
+{
+	Administrador aux;
+	int id;
+	bool flag = false;
+	int pos = 0;
+	char confirm;
+
+	do {
+		do {
+			cout << "Ingrese ID de administrador a dar de baja (0 para volver al menu Socios): ";
+			cin >> id;
+
+			if (id == 0)
+			{
+				return;
+			}
+			
+			pos = buscarAdministradorPorID(id) - 1;
+
+			if (pos <= -1 && id != 0)
+			{
+				cout << "El ID no se encuentra. Reintente por favor." << endl << endl;
+			}
+			else
+			{
+				flag = true;
+			}
+		} while (!flag);
+
+		cls();
+
+		aux.leerDeDisco(pos);
+		aux.mostrar();
+		cout << endl;
+
+		cout << "¿Desea dar de baja el administrador  N°" << id << "? (S/N): ";
+		cin >> confirm;
+
+		confirm = (tolower(confirm));
+
+		if (confirm == 's')
+		{
+			flag = true;
+		}
+		else
+		{
+			cls();
+			flag = false;
+		}
+	} while (!flag);
+
+	aux.setEstado(false);
+	aux.modificarEnDisco(pos);
+	cout << endl << " -- El administrador ha sido dado de baja -- " << endl;
+	anykey();
+	cls();
 }
 
 void ModificarDNIAdmin(Administrador aux, int pos)

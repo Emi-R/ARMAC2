@@ -324,6 +324,7 @@ void listarSolicitudesPorIdDesc() {
 	cout << setw(20) << "ID ADMINISTRADOR";
 	cout << setw(15) << "ID SOCIO";
 	cout << setw(15) << "ID ARMA";
+	cout << setw(15) << "ESTADO";
 	cout << setw(15) << "FECHA CREACION" << endl;
 
 	for (int i = 0; i < cantSolicitudes; i++) {
@@ -406,6 +407,7 @@ void mostrarConsultasPorAnio(Solicitud* vecSolicitudes, int tam, int anioConsult
 	cout << setw(20) << "ID ADMINISTRADOR";
 	cout << setw(15) << "ID SOCIO";
 	cout << setw(15) << "ID ARMA";
+	cout << setw(15) << "ESTADO";
 	cout << setw(15) << "FECHA CREACION" << endl;
 
 	for (int i = 0; i < tam; i++) {

@@ -54,6 +54,8 @@ void crear_nuevo_admin();
 
 void modificar_admin();
 
+void baja_admin();
+
 int buscarAdministradorPorDni(int);
 
 int buscarAdministradorPorID(int);

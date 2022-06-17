@@ -612,7 +612,7 @@ void bajaSocio()
 
 	do {
 		do {
-			cout << "Ingrese ID de socio a eliminar (0 para volver al menu Socios): ";
+			cout << "Ingrese ID de socio a dar de baja (0 para volver al menu Socios): ";
 			cin >> id;
 
 			if (id == 0)
@@ -638,7 +638,7 @@ void bajaSocio()
 		aux.mostrar();
 		cout << endl;
 
-		cout << "¿Desea eliminar el socio " << id << "? (S/N): ";
+		cout << "¿Desea dar de baja el socio  N°" << id << "? (S/N): ";
 		cin >> confirm;
 
 		confirm = (tolower(confirm));
@@ -740,4 +740,40 @@ void MostrarVector(Socio* vec, int tam) {
 		vec[i].mostrarSimplificado();
 	}
 	
+}
+
+void listarSocioPorFecha() {
+	int cantReg = CantidadRegistrosSocio();
+
+	if (cantReg == 0) {
+		cout << "No hay socios registrados";
+		anykey();
+		return;
+	}
+
+	Socio* vDinamico;
+	vDinamico = new Socio[cantReg];
+	if (vDinamico == NULL) return;
+
+
+	copiarSocios(vDinamico, cantReg);
+	ordenarVectorPorFecha(vDinamico, cantReg);
+	MostrarVector(vDinamico, cantReg);
+
+	delete vDinamico;
+
+}
+
+void ordenarVectorPorFecha(Socio* vec, int tam) {
+	Socio aux;
+
+	for (int i = 0; i < tam - 1; i++) {
+		for (int j = i + 1; j < tam; j++) {
+			if (vec[j].getFechaIngreso() > vec[i].getFechaIngreso()) {
+				aux = vec[i];
+				vec[i] = vec[j];
+				vec[j] = aux;
+			}
+		}
+	}
 }

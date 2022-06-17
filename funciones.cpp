@@ -66,6 +66,7 @@ void login() {
 			locate(13, 4);
 			cin >> aux2;
 
+
 			if (!checkContrasenia(aux2))
 			{
 				cls();
@@ -249,7 +250,8 @@ void menuListadosSocios() {
 			anykey();
 			break;
 		case 3:
-
+			listarSocioPorFecha();
+			anykey();
 			break;
 		case 4:
 
@@ -441,7 +443,7 @@ void menuAdmins() {
 			modificar_admin();
 			break;
 		case 3:
-
+			//eliminar_admin();
 			break;
 		case 4: menuListadosAdmin();
 			break;
@@ -671,6 +673,7 @@ void menuConsultasSolicitudes()
 			break;
 		case 3:
 			consultaSolicitudesPorAnio();
+			anykey();
 			break;
 		case 4:
 			

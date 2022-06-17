@@ -19,6 +19,7 @@ void menuAdmins();
 void menuListadosAdmin();
 void menuConsultasAdmin();
 
+
 ///Menu Solicitudes y submenus
 void menuSolicitudes();
 void menuListadosSolicitudes();
