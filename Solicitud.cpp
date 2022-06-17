@@ -66,6 +66,7 @@ bool Solicitud::getEstado() { return _estado; }
 void Solicitud::cargarSolicitud() {
 
 	int aux;
+	int estadoPendiente = -1;
 	bool verifica;
 	Arma armaRegistro;
 	Fecha fechaSolicitud;
@@ -112,6 +113,7 @@ void Solicitud::cargarSolicitud() {
 	this->setFechaSolicitud(fechaSolicitud);
 
 	_estado = true;
+	this->setAprobado(estadoPendiente);
 	this->setIdSolicitud(generarIdSolicitud() + 1);
 }
 
@@ -415,4 +417,54 @@ void mostrarConsultasPorAnio(Solicitud* vecSolicitudes, int tam, int anioConsult
 			vecSolicitudes[i].listarSolicitud();
 		}
 	}
+}
+
+void consultaSolicitudesPorId() {
+
+	Solicitud solicitud;
+	int idSolicitud;
+
+	cout << " - Consulta de Solicitudes por Id - ";
+	cout << endl;
+	cout << "Ingrese el Id: ";
+
+	cin >> idSolicitud;
+	cls();
+
+	int posReg = buscarSolicitudPorId(idSolicitud) - 1;
+	if (posReg >= 0) {
+		cout << "SOLICITUD #" << idSolicitud << endl;
+		cout << "---------------------------------------------------------------------------------" << endl;
+		cout << left;
+		cout << setw(15) << "ID SOLICITUD";
+		cout << setw(20) << "ID ADMINISTRADOR";
+		cout << setw(15) << "ID SOCIO";
+		cout << setw(15) << "ID ARMA";
+		cout << setw(15) << "ESTADO";
+		cout << setw(15) << "FECHA CREACION" << endl;
+
+		solicitud.leerDeDisco(posReg);
+		solicitud.listarSolicitud();
+	}
+	else {
+		cout << "No se encontró una Solicitud Registrada con ese Id.";
+	}
+
+}
+
+int buscarSolicitudPorId(int id) {
+
+	Solicitud solicitud;
+	int pos = 0;
+
+	while (solicitud.leerDeDisco(pos++)) {
+		if (solicitud.getIdSolicitud() == id) {
+			return pos;
+		}
+	}
+}
+
+void copiarSolicitudes(Solicitud* vecSoli, int tam) {
+
+	for (int i = 0; i < tam; i++) { vecSoli[i].leerDeDisco(i); }
 }

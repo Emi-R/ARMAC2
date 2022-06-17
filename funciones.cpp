@@ -582,7 +582,8 @@ void menuConsultasSolicitudes()
 
 		switch (opcion) {
 		case 1:
-
+			consultaSolicitudesPorId();
+			anykey();
 			break;
 		case 2:
 			anykey();
