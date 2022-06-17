@@ -55,3 +55,6 @@ void cargarNuevaSolicitud();
 int generarIdSolicitud();
 
 void listadoSolicitudes();
+
+void listarSolicitudesPorIdDesc();
+int buscarCantidadSolicitudes();

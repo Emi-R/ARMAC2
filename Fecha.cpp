@@ -23,6 +23,31 @@ int  Fecha::getDia() { return _dia; }
 int  Fecha::getMes() { return _mes; }
 int  Fecha::getAnio() { return _anio; }
 
+bool Fecha::operator> (Fecha aux)
+{
+	if (_anio < aux.getAnio())
+	{
+		return false;
+	}
+
+	if (_mes < aux.getMes())
+	{
+		return false;
+	}
+	
+	if (_dia < aux.getDia())
+	{
+		return false;
+
+	}
+	else
+	{
+		return true;
+	}
+
+
+}
+
 /// Desarrollo cargar
 void Fecha::cargarFecha() {
 
@@ -34,7 +59,7 @@ void Fecha::cargarFecha() {
 		cout << "Año: ";
 		cin >> aux;
 
-		if (aux <1900 || aux > MayorEdad) 
+		if (aux <1900 || aux > MayorEdad)
 		{
 			cout << " El año ingresado es incorrecto, intente nuevamente" << endl;
 		}
@@ -59,7 +84,7 @@ void Fecha::cargarFecha() {
 		cout << "Dia: ";
 		cin >> aux;
 
-		if (!validaDia(this->getMes(), aux, this->getAnio())) 
+		if (!validaDia(this->getMes(), aux, this->getAnio()))
 		{
 			cout << " El dia ingresado es incorrecto, intente nuevamente" << endl;
 		}

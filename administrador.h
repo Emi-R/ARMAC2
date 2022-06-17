@@ -52,10 +52,20 @@ public:
 
 void crear_nuevo_admin();
 
-bool buscarAdministradorPorDni(int);
+void modificar_admin();
 
-bool buscarAdministradorPorID(int);
+int buscarAdministradorPorDni(int);
+
+int buscarAdministradorPorID(int);
 
 bool checkContrasenia(const char*);
 
 int checkArchivoAdmins();
+
+void ModificarDNIAdmin(Administrador aux, int pos);
+
+void ModificarNombreAdmin(Administrador aux, int pos);
+
+void ModificarApellidoAdmin(Administrador aux, int pos);
+
+void ModificarContrasenia(Administrador aux, int pos);

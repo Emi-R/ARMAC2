@@ -227,7 +227,7 @@ void menuListadosSocios() {
 		cout << "\tListados Socios" << endl;
 		cout << "--------------------------" << endl;
 		cout << "1 - Listar todos los socios" << endl;
-		cout << "2 - Listar socios por ID" << endl;
+		cout << "2 - Listar socios ordenados alfabeticamente" << endl;
 		cout << "3 - Listar socios por antigüedad" << endl;
 		cout << "--------------------------" << endl;
 		cout << "0 - Volver al menú principal" << endl << endl;
@@ -243,6 +243,7 @@ void menuListadosSocios() {
 			anykey();
 			break;
 		case 2:
+			listarSocioAlfabeticamente();
 			anykey();
 			break;
 		case 3:
@@ -421,7 +422,7 @@ void menuAdmins() {
 		cout << "2 - Modificar administrador " << endl;
 		cout << "3 - Eliminar administrador " << endl;
 		cout << "--------------------------" << endl;
-		cout << "4- Listados de Administradores" << endl;
+		cout << "4 - Listados de Administradores" << endl;
 		cout << "--------------------------" << endl;
 		cout << "0 - Volver al menú principal" << endl << endl;
 
@@ -435,7 +436,7 @@ void menuAdmins() {
 			crear_nuevo_admin();
 			break;
 		case 2:
-
+			modificar_admin();
 			break;
 		case 3:
 
@@ -588,6 +589,7 @@ void menuSolicitudes() {
 
 void menuListadosSolicitudes() {
 	int opcion;
+	char opcion2;
 	char confirmarSalida;
 	bool salir = false;
 
@@ -599,6 +601,7 @@ void menuListadosSolicitudes() {
 		cout << "\tListados Solicitudes" << endl;
 		cout << "--------------------------" << endl;
 		cout << "1 - Listar todas las Solicitudes" << endl;
+		cout << "2 - Listar solicitudes orden descendente" << endl;
 		cout << "--------------------------" << endl;
 		cout << "0 - Volver al menú principal" << endl << endl;
 
@@ -613,6 +616,7 @@ void menuListadosSolicitudes() {
 			anykey();
 			break;
 		case 2:
+			listarSolicitudesPorIdDesc();
 			anykey();
 			break;
 		case 3:

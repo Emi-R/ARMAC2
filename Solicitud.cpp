@@ -49,7 +49,6 @@ void Solicitud::setEstado(bool estado) {
 	_estado = estado;
 };
 
-
 int Solicitud::getIdSolicitud() { return _idSolicitud; }
 
 int Solicitud::getIdAdministrador() { return _idAdministrador; }
@@ -280,4 +279,67 @@ void cargarNuevaSolicitud() {
 	}
 
 	anykey();
+}
+
+void listarSolicitudesPorIdDesc() {
+
+	int cantSolicitudes = buscarCantidadSolicitudes();
+
+	if (cantSolicitudes == 0) { 
+		cout << "No hay solicitudes registradas.";
+		return; }
+
+	Solicitud* solicitudes = new Solicitud[cantSolicitudes];
+
+	if (solicitudes == NULL) { return; }
+
+	Solicitud aux;
+
+	cout << "LISTADO DE SOLICITUDES" << endl;
+	cout << "---------------------------------------------------------------------------------" << endl;
+	cout << left;
+	cout << setw(15) << "ID SOLICITUD";
+	cout << setw(20) << "ID ADMINISTRADOR";
+	cout << setw(15) << "ID SOCIO";
+	cout << setw(15) << "ID ARMA";
+	cout << setw(15) << "FECHA CREACION" << endl;
+
+	for (int i = 0; i < cantSolicitudes; i++) {
+		solicitudes[i].leerDeDisco(i);
+	}
+
+	for (int i = 0; i < cantSolicitudes - 1; i++) {
+		for (int j = i + 1; j < cantSolicitudes; j++) {
+			if (solicitudes[i].getIdSolicitud() < solicitudes[j].getIdSolicitud()) {
+				aux = solicitudes[i];
+				solicitudes[i] = solicitudes[j];
+				solicitudes[j] = aux;
+			}
+		}
+	}
+
+	for (int i = 0; i < cantSolicitudes; i++) {
+		solicitudes[i].listarSolicitud();
+	}
+
+	delete solicitudes;
+}
+
+int buscarCantidadSolicitudes() {
+
+	FILE* p = fopen("solicitudes.dat", "rb");
+
+	if (p == NULL) {
+		return 0;
+	}
+
+	fseek(p, 0, SEEK_END);
+
+	size_t bytes = ftell(p);
+
+	fclose(p);
+
+	unsigned int cantidadSolic = bytes / sizeof Solicitud;
+
+	return cantidadSolic;
 }

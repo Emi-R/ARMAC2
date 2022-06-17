@@ -4,15 +4,15 @@
 
 using namespace rlutil;
 
-const float valorCuota = 500;
-
 Socio::Socio() {
 
 	Persona();
 	Fecha _fechaIngreso;
+	_deudor = false;
 	_idsocio = 0;
 	_estado = false;
 }
+
 void Socio::setIdsocio(int idsocio) {
 	_idsocio = idsocio;
 }
@@ -58,7 +58,6 @@ Fecha Socio::getUltimoPago()
 {
 	return _UltimoPago;
 }
-
 
 //METODOS DE DISCO
 bool Socio::grabarEnDisco() {
@@ -161,6 +160,26 @@ void Socio::mostrar() {
 	_fechaIngreso.mostrarFecha();
 
 	MostrarPersona();
+
+}
+
+void Socio::mostrarSimplificado()
+{
+
+	if (this->getEstado())
+	{
+		cout << left;
+		cout << setw(5) << this->getIdsocio();
+		cout << setw(15) << this->getDni();
+		cout << setw(20) << this->getApellido();
+		cout << setw(20) << this->getNombre();
+		cout << setw(4);
+		if (this->getDeudor()) { cout << "ADEUDA"; }
+		else { cout << "AL DIA"; }
+		cout << setw(15); this->getUltimoPago().mostrarFecha();
+		cout << setw(10); this->getFechaIngreso().mostrarFecha();
+		cout << endl;
+	}
 
 }
 
@@ -641,4 +660,84 @@ void bajaSocio()
 	anykey();
 	cls();
 
+}
+
+void listarSocioAlfabeticamente() {
+
+	int cantReg = CantidadRegistrosSocio();
+
+	if (cantReg == 0) {
+		cout << "No hay socios registrados";
+		anykey();
+		return;
+	}
+
+	Socio* vDinamico;
+	vDinamico = new Socio[cantReg];
+	if (vDinamico == NULL) return;
+
+	copiarSocios(vDinamico, cantReg);
+	ordenarVector(vDinamico, cantReg);
+	MostrarVector(vDinamico, cantReg);
+
+	delete vDinamico;
+
+}
+
+void ordenarVector(Socio* vec, int tam) {
+	Socio aux;
+
+	for (int i = 0; i < tam - 1; i++) {
+		for (int j = i + 1; j < tam; j++) {
+			if (strcmp(vec[i].getApellido(), vec[j].getApellido()) > 0) {
+				aux = vec[i];
+				vec[i] = vec[j];
+				vec[j] = aux;
+			}
+		}
+	}
+}
+
+void copiarSocios(Socio* vec, int tam) 
+{
+	for (int i = 0; i < tam; i++) {
+		vec[i].leerDeDisco(i);
+	}
+}
+
+int CantidadRegistrosSocio() 
+{
+	FILE* p = fopen("socios.dat", "rb");
+	if (p == NULL) {
+		return 0;
+	}
+
+	size_t bytes;
+	int cant_reg;
+
+	fseek(p, 0, SEEK_END);
+	bytes = ftell(p);
+	fclose(p);
+	cant_reg = bytes / sizeof(Socio);
+	return cant_reg;
+}
+
+void MostrarVector(Socio* vec, int tam) {
+
+
+	cout << left;
+	cout << setw(5) << "ID";
+	cout << setw(15) << "DNI";
+	cout << setw(20) << "APELLIDO";
+	cout << setw(20) << "NOMBRE";
+	cout << setw(20) << "ESTADO DE CUOTA";
+	cout << setw(20) << "FECHA ULTIMO PAGO";
+	cout << setw(10) << "FECHA INGRESO" << endl;
+
+	cout << "----------------------------------------------------------------------------------------------------------------------" << endl;
+	for (int i = 0; i < tam; i++)
+	{
+		vec[i].mostrarSimplificado();
+	}
+	
 }

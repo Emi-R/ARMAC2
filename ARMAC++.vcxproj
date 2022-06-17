@@ -151,6 +151,8 @@
     <ClCompile Include="Persona.cpp" />
     <ClCompile Include="Socio.cpp" />
     <ClCompile Include="Solicitud.cpp" />
+    <ClCompile Include="ValorCuota.cpp" />
+    <ClCompile Include="ValorSolicitud.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="administrador.h" />
@@ -164,6 +166,8 @@
     <ClInclude Include="Persona.h" />
     <ClInclude Include="Socio.h" />
     <ClInclude Include="Solicitud.h" />
+    <ClInclude Include="ValorCuota.h" />
+    <ClInclude Include="ValorSolicitud.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

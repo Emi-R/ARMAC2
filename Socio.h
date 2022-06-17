@@ -35,6 +35,7 @@ public:
 
 	void cargar();
 	void mostrar();
+	void mostrarSimplificado();
 
 	void listar();
 };
@@ -70,3 +71,13 @@ void ModificarEmail(Socio aux, int pos);
 void ModificarTelefono(Socio aux, int pos);
 
 void bajaSocio();
+
+void listarSocioAlfabeticamente();
+
+void copiarSocios(Socio* vec, int tam);
+
+void ordenarVector(Socio* vec, int tam);
+
+void MostrarVector(Socio* vec, int tam);
+
+int CantidadRegistrosSocio();

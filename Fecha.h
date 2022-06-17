@@ -24,6 +24,8 @@ public:
 
 	void cargarFecha();
 	void mostrarFecha();
+
+	bool operator>(Fecha aux);
 };
 
 bool validaDia(int mes, int dia, int anio);
