@@ -3,6 +3,7 @@
 #include <iomanip>
 #include <clocale>
 #include <windows.h>
+#include <thread>
 #include "funciones.h"
 #include "rlutil.h"
 #include "Administrador.h"
@@ -35,6 +36,8 @@ void login() {
 
 	bool flag = false;
 
+	
+
 	do {
 
 		cout << "\tBienvenido a Sistema ARMAC" << endl;
@@ -46,7 +49,7 @@ void login() {
 		locate(19, 3);
 		cin >> aux;
 
-		if (!buscarAdministradorPorID(aux))
+		if (buscarAdministradorPorID(aux)==-1)
 		{
 			cls();
 			locate(1, 6);
@@ -97,10 +100,9 @@ void menuPrincipal() {
 	bool salir = false;
 
 	while (!salir) {
-
+		cls();
 		setColor(WHITE);
 		setBackgroundColor(DARKGREY);
-		cls();
 		cout << "\tSistema ARMAC" << endl;
 		cout << "--------------------------" << endl;
 		cout << "1 - Menú Socios" << endl;
