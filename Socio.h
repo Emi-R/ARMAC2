@@ -45,9 +45,7 @@ public:
 /////////////////////////////////////
 
 int generarIDSocio();
-
 int buscarSocioPorID(int);
-
 bool buscarSocioPorDNI(int dni);
 
 int checkArchivoSocios();
@@ -55,43 +53,29 @@ int checkArchivoSocios();
 void listadoGeneralSocios();
 
 void cargar_nuevo_socio();
-
 void modificar_socio();
-
 void bajaSocio();
 
 void ModificarDNISocio(Socio aux, int pos);
-
 void ModificarNombreSocio(Socio aux, int pos);
-
 void ModificarApellidoSocio(Socio aux, int pos);
-
 void ModificarFechaNac(Socio aux, int pos);
-
 void ModificarDomicilio(Socio aux, int pos);
-
 void ModificarEmail(Socio aux, int pos);
-
 void ModificarTelefono(Socio aux, int pos);
 
 void listarSocioAlfabeticamente();
-
 void copiarSocios(Socio* vec, int tam);
-
 void ordenarVector(Socio* vec, int tam);
-
 void MostrarVector(Socio* vec, int tam);
-
 int CantidadRegistrosSocio();
 
 void listarSocioPorFecha();
-
 void ordenarVectorPorFecha(Socio* vec, int tam);
 
 void consulta_Por_Id();
-
 int BuscarIdArchivo(int Id);
 
 void consultaPorDni();
-
 int BuscarDniArchivo(int dniconsulta);
+

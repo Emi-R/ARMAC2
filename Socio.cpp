@@ -302,7 +302,6 @@ void listadoGeneralSocios()
 			socio.listar();
 		}
 	}
-
 }
 
 void cargar_nuevo_socio()

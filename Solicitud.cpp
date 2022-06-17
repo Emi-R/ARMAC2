@@ -462,6 +462,8 @@ int buscarSolicitudPorId(int id) {
 			return pos;
 		}
 	}
+
+	return -1;
 }
 
 void copiarSolicitudes(Solicitud* vecSoli, int tam) {
