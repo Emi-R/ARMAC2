@@ -5,6 +5,8 @@ void instalacionArchivos();
 
 void login();
 
+void todoAMayus(char*);
+
 /// Menu
 void menuPrincipal();
 

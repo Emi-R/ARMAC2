@@ -1,6 +1,7 @@
 #include "Socio.h"
 #include "rlutil.h"
 #include "Pago.h"
+#include "funciones.h"
 
 using namespace rlutil;
 
@@ -140,11 +141,11 @@ void Socio::cargar() {
 
 	int idCuota = generarIDCuota();
 
-	PagoCuota cuotaInicial(this->getIdsocio() , valorCuota, idCuota);
+	PagoCuota cuotaInicial(this->getIdsocio(), valorCuota, idCuota);
 
 	cuotaInicial.grabarEnDisco();
 
-	cout << endl << " -- Valor de cuota a pagar: $ " << valorCuota << " --" << endl; 
+	cout << endl << " -- Valor de cuota a pagar: $ " << valorCuota << " --" << endl;
 	system("PAUSE");
 
 	cout << endl << " -- Socio creado correctamente --" << endl << endl;
@@ -786,14 +787,14 @@ void ordenarVector(Socio* vec, int tam) {
 	}
 }
 
-void copiarSocios(Socio* vec, int tam) 
+void copiarSocios(Socio* vec, int tam)
 {
 	for (int i = 0; i < tam; i++) {
 		vec[i].leerDeDisco(i);
 	}
 }
 
-int CantidadRegistrosSocio() 
+int CantidadRegistrosSocio()
 {
 	FILE* p = fopen("socios.dat", "rb");
 	if (p == NULL) {
@@ -827,7 +828,7 @@ void MostrarVector(Socio* vec, int tam) {
 	{
 		vec[i].mostrarSimplificado();
 	}
-	
+
 }
 
 void listarSocioPorFecha() {
@@ -867,6 +868,7 @@ void ordenarVectorPorFecha(Socio* vec, int tam) {
 }
 
 void consulta_Por_Id() {
+
 	int ID = 0;
 	int pos = 0;
 	Socio socio;
@@ -875,6 +877,7 @@ void consulta_Por_Id() {
 	cin >> ID;
 
 	pos = BuscarIdArchivo(ID);
+
 	if (pos > -1) {
 		socio.leerDeDisco(pos);
 		cout << endl;
@@ -882,7 +885,6 @@ void consulta_Por_Id() {
 	}
 	else {
 		cout << "El ID no fue encontrado en el archivo de socios" << endl;
-
 	}
 }
 
@@ -914,9 +916,7 @@ void consultaPorDni() {
 	}
 	else {
 		cout << "El dni no fue encontrado en el archivo de socios" << endl;
-
 	}
-
 }
 
 int BuscarDniArchivo(int dniconsulta)
@@ -929,5 +929,51 @@ int BuscarDniArchivo(int dniconsulta)
 		pos++;
 	}
 	return -1;
+}
+
+void consulta_Por_Apellido() {
+
+	char apellidoConsulta[30];
+	int pos = 0;
+	Socio socio;
+	cout << "Ingrese el apellido: ";
+	cin.ignore();
+	cin.getline(apellidoConsulta, 29);
+
+	todoAMayus(apellidoConsulta);
+
+	pos = BuscarApellidoArchivo(apellidoConsulta);
+
+	if (pos == -1) {
+		cout << "El apellido " << apellidoConsulta << " no existe en el archivo." << endl;
+	}
+
+}
+
+int BuscarApellidoArchivo(const char* apellidoconsulta) {
+	Socio reg;
+	int pos = 0;
+	bool flag = false;
+
+	while (reg.leerDeDisco(pos))
+	{
+		if (strcmp(apellidoconsulta, reg.getApellido()) == 0 && reg.getEstado())
+		{
+			flag = true;
+			reg.leerDeDisco(pos);
+			reg.mostrar();
+			cout << endl;
+		};
+		pos++;
+	}
+
+	if (!flag)
+	{
+		return -1;
+	}
+	else
+	{
+		return 0;
+	}
 }
 

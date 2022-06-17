@@ -11,11 +11,12 @@ using namespace rlutil;
 
 int main()
 {
-	Administrador aux;
-	int pos = 0;
+
 	setlocale(LC_ALL, "Spanish");
 
 	instalacionArchivos();
+
+	menuPrincipal();
 
 	//while (aux.leerDeDisco(pos++) && !aux.getEstado())
 	//{
@@ -28,7 +29,6 @@ int main()
 
 	/// Cambiar espacios de nombre en excel a _
 
-	menuPrincipal();
 
 
 	return 0;

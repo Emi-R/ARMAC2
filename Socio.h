@@ -79,3 +79,5 @@ int BuscarIdArchivo(int Id);
 void consultaPorDni();
 int BuscarDniArchivo(int dniconsulta);
 
+void consulta_Por_Apellido();
+int BuscarApellidoArchivo(const char* nombreconsulta);

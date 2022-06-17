@@ -301,7 +301,8 @@ void menuConsultasSocios() {
 			anykey();
 			break;
 		case 3:
-
+			consulta_Por_Apellido();
+			anykey();
 			break;
 		case 4:
 
@@ -867,3 +868,15 @@ void menuConfiguracion() {
 		}
 	}
 }
+
+void todoAMayus(char *apellido)
+{
+
+	int len = strlen(apellido);
+
+	for (int i = 0; i < len; i++)
+	{
+		apellido[i] = toupper(apellido[i]);
+	}
+}
+
