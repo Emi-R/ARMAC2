@@ -25,7 +25,10 @@ public:
 	void cargarFecha();
 	void mostrarFecha();
 
+	void cargarFechaConsultas();
+
 	bool operator>(Fecha aux);
+	bool operator== (Fecha aux);
 };
 
 bool validaDia(int mes, int dia, int anio);

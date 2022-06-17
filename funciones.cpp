@@ -571,7 +571,7 @@ void menuConsultasSolicitudes()
 		cout << "\tConsultas Solicitudes" << endl;
 		cout << "--------------------------" << endl;
 		cout << "1 - Consulta por ID de solicitud" << endl;
-		cout << "2 - Consulta por fecha" << endl;
+		cout << "2 - Consulta por Fecha" << endl;
 		cout << "3 - Consulta por Año" << endl;
 		cout << "--------------------------" << endl;
 		cout << "0 - Volver al menú principal" << endl << endl;
@@ -587,6 +587,7 @@ void menuConsultasSolicitudes()
 			anykey();
 			break;
 		case 2:
+			consultaSolicitudesPorFecha();
 			anykey();
 			break;
 		case 3:

@@ -63,6 +63,9 @@ int buscarCantidadSolicitudes();
 void consultaSolicitudesPorAnio();
 void mostrarConsultasPorAnio(Solicitud* vecSolicitudes, int tam, int anioConsulta);
 
+void consultaSolicitudesPorFecha();
+void mostrarConsultasPorFecha(Solicitud* vecSolicitudes, int tam, Fecha fechaConsulta);
+
 void consultaSolicitudesPorId();
 int buscarSolicitudPorId(int id);
 void copiarSolicitudes(Solicitud* vecSoli, int tam);

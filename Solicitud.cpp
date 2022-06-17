@@ -470,3 +470,52 @@ void copiarSolicitudes(Solicitud* vecSoli, int tam) {
 
 	for (int i = 0; i < tam; i++) { vecSoli[i].leerDeDisco(i); }
 }
+
+void consultaSolicitudesPorFecha() {
+
+	int cantidadSolicitudes = buscarCantidadSolicitudes();
+	if (cantidadSolicitudes <= 0) {
+		cout << "No hay Solicitudes Registradas.";
+		return;
+	}
+
+	Solicitud* vecSolicitudes;
+
+	vecSolicitudes = new Solicitud[cantidadSolicitudes];
+
+	if (vecSolicitudes == NULL) { return; }
+
+	copiarSolicitudes(vecSolicitudes, cantidadSolicitudes);
+
+	Fecha fechaConsulta;
+
+	cout << " - Consulta de Solicitudes por Fecha de Creación- ";
+	cout << endl;
+	cout << "Ingrese la Fecha: ";
+	cout << endl;
+
+	fechaConsulta.cargarFechaConsultas();
+
+	mostrarConsultasPorFecha(vecSolicitudes, cantidadSolicitudes, fechaConsulta);
+
+	delete vecSolicitudes;
+}
+
+void mostrarConsultasPorFecha(Solicitud* vecSolicitudes, int tam, Fecha fechaConsulta) {
+
+	Fecha fechaSoli;
+	cout << left;
+	cout << setw(15) << "ID SOLICITUD";
+	cout << setw(20) << "ID ADMINISTRADOR";
+	cout << setw(15) << "ID SOCIO";
+	cout << setw(15) << "ID ARMA";
+	cout << setw(15) << "ESTADO";
+	cout << setw(15) << "FECHA CREACION" << endl;
+
+	for (int i = 0; i < tam; i++) {
+		fechaSoli = vecSolicitudes[i].getFechaSolicitud();
+		if (fechaSoli == fechaConsulta) {
+			vecSolicitudes[i].listarSolicitud();
+		}
+	}
+}

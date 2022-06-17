@@ -100,7 +100,58 @@ void Fecha::mostrarFecha() {
 	cout << "   " << this->getDia() << "/" << this->getMes() << "/" << this->getAnio();
 
 }
+bool Fecha::operator== (Fecha aux)
+{
+	if (_anio == aux.getAnio() && _mes == aux.getMes() && _dia == aux.getDia())
+	{
+		return true;
+	}
 
+	return false;
+}
+
+
+void Fecha::cargarFechaConsultas() {
+
+	int aux = 0;
+
+	do {
+		cout << "Año: ";
+		cin >> aux;
+
+		if (aux < 0)
+		{
+			cout << " El año ingresado es incorrecto, intente nuevamente" << endl;
+		}
+	} while (aux < 0);
+
+	this->setAnio(aux);
+
+	do {
+		cout << "Mes: ";
+		cin >> aux;
+
+		if (aux <= 0 || aux > 12)
+		{
+			cout << " El mes ingresado es incorrecto, intente nuevamente" << endl;
+		}
+
+	} while (aux <= 0 || aux > 12);
+
+	this->setMes(aux);
+
+	do {
+		cout << "Dia: ";
+		cin >> aux;
+
+		if (!validaDia(this->getMes(), aux, this->getAnio()))
+		{
+			cout << " El dia ingresado es incorrecto, intente nuevamente" << endl;
+		}
+	} while (!validaDia(this->getMes(), aux, this->getAnio()));
+
+	this->setDia(aux);
+}
 /////////////////////////////////////
 // Funciones globales Fecha
 /////////////////////////////////////
