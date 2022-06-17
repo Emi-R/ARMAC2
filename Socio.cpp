@@ -216,7 +216,6 @@ int generarIDSocio()
 
 	return id;
 }
-
 int buscarSocioPorID(int id)
 {
 	Socio socio;
@@ -232,7 +231,6 @@ int buscarSocioPorID(int id)
 
 	return -1;
 }
-
 bool buscarSocioPorDNI(int dni)
 {
 	Socio socio;
@@ -248,7 +246,6 @@ bool buscarSocioPorDNI(int dni)
 
 	return false;
 }
-
 int checkArchivoSocios() {
 
 	FILE* fReg = fopen("socios.dat", "rb");
@@ -281,7 +278,6 @@ int checkArchivoSocios() {
 	return 1;
 
 }
-
 void listadoGeneralSocios()
 {
 	Socio socio;
@@ -522,7 +518,6 @@ void ModificarDNISocio(Socio aux, int pos)
 	anykey();
 	cls();
 }
-
 void ModificarApellidoSocio(Socio aux, int pos)
 {
 	char newName[30];
@@ -560,7 +555,6 @@ void ModificarApellidoSocio(Socio aux, int pos)
 	anykey();
 	cls();
 }
-
 void ModificarNombreSocio(Socio aux, int pos)
 {
 	char newName[30];
@@ -598,7 +592,6 @@ void ModificarNombreSocio(Socio aux, int pos)
 	anykey();
 	cls();
 }
-
 void ModificarFechaNac(Socio aux, int pos)
 {
 	Fecha nuevaFecha;
@@ -636,7 +629,6 @@ void ModificarFechaNac(Socio aux, int pos)
 	anykey();
 	cls();
 }
-
 void ModificarDomicilio(Socio aux, int pos)
 {
 	Domicilio nuevoDomicilio;
@@ -673,7 +665,6 @@ void ModificarDomicilio(Socio aux, int pos)
 	anykey();
 	cls();
 }
-
 void ModificarEmail(Socio aux, int pos)
 {
 	char confirm;
@@ -711,7 +702,6 @@ void ModificarEmail(Socio aux, int pos)
 	anykey();
 	cls();
 }
-
 void ModificarTelefono(Socio aux, int pos)
 {
 	char confirm;
@@ -750,7 +740,6 @@ void ModificarTelefono(Socio aux, int pos)
 	cls();
 }
 
-
 void listarSocioAlfabeticamente() {
 
 	int cantReg = CantidadRegistrosSocio();
@@ -772,7 +761,6 @@ void listarSocioAlfabeticamente() {
 	delete vDinamico;
 
 }
-
 void ordenarVector(Socio* vec, int tam) {
 	Socio aux;
 
@@ -786,14 +774,12 @@ void ordenarVector(Socio* vec, int tam) {
 		}
 	}
 }
-
 void copiarSocios(Socio* vec, int tam)
 {
 	for (int i = 0; i < tam; i++) {
 		vec[i].leerDeDisco(i);
 	}
 }
-
 int CantidadRegistrosSocio()
 {
 	FILE* p = fopen("socios.dat", "rb");
@@ -810,7 +796,6 @@ int CantidadRegistrosSocio()
 	cant_reg = bytes / sizeof(Socio);
 	return cant_reg;
 }
-
 void MostrarVector(Socio* vec, int tam) {
 
 
@@ -852,7 +837,6 @@ void listarSocioPorFecha() {
 	delete vDinamico;
 
 }
-
 void ordenarVectorPorFecha(Socio* vec, int tam) {
 	Socio aux;
 
@@ -887,7 +871,6 @@ void consulta_Por_Id() {
 		cout << "El ID no fue encontrado en el archivo de socios" << endl;
 	}
 }
-
 int BuscarIdArchivo(int Id) {
 	Socio reg;
 	int pos = 0;
@@ -918,7 +901,6 @@ void consultaPorDni() {
 		cout << "El dni no fue encontrado en el archivo de socios" << endl;
 	}
 }
-
 int BuscarDniArchivo(int dniconsulta)
 {
 	Socio reg;
@@ -949,7 +931,6 @@ void consulta_Por_Apellido() {
 	}
 
 }
-
 int BuscarApellidoArchivo(const char* apellidoconsulta) {
 	Socio reg;
 	int pos = 0;
