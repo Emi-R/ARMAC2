@@ -519,3 +519,63 @@ void mostrarConsultasPorFecha(Solicitud* vecSolicitudes, int tam, Fecha fechaCon
 		}
 	}
 }
+
+void bajaSolicitud()
+{
+	Solicitud aux;
+	int id;
+	bool flag = false;
+	int pos = 0;
+	char confirm;
+
+	do {
+		do {
+			cout << "Ingrese ID de solicitud a dar de baja (0 para volver al menu Socios): ";
+			cin >> id;
+
+			if (id == 0)
+			{
+				return;
+			}
+
+			pos = buscarSolicitudPorId(id) - 1;
+
+			if (pos <= -1 && id != 0)
+			{
+				cout << "El ID no se encuentra. Reintente por favor." << endl << endl;
+			}
+			else
+			{
+				flag = true;
+			}
+		} while (!flag);
+
+		cls();
+
+		aux.leerDeDisco(pos);
+		aux.mostrarSolicitud ();
+		cout << endl;
+
+		cout << "¿Desea dar de baja el socio  N°" << id << "? (S/N): ";
+		cin >> confirm;
+
+		confirm = (tolower(confirm));
+
+		if (confirm == 's')
+		{
+			flag = true;
+		}
+		else
+		{
+			cls();
+			flag = false;
+		}
+	} while (!flag);
+
+	aux.setEstado(false);
+	aux.modificarEnDisco(pos);
+	cout << endl << " -- El socio ha sido eliminado -- " << endl;
+	anykey();
+	cls();
+
+}

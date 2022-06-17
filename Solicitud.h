@@ -69,3 +69,4 @@ void mostrarConsultasPorFecha(Solicitud* vecSolicitudes, int tam, Fecha fechaCon
 void consultaSolicitudesPorId();
 int buscarSolicitudPorId(int id);
 void copiarSolicitudes(Solicitud* vecSoli, int tam);
+void bajaSolicitud();

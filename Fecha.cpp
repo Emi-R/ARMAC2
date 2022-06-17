@@ -114,12 +114,12 @@ bool Fecha::operator== (Fecha aux)
 void Fecha::cargarFechaConsultas() {
 
 	int aux = 0;
-
+	
 	do {
 		cout << "Año: ";
 		cin >> aux;
 
-		if (aux < 0)
+		if (aux < 0 || aux <1980)
 		{
 			cout << " El año ingresado es incorrecto, intente nuevamente" << endl;
 		}
