@@ -91,7 +91,7 @@ void Administrador::cargar()
 		cout << "Ingrese el DNI: ";
 		cin >> aux;
 
-		if (aux < 1)
+		if (aux < 1000000)
 		{
 			cout << "DNI inválido. Por favor, reintente." << endl << endl;
 		}
