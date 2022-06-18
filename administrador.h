@@ -52,25 +52,20 @@ public:
 /////////////////////////////////////
 
 void crear_nuevo_admin();
-
 void modificar_admin();
-
 void baja_admin();
 
 void listado_general_admin();
 
 int buscarAdministradorPorDni(int);
-
 int buscarAdministradorPorID(int);
-
 bool checkContrasenia(const char*);
 
 int checkArchivoAdmins();
 
 void ModificarDNIAdmin(Administrador aux, int pos);
-
 void ModificarNombreAdmin(Administrador aux, int pos);
-
 void ModificarApellidoAdmin(Administrador aux, int pos);
-
 void ModificarContrasenia(Administrador aux, int pos);
+
+void consulta_admin_Por_ID();

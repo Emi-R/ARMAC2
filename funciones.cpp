@@ -10,6 +10,7 @@
 #include "Persona.h"
 #include "Solicitud.h"
 #include "Pago.h"
+#include "Arma.h"
 
 using namespace std;
 using namespace rlutil;
@@ -24,6 +25,9 @@ void instalacionArchivos()
 	checkArchivoSolicitud();
 	checkArchivoArmas();
 	checkArchivoCuotas();
+
+	//checkArchivoPrecioCuota();
+	//checkArchivoPrecioSolicitud();
 
 	system("PAUSE > null");
 	system("cls");
@@ -343,6 +347,7 @@ void menuAdmins() {
 		cout << "3 - Eliminar administrador " << endl;
 		cout << "--------------------------" << endl;
 		cout << "4 - Listados de Administradores" << endl;
+		cout << "5 - Buscar administrador por ID" << endl;
 		cout << "--------------------------" << endl;
 		cout << "0 - Volver al menú principal" << endl << endl;
 
@@ -361,7 +366,11 @@ void menuAdmins() {
 		case 3:
 			baja_admin();
 			break;
-		case 4: menuListadosAdmin();
+		case 4: 
+			menuListadosAdmin();
+			break;
+		case 5:
+			consulta_admin_Por_ID();
 			break;
 		case 0:
 			cout << "¿Volver al menu anterior? (S/N) ";
@@ -399,43 +408,6 @@ void menuListadosAdmin() {
 		case 1:
 			listado_general_admin();
 			anykey();
-			break;
-		case 2:
-			break;
-		case 0:
-			cout << "¿Volver al menu anterior? (S/N) ";
-			cin >> confirmarSalida;
-
-			salir = (tolower(confirmarSalida) == 's');
-			break;
-		}
-	}
-}
-
-void menuConsultasAdmin()
-{
-	int opcion;
-	char confirmarSalida;
-	bool salir = false;
-
-	while (!salir) {
-
-		setColor(WHITE);
-		setBackgroundColor(DARKGREY);
-		cls();
-		cout << "\t Consultas administradores" << endl;
-		cout << "--------------------------" << endl;
-		cout << "1 - Consulta por ID administrador " << endl;
-		cout << "--------------------------" << endl;
-		cout << "0 - Volver al menú principal" << endl << endl;
-
-		cout << "Opción: ";
-		cin >> opcion;
-
-		cls();
-
-		switch (opcion) {
-		case 1:
 			break;
 		case 2:
 			break;
@@ -682,10 +654,9 @@ void menuListadosArmas() {
 		cout << "\tListados Armas" << endl;
 		cout << "--------------------------" << endl;
 		cout << "1 - Listar todas los armas" << endl;
-		cout << "2 - Listar cantidad de armas por ID" << endl;
-		cout << "3 - Listar por nombre de arma" << endl;
-		cout << "4 - Listar por tipo de arma" << endl;
-		cout << "5 - Listar armas por calibre" << endl;
+		cout << "2 - Listado por N° de serie" << endl;
+		cout << "3 - Listar por tipo de arma" << endl;
+		cout << "4 - Listar armas por calibre" << endl;
 		cout << "--------------------------" << endl;
 		cout << "0 - Volver al menú principal" << endl << endl;
 
@@ -696,24 +667,18 @@ void menuListadosArmas() {
 
 		switch (opcion) {
 		case 1:
-			listadoGeneralArmas();//Falta desarrollar
-
+			listadoGeneralArmas();
+			anykey();
 			break;
 		case 2:
-			//listadoCantidadArmasPorID();//Falta desarrollar
-
+			listadoDeArmasPorNumDeSerie();
 			anykey();
 			break;
 		case 3:
-			//listadoPorNombreDeArma();//Falta desarrollar
+			listados_Armas_Por_Tipo();
 			anykey();
 			break;
 		case 4:
-			//();//Falta desarrollar
-
-			anykey();
-			break;
-		case 5:
 			//listadoPorCalibre(); //Falta desarrollar
 			anykey();
 			break;

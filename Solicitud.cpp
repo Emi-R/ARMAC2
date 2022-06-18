@@ -581,6 +581,8 @@ void bajaSolicitud(Solicitud aux, int pos)
 
 	if (confirm == 's')
 	{
+		/// Elimina el arma en archivo armas
+		eliminarArma(aux.getIdArma());
 		aux.setEstado(false);
 		aux.modificarEnDisco(pos);
 		cout << endl << " -- La solicitud ha sido eliminada -- " << endl;

@@ -178,6 +178,32 @@ void Arma::listar()
 
 }
 
+void Arma::listarPorNumSerie()
+{
+	cout << left;
+	cout << setw(18) << this->getNumSerie();
+	cout << setw(9) << this->getIdArma();
+	cout << setw(18) << this->getModelo();
+	cout << setw(10) << this->getCalibre();
+	cout << setw(15) << this->getidPaisFabricacion();
+	cout << setw(15) << this->getTipoArma();
+	cout << endl;
+
+}
+
+void Arma::listarPorTipoArma()
+{
+	cout << left;
+	cout << setw(15) << this->getTipoArma();
+	cout << setw(9) << this->getIdArma();
+	cout << setw(18) << this->getModelo();
+	cout << setw(10) << this->getCalibre();
+	cout << setw(15) << this->getidPaisFabricacion();
+	cout << setw(18) << this->getNumSerie();
+	cout << endl;
+
+}
+
 bool Arma::grabarEnDisco() {
 	FILE* fReg = fopen("armas.dat", "ab");
 
@@ -323,4 +349,138 @@ void listadoGeneralArmas()
 	}
 
 	anykey();
+}
+
+void eliminarArma(int idArma) {
+	Arma reg;
+	int pos = buscarArmaPorId(idArma);
+	if (pos > -1) {
+		reg.leerDeDisco(pos);
+		reg.setEstado(false);
+		reg.modificarEnDisco(pos);
+	}
+}
+
+void listadoDeArmasPorNumDeSerie() {
+
+	int cantRegArmas = buscarCantidadArmas();
+
+	if (cantRegArmas == 0) {
+		cout << "No existen Armas registradas."<<endl;
+		return;
+	}
+
+	Arma* armas = new Arma[cantRegArmas];
+
+	if (armas == NULL) { return; }
+
+	copiarArmas(armas, cantRegArmas);
+	ordernarVecPorNumSerie(armas, cantRegArmas);
+	mostrarListadoArmas(armas, cantRegArmas);
+
+	delete armas;
+}
+int buscarCantidadArmas() {
+
+	FILE* p = fopen("armas.dat", "rb");
+
+	if (p == NULL) {return 0;}
+
+	fseek(p, 0, SEEK_END);
+	size_t bytes = ftell(p);
+	fclose(p);
+
+	unsigned int cantidadArmas = bytes / sizeof Arma;
+	return cantidadArmas;
+}
+void copiarArmas(Arma *vArma, int tam) {
+	for (int i = 0; i < tam; i++) { vArma[i].leerDeDisco(i); }
+}
+void ordernarVecPorNumSerie(Arma* vArma, int tam) {
+
+	Arma aux;
+
+	for (int i = 0; i < tam - 1; i++) {
+		for (int j = i + 1; j < tam; j++) {
+			if (vArma[i].getNumSerie() > vArma[j].getNumSerie()) {
+				aux = vArma[i];
+				vArma[i] = vArma[j];
+				vArma[j] = aux;
+			}
+		}
+	}
+}
+void mostrarListadoArmas(Arma* vArma, int tam){
+	cout << left;
+	cout << setw(18) << "NÚMERO DE SERIE";
+	cout << setw(9) << "ID ARMA";
+	cout << setw(18) << "MODELO";
+	cout << setw(10) << "CALIBRE";
+	cout << setw(15) << "ID PAIS FABR.";
+	cout << setw(15) << "TIPO DE ARMA" << endl;
+	cout << "-----------------------------------------------------------------------------------" << endl;
+
+	for (int i = 0; i < tam; i++) {
+		vArma[i].listarPorNumSerie();
+	}
+}
+
+void listados_Armas_Por_Tipo() {
+	int cantReg = CantidadRegistroArmas();
+	if (cantReg == 0) {
+		cout << "No hay armas registrados";
+		anykey();
+		return;
+	}
+
+	Arma* vDinamico;
+	vDinamico = new Arma[cantReg];
+	if (vDinamico == NULL) return;
+	copiarArmas(vDinamico, cantReg);
+	ordenarVector(vDinamico, cantReg);
+	MostrarVector(vDinamico, cantReg);
+}
+int CantidadRegistroArmas() {
+	FILE* p = fopen("armas.dat", "rb");
+	if (p == NULL) {
+		return 0;
+	}
+
+	size_t bytes;
+	int cant_reg;
+
+	fseek(p, 0, SEEK_END);
+	bytes = ftell(p);
+	fclose(p);
+	cant_reg = bytes / sizeof(Arma);
+	return cant_reg;
+}
+void ordenarVector(Arma* vec, int tam) {
+	Arma aux;
+
+	for (int i = 0; i < tam - 1; i++) {
+		for (int j = i + 1; j < tam; j++) {
+			if (vec[i].getTipoArma() > vec[j].getTipoArma()) {
+				aux = vec[i];
+				vec[i] = vec[j];
+				vec[j] = aux;
+			}
+		}
+	}
+}
+void MostrarVector(Arma* vec, int tam) {
+
+	cout << left;
+	cout << setw(15) << "TIPO DE ARMA";
+	cout << setw(9) << "ID ARMA";
+	cout << setw(18) << "MODELO";
+	cout << setw(10) << "CALIBRE";
+	cout << setw(15) << "ID PAIS FABR.";
+	cout << setw(18) << "NÚMERO DE SERIE" << endl;
+	cout << "-----------------------------------------------------------------------------------" << endl;
+
+	for (int i = 0; i < tam; i++)
+	{
+		vec[i].listarPorTipoArma();
+	}
 }

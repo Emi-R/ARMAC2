@@ -265,12 +265,13 @@ int buscarAdministradorPorDni(int DNI)
 	Administrador admin;
 	int pos = 0;
 
-	while (admin.leerDeDisco(pos++))
+	while (admin.leerDeDisco(pos))
 	{
 		if (admin.getDNI() == DNI && admin.getEstado())
 		{
 			return pos;
 		}
+		pos++;
 	}
 
 	return -1;
@@ -281,12 +282,13 @@ int buscarAdministradorPorID(int id)
 	Administrador admin;
 	int pos = 0;
 
-	while (admin.leerDeDisco(pos++) && admin.getEstado())
+	while (admin.leerDeDisco(pos) && admin.getEstado())
 	{
 		if (admin.getIdAdmin() == id)
 		{
 			return pos;
 		}
+		pos++;
 	}
 
 	return -1;
@@ -680,4 +682,28 @@ void ModificarContrasenia(Administrador aux, int pos)
 	anykey();
 	cls();
 
+}
+
+void consulta_admin_Por_ID()
+{
+	int ID = 0;
+	int pos = 0;
+	Administrador admin;
+
+	cout << "Ingrese el ID a consultar: ";
+	cin >> ID;
+
+	pos = buscarAdministradorPorID(ID);
+
+	if (pos > -1) {
+		admin.leerDeDisco(pos);
+		cout << endl;
+		admin.mostrar();
+		anykey();
+	}
+	else 
+	{
+		cout << "El ID no fue encontrado en el archivo de administradores" << endl;
+		anykey();
+	}
 }

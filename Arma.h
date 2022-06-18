@@ -37,6 +37,8 @@ public:
 	void cargarArma();
 	void mostrarArma();
 	void listar();
+	void listarPorNumSerie();
+	void listarPorTipoArma();
 
 	bool leerDeDisco(int pos);
 	bool grabarEnDisco();
@@ -56,3 +58,17 @@ int buscarArmaPorId(int );
 void crear_nueva_arma();
 
 void listadoGeneralArmas();
+
+void eliminarArma(int idArma);
+int buscarArmaPorId(int idArma);
+
+void listadoDeArmasPorNumDeSerie();
+int buscarCantidadArmas();
+void copiarArmas(Arma* vArma, int tam);
+void ordernarVecPorNumSerie(Arma* vArma, int tam);
+void mostrarListadoArmas(Arma* vArma, int tam);
+
+void listados_Armas_Por_Tipo();
+int CantidadRegistroArmas();
+void ordenarVector(Arma* vec, int tam);
+void MostrarVector(Arma* vec, int tam);

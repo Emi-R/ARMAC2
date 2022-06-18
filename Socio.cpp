@@ -232,6 +232,7 @@ int buscarSocioPorID(int id)
 
 	return -1;
 }
+
 bool buscarSocioPorDNI(int dni)
 {
 	Socio socio;
@@ -958,4 +959,3 @@ int BuscarApellidoArchivo(const char* apellidoconsulta) {
 		return 0;
 	}
 }
-
