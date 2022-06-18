@@ -10,7 +10,14 @@ using std::setprecision;
 using namespace std;
 
 Domicilio::Domicilio() {
-
+	strcpy(_pais, " ");
+	strcpy(_provincia, " ");
+	strcpy(_localidad, " ");
+	strcpy(_calle, " ");
+	_altura = 0;
+	strcpy(_dpto, " ");
+	_cp = 0;
+	_estado = true;
 }
 
 /// Setters

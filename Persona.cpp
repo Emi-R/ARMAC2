@@ -4,7 +4,14 @@
 using namespace std;
 
 Persona::Persona() {
-
+	_dni = 0;
+	strcpy(_nombre, " ");
+	strcpy(_apellido, " ");
+	Fecha _fecha_nacimiento;
+	Domicilio _domicilio;
+	strcpy(_email, " ");
+	strcpy(_telefono, " ");
+	_estado = true;
 }
 
 //SETTER
