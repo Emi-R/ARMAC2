@@ -23,6 +23,8 @@ public:
 
 };
 
+int cantidadRegistrosPreciosCuota();
+
 float getUltimoPrecioCuota();
 
 int checkArchivoPrecioCuota();

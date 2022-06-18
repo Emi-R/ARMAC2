@@ -5,16 +5,27 @@ class ValorSolicitud
 {
 private:
 	int _valorSolicitud;
-	Fecha _fechaActual;
+	Fecha _fechaActualizacion;
 
 public:
 	void setValorSolicitud(int valor);
-	void setFechaActual(Fecha nuevaFecha);
+	void setFechaActualizacion(Fecha nuevaFecha);
 	int getValorSolicitud();
-	Fecha getFechaActual();
+	Fecha getFechaActualizacion();
 
 	//Funciones de disco
 	bool grabarEnDisco();
 	int leerEnDisco(int pos);
 
+	void mostrar();
+	void mostrarSimplificado();
 };
+
+int cantidadRegistrosPreciosSolicitud();
+float getUltimoPrecioSolicitud();
+
+int checkArchivoPrecioCuota();
+
+void modificarPrecioSolicitud(float nuevoPrecio);
+
+void listarPrecios();
