@@ -24,8 +24,8 @@ public:
 int cantidadRegistrosPreciosSolicitud();
 float getUltimoPrecioSolicitud();
 
-int checkArchivoPrecioCuota();
+int checkArchivoPrecioSolicitud();
 
 void modificarPrecioSolicitud(float nuevoPrecio);
 
-void listarPrecios();
+void listarPreciosSolicitud();

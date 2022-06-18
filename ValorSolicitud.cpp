@@ -95,7 +95,7 @@ float getUltimoPrecioSolicitud()
 	return aux.grabarEnDisco ();
 
 }
-int checkArchivoPrecioCuota()
+int checkArchivoPrecioSolicitud()
 {
 	FILE* fReg = fopen("preciossolicitud.dat", "rb");
 
@@ -143,7 +143,7 @@ void modificarPrecioSolicitud(float nuevoPrecio) {
 
 	aux.grabarEnDisco();
 }
-void listarPrecios()
+void listarPreciosSolicitud()
 {
 	ValorSolicitud aux;
 	int pos = 0;
