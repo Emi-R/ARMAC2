@@ -723,7 +723,7 @@ void menuConsultasArmas() {
 			anykey();
 			break;
 		case 2:
-			//consultasPorIDArmas(); //Falta desarrollar
+			consultaArmasPorIdArma();
 			anykey();
 			break;
 

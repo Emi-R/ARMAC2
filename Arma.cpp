@@ -215,6 +215,17 @@ void Arma::listarPorTipoCalibre() {
 	cout << endl;
 }
 
+void Arma::listarPorIdArma() {
+	cout << left;
+	cout << setw(9) << this->getIdArma();
+	cout << setw(18) << this->getNumSerie();
+	cout << setw(18) << this->getModelo();
+	cout << setw(10) << this->getCalibre();
+	cout << setw(15) << this->getidPaisFabricacion();
+	cout << setw(15) << this->getTipoArma();
+	cout << endl;
+}
+
 bool Arma::grabarEnDisco() {
 	FILE* fReg = fopen("armas.dat", "ab");
 
@@ -519,7 +530,6 @@ void consultaArmasPorNumSerie() {
 	mostrarConsultaArmasPorNumSerie(vecArmas, cantArmas, numSerie);
 
 }
-
 void mostrarConsultaArmasPorNumSerie(Arma* vecArma, int tamVec, int numSerie) {
 
 	cls();
@@ -542,6 +552,50 @@ void mostrarConsultaArmasPorNumSerie(Arma* vecArma, int tamVec, int numSerie) {
 		}
 	}
 
+}
+
+void consultaArmasPorIdArma() {
+	int cantArmas = buscarCantidadArmas();
+	int numID;
+
+	if (cantArmas == 0) {
+		cout << "No se encontraron Registros de Armas cargados.";
+		return;
+	}
+
+	Arma* vecArmas = new Arma[cantArmas];
+
+	if (vecArmas == NULL) { return; }
+
+	copiarArmas(vecArmas, cantArmas);
+
+
+	cout << "Ingrese el Numero de ID: ";
+	cin >> numID;
+
+	mostrarConsultaArmasPorId(vecArmas, cantArmas, numID);
+}
+
+void mostrarConsultaArmasPorId(Arma* vecArma, int tamVec, int numId) {
+	cls();
+
+	cout << " -- CONSULTAS DE ARMAS POR NUMERO DE SERIE --" << endl;
+
+	cout << left;
+	cout << setw(9) << "ID ARMA";
+	cout << setw(18) << "NÚMERO DE SERIE";
+	cout << setw(18) << "MODELO";
+	cout << setw(10) << "CALIBRE";
+	cout << setw(15) << "ID PAIS FABR.";
+	cout << setw(15) << "TIPO DE ARMA" << endl;
+	cout << "-----------------------------------------------------------------------------------" << endl;
+
+
+	for (int i = 0; i < tamVec; i++) {
+		if (vecArma[i].getIdArma() == numId) {
+			vecArma[i].listarPorIdArma();
+		}
+	}
 }
 
 void listados_Armas_Por_Calibre() {

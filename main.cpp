@@ -19,18 +19,7 @@ int main()
 
 	menuPrincipal();
 
-	PagoCuota aux;
 
-	int pos = 0;
-
-	while (aux.leerDeDisco(pos++))
-	{
-		cout << aux.getIdSocio() << endl;
-		cout << aux.getImporte() << endl;
-		aux.getFechaPago().mostrarFecha();
-		cout << endl << aux.getIdCuota() << endl << endl;
-
-	}
 
 	anykey();
 
