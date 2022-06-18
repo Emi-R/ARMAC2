@@ -204,6 +204,17 @@ void Arma::listarPorTipoArma()
 
 }
 
+void Arma::listarPorTipoCalibre() {
+	cout << left;
+	cout << setw(10) << this->getCalibre();
+	cout << setw(9) << this->getIdArma();
+	cout << setw(18) << this->getModelo();
+	cout << setw(15) << this->getTipoArma();
+	cout << setw(15) << this->getidPaisFabricacion();
+	cout << setw(18) << this->getNumSerie();
+	cout << endl;
+}
+
 bool Arma::grabarEnDisco() {
 	FILE* fReg = fopen("armas.dat", "ab");
 
@@ -482,5 +493,97 @@ void MostrarVector(Arma* vec, int tam) {
 	for (int i = 0; i < tam; i++)
 	{
 		vec[i].listarPorTipoArma();
+	}
+}
+
+void consultaArmasPorNumSerie() {
+
+	int cantArmas = buscarCantidadArmas();
+	int numSerie;
+
+	if (cantArmas == 0) {
+		cout << "No se encontraron Registros de Armas cargados.";
+		return;
+	}
+
+	Arma* vecArmas = new Arma[cantArmas];
+
+	if (vecArmas == NULL) { return; }
+
+	copiarArmas(vecArmas, cantArmas);
+
+
+	cout << "Ingrese el Numero de Serie: ";
+	cin >> numSerie;
+
+	mostrarConsultaArmasPorNumSerie(vecArmas, cantArmas, numSerie);
+
+}
+
+void mostrarConsultaArmasPorNumSerie(Arma* vecArma, int tamVec, int numSerie) {
+
+	cls();
+
+	cout << " -- CONSULTAS DE ARMAS POR NUMERO DE SERIE --" << endl;
+
+	cout << left;
+	cout << setw(18) << "NÚMERO DE SERIE";
+	cout << setw(9) << "ID ARMA";
+	cout << setw(18) << "MODELO";
+	cout << setw(10) << "CALIBRE";
+	cout << setw(15) << "ID PAIS FABR.";
+	cout << setw(15) << "TIPO DE ARMA" << endl;
+	cout << "-----------------------------------------------------------------------------------" << endl;
+
+
+	for (int i = 0; i < tamVec; i++) {
+		if (vecArma[i].getNumSerie() == numSerie) {
+			vecArma[i].listarPorNumSerie();
+		}
+	}
+
+}
+
+void listados_Armas_Por_Calibre() {
+	int cantReg = CantidadRegistroArmas();
+	if (cantReg == 0) {
+		cout << "No hay armas registrados";
+		anykey();
+		return;
+	}
+
+	Arma* vDinamico;
+	vDinamico = new Arma[cantReg];
+	if (vDinamico == NULL) return;
+	copiarArmas(vDinamico, cantReg);
+	ordenarVectorPorCalibre(vDinamico, cantReg);
+	MostrarVectorPorCalibre(vDinamico, cantReg);
+}
+void ordenarVectorPorCalibre(Arma* vec, int tam) {
+	Arma aux;
+
+	for (int i = 0; i < tam - 1; i++) {
+		for (int j = i + 1; j < tam; j++) {
+			if (vec[i].getCalibre() > vec[j].getCalibre()) {
+				aux = vec[i];
+				vec[i] = vec[j];
+				vec[j] = aux;
+			}
+		}
+	}
+}
+void MostrarVectorPorCalibre(Arma* vec, int tam) {
+	cout << left;
+	cout << setw(10) << "CALIBRE";
+	cout << setw(9) << "ID ARMA";
+	cout << setw(18) << "MODELO";
+	cout << setw(15) << "TIPO DE ARMA";
+	cout << setw(15) << "ID PAIS FABR.";
+	cout << setw(18) << "NÚMERO DE SERIE" << endl;
+	cout << "-----------------------------------------------------------------------------------" << endl;
+
+	for (int i = 0; i < tam; i++)
+	{
+		vec[i].listarPorTipoCalibre();
 	}
 }

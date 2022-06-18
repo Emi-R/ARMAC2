@@ -10,7 +10,7 @@ private:
 	Fecha _fechaPago;
 
 public:
-	PagoCuota(int , float , int );
+	PagoCuota(int idSocio = 0, float valorCuota = 0, int idCuota = 0);
 
 	/// Setters
 	void setIdCuota(int );
@@ -26,10 +26,9 @@ public:
 
 	bool grabarEnDisco();
 	bool leerDeDisco(int);
-	bool modificarEnDisco(int);
 
 };
 
 int generarIDCuota();
 
-int checkArchivoCuotas();
+int checkArchivoPagosCuota();

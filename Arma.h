@@ -39,6 +39,7 @@ public:
 	void listar();
 	void listarPorNumSerie();
 	void listarPorTipoArma();
+	void listarPorTipoCalibre();
 
 	bool leerDeDisco(int pos);
 	bool grabarEnDisco();
@@ -72,3 +73,11 @@ void listados_Armas_Por_Tipo();
 int CantidadRegistroArmas();
 void ordenarVector(Arma* vec, int tam);
 void MostrarVector(Arma* vec, int tam);
+
+void consultaArmasPorNumSerie();
+void mostrarConsultaArmasPorNumSerie(Arma* vecArma, int tamVec, int numSerie);
+
+
+void listados_Armas_Por_Calibre();
+void ordenarVectorPorCalibre(Arma* vec, int tam);
+void MostrarVectorPorCalibre(Arma* vec, int tam);

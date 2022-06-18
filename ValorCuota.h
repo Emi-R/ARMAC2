@@ -1,23 +1,32 @@
 #pragma once
 #include "Fecha.h"
+#include <iomanip>
 
 class ValorCuota
 {
 private:
 	int _valorCuota;
-	Fecha _fechaActual;
+	Fecha _fechaActualizacion;
 
 public:
-	void setValorCouta(int valor);
-	void setFechaActual(Fecha nuevaFecha);
+	void setValorCuota(int valor);
+	void setFechaActualizacion(Fecha nuevaFecha);
 	int getvalorCuota();
-	Fecha getFechaActual();
+	Fecha getFechaActualizacion();
 
 	//Funciones de disco
 	bool grabarEnDisco();
 	int leerEnDisco(int pos);
 
-
-
+	void mostrar();
+	void mostrarSimplificado();
 
 };
+
+float getUltimoPrecioCuota();
+
+int checkArchivoPrecioCuota();
+
+void modificarPrecioCuota(float nuevoPrecio);
+
+void listarPrecios();

@@ -2,6 +2,7 @@
 #include "rlutil.h"
 #include "Pago.h"
 #include "funciones.h"
+#include "ValorCuota.h"
 
 using namespace rlutil;
 
@@ -123,8 +124,6 @@ void Socio::cargar() {
 	int aux;
 	Fecha fechaActual;
 
-	const float valorCuota = 500;
-
 	srand(time(NULL));
 
 	CargarPersona();
@@ -139,7 +138,9 @@ void Socio::cargar() {
 
 	_estado = true;
 
-	int idCuota = generarIDCuota();
+	int idCuota = generarIDCuota() + 1;
+
+	float valorCuota = getUltimoPrecioCuota();
 
 	PagoCuota cuotaInicial(this->getIdsocio(), valorCuota, idCuota);
 

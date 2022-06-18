@@ -11,6 +11,7 @@
 #include "Solicitud.h"
 #include "Pago.h"
 #include "Arma.h"
+#include "ValorCuota.h"
 
 using namespace std;
 using namespace rlutil;
@@ -24,9 +25,9 @@ void instalacionArchivos()
 	checkArchivoAdmins();
 	checkArchivoSolicitud();
 	checkArchivoArmas();
-	checkArchivoCuotas();
+	checkArchivoPagosCuota();
 
-	//checkArchivoPrecioCuota();
+	checkArchivoPrecioCuota();
 	//checkArchivoPrecioSolicitud();
 
 	system("PAUSE > null");
@@ -481,7 +482,6 @@ void menuSolicitudes() {
 
 void menuListadosSolicitudes() {
 	int opcion;
-	char opcion2;
 	char confirmarSalida;
 	bool salir = false;
 
@@ -679,7 +679,7 @@ void menuListadosArmas() {
 			anykey();
 			break;
 		case 4:
-			//listadoPorCalibre(); //Falta desarrollar
+			listados_Armas_Por_Calibre();
 			anykey();
 			break;
 		case 0:
@@ -719,7 +719,7 @@ void menuConsultasArmas() {
 
 		switch (opcion) {
 		case 1:
-			//consultasPorNumeroSerie(); //Falta desarrollar
+			consultaArmasPorNumSerie();
 			anykey();
 			break;
 		case 2:

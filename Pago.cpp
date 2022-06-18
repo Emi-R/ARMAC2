@@ -1,6 +1,6 @@
 #include "Pago.h"
 
-PagoCuota::PagoCuota(int idSocio = 0, float valorCuota = 0, int idCuota = 0 )
+PagoCuota::PagoCuota(int idSocio, float valorCuota, int idCuota)
 {
 	Fecha fechaActual;
 
@@ -53,7 +53,7 @@ Fecha PagoCuota::getFechaPago()
 
 bool PagoCuota::grabarEnDisco()
 {
-	FILE* fReg = fopen("cuotas.dat", "ab");
+	FILE* fReg = fopen("pagoscuota.dat", "ab");
 
 	if (fReg == NULL)
 	{
@@ -71,7 +71,7 @@ bool PagoCuota::grabarEnDisco()
 
 bool PagoCuota::leerDeDisco(int pos)
 {
-	FILE* fReg = fopen("cuotas.dat", "rb");
+	FILE* fReg = fopen("pagoscuota.dat", "rb");
 
 	if (fReg == NULL)
 	{
@@ -83,26 +83,6 @@ bool PagoCuota::leerDeDisco(int pos)
 	fseek(fReg, pos * sizeof(PagoCuota), SEEK_SET);
 
 	int escribio = fread(this, sizeof(PagoCuota), 1, fReg);
-
-	fclose(fReg);
-
-	return escribio;
-}
-
-bool PagoCuota::modificarEnDisco(int pos)
-{
-	FILE* fReg = fopen("cuotas.dat", "rb+");
-
-	if (fReg == NULL)
-	{
-		cout << "No se puede abrir el archivo.";
-		system("PAUSE < null");
-		return false;
-	}
-
-	fseek(fReg, pos * sizeof(PagoCuota), SEEK_SET);
-
-	int escribio = fwrite(this, sizeof(PagoCuota), 1, fReg);
 
 	fclose(fReg);
 
@@ -122,17 +102,17 @@ int generarIDCuota()
 	return id;
 }
 
-int checkArchivoCuotas()
+int checkArchivoPagosCuota()
 {
-	FILE* solicReg = fopen("cuotas.dat", "rb");
+	FILE* solicReg = fopen("pagoscuota.dat", "rb");
 
 	if (solicReg == NULL)
 	{
-		solicReg = fopen("cuotas.dat", "wb");
+		solicReg = fopen("pagoscuota.dat", "wb");
 
 		if (solicReg == NULL)
 		{
-			cout << "Error al crear o leer archivo de cuotas." << endl;
+			cout << "Error al crear o leer archivo de pagos de cuotas." << endl;
 			system("PAUSE > null");
 
 			return -1;
@@ -140,14 +120,14 @@ int checkArchivoCuotas()
 		else
 		{
 			fclose(solicReg);
-			cout << "Archivo de cuotas creado correctamente" << endl;
+			cout << "Archivo de pagos de cuotas creado correctamente" << endl;
 
 			return 0;
 		}
 	}
 	else
 	{
-		cout << "Archivo de cuotas cargado correctamente" << endl;
+		cout << "Archivo de pagos de cuotas cargado correctamente" << endl;
 	}
 
 	fclose(solicReg);
