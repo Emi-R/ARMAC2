@@ -6,6 +6,7 @@
 #include "funciones.h"
 #include "ValorCuota.h"
 #include "Pago.h"
+#include "PagoSolicitud.h"
 
 using namespace std;
 using namespace rlutil;
@@ -19,15 +20,11 @@ int main()
 
 	menuPrincipal();
 
-
-
 	anykey();
 
 	///login();
 
 	/// Cambiar espacios de nombre en excel a _
-
-
 
 	return 0;
 }

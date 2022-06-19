@@ -402,6 +402,7 @@ void listadoDeArmasPorNumDeSerie() {
 
 	delete armas;
 }
+
 int buscarCantidadArmas() {
 
 	FILE* p = fopen("armas.dat", "rb");
@@ -415,9 +416,11 @@ int buscarCantidadArmas() {
 	unsigned int cantidadArmas = bytes / sizeof Arma;
 	return cantidadArmas;
 }
+
 void copiarArmas(Arma *vArma, int tam) {
 	for (int i = 0; i < tam; i++) { vArma[i].leerDeDisco(i); }
 }
+
 void ordernarVecPorNumSerie(Arma* vArma, int tam) {
 
 	Arma aux;
@@ -432,6 +435,7 @@ void ordernarVecPorNumSerie(Arma* vArma, int tam) {
 		}
 	}
 }
+
 void mostrarListadoArmas(Arma* vArma, int tam){
 	cout << left;
 	cout << setw(18) << "NÚMERO DE SERIE";
@@ -462,6 +466,7 @@ void listados_Armas_Por_Tipo() {
 	ordenarVector(vDinamico, cantReg);
 	MostrarVector(vDinamico, cantReg);
 }
+
 int CantidadRegistroArmas() {
 	FILE* p = fopen("armas.dat", "rb");
 	if (p == NULL) {
@@ -477,6 +482,7 @@ int CantidadRegistroArmas() {
 	cant_reg = bytes / sizeof(Arma);
 	return cant_reg;
 }
+
 void ordenarVector(Arma* vec, int tam) {
 	Arma aux;
 
@@ -490,6 +496,7 @@ void ordenarVector(Arma* vec, int tam) {
 		}
 	}
 }
+
 void MostrarVector(Arma* vec, int tam) {
 
 	cout << left;
@@ -530,6 +537,7 @@ void consultaArmasPorNumSerie() {
 	mostrarConsultaArmasPorNumSerie(vecArmas, cantArmas, numSerie);
 
 }
+
 void mostrarConsultaArmasPorNumSerie(Arma* vecArma, int tamVec, int numSerie) {
 
 	cls();
@@ -613,6 +621,7 @@ void listados_Armas_Por_Calibre() {
 	ordenarVectorPorCalibre(vDinamico, cantReg);
 	MostrarVectorPorCalibre(vDinamico, cantReg);
 }
+
 void ordenarVectorPorCalibre(Arma* vec, int tam) {
 	Arma aux;
 
@@ -626,6 +635,7 @@ void ordenarVectorPorCalibre(Arma* vec, int tam) {
 		}
 	}
 }
+
 void MostrarVectorPorCalibre(Arma* vec, int tam) {
 	cout << left;
 	cout << setw(10) << "CALIBRE";

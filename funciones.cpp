@@ -28,6 +28,8 @@ void instalacionArchivos()
 	checkArchivoPagosCuota();
 
 	checkArchivoPrecioCuota();
+	actualizarEstadoCuotasSocios();
+
 	//checkArchivoPrecioSolicitud();
 
 	system("PAUSE > null");
@@ -199,11 +201,7 @@ void menuSocios() {
 			bajaSocio();
 			break;
 		case 4:
-			/// Pedir ID
-			/// Mostrar Valor
-			/// Modificar bool deudor
-			/// Modificar fecha ultimo pago
-			/// Grabar
+			cobrar_cuota();
 			break;
 		case 5:
 			menuListadosSocios();
@@ -754,9 +752,9 @@ void menuInformes() {
 		cls();
 		cout << "\tInformes" << endl;
 		cout << "--------------------------" << endl;
-		cout << "1 - Recaudacion anual" << endl;
-		cout << "2 - Modificar por socio" << endl;
-		cout << "3 - Recaudacion por tipo de arma" << endl;
+		cout << "1 - Recaudación anual" << endl;
+		cout << "2 - Recaudación por socio" << endl;
+		cout << "3 - Recaudación por tipo de arma" << endl;
 		cout << "--------------------------" << endl;
 		cout << "0 - Volver al menú principal" << endl << endl;
 
@@ -767,10 +765,11 @@ void menuInformes() {
 
 		switch (opcion) {
 		case 1:
-
+			Informe_Recaudacion_Anual();
+			anykey();
 			break;
 		case 2:
-
+			recaudacionPorSocio();
 			break;
 		case 3:
 

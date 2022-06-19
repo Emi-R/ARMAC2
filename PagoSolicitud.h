@@ -14,7 +14,7 @@ private:
 
 public:
 
-	PagoSolicitud(int, int ,float);
+	PagoSolicitud(int id = 0, int idPago = 0,float importe = 0);
 
 	//seters
 	void setIdSocio(int id);

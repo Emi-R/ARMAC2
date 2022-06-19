@@ -521,6 +521,7 @@ void ModificarDNISocio(Socio aux, int pos)
 	anykey();
 	cls();
 }
+
 void ModificarApellidoSocio(Socio aux, int pos)
 {
 	char newName[30];

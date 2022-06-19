@@ -91,7 +91,7 @@ float getUltimoPrecioCuota()
 {
 	ValorCuota aux;
 
-	int pos = cantidadRegistrosPreciosCuota() -1;
+	int pos = cantidadRegistrosPreciosCuota() - 1;
 
 	aux.leerEnDisco(pos);
 
@@ -164,6 +164,5 @@ void listarPrecios()
 	while (aux.leerEnDisco(pos++))
 	{
 		aux.mostrar();
-		
 	}
 }

@@ -2,7 +2,7 @@
 
 using namespace std;
 
-PagoSolicitud::PagoSolicitud(int id = 0, int idPago = 0, float importe = 0) {
+PagoSolicitud::PagoSolicitud(int id, int idPago, float importe) {
 
 	_idSocio = id;
 	_idPagoSolicitud = idPago;
@@ -34,7 +34,6 @@ Fecha PagoSolicitud::getFechaPago() {
 	return _fechaPago;
 }
 
-
 bool  PagoSolicitud::grabarEnDisco() {
 	FILE* fReg = fopen("pagosolicitudes.dat", "ab");
 
@@ -51,6 +50,7 @@ bool  PagoSolicitud::grabarEnDisco() {
 
 	return escribio;
 }
+
 int  PagoSolicitud::leerEnDisco(int pos) {
 	FILE* fReg = fopen("pagosolicitudes.dat", "rb");
 
@@ -69,6 +69,7 @@ int  PagoSolicitud::leerEnDisco(int pos) {
 
 	return escribio;
 }
+
 bool  PagoSolicitud::modificarEnDisco(int pos) {
 	FILE* fReg = fopen("pagosolicitudes.dat", "rb+");
 

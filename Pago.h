@@ -1,5 +1,8 @@
 #pragma once
 #include "Fecha.h"
+#include "Socio.h"
+#include "rlutil.h"
+#include "ValorCuota.h"
 
 class PagoCuota {
 
@@ -32,3 +35,20 @@ public:
 int generarIDCuota();
 
 int checkArchivoPagosCuota();
+
+void cobrar_cuota();
+
+void actualizarEstadoCuotasSocios();
+
+void actualizarCarteraSocios(Socio *vec, int cantReg);
+
+void recaudacionPorSocio();
+void ponerCeroVectorRecaudacion(float* vecRecaudacion, int tam);
+void buscarRecaudacionesPorSocio(float* vecRecaudacion, int tam);
+void listarRecaudacionesPorSocio(float* vecRecaudacion, int tam);
+
+void PonerEnCeroVector(float* vec, int tam);
+void Informe_Recaudacion_Anual();
+void RecaudacionAnualCuota(int anio, float *vec, int tam);
+void RecaudacionAnualSolictudes(int anio, float *vec, int tam);
+void MostrarDetalleRecaudacionAnual(float* vec, float* vec2, int tam);

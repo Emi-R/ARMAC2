@@ -53,7 +53,7 @@ void Fecha::cargarFecha() {
 
 	Fecha actual;
 	int aux = 0;
-	const int MayorEdad = actual.getAnio() - 18;
+	const int MayorEdad = actual.getAnio();
 
 	do {
 		cout << "Año: ";
