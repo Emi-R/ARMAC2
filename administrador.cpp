@@ -282,7 +282,7 @@ int buscarAdministradorPorID(int id)
 	Administrador admin;
 	int pos = 0;
 
-	while (admin.leerDeDisco(pos) && admin.getEstado())
+	while (admin.leerDeDisco(pos))
 	{
 		if (admin.getIdAdmin() == id)
 		{
@@ -292,22 +292,6 @@ int buscarAdministradorPorID(int id)
 	}
 
 	return -1;
-}
-
-bool checkContrasenia(const char* pass)
-{
-	Administrador admin;
-	int pos = 0;
-
-	while (admin.leerDeDisco(pos++))
-	{
-		if (strcmp(admin.getContrasenia(), pass) == 0)
-		{
-			return true;
-		}
-	}
-
-	return false;
 }
 
 int checkArchivoAdmins() {
@@ -370,15 +354,16 @@ void modificar_admin()
 			cout << "Ingrese ID de administrador a modificar (0 para volver al menu Admins): ";
 			cin >> idaux;
 
-			pos = buscarAdministradorPorID(idaux) - 1;
-
-			if (pos <= -1 && idaux != 0)
-			{
-				cout << "El ID no se encuentra. Reintente por favor." << endl << endl;
-			}
-			else if (idaux == 0)
+			if (idaux == 0)
 			{
 				return;
+			}
+
+			pos = buscarAdministradorPorID(idaux);
+
+			if (pos <= -1)
+			{
+				cout << "El ID no se encuentra. Reintente por favor." << endl << endl;
 			}
 			else
 			{

@@ -5,11 +5,12 @@
 #include "Fecha.h"
 #include "Arma.h"
 #include "PagoSolicitud.h"
+#include "ValorSolicitud.h"
 
 using namespace std;
 using namespace rlutil;
 
-Solicitud::Solicitud(int idSolicitud, int idAdmin, int idSocio, bool estado, int idArma, int a) {
+Solicitud::Solicitud(int idSolicitud, int idAdmin, int idSocio, bool estado, int idArma, int a, bool editable) {
 
 	_idSolicitud = idSolicitud;
 	_idAdministrador = idAdmin;
@@ -18,6 +19,7 @@ Solicitud::Solicitud(int idSolicitud, int idAdmin, int idSocio, bool estado, int
 	_idArma = idArma;
 	_aprobado = a;
 	_estado = estado;
+	_editable = editable;
 };
 
 void Solicitud::setIdSolicitud(int idSolicitud) {
@@ -60,17 +62,26 @@ void Solicitud::cargarSolicitud() {
 
 	int aux;
 	int estadoPendiente = 0;
+	int pos = 0;
 	Arma armaRegistro;
 	Fecha fechaSolicitud;
+	Administrador admin;
 	bool verifica = false;
 
 	do {
-		cout << "Ingrese el Id del Administrador: ";
+		cout << "Ingrese el ID del Administrador (0 para volver al menu anterior): ";
 		cin >> aux;
 
-		if (buscarAdministradorPorID(aux) == -1)
+		if (aux == 0)
 		{
-			cout << "El Id del Administrador es inválido. Por favor, ingrese un ID correcto." << endl;
+			return;
+		}
+
+		pos = buscarAdministradorPorID(aux);
+
+		if (pos <= -1)
+		{
+			cout << "El ID del Administrador es inválido. Por favor, ingrese un ID correcto." << endl;
 			anykey();
 			cls();
 			verifica = false;
@@ -82,7 +93,8 @@ void Solicitud::cargarSolicitud() {
 
 	} while (verifica == false);
 
-	this->setIdAdministrador(aux);
+	admin.leerDeDisco(pos);
+	this->setIdAdministrador(admin.getIdAdmin());
 	verifica = false;
 
 	do {
@@ -112,6 +124,15 @@ void Solicitud::cargarSolicitud() {
 	this->setAprobado(estadoPendiente);
 	this->setIdSolicitud(generarIdSolicitud() + 1);
 	this->setEditable(true);
+
+	float valorSolicitud = getUltimoPrecioSolicitud();
+
+	cout << endl << "Valor de la solicitud: $" << valorSolicitud << endl;
+
+	int idPago = generarIDPagoSolicitud() + 1;
+
+	PagoSolicitud pago(aux, idPago, valorSolicitud, admin.getIdAdmin());
+	pago.grabarEnDisco();
 
 	armaRegistro.grabarEnDisco();
 }
@@ -553,7 +574,6 @@ void mostrarConsultasPorFecha(Solicitud* vecSolicitudes, int tam, Fecha fechaCon
 
 void bajaSolicitud(Solicitud aux, int pos)
 {
-	int id;
 	bool flag = false;
 	char confirm;
 
@@ -663,7 +683,6 @@ void modificar_solicitud()
 
 void aprobarSolicitud(Solicitud aux,int pos)
 {
-	int id;
 	bool flag = false;
 	char confirm;
 
@@ -685,7 +704,6 @@ void aprobarSolicitud(Solicitud aux,int pos)
 
 void desaprobarSolicitud(Solicitud aux, int pos)
 {
-	int id;
 	bool flag = false;
 	char confirm;
 

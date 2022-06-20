@@ -40,7 +40,7 @@ public:
 	bool getEstado();
 
 	//Cargar y Mostrar
-	void CargarPersona();
+	int CargarPersona();
 	void MostrarPersona();
 
 };

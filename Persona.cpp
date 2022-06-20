@@ -1,6 +1,7 @@
 #include "Persona.h"
 #include "Socio.h"
 #include <iostream>
+#include "funciones.h"
 using namespace std;
 
 Persona::Persona() {
@@ -35,14 +36,21 @@ const char* Persona::getTelefono() { return _telefono; }
 bool Persona::getEstado() { return _estado; }
 
 //	MOSTRAR Y CARGAR
-void Persona::CargarPersona() {
+int Persona::CargarPersona() {
 
 	bool flag = false;
 	int aux;
+	char aux2[30];
+
 
 	do {
-		cout << "Ingrese el dni: ";
+		cout << "Ingrese el dni (0 para volver al menu anterior): ";
 		cin >> aux;
+
+		if (aux == 0)
+		{
+			return 0;
+		}
 
 		if (aux < 1000000)
 		{
@@ -67,7 +75,10 @@ void Persona::CargarPersona() {
 	cin.ignore();
 	cin.getline(_nombre, 29);
 	cout << "Ingrese el apellido: ";
-	cin.getline(_apellido, 29);
+	cin.getline(aux2, 29);
+	todoAMayus(aux2);
+	setApellido(aux2);
+
 	cout << "- Ingrese la fecha de nacimiento -" << endl;
 	_fecha_nacimiento.cargarFecha();
 	cout << "- Domicilio -" << endl;
@@ -79,6 +90,8 @@ void Persona::CargarPersona() {
 	cin.getline(_telefono, 14);
 
 	_estado = true;
+
+	return 1;
 }
 
 void Persona::MostrarPersona() {

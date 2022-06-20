@@ -2,9 +2,10 @@
 
 using namespace std;
 
-PagoSolicitud::PagoSolicitud(int id, int idPago, float importe) {
+PagoSolicitud::PagoSolicitud(int id, int idPago, float importe, int idAdmin) {
 
 	_idSocio = id;
+	_idAdmin = idAdmin;
 	_idPagoSolicitud = idPago;
 	_importe = importe;
 }
@@ -15,17 +16,26 @@ void  PagoSolicitud::setIdSocio(int id) {
 void  PagoSolicitud::setIdPagosolicitud(int idPago) {
 	_idPagoSolicitud = idPago;
 }
-void  PagoSolicitud::setImporte(int importe) {
+void  PagoSolicitud::setIdAdmin(int idAdmin)
+{
+	_idAdmin = idAdmin;
+}
+void  PagoSolicitud::setImporte(float importe) {
 	_importe = importe;
 }
 void  PagoSolicitud::setFechaPago(Fecha fechaPago) {
 	_fechaPago = fechaPago;
 }
+
 int   PagoSolicitud::getIdSocio() {
 	return _idSocio;
 }
 int   PagoSolicitud::getIdPago() {
 	return _idPagoSolicitud;
+}
+int   PagoSolicitud::getIdAdmin()
+{
+	return _idAdmin;
 }
 float PagoSolicitud::getImporte() {
 	return _importe;
@@ -87,4 +97,17 @@ bool  PagoSolicitud::modificarEnDisco(int pos) {
 	fclose(fReg);
 
 	return escribio;
+}
+
+int generarIDPagoSolicitud()
+{
+	PagoSolicitud aux;
+	int id = 0;
+	int pos = 0;
+
+	while (aux.leerEnDisco(pos++)) {
+		id = aux.getIdPago();
+	};
+
+	return id;
 }

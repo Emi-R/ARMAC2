@@ -3,7 +3,7 @@
 #include <iomanip>
 #include <clocale>
 #include <windows.h>
-#include <thread>
+#include <conio.h>
 #include "funciones.h"
 #include "rlutil.h"
 #include "Administrador.h"
@@ -19,7 +19,7 @@ using namespace rlutil;
 void instalacionArchivos()
 {
 	setColor(WHITE);
-	setBackgroundColor(DARKGREY);
+	setBackgroundColor(BLUE);
 
 	checkArchivoSocios();
 	checkArchivoAdmins();
@@ -32,18 +32,24 @@ void instalacionArchivos()
 
 	//checkArchivoPrecioSolicitud();
 
+	cout << endl << "\t-- Presione enter para continuar --";
 	system("PAUSE > null");
 	system("cls");
 }
 
-void login() {
+bool login() {
 
 	int aux;
 	char aux2[30];
-
 	bool flag = false;
+	bool flag2 = false;
+	int pos = 0;
+	string aux3;
+	string password;
+	char caracter;
+	int cont = 0;
 
-
+	Administrador admin;
 
 	do {
 
@@ -56,7 +62,9 @@ void login() {
 		locate(19, 3);
 		cin >> aux;
 
-		if (buscarAdministradorPorID(aux) == -1)
+		pos = buscarAdministradorPorID(aux);
+
+		if (pos == -1)
 		{
 			cls();
 			locate(1, 6);
@@ -71,10 +79,33 @@ void login() {
 		else
 		{
 			locate(13, 4);
-			cin >> aux2;
+			caracter = getch();
 
+			admin.leerDeDisco(pos);
+			password = admin.getContrasenia();
+			aux3 = "";
 
-			if (!checkContrasenia(aux2))
+			while (caracter != 13)
+			{
+				if (caracter != 8)
+				{
+					aux3.push_back(caracter);
+					cout << "*";
+
+				}
+				else
+				{
+					if (aux3.length() > 0)
+					{
+						cout << "\b \b";
+						aux3.pop_back();
+
+					}
+				}
+				caracter = getch();
+			}
+
+			if (aux3 != password)
 			{
 				cls();
 				locate(1, 6);
@@ -83,6 +114,7 @@ void login() {
 				flag = false;
 				setColor(WHITE);
 				locate(1, 1);
+				cont++;
 			}
 			else
 			{
@@ -95,9 +127,20 @@ void login() {
 				setBackgroundColor(DARKGREY);
 				system("PAUSE");
 				cls();
-				flag = true;
+				return true;
 			}
 		}
+
+		if (cont == 3)
+		{
+			cls();
+			setColor(RED);
+			cout << endl << "\t-- Ha superado el límite de intentos. Contacte a Ángel Simón. --" << endl;
+			return false;
+			setColor(WHITE);
+			anykey();
+		}
+
 	} while (!flag);
 }
 
@@ -110,7 +153,7 @@ void menuPrincipal() {
 	while (!salir) {
 		cls();
 		setColor(WHITE);
-		setBackgroundColor(DARKGREY);
+		setBackgroundColor(BLUE);
 		cout << "\tSistema ARMAC" << endl;
 		cout << "--------------------------" << endl;
 		cout << "1 - Menú Socios" << endl;
@@ -170,7 +213,7 @@ void menuSocios() {
 	while (!salir) {
 
 		setColor(WHITE);
-		setBackgroundColor(DARKGREY);
+		setBackgroundColor(LIGHTBLUE);
 		cls();
 		cout << "\tSocios" << endl;
 		cout << "--------------------------" << endl;
@@ -228,7 +271,7 @@ void menuListadosSocios() {
 	while (!salir) {
 
 		setColor(WHITE);
-		setBackgroundColor(DARKGREY);
+		setBackgroundColor(CYAN);
 		cls();
 		cout << "\tListados Socios" << endl;
 		cout << "--------------------------" << endl;
@@ -297,15 +340,12 @@ void menuConsultasSocios() {
 		switch (opcion) {
 		case 1:
 			consultaPorDni();
-			anykey();
 			break;
 		case 2:
 			consulta_Por_Id();
-			anykey();
 			break;
 		case 3:
 			consulta_Por_Apellido();
-			anykey();
 			break;
 		case 4:
 
@@ -365,7 +405,7 @@ void menuAdmins() {
 		case 3:
 			baja_admin();
 			break;
-		case 4: 
+		case 4:
 			menuListadosAdmin();
 			break;
 		case 5:

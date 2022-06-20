@@ -13,16 +13,18 @@ using namespace rlutil;
 
 int main()
 {
-
 	setlocale(LC_ALL, "Spanish");
 
-	instalacionArchivos();
+	bool flag;
+
+	//instalacionArchivos();
+
+	bool  = login();
+
+	while()
 
 	menuPrincipal();
 
-	anykey();
-
-	///login();
 
 	/// Cambiar espacios de nombre en excel a _
 

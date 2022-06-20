@@ -2,9 +2,9 @@
 
 #include <cstring>
 #include <iostream>
-#include <cstring>
 #include <stdlib.h>
 #include <time.h>
+#include <string>
 #include "rlutil.h"
 
 class Administrador
@@ -59,7 +59,6 @@ void listado_general_admin();
 
 int buscarAdministradorPorDni(int);
 int buscarAdministradorPorID(int);
-bool checkContrasenia(const char*);
 
 int checkArchivoAdmins();
 

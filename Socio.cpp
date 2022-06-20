@@ -3,6 +3,7 @@
 #include "Pago.h"
 #include "funciones.h"
 #include "ValorCuota.h"
+#include "administrador.h"
 
 using namespace rlutil;
 
@@ -121,12 +122,22 @@ bool Socio::modificarEnDisco(int pos) {
 void Socio::cargar() {
 
 	bool flag = false;
-	int aux;
+	bool flag2 = false;
+	int aux = 0;
+	int pos = 0;
+	int ID = 0;
+
 	Fecha fechaActual;
+	Administrador admin;
 
 	srand(time(NULL));
 
-	CargarPersona();
+	aux = CargarPersona();
+
+	if (aux == 0)
+	{
+		return;
+	}
 
 	this->setFechaIngreso(fechaActual);
 
@@ -144,10 +155,31 @@ void Socio::cargar() {
 
 	PagoCuota cuotaInicial(this->getIdsocio(), valorCuota, idCuota);
 
-	cuotaInicial.grabarEnDisco();
 
 	cout << endl << " -- Valor de cuota a pagar: $ " << valorCuota << " --" << endl;
-	system("PAUSE");
+
+	do
+	{
+		cout << endl << "Ingrese el ID de administrador actual: ";
+		cin >> ID;
+
+		pos = buscarAdministradorPorID(ID);
+
+		if (pos > -1) {
+			admin.leerDeDisco(pos);
+			cuotaInicial.setIdAdmin(admin.getIdAdmin());
+			cuotaInicial.grabarEnDisco();
+			flag2 = true;
+			anykey();
+		}
+		else
+		{
+			cout << "El ID no fue encontrado en el archivo de administradores" << endl;
+			flag2 = false;
+			anykey();
+		}
+
+	} while (!flag2);
 
 	cout << endl << " -- Socio creado correctamente --" << endl << endl;
 	this->mostrar();
@@ -322,7 +354,7 @@ void bajaSocio()
 
 	do {
 		do {
-			cout << "Ingrese ID de socio a dar de baja (0 para volver al menu Socios): ";
+			cout << "Ingrese ID de socio a dar de baja (0 para volver al menu anterior): ";
 			cin >> id;
 
 			if (id == 0)
@@ -355,6 +387,11 @@ void bajaSocio()
 
 		if (confirm == 's')
 		{
+			aux.setEstado(false);
+			aux.modificarEnDisco(pos);
+			cout << endl << " -- El socio N° " << aux.getIdsocio() << "ha sido dado de baja-- " << endl;
+			anykey();
+			cls();
 			flag = true;
 		}
 		else
@@ -363,12 +400,6 @@ void bajaSocio()
 			flag = false;
 		}
 	} while (!flag);
-
-	aux.setEstado(false);
-	aux.modificarEnDisco(pos);
-	cout << endl << " -- El socio ha sido eliminado -- " << endl;
-	anykey();
-	cls();
 
 }
 
@@ -386,18 +417,19 @@ void modificar_socio()
 
 		do
 		{
-			cout << "Ingrese ID de socio a modificar (0 para volver al menu Socios): ";
+			cout << "Ingrese ID de socio a modificar (0 para volver al menu anterior): ";
 			cin >> idaux;
+
+			if (idaux == 0)
+			{
+				return;
+			}
 
 			pos = buscarSocioPorID(idaux) - 1;
 
-			if (pos <= -1 && idaux != 0)
+			if (pos <= -1)
 			{
 				cout << "El ID no se encuentra. Reintente por favor." << endl << endl;
-			}
-			else if (idaux == 0)
-			{
-				return;
 			}
 			else
 			{
@@ -859,17 +891,50 @@ void consulta_Por_Id() {
 
 	int ID = 0;
 	int pos = 0;
+	bool flag = false;
 	Socio socio;
 
-	cout << "Ingrese el ID a consultar: ";
-	cin >> ID;
+	do {
 
-	pos = BuscarIdArchivo(ID);
+		cls();
+		cout << "Ingrese el ID a consultar (0 para volver al menu anterior): ";
+		cin >> ID;
+
+
+		if (ID == 0)
+		{
+			return;
+		}
+
+		if (ID < 1)
+		{
+			cout << endl << "ID invalido. Reintente por favor." << endl;
+			flag = false;
+			anykey();
+		}
+		else
+		{
+			pos = BuscarIdArchivo(ID);
+
+			if (pos < 0)
+			{
+				cout << endl << "El ID no fue encontrado en el archivo de socios" << endl;
+				flag = false;
+				anykey();
+			}
+
+			else
+			{
+				flag = true;
+			}
+		}
+	} while (!flag);
 
 	if (pos > -1) {
 		socio.leerDeDisco(pos);
 		cout << endl;
 		socio.mostrar();
+		anykey();
 	}
 	else {
 		cout << "El ID no fue encontrado en el archivo de socios" << endl;
@@ -888,23 +953,54 @@ int BuscarIdArchivo(int Id) {
 
 void consultaPorDni() {
 
-	int dniConsulta = 0;
+	int dniConsulta;
 	int pos = 0;
 	Socio socio;
+	bool flag = false;
 
-	cout << "Ingrese el dni a consultar: ";
-	cin >> dniConsulta;
+	do {
 
-	pos = BuscarDniArchivo(dniConsulta);
-	if (pos > -1) {
-		socio.leerDeDisco(pos);
-		cout << endl;
-		socio.mostrar();
-	}
-	else {
-		cout << "El dni no fue encontrado en el archivo de socios" << endl;
-	}
+		cls();
+		cout << "Ingrese el dni a consultar (0 para volver al menu anterior): ";
+		cin >> dniConsulta;
+
+
+		if (dniConsulta == 0)
+		{
+			return;
+		}
+
+		if (dniConsulta < 1)
+		{
+			cout << endl << "DNI invalido. Reintente por favor." << endl;
+			flag = false;
+			anykey();
+		}
+		else
+		{
+			pos = BuscarDniArchivo(dniConsulta);
+
+			if (pos < 0)
+			{
+				cout << endl << "El dni no fue encontrado en el archivo de socios" << endl;
+				flag = false;
+				anykey();
+			}
+
+			else
+			{
+				flag = true;
+			}
+		}
+	} while (!flag);
+
+	socio.leerDeDisco(pos);
+	cout << endl;
+	socio.mostrar();
+	anykey();
+
 }
+
 int BuscarDniArchivo(int dniconsulta)
 {
 	Socio reg;
@@ -932,6 +1028,7 @@ void consulta_Por_Apellido() {
 
 	if (pos == -1) {
 		cout << "El apellido " << apellidoConsulta << " no existe en el archivo." << endl;
+		anykey();
 	}
 
 }
@@ -947,6 +1044,7 @@ int BuscarApellidoArchivo(const char* apellidoconsulta) {
 			flag = true;
 			reg.leerDeDisco(pos);
 			reg.mostrar();
+			anykey();
 			cout << endl;
 		};
 		pos++;

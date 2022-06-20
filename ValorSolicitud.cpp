@@ -1,5 +1,6 @@
 #include "ValorSolicitud.h"
 #include <iomanip>
+
 void ValorSolicitud::setValorSolicitud(int valor) {
 	_valorSolicitud = valor;
 }

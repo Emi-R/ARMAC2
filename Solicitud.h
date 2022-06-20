@@ -17,11 +17,10 @@ private:
 	bool _editable;
 	bool _estado;
 
-
 public:
 
 	//CONSTRUCTOR
-	Solicitud(int idSolicitud = 0, int idAdmin = 0, int idSocio = 0, bool estado = 0, int idArma = 0, int aprobado = 0);
+	Solicitud(int idSolicitud = 0, int idAdmin = 0, int idSocio = 0, bool estado = 0, int idArma = 0, int aprobado = 0, bool editable = true);
 
 	//SETTERS
 	void setIdSolicitud(int idSolicitud);

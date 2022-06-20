@@ -1,9 +1,10 @@
 #include "Pago.h"
 #include "PagoSolicitud.h"
+#include "administrador.h"
 
 using namespace rlutil;
 
-PagoCuota::PagoCuota(int idSocio, float valorCuota, int idCuota)
+PagoCuota::PagoCuota(int idSocio, float valorCuota, int idCuota, int idAdmin)
 {
 	Fecha fechaActual;
 
@@ -11,7 +12,7 @@ PagoCuota::PagoCuota(int idSocio, float valorCuota, int idCuota)
 	_importe = valorCuota;
 	_fechaPago = fechaActual;
 	_idCuota = idCuota;
-
+	_idAdmin = idAdmin;
 }
 
 void PagoCuota::setIdCuota(int id)
@@ -34,6 +35,11 @@ void PagoCuota::setFechaPago(Fecha fecha)
 	_fechaPago = fecha;
 }
 
+void PagoCuota::setIdAdmin(int idAdmin)
+{
+	_idAdmin = idAdmin;
+}
+
 int PagoCuota::getIdCuota()
 {
 	return _idCuota;
@@ -52,6 +58,11 @@ float PagoCuota::getImporte()
 Fecha PagoCuota::getFechaPago()
 {
 	return _fechaPago;
+}
+
+int PagoCuota::getIdAdmin()
+{
+	return _idAdmin;
 }
 
 bool PagoCuota::grabarEnDisco()
@@ -143,12 +154,13 @@ void cobrar_cuota()
 	int pos = 0;
 	bool flag = false;
 	bool flag2 = false;
+	int ID = 0;
 
 	Socio socio;
 	Fecha fechaActual;
+	Administrador admin;
 
 	do {
-
 		do {
 			cout << "Ingrese el ID de socio a cobrar (0 para volver al menu anterior): ";
 			cin >> idaux;
@@ -219,6 +231,29 @@ void cobrar_cuota()
 		{
 			PagoCuota pago(socio.getIdsocio(), totalAPagar, idCuota);
 			Fecha fechaActual;
+			do
+			{
+				cout << endl << "Ingrese el ID de administrador actual: ";
+				cin >> ID;
+
+				pos = buscarAdministradorPorID(ID);
+
+				if (pos > -1) {
+					admin.leerDeDisco(pos);
+					pago.setIdAdmin(admin.getIdAdmin());
+					pago.grabarEnDisco();
+					flag2 = true;
+					anykey();
+				}
+				else
+				{
+					cout << "El ID no fue encontrado en el archivo de administradores" << endl;
+					flag2 = false;
+					anykey();
+				}
+
+			} while (!flag2);
+
 			socio.setDeudor(false);
 			socio.setUltimoPago(fechaActual);
 			socio.modificarEnDisco(pos);
@@ -252,7 +287,6 @@ void actualizarEstadoCuotasSocios()
 	if (vec == NULL)
 	{
 		cout << "No hay memoria disponible." << endl;
-		anykey();
 		return;
 	}
 
@@ -260,7 +294,6 @@ void actualizarEstadoCuotasSocios()
 	actualizarCarteraSocios(vec, cantReg);
 
 	cout << "Estado de socios actualizado correctamente" << endl;
-	anykey();
 
 	delete vec;
 }
@@ -402,8 +435,8 @@ void PonerEnCeroVector(float* vec, int tam) {
 }
 void MostrarDetalleRecaudacionAnual(float* vec, float* vec2, int tam) {
 	string meses[12] = { "Enero","Febrero","Marzo","Abril","Mayo","Junio","Julio","Agosto","Septiembre","Octubre","Noviembre","Diciembre" };
-	int totalAnio = 0;
-	int totalAnio2 = 0;
+	float totalAnio = 0;
+	float totalAnio2 = 0;
 
 	cout << "------------------------------------------------";
 	cout << endl<<"\t  -- Recaudación Anual --                " << endl;

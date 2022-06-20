@@ -11,21 +11,24 @@ private:
 	int _idSocio;
 	float _importe;
 	Fecha _fechaPago;
+	int _idAdmin;
 
 public:
-	PagoCuota(int idSocio = 0, float valorCuota = 0, int idCuota = 0);
+	PagoCuota(int idSocio = 0, float valorCuota = 0, int idCuota = 0, int idAdmin = 0);
 
 	/// Setters
 	void setIdCuota(int );
 	void setIdSocio(int);
 	void setImporte(float);
 	void setFechaPago(Fecha);
+	void setIdAdmin(int);
 
 	/// Getters
 	int getIdCuota();
 	int getIdSocio();
 	float getImporte();
 	Fecha getFechaPago();
+	int getIdAdmin();
 
 	bool grabarEnDisco();
 	bool leerDeDisco(int);
