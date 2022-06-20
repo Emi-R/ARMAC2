@@ -23,51 +23,37 @@ Solicitud::Solicitud(int idSolicitud, int idAdmin, int idSocio, bool estado, int
 void Solicitud::setIdSolicitud(int idSolicitud) {
 	_idSolicitud = idSolicitud;
 };
-
 void Solicitud::setIdAdministrador(int idAdmin) {
 	_idAdministrador = idAdmin;
 };
-
 void Solicitud::setIdSocio(int idSocio) {
 	_idSocio = idSocio;
 };
-
 void Solicitud::setIdArma(int idArma) {
 	_idArma = idArma;
 };
-
 void Solicitud::setFechaSolicitud(Fecha FechaSolicitud) {
 	_FechaSolicitud = FechaSolicitud;
 }
-
 void Solicitud::setAprobado(int a)
 {
 	_aprobado = a;
 };
-
 void Solicitud::setEditable(bool e)
 {
 	_editable = e;
 }
-
 void Solicitud::setEstado(bool estado) {
 	_estado = estado;
 };
 
 int Solicitud::getIdSolicitud() { return _idSolicitud; }
-
 int Solicitud::getIdAdministrador() { return _idAdministrador; }
-
 int Solicitud::getIdSocio() { return _idSocio; }
-
 int Solicitud::getIdArma() { return _idArma; }
-
 Fecha Solicitud::getFechaSolicitud() { return _FechaSolicitud; }
-
 int Solicitud::getAprobado() { return _aprobado; }
-
 bool Solicitud::getEditable() {return _editable;}
-
 bool Solicitud::getEstado() { return _estado; }
 
 void Solicitud::cargarSolicitud() {
@@ -129,7 +115,6 @@ void Solicitud::cargarSolicitud() {
 
 	armaRegistro.grabarEnDisco();
 }
-
 void Solicitud::mostrarSolicitud() {
 
 	Arma arma;
@@ -177,7 +162,6 @@ bool Solicitud::grabarEnDisco() {
 
 	return escribio;
 }
-
 bool Solicitud::leerDeDisco(int pos) {
 	FILE* solicReg = fopen("solicitudes.dat", "rb");
 	if (solicReg == NULL) {
@@ -190,7 +174,6 @@ bool Solicitud::leerDeDisco(int pos) {
 
 	return leyo;
 }
-
 bool Solicitud::modificarEnDisco(int pos) {
 	FILE* solicReg = fopen("solicitudes.dat", "rb+");
 	if (solicReg == NULL) {

@@ -845,4 +845,3 @@ void todoAMayus(char* apellido)
 		apellido[i] = toupper(apellido[i]);
 	}
 }
-
