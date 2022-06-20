@@ -155,7 +155,6 @@ void Socio::cargar() {
 
 	PagoCuota cuotaInicial(this->getIdsocio(), valorCuota, idCuota);
 
-
 	cout << endl << " -- Valor de cuota a pagar: $ " << valorCuota << " --" << endl;
 
 	do
@@ -943,7 +942,7 @@ void consulta_Por_Id() {
 int BuscarIdArchivo(int Id) {
 	Socio reg;
 	int pos = 0;
-	while (reg.leerDeDisco(pos))
+	while (reg.leerDeDisco(pos)&& reg.getEstado())
 	{
 		if (reg.getIdsocio() == Id)return pos;
 		pos++;
@@ -980,7 +979,7 @@ void consultaPorDni() {
 		{
 			pos = BuscarDniArchivo(dniConsulta);
 
-			if (pos < 0)
+			if (pos <=-1)
 			{
 				cout << endl << "El dni no fue encontrado en el archivo de socios" << endl;
 				flag = false;

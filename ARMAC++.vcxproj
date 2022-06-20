@@ -149,6 +149,7 @@
     <ClCompile Include="PagoSolicitud.cpp" />
     <ClCompile Include="Pais.cpp" />
     <ClCompile Include="Persona.cpp" />
+    <ClCompile Include="RecaudacionesPorAdmin.cpp" />
     <ClCompile Include="Socio.cpp" />
     <ClCompile Include="Solicitud.cpp" />
     <ClCompile Include="ValorCuota.cpp" />
@@ -164,6 +165,7 @@
     <ClInclude Include="PagoSolicitud.h" />
     <ClInclude Include="Pais.h" />
     <ClInclude Include="Persona.h" />
+    <ClInclude Include="recaudacionesPorAdmin.h" />
     <ClInclude Include="Socio.h" />
     <ClInclude Include="Solicitud.h" />
     <ClInclude Include="ValorCuota.h" />

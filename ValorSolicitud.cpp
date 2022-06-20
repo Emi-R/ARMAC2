@@ -36,7 +36,7 @@ bool ValorSolicitud::grabarEnDisco() {
 	return escribio;
 }
 
-int   ValorSolicitud::leerEnDisco(int pos) {
+int ValorSolicitud::leerEnDisco(int pos) {
 
 	FILE* fReg = fopen("preciossolicitud.dat", "rb");
 
@@ -58,7 +58,7 @@ int   ValorSolicitud::leerEnDisco(int pos) {
 void ValorSolicitud::mostrar()
 {
 	cout << left;
-	cout << setw(10) << this->getValorSolicitud ();
+	cout << setw(10) << this->getValorSolicitud();
 	this->getFechaActualizacion().mostrarFecha();
 	cout << endl;
 
@@ -93,7 +93,7 @@ float getUltimoPrecioSolicitud()
 
 	aux.leerEnDisco(pos);
 
-	return aux.grabarEnDisco ();
+	return aux.getValorSolicitud();
 
 }
 int checkArchivoPrecioSolicitud()
@@ -114,7 +114,7 @@ int checkArchivoPrecioSolicitud()
 		else
 		{
 			float aux;
-			cout << "Ingrese precio de la solicitud: ";
+			cout << "Ingrese precio inicial de la solicitud: ";
 			cin >> aux;
 
 			modificarPrecioSolicitud(aux);
@@ -127,7 +127,7 @@ int checkArchivoPrecioSolicitud()
 	}
 	else
 	{
-		cout << "Archivo de precio de cuotas cargado correctamente" << endl;
+		cout << "Archivo de precio de solicitud cargado correctamente" << endl;
 	}
 
 	fclose(fReg);

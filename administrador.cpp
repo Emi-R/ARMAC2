@@ -294,6 +294,23 @@ int buscarAdministradorPorID(int id)
 	return -1;
 }
 
+int buscarCantidadRegistrosAdmin() {
+
+	FILE* p = fopen("administradores.dat", "rb");
+	if (p == NULL) {
+		return 0;
+	}
+
+	size_t bytes;
+	int cant_reg;
+
+	fseek(p, 0, SEEK_END);
+	bytes = ftell(p);
+	fclose(p);
+	cant_reg = bytes / sizeof(Administrador);
+	return cant_reg;
+}
+
 int checkArchivoAdmins() {
 
 	FILE* fReg = fopen("administradores.dat", "rb");

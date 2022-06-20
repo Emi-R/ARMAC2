@@ -200,7 +200,7 @@ void cobrar_cuota()
 		char confirm;
 
 		socio.leerDeDisco(pos);
-		socio.mostrar(); 
+		socio.mostrar();
 		int cantMesesAdeudados = 0;
 
 		if (socio.getUltimoPago().getAnio() == fechaActual.getAnio())
@@ -348,7 +348,7 @@ void buscarRecaudacionesPorSocio(float* vecRecaudacion, int tam) {
 	while (cuotas.leerDeDisco(pos++)) {
 		int idSocio = cuotas.getIdSocio();
 		float recaudacion = cuotas.getImporte();
-		vecRecaudacion[idSocio-1] += recaudacion;
+		vecRecaudacion[idSocio - 1] += recaudacion;
 	}
 
 	pos = 0;
@@ -400,7 +400,7 @@ void Informe_Recaudacion_Anual() {
 
 	PonerEnCeroVector(vDinamicoCuota, Meses);
 	PonerEnCeroVector(vDinamicoSolicitudes, Meses);
-	cout << "Ingrese el año para  consultar su recaudacion:" << endl;
+	cout << "Ingrese el año para consultar su recaudacion: ";
 	cin >> Anio;
 
 	RecaudacionAnualCuota(Anio, vDinamicoCuota, Meses);
@@ -410,25 +410,28 @@ void Informe_Recaudacion_Anual() {
 }
 void RecaudacionAnualCuota(int anio, float* vec, int tam) {
 	PagoCuota aux;
-	for (int i = 0; i < tam; i++) {
+	int pos = 0;
+
+	while (aux.leerDeDisco(pos))
+	{
 		if (aux.getFechaPago().getAnio() == anio) {
-			aux.leerDeDisco(i);
 			vec[aux.getFechaPago().getMes() - 1] += aux.getImporte();
 		}
+		pos++;
 	}
 }
 void RecaudacionAnualSolictudes(int anio, float* vec, int tam) {
 	PagoSolicitud aux;
 	int pos = 0;
 
-	while (aux.leerEnDisco(pos)) {
+	while (aux.leerEnDisco(pos++)) {
 		if (aux.getFechaPago().getAnio() == anio) {
 			vec[aux.getFechaPago().getMes() - 1] += aux.getImporte();
 		}
 	}
 }
 void PonerEnCeroVector(float* vec, int tam) {
-	for (int i = 0; i < tam; i++) 
+	for (int i = 0; i < tam; i++)
 	{
 		vec[i] = 0;
 	}
@@ -439,7 +442,7 @@ void MostrarDetalleRecaudacionAnual(float* vec, float* vec2, int tam) {
 	float totalAnio2 = 0;
 
 	cout << "------------------------------------------------";
-	cout << endl<<"\t  -- Recaudación Anual --                " << endl;
+	cout << endl << "\t  -- Recaudación Anual --                " << endl;
 	cout << "------------------------------------------------" << endl << endl;
 	cout << left;
 	cout << setw(11) << "MES";
@@ -458,7 +461,7 @@ void MostrarDetalleRecaudacionAnual(float* vec, float* vec2, int tam) {
 		cout << setw(10) << vec2[i] << endl;
 		totalAnio += vec[i];
 		totalAnio2 += vec2[i];
-		
+
 	}
 
 	cout << "-------------------------------------------------" << endl;

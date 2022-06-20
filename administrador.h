@@ -60,6 +60,8 @@ void listado_general_admin();
 int buscarAdministradorPorDni(int);
 int buscarAdministradorPorID(int);
 
+int buscarCantidadRegistrosAdmin();
+
 int checkArchivoAdmins();
 
 void ModificarDNIAdmin(Administrador aux, int pos);

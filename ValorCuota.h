@@ -29,6 +29,10 @@ float getUltimoPrecioCuota();
 
 int checkArchivoPrecioCuota();
 
-void modificarPrecioCuota(float nuevoPrecio);
+void modificar_precio_cuota();
+
+void modificarPrecio(float nuevoPrecio);
 
 void listarPrecios();
+
+void listar_historial_precios_cuota();

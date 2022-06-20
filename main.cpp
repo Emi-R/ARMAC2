@@ -15,16 +15,19 @@ int main()
 {
 	setlocale(LC_ALL, "Spanish");
 
-	bool flag;
+	bool flag =false;
 
-	//instalacionArchivos();
+	instalacionArchivos();
 
-	bool  = login();
+	/*while (!flag)
+	{
+		login();
 
-	while()
+		flag = menuPrincipal();
 
-	menuPrincipal();
+	}*/
 
+	flag = menuPrincipal();
 
 	/// Cambiar espacios de nombre en excel a _
 

@@ -1,4 +1,7 @@
 #include "ValorCuota.h"
+#include "rlutil.h"
+
+using namespace rlutil;
 
 void ValorCuota::setValorCuota(int valor) {
 	_valorCuota = valor;
@@ -57,6 +60,7 @@ int ValorCuota::leerEnDisco(int pos) {
 void ValorCuota::mostrar()
 {
 	cout << left;
+	cout << setw(1) << "$";
 	cout << setw(10) << this->getvalorCuota();
 	this->getFechaActualizacion().mostrarFecha();
 	cout << endl;
@@ -120,7 +124,7 @@ int checkArchivoPrecioCuota()
 			cout << "Ingrese precio de cuota inicial: ";
 			cin >> aux;
 
-			modificarPrecioCuota(aux);
+			modificarPrecio(aux);
 
 			cout << "Archivo de precio de cuotas creado correctamente con precio inicial: "<< aux << endl;
 
@@ -139,7 +143,28 @@ int checkArchivoPrecioCuota()
 
 }
 
-void modificarPrecioCuota(float nuevoPrecio)
+void modificar_precio_cuota()
+{
+	float aux = 0;
+	Fecha fechaActual;
+
+	cls();
+	cout << "Ingrese el precio nuevo: $";
+	cin >> aux;
+
+	modificarPrecio(aux);
+
+	cls();
+	cout << "\t -- Precio modificado correctamente --" << endl <<endl;
+	cout << "Precio: $" << aux << endl;
+	cout << "Fecha: ";
+	fechaActual.mostrarFecha();
+
+	anykey();
+
+}
+
+void modificarPrecio(float nuevoPrecio)
 {
 	ValorCuota aux;
 	Fecha fechaActual;
@@ -151,18 +176,21 @@ void modificarPrecioCuota(float nuevoPrecio)
 
 }
 
-void listarPrecios()
+void listar_historial_precios_cuota()
 {
 	ValorCuota aux;
 	int pos = 0;
 
 	cout << left;
 	cout << setw(10) << "IMPORTE";
-	cout << setw(10) << "FECHA ACTUALIZADA" << endl;
+	cout << setw(1) << " ";
+	cout << setw(10) << "FECHA ACTUALIZACION" << endl;
 	cout << "-------------------------------" << endl;
 
 	while (aux.leerEnDisco(pos++))
 	{
 		aux.mostrar();
 	}
+
+	anykey();
 }

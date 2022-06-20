@@ -12,6 +12,8 @@
 #include "Pago.h"
 #include "Arma.h"
 #include "ValorCuota.h"
+#include "ValorSolicitud.h"
+#include "RecaudacionesPorAdmin.h"
 
 using namespace std;
 using namespace rlutil;
@@ -25,12 +27,15 @@ void instalacionArchivos()
 	checkArchivoAdmins();
 	checkArchivoSolicitud();
 	checkArchivoArmas();
+
 	checkArchivoPagosCuota();
+	checkArchivoPagosSolicitud();
 
 	checkArchivoPrecioCuota();
 	actualizarEstadoCuotasSocios();
 
-	//checkArchivoPrecioSolicitud();
+	checkArchivoPrecioSolicitud();
+
 
 	cout << endl << "\t-- Presione enter para continuar --";
 	system("PAUSE > null");
@@ -142,9 +147,11 @@ bool login() {
 		}
 
 	} while (!flag);
+
+	return true;
 }
 
-void menuPrincipal() {
+bool menuPrincipal() {
 
 	int opcion;
 	char confirmarSalida;
@@ -163,6 +170,7 @@ void menuPrincipal() {
 		cout << "5 - Menú Informes" << endl;
 		cout << "6 - Menú Configuraciones" << endl;
 		cout << "--------------------------" << endl;
+		cout << "9 - Cerrar sesion" << endl;
 		cout << "0 - Salir del programa" << endl << endl;
 
 		cout << "Opción: ";
@@ -189,6 +197,20 @@ void menuPrincipal() {
 		case 6:
 			menuConfiguracion();
 			break;
+		case 9:
+			cout << "¿Desea cerrar la sesion? (S/N) ";
+			cin >> confirmarSalida;
+
+			if (tolower(confirmarSalida)=='s')
+			{
+				cls();
+				return false;
+			}
+			else
+			{
+				salir = false;
+			}
+			break;
 		case 0:
 			cout << "¿Confirma salir? (S/N) ";
 			cin >> confirmarSalida;
@@ -198,8 +220,8 @@ void menuPrincipal() {
 			break;
 		}
 	}
+	return true;
 }
-
 
 ////////////////////////////
 /// Menu Socios y submenus
@@ -502,11 +524,9 @@ void menuSolicitudes() {
 			break;
 		case 4:
 			menuListadosSolicitudes();
-
 			break;
 		case 5:
 			menuConsultasSolicitudes();
-
 			break;
 		case 0:
 			cout << "¿Volver al menu anterior? (S/N) ";
@@ -794,8 +814,10 @@ void menuInformes() {
 		cout << "--------------------------" << endl;
 		cout << "1 - Recaudación anual" << endl;
 		cout << "2 - Recaudación por socio" << endl;
-		cout << "3 - Recaudación por tipo de arma" << endl;
+		cout << "3 - Recaudación por administrador" << endl;
+		cout << "4 - Recaudación por tipo de arma" << endl;
 		cout << "--------------------------" << endl;
+		cout << "5 - Listar historial de precios de cuota" << endl;
 		cout << "0 - Volver al menú principal" << endl << endl;
 
 		cout << "Opción: ";
@@ -812,8 +834,10 @@ void menuInformes() {
 			recaudacionPorSocio();
 			break;
 		case 3:
-
-
+			recaudacionPorAdmin();
+			break;
+		case 5:
+			listar_historial_precios_cuota();
 			break;
 		case 0:
 			cout << "¿Volver al menu anterior? (S/N) ";
@@ -842,7 +866,7 @@ void menuConfiguracion() {
 		cls();
 		cout << "\tConfiguraciones" << endl;
 		cout << "--------------------------" << endl;
-		cout << "1 - Realizar copia de seguridad" << endl;
+		cout << "1 - Modificar precio de cuota" << endl;
 		cout << "2 - Restaurar copia de seguridad" << endl;
 		cout << "3 - Exportar archivo CSV" << endl;
 		cout << "--------------------------" << endl;
@@ -855,7 +879,7 @@ void menuConfiguracion() {
 
 		switch (opcion) {
 		case 1:
-
+			modificar_precio_cuota();
 			break;
 		case 2:
 

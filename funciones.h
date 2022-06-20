@@ -3,12 +3,12 @@
 
 void instalacionArchivos();
 
-void login();
+bool login();
 
 void todoAMayus(char*);
 
 /// Menu
-void menuPrincipal();
+bool menuPrincipal();
 
 /// Menu Socios y submenus
 void menuSocios();

@@ -39,3 +39,5 @@ public:
 };
 
 int generarIDPagoSolicitud();
+
+int checkArchivoPagosSolicitud();
