@@ -65,6 +65,12 @@ int generarIdSolicitud();
 void listadoSolicitudes();
 void mostrarEstadoApSolicitud(int estadoAprobacion);
 
+void listadoSolicitudesAprobadas();
+void listadoSolicitudesPendientes();
+void listadoSolicitudesDesaprobadas();
+
+void SolicitudesPendientesPorSocio(int idSocio);
+
 void listarSolicitudesPorIdDesc();
 void ordernarVecSolicPorIdDesc(Solicitud* vSolicitudes, int tam);
 

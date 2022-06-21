@@ -182,6 +182,7 @@ void listar_historial_precios_cuota()
 	int pos = 0;
 
 	cout << left;
+	cout << " -- Precios históricos de cuota -- " << endl << endl;
 	cout << setw(10) << "IMPORTE";
 	cout << setw(1) << " ";
 	cout << setw(10) << "FECHA ACTUALIZACION" << endl;

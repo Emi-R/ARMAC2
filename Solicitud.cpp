@@ -55,13 +55,12 @@ int Solicitud::getIdSocio() { return _idSocio; }
 int Solicitud::getIdArma() { return _idArma; }
 Fecha Solicitud::getFechaSolicitud() { return _FechaSolicitud; }
 int Solicitud::getAprobado() { return _aprobado; }
-bool Solicitud::getEditable() {return _editable;}
+bool Solicitud::getEditable() { return _editable; }
 bool Solicitud::getEstado() { return _estado; }
 
 void Solicitud::cargarSolicitud() {
 
 	int aux;
-	int estadoPendiente = 0;
 	int pos = 0;
 	int posSocio = 0;
 	Arma armaRegistro;
@@ -105,7 +104,7 @@ void Solicitud::cargarSolicitud() {
 
 		posSocio = buscarSocioPorID(aux);
 
-		if (posSocio <0)
+		if (posSocio < 0)
 		{
 			cout << "El ID de socio no esta registrado o es incorrecto. Ingrese de nuevo por favor." << endl;
 		}
@@ -138,8 +137,8 @@ void Solicitud::cargarSolicitud() {
 
 	this->setFechaSolicitud(fechaSolicitud);
 
-	_estado = true;
-	this->setAprobado(estadoPendiente);
+	this->setEstado(true);
+	this->setAprobado(0);
 	this->setIdSolicitud(generarIdSolicitud() + 1);
 	this->setEditable(true);
 
@@ -287,6 +286,30 @@ void listadoSolicitudes() {
 	}
 }
 
+void SolicitudesPendientesPorSocio(int idSocio) {
+
+	Solicitud solic;
+	int p = 0;
+
+	cout << left;
+	cout << setw(15) << "ID SOLICITUD";
+	cout << setw(20) << "ID ADMINISTRADOR";
+	cout << setw(12) << "ID SOCIO";
+	cout << setw(12) << "ID ARMA";
+	cout << setw(15) << "ESTADO";
+	cout << setw(15) << "FECHA CREACION" << endl;
+	cout << "------------------------------------------------------------------------------------------";
+	cout << endl;
+
+	while (solic.leerDeDisco(p++))
+	{
+		if (solic.getIdSocio() == idSocio && solic.getAprobado() == 0)
+		{
+			solic.listarSolicitud();
+		}
+	}
+}
+
 void Solicitud::listarSolicitud() {
 
 	if (this->getEstado()) {
@@ -337,6 +360,79 @@ void cargarNuevaSolicitud() {
 	anykey();
 }
 
+void listadoSolicitudesAprobadas()
+{
+	Solicitud solic;
+	int p = 0;
+
+	cout << left;
+	cout << setw(15) << "ID SOLICITUD";
+	cout << setw(20) << "ID ADMINISTRADOR";
+	cout << setw(12) << "ID SOCIO";
+	cout << setw(12) << "ID ARMA";
+	cout << setw(15) << "ESTADO";
+	cout << setw(15) << "FECHA CREACION" << endl;
+	cout << "------------------------------------------------------------------------------------------";
+	cout << endl;
+
+	while (solic.leerDeDisco(p))
+	{
+		if (solic.getAprobado() == 1)
+		{
+			solic.listarSolicitud();
+		}
+		p++;
+	}
+}
+void listadoSolicitudesPendientes() {
+
+	Solicitud solic;
+	int p = 0;
+
+	cout << left;
+	cout << setw(15) << "ID SOLICITUD";
+	cout << setw(20) << "ID ADMINISTRADOR";
+	cout << setw(12) << "ID SOCIO";
+	cout << setw(12) << "ID ARMA";
+	cout << setw(15) << "ESTADO";
+	cout << setw(15) << "FECHA CREACION" << endl;
+	cout << "------------------------------------------------------------------------------------------";
+	cout << endl;
+
+	while (solic.leerDeDisco(p++))
+	{
+		if (solic.getAprobado() == 0)
+		{
+		solic.listarSolicitud();
+		}
+
+	}
+}
+void listadoSolicitudesDesaprobadas() {
+	Solicitud solic;
+	int p = 0;
+
+	cout << left;
+	cout << setw(15) << "ID SOLICITUD";
+	cout << setw(20) << "ID ADMINISTRADOR";
+	cout << setw(12) << "ID SOCIO";
+	cout << setw(12) << "ID ARMA";
+	cout << setw(15) << "ESTADO";
+	cout << setw(15) << "FECHA CREACION" << endl;
+	cout << "------------------------------------------------------------------------------------------";
+	cout << endl;
+
+	while (solic.leerDeDisco(p))
+	{
+		if (solic.getAprobado() == -1)
+		{
+			solic.listarSolicitud();
+		}
+		p++;
+	}
+}
+
+
 void listarSolicitudesPorIdDesc() {
 
 	int cantSolicitudes = buscarCantidadSolicitudes();
@@ -357,7 +453,7 @@ void listarSolicitudesPorIdDesc() {
 	delete solicitudes;
 }
 
-void ordernarVecSolicPorIdDesc(Solicitud *vSolicitudes, int tam) {
+void ordernarVecSolicPorIdDesc(Solicitud* vSolicitudes, int tam) {
 	Solicitud aux;
 	for (int i = 0; i < tam - 1; i++) {
 		for (int j = i + 1; j < tam; j++) {
@@ -395,7 +491,7 @@ void ordernarVectorSolicPorFechaDesc(Solicitud* vec, int tam) {
 
 	for (int i = 0; i < tam - 1; i++) {
 		for (int j = i + 1; j < tam; j++) {
-			if (vec[i].getFechaSolicitud() >  vec[j].getFechaSolicitud()) {
+			if (vec[i].getFechaSolicitud() > vec[j].getFechaSolicitud()) {
 				aux = vec[i];
 				vec[i] = vec[j];
 				vec[j] = aux;
@@ -403,9 +499,9 @@ void ordernarVectorSolicPorFechaDesc(Solicitud* vec, int tam) {
 		}
 	}
 }
-void mostrarSolicitudes(Solicitud *vSolicitudes, int tam) {
-	cout << "LISTADO DE SOLICITUDES" << endl;
-	cout << "---------------------------------------------------------------------------------" << endl;
+void mostrarSolicitudes(Solicitud* vSolicitudes, int tam) {
+	cout << " -- Listado de solicitudes --" << endl;
+	cout << "---------------------------------------------------------------------------------------" << endl;
 	cout << left;
 	cout << setw(15) << "ID SOLICITUD";
 	cout << setw(20) << "ID ADMINISTRADOR";
@@ -413,6 +509,7 @@ void mostrarSolicitudes(Solicitud *vSolicitudes, int tam) {
 	cout << setw(15) << "ID ARMA";
 	cout << setw(15) << "ESTADO";
 	cout << setw(15) << "FECHA CREACION" << endl;
+	cout << "---------------------------------------------------------------------------------------" << endl;
 
 	for (int i = 0; i < tam; i++) {
 		vSolicitudes[i].listarSolicitud();
@@ -655,7 +752,7 @@ void modificar_solicitud()
 					flag = false;
 				}
 			}
-		
+
 		} while (!flag);
 
 		cls();
@@ -678,10 +775,10 @@ void modificar_solicitud()
 
 		switch (opcion) {
 		case 1:
-			aprobarSolicitud(aux,pos);
+			aprobarSolicitud(aux, pos);
 			break;
 		case 2:
-			desaprobarSolicitud(aux,pos);
+			desaprobarSolicitud(aux, pos);
 			break;
 		case 3:
 			bajaSolicitud(aux, pos);
@@ -696,7 +793,7 @@ void modificar_solicitud()
 	}
 }
 
-void aprobarSolicitud(Solicitud aux,int pos)
+void aprobarSolicitud(Solicitud aux, int pos)
 {
 	bool flag = false;
 	char confirm;

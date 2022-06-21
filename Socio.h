@@ -75,6 +75,8 @@ int CantidadRegistrosSocio();
 void listarSocioPorFecha();
 void ordenarVectorPorFecha(Socio* vec, int tam);
 
+void listadoSolicitudesPendientesPorSocio();
+
 void consulta_Por_Id();
 int BuscarIdArchivo(int Id);
 

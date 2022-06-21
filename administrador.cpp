@@ -579,7 +579,6 @@ void ModificarDNIAdmin(Administrador aux, int pos)
 	anykey();
 	cls();
 }
-
 void ModificarNombreAdmin(Administrador aux, int pos) {
 
 	char newName[30];
@@ -617,7 +616,6 @@ void ModificarNombreAdmin(Administrador aux, int pos) {
 	anykey();
 	cls();
 }
-
 void ModificarApellidoAdmin(Administrador aux, int pos)
 {
 	char newName[30];
@@ -655,7 +653,6 @@ void ModificarApellidoAdmin(Administrador aux, int pos)
 	anykey();
 	cls();
 }
-
 void ModificarContrasenia(Administrador aux, int pos)
 {
 	char aux2[30];

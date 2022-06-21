@@ -26,6 +26,8 @@ float getUltimoPrecioSolicitud();
 
 int checkArchivoPrecioSolicitud();
 
-void modificarPrecioSolicitud(float nuevoPrecio);
+void modificar_precio_solicitud();
 
-void listarPreciosSolicitud();
+void modificar_importe_solicitud(float nuevoPrecio);
+
+void listar_historial_precios_solicitud();

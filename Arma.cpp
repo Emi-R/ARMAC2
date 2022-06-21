@@ -491,6 +491,8 @@ void listadoDeArmasPorNumDeSerie() {
 	delete armas;
 }
 
+
+
 int buscarCantidadArmas() {
 
 	FILE* p = fopen("armas.dat", "rb");
@@ -504,11 +506,9 @@ int buscarCantidadArmas() {
 	unsigned int cantidadArmas = bytes / sizeof Arma;
 	return cantidadArmas;
 }
-
 void copiarArmas(Arma* vArma, int tam) {
 	for (int i = 0; i < tam; i++) { vArma[i].leerDeDisco(i); }
 }
-
 void ordernarVecPorNumSerie(Arma* vArma, int tam) {
 
 	Arma aux;
@@ -523,7 +523,6 @@ void ordernarVecPorNumSerie(Arma* vArma, int tam) {
 		}
 	}
 }
-
 void mostrarListadoArmas(Arma* vArma, int tam) {
 
 	cout << left;
@@ -555,7 +554,6 @@ void listados_Armas_Por_Tipo() {
 	ordenarVector(vDinamico, cantReg);
 	MostrarVector(vDinamico, cantReg);
 }
-
 int CantidadRegistroArmas() {
 	FILE* p = fopen("armas.dat", "rb");
 	if (p == NULL) {
@@ -571,7 +569,6 @@ int CantidadRegistroArmas() {
 	cant_reg = bytes / sizeof(Arma);
 	return cant_reg;
 }
-
 void ordenarVector(Arma* vec, int tam) {
 	Arma aux;
 
@@ -585,7 +582,6 @@ void ordenarVector(Arma* vec, int tam) {
 		}
 	}
 }
-
 void MostrarVector(Arma* vec, int tam) {
 
 	cout << left;
@@ -861,3 +857,20 @@ void ModificarNumSerie(Arma aux, int pos)
 	anykey();
 	cls();
 }
+
+//void listado_armas_por_pais()
+//{
+//	int cantReg = CantidadRegistroPaises();
+//	if (cantReg == 0) {
+//		cout << "No hay paises registrados";
+//		anykey();
+//		return;
+//	}
+//	int* vPaises;
+//	int* vPaises = new int[cantReg];
+//	if (vPaises == NULL) return;
+//	PonerEnCeroVector(vPaises, cantReg);
+//	cargarVectorPaises(vPaises, cantReg);
+//	MostrarVector(vDinamico, cantReg);
+//
+//}

@@ -154,6 +154,7 @@ bool menuPrincipal() {
 		cout << "6 - Menú Configuraciones" << endl;
 		cout << "--------------------------" << endl;
 		cout << "9 - Cerrar sesion" << endl;
+		cout << "--------------------------" << endl;
 		cout << "0 - Salir del programa" << endl << endl;
 
 		cout << "Opción: ";
@@ -528,8 +529,11 @@ void menuListadosSolicitudes() {
 		cout << "\tListados Solicitudes" << endl;
 		cout << "--------------------------" << endl;
 		cout << "1 - Listar todas las Solicitudes" << endl;
-		cout << "2 - Listar Solicitudes orden descendente" << endl;
-		cout << "3 - Listar Solicitudes por Fecha Descendente" << endl;
+		cout << "2 - Listar Solicitudes por orden descendente" << endl;
+		cout << "3 - Listar Solicitudes por fecha Descendente" << endl;
+		cout << "4 - Listar Solicitudes aprobadas" << endl;
+		cout << "5 - Listar Solicitudes pendientes" << endl;
+		cout << "6 - Listar Solicitudes desaprobadas" << endl;
 		cout << "--------------------------" << endl;
 		cout << "0 - Volver al menú principal" << endl << endl;
 
@@ -552,8 +556,16 @@ void menuListadosSolicitudes() {
 			anykey();
 			break;
 		case 4:
-
-
+			listadoSolicitudesAprobadas();
+			anykey();
+			break;
+		case 5:
+			listadoSolicitudesPendientes();
+			anykey();
+			break;
+		case 6:
+			listadoSolicitudesDesaprobadas();
+			anykey();
 			break;
 		case 0:
 			cout << "¿Volver al menu anterior? (S/N) ";
@@ -581,6 +593,7 @@ void menuConsultasSolicitudes()
 		cout << "1 - Consulta por ID de solicitud" << endl;
 		cout << "2 - Consulta por Fecha" << endl;
 		cout << "3 - Consulta por Año" << endl;
+		cout << "3 - Consulta solicitudes pendientes por socio" << endl;
 		cout << "--------------------------" << endl;
 		cout << "0 - Volver al menú principal" << endl << endl;
 
@@ -603,8 +616,8 @@ void menuConsultasSolicitudes()
 			anykey();
 			break;
 		case 4:
-
-
+			listadoSolicitudesPendientesPorSocio();
+			anykey();
 			break;
 		case 0:
 			cout << "¿Volver al menu anterior? (S/N) ";
@@ -791,6 +804,8 @@ void menuInformes() {
 		cout << "4 - Recaudación por tipo de arma" << endl;
 		cout << "--------------------------" << endl;
 		cout << "5 - Listar historial de precios de cuota" << endl;
+		cout << "6 - Listar historial de precios de solicitud" << endl;
+		cout << "--------------------------" << endl;
 		cout << "0 - Volver al menú principal" << endl << endl;
 
 		cout << "Opción: ";
@@ -810,6 +825,9 @@ void menuInformes() {
 			break;
 		case 5:
 			listar_historial_precios_cuota();
+			break;
+		case 6:
+			listar_historial_precios_solicitud();
 			break;
 		case 0:
 			cout << "¿Volver al menu anterior? (S/N) ";
@@ -837,11 +855,17 @@ void menuConfiguracion() {
 		setBackgroundColor(DARKGREY);
 		cls();
 		cout << "\tConfiguraciones" << endl;
-		cout << "--------------------------" << endl;
-		cout << "1 - Modificar precio de cuota" << endl;
-		cout << "2 - Hacer copia de seguridad" << endl;
-		cout << "3 - Exportar archivo CSV" << endl;
-		cout << "--------------------------" << endl;
+		cout << "----------------------------------" << endl;
+		cout << "-------  Estado de cuotas  -------" << endl;
+		cout << "1 - Actualizar deudores en archivo" << endl;
+		cout << "------------  Precios  -----------" << endl;
+		cout << "2 - Modificar precio de cuota" << endl;
+		cout << "3 - Modificar precio de solicitud" << endl;
+		/*cout << "----------------------------------" << endl;*/
+		cout << "------------  Archivos  ----------" << endl;
+		cout << "4 - Hacer copia de seguridad" << endl;
+		cout << "5 - Exportar archivo CSV" << endl;
+		cout << "----------------------------------" << endl;
 		cout << "0 - Volver al menú principal" << endl << endl;
 
 		cout << "Opción: ";
@@ -851,12 +875,20 @@ void menuConfiguracion() {
 
 		switch (opcion) {
 		case 1:
-			modificar_precio_cuota();
+			actualizarEstadoCuotasSocios();
+			anykey();
 			break;
 		case 2:
-			backup_socios();
+			modificar_precio_cuota();
 			break;
 		case 3:
+			modificar_precio_solicitud();
+			break;
+		case 4:
+			backup_socios();
+			anykey();
+			break;
+		case 5:
 			exportarCSVSocios();
 			break;
 		case 0:
@@ -908,10 +940,9 @@ bool exportarCSVSocios() {
 		myFile << reg.getIdsocio() << ';' << reg.getDni() << ';' << reg.getApellido() << ';' << reg.getNombre() << ';' << fecha1 << ';' << fecha2 << endl;
 	}
 
-	cout << endl << "Listado 'listadoBaseDeCalculo.CVS' exportado correctamente" << endl;
+	cout << "Listado 'listadoSocios.csv' exportado correctamente" << endl;
 	system("pause");
 	system("cls");
-
 
 	return true;
 

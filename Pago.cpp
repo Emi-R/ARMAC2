@@ -295,6 +295,7 @@ void actualizarEstadoCuotasSocios()
 
 	cout << "Estado de socios actualizado correctamente" << endl;
 
+
 	delete vec;
 }
 
@@ -456,6 +457,7 @@ void MostrarDetalleRecaudacionAnual(float* vec, float* vec2, int tam) {
 	float totalAnio = 0;
 	float totalAnio2 = 0;
 
+	cls();
 	cout << "------------------------------------------------";
 	cout << endl << "\t  -- Recaudación Anual --                " << endl;
 	cout << "------------------------------------------------" << endl << endl;
@@ -485,6 +487,10 @@ void MostrarDetalleRecaudacionAnual(float* vec, float* vec2, int tam) {
 	cout << setw(15) << totalAnio;
 	cout << setw(1) << "$";
 	cout << setw(5) << totalAnio2 << endl;
+	cout << "-------------------------------------------------" << endl;
+	cout << setw(21) << "Total recaudado";
+	cout << setw(1) << "$";
+	cout << setw(7) << totalAnio + totalAnio2 << endl;
 	cout << "-------------------------------------------------" << endl;
 
 

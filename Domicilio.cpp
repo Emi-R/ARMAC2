@@ -109,13 +109,11 @@ void Domicilio::cargarDomicilio() {
 		}
 	} while (_altura < 0);
 
-	//int longitud = 0;
-
 	do {
 		cout << "Departamento o piso (si es casa, ingrese PB): ";
 		cin.ignore();
 		cin.getline(_dpto, 9);
-		//longitud = strlen(_dpto);
+
 		if (strlen(_dpto) < 0) {
 			cout << "El depto ingresado es incorrecto. Ingrese nuevamente." << endl;
 		}

@@ -1,5 +1,7 @@
 #include "ValorSolicitud.h"
 #include <iomanip>
+#include "rlutil.h"
+using namespace rlutil;
 
 void ValorSolicitud::setValorSolicitud(int valor) {
 	_valorSolicitud = valor;
@@ -58,6 +60,7 @@ int ValorSolicitud::leerEnDisco(int pos) {
 void ValorSolicitud::mostrar()
 {
 	cout << left;
+	cout << setw(1) << "$";
 	cout << setw(10) << this->getValorSolicitud();
 	this->getFechaActualizacion().mostrarFecha();
 	cout << endl;
@@ -117,7 +120,7 @@ int checkArchivoPrecioSolicitud()
 			cout << "Ingrese precio inicial de la solicitud: ";
 			cin >> aux;
 
-			modificarPrecioSolicitud(aux);
+			modificar_importe_solicitud(aux);
 
 			cout << "Archivo de valor de solicitudes creado correctamente con precio inicial: " << aux << endl;
 
@@ -135,7 +138,27 @@ int checkArchivoPrecioSolicitud()
 	return 1;
 
 }
-void modificarPrecioSolicitud(float nuevoPrecio) {
+
+void modificar_precio_solicitud()
+{
+	float aux = 0;
+	Fecha fechaActual;
+
+	cls();
+	cout << "Ingrese el precio nuevo: $";
+	cin >> aux;
+
+	modificar_importe_solicitud(aux);
+
+	cls();
+	cout << "\t -- Precio modificado correctamente --" << endl << endl;
+	cout << "Precio: $" << aux << endl;
+	cout << "Fecha: ";
+	fechaActual.mostrarFecha();
+
+	anykey();
+}
+void modificar_importe_solicitud(float nuevoPrecio) {
 	ValorSolicitud aux;
 	Fecha fechaActual;
 
@@ -144,19 +167,22 @@ void modificarPrecioSolicitud(float nuevoPrecio) {
 
 	aux.grabarEnDisco();
 }
-void listarPreciosSolicitud()
+
+void listar_historial_precios_solicitud()
 {
 	ValorSolicitud aux;
 	int pos = 0;
 
 	cout << left;
+	cout << " -- Precios históricos de solicitud -- " << endl << endl;
 	cout << setw(10) << "IMPORTE";
-	cout << setw(10) << "FECHA ACTUALIZADA" << endl;
+	cout << setw(1) << " ";
+	cout << setw(10) << "FECHA ACTUALIZACION" << endl;
 	cout << "-------------------------------" << endl;
 
 	while (aux.leerEnDisco(pos++))
 	{
 		aux.mostrar();
-
 	}
+	anykey();
 }

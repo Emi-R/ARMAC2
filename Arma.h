@@ -62,6 +62,9 @@ void eliminarArma(int idArma);
 void modificar_arma();
 
 void listadoGeneralArmas();
+
+void listado_armas_por_pais();
+
 int buscarArmaPorId(int idArma);
 
 void listadoDeArmasPorNumDeSerie();
