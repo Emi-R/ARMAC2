@@ -80,8 +80,45 @@ bool Socio::grabarEnDisco() {
 	return escribio;
 }
 
+bool Socio::grabarBackupSocios() {
+	FILE* fReg = fopen("backupSocios.dat", "ab");
+
+	if (fReg == NULL)
+	{
+		cout << "No se puede abrir el archivo.";
+		system("PAUSE < null");
+		return false;
+	}
+
+	int escribio = fwrite(this, sizeof(Socio), 1, fReg);
+
+	fclose(fReg);
+
+	return escribio;
+}
+
 bool Socio::leerDeDisco(int pos) {
 	FILE* fReg = fopen("socios.dat", "rb");
+
+	if (fReg == NULL)
+	{
+		cout << "No se puede abrir el archivo.";
+		system("PAUSE < null");
+		return false;
+	}
+
+	fseek(fReg, pos * sizeof(Socio), SEEK_SET);
+
+	int escribio = fread(this, sizeof(Socio), 1, fReg);
+
+	fclose(fReg);
+
+	return escribio;
+}
+
+bool Socio::leerBackupSocios(int pos)
+{
+	FILE* fReg = fopen("backupSocios.dat", "rb");
 
 	if (fReg == NULL)
 	{
@@ -206,14 +243,15 @@ void Socio::mostrarSimplificado()
 		cout << setw(15) << this->getDni();
 		cout << setw(20) << this->getApellido();
 		cout << setw(20) << this->getNombre();
-		cout << setw(4);
+		cout << setw(20);
 		if (this->getDeudor()) { cout << "ADEUDA"; }
 		else { cout << "AL DIA"; }
-		cout << setw(15); this->getUltimoPago().mostrarFecha();
-		cout << setw(10); this->getFechaIngreso().mostrarFecha();
+		cout << setw(20);
+		this->getUltimoPago().mostrarFecha();
+		cout << setw(11) << " ";
+		this->getFechaIngreso().mostrarFecha();
 		cout << endl;
 	}
-
 }
 
 void Socio::listar() {
@@ -254,12 +292,13 @@ int buscarSocioPorID(int id)
 	Socio socio;
 	int pos = 0;
 
-	while (socio.leerDeDisco(pos++))
+	while (socio.leerDeDisco(pos))
 	{
 		if (socio.getIdsocio() == id)
 		{
 			return pos;
 		}
+		pos++;
 	}
 
 	return -1;
@@ -361,7 +400,7 @@ void bajaSocio()
 				return;
 			}
 
-			pos = buscarSocioPorID(id) - 1;
+			pos = buscarSocioPorID(id);
 
 			if (pos <= -1 && id != 0)
 			{
@@ -424,7 +463,7 @@ void modificar_socio()
 				return;
 			}
 
-			pos = buscarSocioPorID(idaux) - 1;
+			pos = buscarSocioPorID(idaux);
 
 			if (pos <= -1)
 			{
@@ -1057,4 +1096,17 @@ int BuscarApellidoArchivo(const char* apellidoconsulta) {
 	{
 		return 0;
 	}
+}
+
+void backup_socios()
+{
+	Socio aux;
+	int pos = 0;
+
+	while (aux.leerDeDisco(pos++))
+	{
+		aux.grabarBackupSocios();
+	}
+
+	cout << "Backup generado correctamente" << endl;
 }

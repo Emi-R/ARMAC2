@@ -170,7 +170,7 @@ void cobrar_cuota()
 				return;
 			}
 
-			pos = buscarSocioPorID(idaux) - 1;
+			pos = buscarSocioPorID(idaux);
 
 			if (idaux < 1 || pos < 0)
 			{
@@ -301,12 +301,20 @@ void actualizarEstadoCuotasSocios()
 void actualizarCarteraSocios(Socio* vec, int cantReg) {
 
 	Fecha fechaActual;
+	int cantMesesAdeudados = 0;
 
 	for (int i = 0; i < cantReg; i++)
 	{
+		cantMesesAdeudados = (12 - vec[i].getUltimoPago().getMes()) + fechaActual.getMes();
+
 		if (vec[i].getEstado())
 		{
-			if (vec[i].getUltimoPago().getMes() != fechaActual.getMes() && vec[i].getUltimoPago().getDia() >= fechaActual.getDia())
+			if (cantMesesAdeudados >= 12 && vec[i].getUltimoPago().getAnio() != fechaActual.getAnio())
+			{
+				vec[i].setEstado(false);
+				vec[i].modificarEnDisco(i);
+			}
+			else if (vec[i].getUltimoPago().getMes() != fechaActual.getMes() && vec[i].getUltimoPago().getDia() <= fechaActual.getDia())
 			{
 				vec[i].setDeudor(true);
 				vec[i].modificarEnDisco(i);
@@ -329,7 +337,7 @@ void recaudacionPorSocio() {
 	if (vecRecaudacionSocio == NULL) return;
 
 	ponerCeroVectorRecaudacion(vecRecaudacionSocio, cantReg);
-	buscarRecaudacionesPorSocio(vecRecaudacionSocio, cantReg);
+	buscarRecaudacionesPorSocio(vecRecaudacionSocio);
 	listarRecaudacionesPorSocio(vecRecaudacionSocio, cantReg);
 
 	delete vecRecaudacionSocio;
@@ -340,7 +348,8 @@ void ponerCeroVectorRecaudacion(float* vecRecaudacion, int tam) {
 		vecRecaudacion[i] = 0;
 	}
 }
-void buscarRecaudacionesPorSocio(float* vecRecaudacion, int tam) {
+
+void buscarRecaudacionesPorSocio(float* vecRecaudacion) {
 
 	int pos = 0;
 	PagoCuota cuotas;
@@ -400,12 +409,18 @@ void Informe_Recaudacion_Anual() {
 
 	PonerEnCeroVector(vDinamicoCuota, Meses);
 	PonerEnCeroVector(vDinamicoSolicitudes, Meses);
-	cout << "Ingrese el año para consultar su recaudacion: ";
+	cout << "Ingrese el año para consultar su recaudacion (0 para volver al menú anterior): ";
 	cin >> Anio;
+
+	if (Anio == 0)
+	{
+		return;
+	}
 
 	RecaudacionAnualCuota(Anio, vDinamicoCuota, Meses);
 	RecaudacionAnualSolictudes(Anio, vDinamicoSolicitudes, Meses);
 	MostrarDetalleRecaudacionAnual(vDinamicoCuota, vDinamicoSolicitudes, Meses);
+	anykey();
 
 }
 void RecaudacionAnualCuota(int anio, float* vec, int tam) {

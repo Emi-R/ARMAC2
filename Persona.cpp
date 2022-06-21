@@ -42,7 +42,6 @@ int Persona::CargarPersona() {
 	int aux;
 	char aux2[30];
 
-
 	do {
 		cout << "Ingrese el dni (0 para volver al menu anterior): ";
 		cin >> aux;

@@ -9,7 +9,6 @@ private:
 	float recaudacionTotalSolicitud;
 
 public:
-
 	RecaudacionesPorAdmin();
 
 	void setIdAdmin(int _idAdmin);

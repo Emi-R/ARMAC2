@@ -47,7 +47,7 @@ void actualizarCarteraSocios(Socio *vec, int cantReg);
 
 void recaudacionPorSocio();
 void ponerCeroVectorRecaudacion(float* vecRecaudacion, int tam);
-void buscarRecaudacionesPorSocio(float* vecRecaudacion, int tam);
+void buscarRecaudacionesPorSocio(float* vecRecaudacion);
 void listarRecaudacionesPorSocio(float* vecRecaudacion, int tam);
 
 void PonerEnCeroVector(float* vec, int tam);

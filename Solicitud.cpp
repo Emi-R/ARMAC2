@@ -63,9 +63,11 @@ void Solicitud::cargarSolicitud() {
 	int aux;
 	int estadoPendiente = 0;
 	int pos = 0;
+	int posSocio = 0;
 	Arma armaRegistro;
 	Fecha fechaSolicitud;
 	Administrador admin;
+	Socio socio;
 	bool verifica = false;
 
 	do {
@@ -101,13 +103,28 @@ void Solicitud::cargarSolicitud() {
 		cout << "Ingrese el ID del Socio: ";
 		cin >> aux;
 
-		if (buscarSocioPorID(aux) == -1)
+		posSocio = buscarSocioPorID(aux);
+
+		if (posSocio == -1)
 		{
 			cout << "El ID de socio no esta registrado o es incorrecto. Ingrese de nuevo por favor." << endl;
 		}
 		else
 		{
-			verifica = true;
+			socio.leerDeDisco(posSocio);
+
+			if (socio.getDeudor())
+			{
+				cout << "El socio n° " << socio.getIdsocio() << " registra deuda al dia de la fecha. \nNo puede generar solicitudes nuevas" << endl;
+				cout << "Para registrar solicitudes nuevas, regularize su situación.";
+				anykey();
+				cls();
+				verifica = false;
+			}
+			else
+			{
+				verifica = true;
+			}
 		}
 
 	} while (verifica == false);

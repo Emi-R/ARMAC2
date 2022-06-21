@@ -14,6 +14,10 @@
 #include "ValorCuota.h"
 #include "ValorSolicitud.h"
 #include "RecaudacionesPorAdmin.h"
+#include <fstream>
+#include <sstream>
+
+#
 
 using namespace std;
 using namespace rlutil;
@@ -32,10 +36,9 @@ void instalacionArchivos()
 	checkArchivoPagosSolicitud();
 
 	checkArchivoPrecioCuota();
-	actualizarEstadoCuotasSocios();
-
 	checkArchivoPrecioSolicitud();
 
+	actualizarEstadoCuotasSocios();
 
 	cout << endl << "\t-- Presione enter para continuar --";
 	system("PAUSE > null");
@@ -84,6 +87,7 @@ bool login() {
 		else
 		{
 			locate(13, 4);
+
 			caracter = getch();
 
 			admin.leerDeDisco(pos);
@@ -96,7 +100,6 @@ bool login() {
 				{
 					aux3.push_back(caracter);
 					cout << "*";
-
 				}
 				else
 				{
@@ -104,7 +107,6 @@ bool login() {
 					{
 						cout << "\b \b";
 						aux3.pop_back();
-
 					}
 				}
 				caracter = getch();
@@ -139,11 +141,12 @@ bool login() {
 		if (cont == 3)
 		{
 			cls();
+			setBackgroundColor(WHITE);
 			setColor(RED);
 			cout << endl << "\t-- Ha superado el límite de intentos. Contacte a Ángel Simón. --" << endl;
-			return false;
-			setColor(WHITE);
 			anykey();
+			setColor(WHITE);
+			return false;
 		}
 
 	} while (!flag);
@@ -204,7 +207,7 @@ bool menuPrincipal() {
 			if (tolower(confirmarSalida)=='s')
 			{
 				cls();
-				return false;
+				return true;
 			}
 			else
 			{
@@ -216,8 +219,7 @@ bool menuPrincipal() {
 			cin >> confirmarSalida;
 
 			salir = (tolower(confirmarSalida) == 's');
-
-			break;
+			return false;
 		}
 	}
 	return true;
@@ -322,7 +324,6 @@ void menuListadosSocios() {
 			anykey();
 			break;
 		case 4:
-
 
 			break;
 		case 0:
@@ -828,7 +829,6 @@ void menuInformes() {
 		switch (opcion) {
 		case 1:
 			Informe_Recaudacion_Anual();
-			anykey();
 			break;
 		case 2:
 			recaudacionPorSocio();
@@ -867,7 +867,7 @@ void menuConfiguracion() {
 		cout << "\tConfiguraciones" << endl;
 		cout << "--------------------------" << endl;
 		cout << "1 - Modificar precio de cuota" << endl;
-		cout << "2 - Restaurar copia de seguridad" << endl;
+		cout << "2 - Hacer copia de seguridad" << endl;
 		cout << "3 - Exportar archivo CSV" << endl;
 		cout << "--------------------------" << endl;
 		cout << "0 - Volver al menú principal" << endl << endl;
@@ -882,11 +882,10 @@ void menuConfiguracion() {
 			modificar_precio_cuota();
 			break;
 		case 2:
-
+			backup_socios();
 			break;
 		case 3:
-
-
+			exportarCSVSocios();
 			break;
 		case 0:
 			cout << "¿Volver al menu anterior? (S/N) ";
@@ -908,4 +907,41 @@ void todoAMayus(char* apellido)
 	{
 		apellido[i] = toupper(apellido[i]);
 	}
+}
+
+bool exportarCSVSocios() {
+
+	ofstream myFile;
+	myFile.open("listadoSocios.csv");
+
+	FILE* p = fopen("socios.dat", "rb");
+	Socio reg;
+	
+	if (p == NULL) {
+		cout << "No se pudo abrir el archivo";
+		return false;
+	}
+
+	int pos = 0;
+
+	myFile << "ID SOCIO" << ';' << "DNI" << ';' << "APELLIDO" << ';' << "NOMBRE" << ';' << "ULTIMO PAGO" << ';' << "FECHA INGRESO" << endl;
+
+	string fecha1;
+	string fecha2;
+
+	while (reg.leerDeDisco(pos++)) {
+		fecha1 = reg.getUltimoPago().toString();
+		fecha2 = reg.getFechaIngreso().toString();
+
+		myFile << reg.getIdsocio() << ';' << reg.getDni() << ';' << reg.getApellido() << ';' << reg.getNombre() << ';' << fecha1 << ';' << fecha2 << endl;
+	}
+
+	cout << endl << "Listado 'listadoBaseDeCalculo.CVS' exportado correctamente" << endl;
+	system("pause");
+	system("cls");
+
+
+	return true;
+
+
 }

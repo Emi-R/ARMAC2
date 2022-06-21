@@ -1,6 +1,7 @@
 #pragma once
 
 #include <iostream>
+#include <string>
 using namespace std;
 
 class Fecha
@@ -24,6 +25,7 @@ public:
 
 	void cargarFecha();
 	void mostrarFecha();
+	string toString();
 
 	void cargarFechaConsultas();
 

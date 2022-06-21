@@ -1,5 +1,6 @@
 #include "Fecha.h"
 #include <ctime>
+#include <iomanip>
 
 /// Constructor
 Fecha::Fecha() {
@@ -34,7 +35,7 @@ bool Fecha::operator> (Fecha aux)
 	{
 		return false;
 	}
-	
+
 	if (_dia < aux.getDia())
 	{
 		return false;
@@ -44,8 +45,6 @@ bool Fecha::operator> (Fecha aux)
 	{
 		return true;
 	}
-
-
 }
 
 /// Desarrollo cargar
@@ -53,7 +52,7 @@ void Fecha::cargarFecha() {
 
 	Fecha actual;
 	int aux = 0;
-	const int MayorEdad = actual.getAnio();
+	const int MayorEdad = actual.getAnio() - 18;
 
 	do {
 		cout << "Año: ";
@@ -97,9 +96,21 @@ void Fecha::cargarFecha() {
 /// Desarrollo Mostrar
 
 void Fecha::mostrarFecha() {
-	cout << this->getDia() << "/" << this->getMes() << "/" << this->getAnio();
+	cout << setw(2);
+	cout << this->getDia();
+	cout << setw(1) << "/";
+	cout << setw(1) << this->getMes();
+	cout << setw(1) << "/";
+	cout << setw(2) << this->getAnio();
 
 }
+
+string Fecha::toString() {
+	string fecha;
+	fecha = to_string(_dia) + "/" + to_string(_mes) + "/" + to_string(_anio);
+	return fecha;
+}
+
 bool Fecha::operator== (Fecha aux)
 {
 	if (_anio == aux.getAnio() && _mes == aux.getMes() && _dia == aux.getDia())
@@ -114,12 +125,12 @@ bool Fecha::operator== (Fecha aux)
 void Fecha::cargarFechaConsultas() {
 
 	int aux = 0;
-	
+
 	do {
 		cout << "Año: ";
 		cin >> aux;
 
-		if (aux < 0 || aux <1980)
+		if (aux < 0 || aux < 1980)
 		{
 			cout << " El año ingresado es incorrecto, intente nuevamente" << endl;
 		}

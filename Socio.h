@@ -30,7 +30,9 @@ public:
 
 	// METODOS DE DISCO
 	bool grabarEnDisco();
+	bool grabarBackupSocios();
 	bool leerDeDisco(int pos);
+	bool leerBackupSocios(int pos);
 	bool modificarEnDisco(int pos);
 
 	void cargar();
@@ -81,3 +83,5 @@ int BuscarDniArchivo(int dniconsulta);
 
 void consulta_Por_Apellido();
 int BuscarApellidoArchivo(const char* nombreconsulta);
+
+void backup_socios();

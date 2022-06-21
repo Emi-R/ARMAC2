@@ -36,5 +36,6 @@ void menuInformes();
 //Menu Configuracion
 void menuConfiguracion();
 
+bool exportarCSVSocios();
 
 #endif // FUNCIONES_H_INCLUDED

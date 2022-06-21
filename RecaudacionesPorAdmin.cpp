@@ -25,7 +25,6 @@ float RecaudacionesPorAdmin::getRecaudacionTotalSolicitudes() { return recaudaci
 
 void recaudacionPorAdmin() {
 
-
 	int cantReg = buscarCantidadRegistrosAdmin();
 
 	if (cantReg == 0) {
@@ -39,7 +38,6 @@ void recaudacionPorAdmin() {
 	if (vecRecaudacionAdmin == NULL) return;
 
 	inicializarVecRecaudacionPorAdmin(vecRecaudacionAdmin, cantReg);
-
 	buscarRecaudacionesPorAdmin(vecRecaudacionAdmin, cantReg);
 	listarRecaudacionesPorAdmin(vecRecaudacionAdmin, cantReg);
 
