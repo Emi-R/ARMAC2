@@ -834,3 +834,47 @@ void desaprobarSolicitud(Solicitud aux, int pos)
 	}
 	cls();
 }
+
+void cantidad_solicitudes_desap_por_anio()
+{
+	int anio;
+
+	cout << "Ingrese el año: ";
+	cin >> anio;
+
+	int aux = solicitudesDesaprobadasPorAnio(anio);
+
+	if (aux == 0)
+	{
+		cout << " -- No se desaprobaron solicitudes en el año " << anio << " --" << endl;
+	}
+	else if(aux == 1)
+	{
+		cout << " -- Se desaprobó "<< aux << " solicitud en el año " << anio << " --" << endl;
+	}
+	else
+	{
+		cout << " -- Se desaprobaron " << aux << " solicitudes en el año " << anio << " --" << endl;
+	}
+
+	anykey();
+}
+
+int solicitudesDesaprobadasPorAnio(int anio)
+{
+	Solicitud solic;
+	int p = 0;
+	int cant = 0;
+
+	while (solic.leerDeDisco(p++))
+	{
+		if (solic.getAprobado() == -1 && solic.getFechaSolicitud().getAnio() == anio)
+		{
+			cant++;
+		}
+
+	}
+	
+	return cant;
+
+}

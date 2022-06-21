@@ -90,3 +90,6 @@ void mostrarConsultasPorFecha(Solicitud* vecSolicitudes, int tam, Fecha fechaCon
 void consultaSolicitudesPorId();
 int buscarSolicitudPorId(int id);
 void copiarSolicitudes(Solicitud* vecSoli, int tam);
+
+void cantidad_solicitudes_desap_por_anio();
+int solicitudesDesaprobadasPorAnio(int anio);

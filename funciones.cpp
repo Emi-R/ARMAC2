@@ -17,8 +17,6 @@
 #include <fstream>
 #include <sstream>
 
-#
-
 using namespace std;
 using namespace rlutil;
 
@@ -222,10 +220,10 @@ void menuSocios() {
 		cls();
 		cout << "\tSocios" << endl;
 		cout << "--------------------------" << endl;
-		cout << "1 - Cargar nuevo socio" << endl;
-		cout << "2 - Modificar socio" << endl;
-		cout << "3 - Eliminar socio" << endl;
-		cout << "4 - Cobrar cuota" << endl;
+		cout << "1 - Cargar nuevo Socio" << endl;
+		cout << "2 - Modificar Socio" << endl;
+		cout << "3 - Eliminar Socio" << endl;
+		cout << "4 - Cobrar Cuota" << endl;
 		cout << "--------------------------" << endl;
 		cout << "5 - Listados" << endl;
 		cout << "6 - Consultas" << endl;
@@ -280,7 +278,7 @@ void menuListadosSocios() {
 		cls();
 		cout << "\tListados Socios" << endl;
 		cout << "--------------------------" << endl;
-		cout << "1 - Listar todos los socios" << endl;
+		cout << "1 - Listar todos los Socios" << endl;
 		cout << "2 - Listar socios ordenados alfabeticamente" << endl;
 		cout << "3 - Listar socios por antigüedad" << endl;
 		cout << "--------------------------" << endl;
@@ -366,8 +364,6 @@ void menuConsultasSocios() {
 	}
 }
 
-
-
 ////////////////////////////
 /// Menu Administradores y submenus
 ////////////////////////////
@@ -385,12 +381,12 @@ void menuAdmins() {
 		cls();
 		cout << "\tAdministradores" << endl;
 		cout << "--------------------------" << endl;
-		cout << "1 - Crear nuevo administrador " << endl;
-		cout << "2 - Modificar administrador " << endl;
-		cout << "3 - Eliminar administrador " << endl;
+		cout << "1 - Crear nuevo Administrador " << endl;
+		cout << "2 - Modificar Administrador " << endl;
+		cout << "3 - Eliminar Administrador " << endl;
 		cout << "--------------------------" << endl;
-		cout << "4 - Listados de Administradores" << endl;
-		cout << "5 - Buscar administrador por ID" << endl;
+		cout << "4 - Listados de administradores" << endl;
+		cout << "5 - Buscar Administrador por ID" << endl;
 		cout << "--------------------------" << endl;
 		cout << "0 - Volver al menú principal" << endl << endl;
 
@@ -438,7 +434,6 @@ void menuListadosAdmin() {
 		cout << "\t Listados administradores" << endl;
 		cout << "--------------------------" << endl;
 		cout << "1 - Listados general de administradores" << endl;
-		cout << "2 - Listados por recaudacion" << endl;
 		cout << "--------------------------" << endl;
 		cout << "0 - Volver al menú principal" << endl << endl;
 
@@ -451,8 +446,6 @@ void menuListadosAdmin() {
 		case 1:
 			listado_general_admin();
 			anykey();
-			break;
-		case 2:
 			break;
 		case 0:
 			cout << "¿Volver al menu anterior? (S/N) ";
@@ -480,7 +473,7 @@ void menuSolicitudes() {
 		cls();
 		cout << "\tSolicitudes" << endl;
 		cout << "--------------------------" << endl;
-		cout << "1 - Crear nueva solicitud" << endl;
+		cout << "1 - Crear nueva Solicitud" << endl;
 		cout << "2 - Modificar Solicitud" << endl;
 		cout << "--------------------------" << endl;
 		cout << "3 - Listados" << endl;
@@ -590,10 +583,10 @@ void menuConsultasSolicitudes()
 		cls();
 		cout << "\tConsultas Solicitudes" << endl;
 		cout << "--------------------------" << endl;
-		cout << "1 - Consulta por ID de solicitud" << endl;
+		cout << "1 - Consulta por ID de Solicitud" << endl;
 		cout << "2 - Consulta por Fecha" << endl;
 		cout << "3 - Consulta por Año" << endl;
-		cout << "3 - Consulta solicitudes pendientes por socio" << endl;
+		cout << "3 - Consulta Solicitudes pendientes por Socio" << endl;
 		cout << "--------------------------" << endl;
 		cout << "0 - Volver al menú principal" << endl << endl;
 
@@ -629,7 +622,6 @@ void menuConsultasSolicitudes()
 	}
 }
 
-
 ////////////////////////////
 ///Menu Armas y submenus
 ////////////////////////////
@@ -648,11 +640,10 @@ void menuArmas() {
 
 		cout << "\tArmas" << endl;
 		cout << "--------------------------" << endl;
-		cout << "1 - Crear nueva arma " << endl;
-		cout << "2 - Modificar arma " << endl;
+		cout << "1 - Modificar arma " << endl;
 		cout << "--------------------------" << endl;
-		cout << "3 - Listados" << endl;
-		cout << "4 - Consultas" << endl;
+		cout << "2 - Listados" << endl;
+		cout << "3 - Consultas" << endl;
 		cout << "--------------------------" << endl;
 		cout << "0 - Volver al menú principal" << endl << endl;
 
@@ -663,15 +654,12 @@ void menuArmas() {
 
 		switch (opcion) {
 		case 1:
-			crear_nueva_arma();
-			break;
-		case 2:
 			modificar_arma();
 			break;
-		case 3:
+		case 2:
 			menuListadosArmas();
 			break;
-		case 4:
+		case 3:
 			menuConsultasArmas();
 			break;
 		case 0:
@@ -802,9 +790,10 @@ void menuInformes() {
 		cout << "2 - Recaudación por socio" << endl;
 		cout << "3 - Recaudación por administrador" << endl;
 		cout << "4 - Recaudación por tipo de arma" << endl;
+		cout << "5 - Cantidad de solicitudes desaprobadas por año" << endl;
 		cout << "--------------------------" << endl;
-		cout << "5 - Listar historial de precios de cuota" << endl;
-		cout << "6 - Listar historial de precios de solicitud" << endl;
+		cout << "6 - Listar historial de precios de cuota" << endl;
+		cout << "7 - Listar historial de precios de solicitud" << endl;
 		cout << "--------------------------" << endl;
 		cout << "0 - Volver al menú principal" << endl << endl;
 
@@ -824,9 +813,12 @@ void menuInformes() {
 			recaudacionPorAdmin();
 			break;
 		case 5:
-			listar_historial_precios_cuota();
+			cantidad_solicitudes_desap_por_anio();
 			break;
 		case 6:
+			listar_historial_precios_cuota();
+			break;
+		case 7:
 			listar_historial_precios_solicitud();
 			break;
 		case 0:
