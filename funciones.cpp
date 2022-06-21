@@ -790,11 +790,10 @@ void menuInformes() {
 		cout << "1 - Recaudación anual" << endl;
 		cout << "2 - Recaudación por socio" << endl;
 		cout << "3 - Recaudación por administrador" << endl;
-		cout << "4 - Recaudación por tipo de arma" << endl;
-		cout << "5 - Cantidad de solicitudes desaprobadas por año" << endl;
+		cout << "4 - Cantidad de solicitudes desaprobadas por año" << endl;
 		cout << "--------------------------" << endl;
-		cout << "6 - Listar historial de precios de cuota" << endl;
-		cout << "7 - Listar historial de precios de solicitud" << endl;
+		cout << "5 - Listar historial de precios de cuota" << endl;
+		cout << "6 - Listar historial de precios de solicitud" << endl;
 		cout << "--------------------------" << endl;
 		cout << "0 - Volver al menú principal" << endl << endl;
 
@@ -813,13 +812,13 @@ void menuInformes() {
 		case 3:
 			recaudacionPorAdmin();
 			break;
-		case 5:
+		case 4:
 			cantidad_solicitudes_desap_por_anio();
 			break;
-		case 6:
+		case 5:
 			listar_historial_precios_cuota();
 			break;
-		case 7:
+		case 6:
 			listar_historial_precios_solicitud();
 			break;
 		case 0:
@@ -854,7 +853,6 @@ void menuConfiguracion() {
 		cout << "------------  Precios  -----------" << endl;
 		cout << "2 - Modificar precio de cuota" << endl;
 		cout << "3 - Modificar precio de solicitud" << endl;
-		/*cout << "----------------------------------" << endl;*/
 		cout << "------------  Archivos  ----------" << endl;
 		cout << "4 - Hacer copia de seguridad Socios" << endl;
 		cout << "5 - Hacer copia de seguridad Solicitudes" << endl;
