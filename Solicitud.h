@@ -46,6 +46,7 @@ public:
 	void mostrarSolicitud();
 
 	bool grabarEnDisco();
+	bool grabarBackupSolicitudes();
 	bool leerDeDisco(int pos);
 	bool modificarEnDisco(int pos);
 
@@ -93,3 +94,5 @@ void copiarSolicitudes(Solicitud* vecSoli, int tam);
 
 void cantidad_solicitudes_desap_por_anio();
 int solicitudesDesaprobadasPorAnio(int anio);
+
+void backup_solicitudes();

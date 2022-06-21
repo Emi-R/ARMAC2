@@ -1157,5 +1157,5 @@ void backup_socios()
 		aux.grabarBackupSocios();
 	}
 
-	cout << "Backup generado correctamente" << endl;
+	cout << "Archivo de backup de socios 'backupSocios.dat' grabado correctamente" << endl;
 }

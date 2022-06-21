@@ -224,6 +224,23 @@ bool Solicitud::modificarEnDisco(int pos) {
 	return leyo;
 }
 
+bool Solicitud::grabarBackupSolicitudes() {
+	FILE* fReg = fopen("backupSolicitudes.dat", "ab");
+
+	if (fReg == NULL)
+	{
+		cout << "No se puede abrir el archivo.";
+		system("PAUSE < null");
+		return false;
+	}
+
+	int escribio = fwrite(this, sizeof(Solicitud), 1, fReg);
+
+	fclose(fReg);
+
+	return escribio;
+}
+
 int checkArchivoSolicitud() {
 
 	FILE* solicReg = fopen("solicitudes.dat", "rb");
@@ -431,7 +448,6 @@ void listadoSolicitudesDesaprobadas() {
 		p++;
 	}
 }
-
 
 void listarSolicitudesPorIdDesc() {
 
@@ -877,4 +893,17 @@ int solicitudesDesaprobadasPorAnio(int anio)
 	
 	return cant;
 
+}
+
+void backup_solicitudes()
+{
+	Solicitud aux;
+	int pos = 0;
+
+	while (aux.leerDeDisco(pos++))
+	{
+		aux.grabarBackupSolicitudes();
+	}
+
+	cout << "Archivo de backup de solicitudes 'backupSolicitudes.dat' grabado correctamente" << endl;
 }

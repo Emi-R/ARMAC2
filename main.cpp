@@ -20,7 +20,7 @@ int main()
 
 	instalacionArchivos();
 
-	/*do
+	do
 	{
 		flag = login();
 
@@ -29,9 +29,7 @@ int main()
 			flag2 = menuPrincipal();
 		}
 
-	} while (flag && flag2);*/
-
-	menuPrincipal();
+	} while (flag && flag2);
 
 	return 0;
 }

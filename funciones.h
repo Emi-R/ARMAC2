@@ -38,4 +38,6 @@ void menuConfiguracion();
 
 bool exportarCSVSocios();
 
+bool exportarCSVSolicitudes();
+
 #endif // FUNCIONES_H_INCLUDED

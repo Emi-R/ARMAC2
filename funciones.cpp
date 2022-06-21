@@ -22,8 +22,10 @@ using namespace rlutil;
 
 void instalacionArchivos()
 {
+
+	setBackgroundColor(CYAN);
 	setColor(WHITE);
-	setBackgroundColor(BLUE);
+	cls();
 
 	checkArchivoSocios();
 	checkArchivoAdmins();
@@ -72,13 +74,12 @@ bool login() {
 		if (pos == -1)
 		{
 			cls();
-			locate(1, 6);
-			setBackgroundColor(LIGHTRED);
 			setColor(RED);
+			locate(1, 6);
 			cout << "\tID incorrecto." << endl;
 			flag = false;
 			setColor(WHITE);
-			setBackgroundColor(DARKGREY);
+			setBackgroundColor(CYAN);
 			locate(1, 1);
 		}
 		else
@@ -108,7 +109,7 @@ bool login() {
 				cout << "\tID y Contraseña correctos. Bienvenido!" << endl;
 				cout << "\t";
 				setColor(WHITE);
-				setBackgroundColor(DARKGREY);
+				setBackgroundColor(CYAN);
 				system("PAUSE");
 				cls();
 				return true;
@@ -139,15 +140,15 @@ bool menuPrincipal() {
 	bool salir = false;
 
 	while (!salir) {
-		cls();
+		setBackgroundColor(GREEN);
 		setColor(WHITE);
-		setBackgroundColor(BLUE);
+		cls();
 		cout << "\tSistema ARMAC" << endl;
 		cout << "--------------------------" << endl;
 		cout << "1 - Menú Socios" << endl;
 		cout << "2 - Menú Administradores" << endl;
-		cout << "3 - Menú Armas" << endl;
-		cout << "4 - Menú Solicitudes" << endl;
+		cout << "3 - Menú Solicitudes" << endl;
+		cout << "4 - Menú Armas" << endl;
 		cout << "5 - Menú Informes" << endl;
 		cout << "6 - Menú Configuraciones" << endl;
 		cout << "--------------------------" << endl;
@@ -168,10 +169,10 @@ bool menuPrincipal() {
 			menuAdmins();
 			break;
 		case 3:
-			menuArmas();
+			menuSolicitudes();
 			break;
 		case 4:
-			menuSolicitudes();
+			menuArmas();
 			break;
 		case 5:
 			menuInformes();
@@ -216,7 +217,7 @@ void menuSocios() {
 	while (!salir) {
 
 		setColor(WHITE);
-		setBackgroundColor(LIGHTBLUE);
+		setBackgroundColor(BLUE);
 		cls();
 		cout << "\tSocios" << endl;
 		cout << "--------------------------" << endl;
@@ -274,7 +275,7 @@ void menuListadosSocios() {
 	while (!salir) {
 
 		setColor(WHITE);
-		setBackgroundColor(CYAN);
+		setBackgroundColor(BLUE);
 		cls();
 		cout << "\tListados Socios" << endl;
 		cout << "--------------------------" << endl;
@@ -324,7 +325,7 @@ void menuConsultasSocios() {
 	while (!salir) {
 
 		setColor(WHITE);
-		setBackgroundColor(DARKGREY);
+		setBackgroundColor(BLUE);
 		cls();
 		cout << "\tConsultas Socios" << endl;
 		cout << "--------------------------" << endl;
@@ -469,7 +470,7 @@ void menuSolicitudes() {
 	while (!salir) {
 
 		setColor(WHITE);
-		setBackgroundColor(DARKGREY);
+		setBackgroundColor(BLUE);
 		cls();
 		cout << "\tSolicitudes" << endl;
 		cout << "--------------------------" << endl;
@@ -855,8 +856,10 @@ void menuConfiguracion() {
 		cout << "3 - Modificar precio de solicitud" << endl;
 		/*cout << "----------------------------------" << endl;*/
 		cout << "------------  Archivos  ----------" << endl;
-		cout << "4 - Hacer copia de seguridad" << endl;
-		cout << "5 - Exportar archivo CSV" << endl;
+		cout << "4 - Hacer copia de seguridad Socios" << endl;
+		cout << "5 - Hacer copia de seguridad Solicitudes" << endl;
+		cout << "6 - Exportar archivo CSV de Socios" << endl;
+		cout << "6 - Exportar archivo CSV de Solicitudes" << endl;
 		cout << "----------------------------------" << endl;
 		cout << "0 - Volver al menú principal" << endl << endl;
 
@@ -881,8 +884,14 @@ void menuConfiguracion() {
 			anykey();
 			break;
 		case 5:
+			backup_solicitudes();
+			anykey();
+			break;
+		case 6:
 			exportarCSVSocios();
 			break;
+		case 7:
+			exportarCSVSolicitudes();
 		case 0:
 			cout << "¿Volver al menu anterior? (S/N) ";
 			cin >> confirmarSalida;
@@ -937,6 +946,52 @@ bool exportarCSVSocios() {
 	system("cls");
 
 	return true;
+}
 
+bool exportarCSVSolicitudes()
+{
+	ofstream myFile;
+	myFile.open("listadoSolicitudes.csv");
 
+	FILE* p = fopen("solicitudes.dat", "rb");
+	Solicitud reg;
+
+	if (p == NULL) {
+		cout << "No se pudo abrir el archivo";
+		return false;
+	}
+
+	int pos = 0;
+
+	myFile << "ID SOLICITUD" << ';' << "ID ADMIN" << ';' << "ID SOCIO" << ';' << "ID ARMA" << ';' << "FECHA INICIO" << ';' << "ESTADO" << endl;
+
+	string fecha;
+	string estado;
+
+	while (reg.leerDeDisco(pos++)) {
+		fecha = reg.getFechaSolicitud().toString();
+
+		if (reg.getAprobado() == -1)
+		{
+			estado = "DESAPROBADO";
+		}
+
+		if (reg.getAprobado() == 0)
+		{
+			estado = "PENDIENTE";
+		}
+
+		if (reg.getAprobado() == 1)
+		{
+			estado = "APROBADO";
+		}
+
+		myFile << reg.getIdSolicitud() << ';' << reg.getIdAdministrador() << ';' << reg.getIdSocio() << ';' << reg.getIdArma() << ';' << fecha << ';' << estado << endl;
+	}
+
+	cout << "Listado 'listadoSolicitudes.csv' exportado correctamente" << endl;
+	system("pause");
+	system("cls");
+
+	return true;
 }
