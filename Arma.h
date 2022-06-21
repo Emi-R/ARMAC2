@@ -61,9 +61,10 @@ void crear_nueva_arma();
 void eliminarArma(int idArma);
 void modificar_arma();
 
+void mostrarTipoArma(int tipo);
+
 void listadoGeneralArmas();
 
-void listado_armas_por_pais();
 
 int buscarArmaPorId(int idArma);
 
@@ -97,3 +98,4 @@ void ModificarPais(Arma aux, int pos);
 void ModificarNumSerie(Arma aux, int pos);
 
 void porcentaje_armas_por_tipo();
+void MostrarVectorArmas(float* porc, int tam);

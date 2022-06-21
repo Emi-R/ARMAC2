@@ -140,7 +140,7 @@ bool menuPrincipal() {
 	bool salir = false;
 
 	while (!salir) {
-		setBackgroundColor(GREEN);
+		setBackgroundColor(BLUE);
 		setColor(WHITE);
 		cls();
 		cout << "\tSistema ARMAC" << endl;
@@ -819,9 +819,11 @@ void menuInformes() {
 			break;
 		case 5:
 			promedio_solictudes_aprobadas();
+			anykey();
 			break;
 		case 6:
 			porcentaje_armas_por_tipo();
+			anykey();
 			break;
 		case 7:
 			listar_historial_precios_cuota();
@@ -898,6 +900,7 @@ void menuConfiguracion() {
 			break;
 		case 7:
 			exportarCSVSolicitudes();
+			break;
 		case 0:
 			cout << "¿Volver al menu anterior? (S/N) ";
 			cin >> confirmarSalida;

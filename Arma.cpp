@@ -103,12 +103,20 @@ void Arma::cargarArma() {
 	this->setidPaisFabricacion(aux);
 
 	do {
+		
+		cout << "1 - Pistolas" << endl;
+		cout << "2 - Escopetas" << endl;
+		cout << "3 - Subfusiles" << endl;
+		cout << "4 - Carabinas" << endl;
+		cout << "5 - Fusiles automaticos" << endl << endl;
 		cout << "Ingrese el tipo de arma: ";
 		cin >> aux;
 
-		if (aux < 0)
+		if (aux < 1 || aux > 5)
 		{
-			cout << "Tipo de arma inválido." << endl;
+			cout <<endl << "Tipo de arma inválido." << endl;
+			anykey();
+			cls();
 			flag = false;
 		}
 		else
@@ -172,7 +180,8 @@ void Arma::listar()
 	cout << setw(18) << this->getModelo();
 	cout << setw(10) << this->getCalibre();
 	cout << setw(15) << this->getidPaisFabricacion();
-	cout << setw(15) << this->getTipoArma();
+	cout << setw(15);
+	mostrarTipoArma(this->getTipoArma());
 	cout << setw(15) << this->getNumSerie();
 	cout << endl;
 
@@ -198,7 +207,8 @@ void Arma::listarPorTipoArma()
 	if (this->getEstado())
 	{
 		cout << left;
-		cout << setw(15) << this->getTipoArma();
+		cout << setw(18);
+		mostrarTipoArma(this->getTipoArma());
 		cout << setw(9) << this->getIdArma();
 		cout << setw(18) << this->getModelo();
 		cout << setw(10) << this->getCalibre();
@@ -353,6 +363,29 @@ int buscarArmaPorId(int id) {
 
 }
 
+void mostrarTipoArma(int tipo) {
+	switch (tipo)
+	{
+	case 1:
+		cout << "PISTOLA";
+		break;
+	case 2:
+		cout << "ESCOPETA";
+		break;
+	case 3:
+		cout << "SUBFUSIL";
+		break;
+	case 4:
+		cout << "CARABINA";
+		break;
+	case 5:
+		cout << "FUSIL AUTOMÁTICO";
+		break;
+	default:
+		break;
+	}
+};
+
 void crear_nueva_arma()
 {
 	Arma arma;
@@ -467,8 +500,6 @@ void listadoGeneralArmas()
 	{
 		arma.listar();
 	}
-
-	anykey();
 }
 
 void listadoDeArmasPorNumDeSerie() {
@@ -583,7 +614,7 @@ void ordenarVector(Arma* vec, int tam) {
 void MostrarVector(Arma* vec, int tam) {
 
 	cout << left;
-	cout << setw(15) << "TIPO DE ARMA";
+	cout << setw(18) << "TIPO DE ARMA";
 	cout << setw(9) << "ID ARMA";
 	cout << setw(18) << "MODELO";
 	cout << setw(10) << "CALIBRE";
@@ -891,5 +922,22 @@ void porcentaje_armas_por_tipo()
 		porc[i] = (float) vArmas[i] * 100 / cantArmasActivas;
 	}
 
+	MostrarVectorArmas(porc,TIPOSARMAS);
 
+}
+
+void MostrarVectorArmas(float* porc, int tam)
+{
+	string tipo[12] = { "Pistola","Escopeta","Subfusil","Carabina","Fusil Automático" };
+	cout << left;
+	cout << setw(17) << "TIPO";
+	cout << setw(9) << "PORCENTAJE" << endl;
+	cout << "-----------------------------------------------------------------------------------" << endl;
+
+	for (int i = 0; i < tam; i++)
+	{
+		cout << setw(17) << tipo[i];
+		cout << setw(1) << "% ";
+		cout << setw(9) << porc[i] << endl;
+	}
 }
