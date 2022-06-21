@@ -791,9 +791,10 @@ void menuInformes() {
 		cout << "2 - Recaudación por socio" << endl;
 		cout << "3 - Recaudación por administrador" << endl;
 		cout << "4 - Cantidad de solicitudes desaprobadas por año" << endl;
+		cout << "5 - Promedio de solicitudes aprobadas con respecto al total" << endl;
 		cout << "--------------------------" << endl;
-		cout << "5 - Listar historial de precios de cuota" << endl;
-		cout << "6 - Listar historial de precios de solicitud" << endl;
+		cout << "7 - Listar historial de precios de cuota" << endl;
+		cout << "8 - Listar historial de precios de solicitud" << endl;
 		cout << "--------------------------" << endl;
 		cout << "0 - Volver al menú principal" << endl << endl;
 
@@ -816,9 +817,12 @@ void menuInformes() {
 			cantidad_solicitudes_desap_por_anio();
 			break;
 		case 5:
-			listar_historial_precios_cuota();
+			promedio_solictudes_aprobadas();
 			break;
 		case 6:
+			listar_historial_precios_cuota();
+			break;
+		case 7:
 			listar_historial_precios_solicitud();
 			break;
 		case 0:

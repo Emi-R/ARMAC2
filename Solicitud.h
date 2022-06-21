@@ -96,3 +96,5 @@ void cantidad_solicitudes_desap_por_anio();
 int solicitudesDesaprobadasPorAnio(int anio);
 
 void backup_solicitudes();
+
+void promedio_solictudes_aprobadas();

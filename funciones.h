@@ -18,7 +18,6 @@ void menuConsultasSocios();
 ///Menu Administradores y submenus
 void menuAdmins();
 void menuListadosAdmin();
-void menuConsultasAdmin();
 
 ///Menu Solicitudes y submenus
 void menuSolicitudes();

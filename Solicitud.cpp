@@ -420,7 +420,7 @@ void listadoSolicitudesPendientes() {
 	{
 		if (solic.getAprobado() == 0)
 		{
-		solic.listarSolicitud();
+			solic.listarSolicitud();
 		}
 
 	}
@@ -854,9 +854,30 @@ void desaprobarSolicitud(Solicitud aux, int pos)
 void cantidad_solicitudes_desap_por_anio()
 {
 	int anio;
+	bool flag = false;
 
-	cout << "Ingrese el año: ";
-	cin >> anio;
+	do
+	{
+		cout << "Ingrese el año (0 para volver al menu anterior): ";
+		cin >> anio;
+
+		if (anio == 0)
+		{
+			return;
+		}
+
+		if (anio < 0)
+		{
+			cout << "Año invalido. Reingrese de nuevo por favor" << endl;
+			anykey();
+			cls();
+		}
+		else
+		{
+			flag = true;
+		}
+
+	} while (!flag);
 
 	int aux = solicitudesDesaprobadasPorAnio(anio);
 
@@ -864,9 +885,9 @@ void cantidad_solicitudes_desap_por_anio()
 	{
 		cout << " -- No se desaprobaron solicitudes en el año " << anio << " --" << endl;
 	}
-	else if(aux == 1)
+	else if (aux == 1)
 	{
-		cout << " -- Se desaprobó "<< aux << " solicitud en el año " << anio << " --" << endl;
+		cout << " -- Se desaprobó " << aux << " solicitud en el año " << anio << " --" << endl;
 	}
 	else
 	{
@@ -890,7 +911,7 @@ int solicitudesDesaprobadasPorAnio(int anio)
 		}
 
 	}
-	
+
 	return cant;
 
 }
@@ -906,4 +927,34 @@ void backup_solicitudes()
 	}
 
 	cout << "Archivo de backup de solicitudes 'backupSolicitudes.dat' grabado correctamente" << endl;
+}
+
+void promedio_solictudes_aprobadas()
+{
+	int cantSolicitudes = buscarCantidadSolicitudes();
+
+	if (cantSolicitudes == 0) {
+		cout << "No se registran solicitudes al dia de la fecha" << endl;
+		anykey();
+		return;
+	}
+
+	Solicitud solicitud;
+	int pos = 0;
+	int cont = 0;
+	int anio = 0;
+	bool flag = false;
+
+	while (solicitud.leerDeDisco(pos++))
+	{
+		if (solicitud.getEstado() && solicitud.getAprobado() == 1)
+		{
+			cont++;
+		}
+	}
+
+	float prom = (float)cantSolicitudes / cont;
+
+	cout << " -- El promedio de solicitudes aprobadas es de: " << prom << endl;
+
 }
