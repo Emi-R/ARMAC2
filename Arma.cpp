@@ -626,7 +626,6 @@ void consultaArmasPorNumSerie() {
 	mostrarConsultaArmasPorNumSerie(vecArmas, cantArmas, numSerie);
 
 }
-
 void mostrarConsultaArmasPorNumSerie(Arma* vecArma, int tamVec, int numSerie) {
 
 	cls();
@@ -672,7 +671,6 @@ void consultaArmasPorIdArma() {
 
 	mostrarConsultaArmasPorId(vecArmas, cantArmas, numID);
 }
-
 void mostrarConsultaArmasPorId(Arma* vecArma, int tamVec, int numId) {
 	cls();
 
@@ -710,7 +708,6 @@ void listados_Armas_Por_Calibre() {
 	ordenarVectorPorCalibre(vDinamico, cantReg);
 	MostrarVectorPorCalibre(vDinamico, cantReg);
 }
-
 void ordenarVectorPorCalibre(Arma* vec, int tam) {
 	Arma aux;
 
@@ -724,7 +721,6 @@ void ordenarVectorPorCalibre(Arma* vec, int tam) {
 		}
 	}
 }
-
 void MostrarVectorPorCalibre(Arma* vec, int tam) {
 	cout << left;
 	cout << setw(10) << "CALIBRE";
@@ -759,7 +755,6 @@ void ModificarModelo(Arma aux, int pos)
 	anykey();
 	cls();
 }
-
 void ModificarCalibre(Arma aux, int pos)
 {
 	bool flag = false;
@@ -793,7 +788,6 @@ void ModificarCalibre(Arma aux, int pos)
 	anykey();
 	cls();
 }
-
 void ModificarPais(Arma aux, int pos)
 {
 	bool flag = false;
@@ -827,7 +821,6 @@ void ModificarPais(Arma aux, int pos)
 	anykey();
 	cls();
 }
-
 void ModificarNumSerie(Arma aux, int pos)
 {
 	bool flag = false;
