@@ -52,11 +52,11 @@ bool buscarSocioPorDNI(int dni);
 
 int checkArchivoSocios();
 
-void listadoGeneralSocios();
+void listado_general_socios();
 
 void cargar_nuevo_socio();
 void modificar_socio();
-void bajaSocio();
+void baja_socio();
 
 void ModificarDNISocio(Socio aux, int pos);
 void ModificarNombreSocio(Socio aux, int pos);

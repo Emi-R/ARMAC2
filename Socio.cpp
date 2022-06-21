@@ -184,7 +184,7 @@ void Socio::cargar() {
 
 	this->setDeudor(false);
 
-	_estado = true;
+	this->setEstado(true);
 
 	int idCuota = generarIDCuota() + 1;
 
@@ -351,19 +351,19 @@ int checkArchivoSocios() {
 	return 1;
 
 }
-void listadoGeneralSocios()
+void listado_general_socios()
 {
 	Socio socio;
 	int pos = 0;
 
 	cout << left;
 	cout << setw(5) << "ID";
-	cout << setw(15) << "  DNI";
-	cout << setw(20) << "    NOMBRE";
-	cout << setw(20) << "   APELLIDO";
+	cout << setw(15) << "DNI";
+	cout << setw(20) << "NOMBRE";
+	cout << setw(20) << "APELLIDO";
 	cout << setw(20) << "ESTADO DE CUOTA";
-	cout << setw(10) << " FECHA INGRESO" << endl;
-	cout << "----------------------------------------------------------------------------------------------------------------------" << endl;
+	cout << setw(10) << "FECHA INGRESO" << endl;
+	cout << "-----------------------------------------------------------------------------------------------" << endl;
 
 	while (socio.leerDeDisco(pos++))
 	{
@@ -382,7 +382,7 @@ void cargar_nuevo_socio()
 	aux.grabarEnDisco();
 }
 
-void bajaSocio()
+void baja_socio()
 {
 	Socio aux;
 	int id;

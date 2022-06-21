@@ -105,7 +105,7 @@ void Solicitud::cargarSolicitud() {
 
 		posSocio = buscarSocioPorID(aux);
 
-		if (posSocio == -1)
+		if (posSocio <0)
 		{
 			cout << "El ID de socio no esta registrado o es incorrecto. Ingrese de nuevo por favor." << endl;
 		}
@@ -270,17 +270,16 @@ void listadoSolicitudes() {
 
 	Solicitud solic;
 	int p = 0;
-	cout << endl;
 
-	cout << "LISTADO DE SOLICITUDES" << endl;
-	cout << "---------------------------------------------------------------------------------" << endl;
 	cout << left;
 	cout << setw(15) << "ID SOLICITUD";
 	cout << setw(20) << "ID ADMINISTRADOR";
-	cout << setw(15) << "ID SOCIO";
-	cout << setw(15) << "ID ARMA";
+	cout << setw(12) << "ID SOCIO";
+	cout << setw(12) << "ID ARMA";
 	cout << setw(15) << "ESTADO";
 	cout << setw(15) << "FECHA CREACION" << endl;
+	cout << "------------------------------------------------------------------------------------------";
+	cout << endl;
 
 	while (solic.leerDeDisco(p++))
 	{
@@ -294,8 +293,8 @@ void Solicitud::listarSolicitud() {
 		cout << left;
 		cout << setw(15) << this->getIdSolicitud();
 		cout << setw(20) << this->getIdAdministrador();
-		cout << setw(15) << this->getIdSocio();
-		cout << setw(15) << this->getIdArma();
+		cout << setw(12) << this->getIdSocio();
+		cout << setw(12) << this->getIdArma();
 		cout << setw(15);
 		mostrarEstadoApSolicitud(this->getAprobado());
 		this->getFechaSolicitud().mostrarFecha();
@@ -629,15 +628,16 @@ void modificar_solicitud()
 			cout << "Ingrese ID de solicitud a modificar (0 para volver al menu Solicitud): ";
 			cin >> idaux;
 
-			pos = buscarSolicitudPorId(idaux) - 1;
-
-			if (pos <= -1 && idaux != 0)
-			{
-				cout << "La Solicitud no se encuentra. Reintente por favor." << endl << endl;
-			}
-			else if (idaux == 0)
+			if (idaux == 0)
 			{
 				return;
+			}
+
+			pos = buscarSolicitudPorId(idaux) - 1;
+
+			if (pos <= -1)
+			{
+				cout << "La Solicitud no se encuentra. Reintente por favor." << endl << endl;
 			}
 			else
 			{
@@ -685,9 +685,6 @@ void modificar_solicitud()
 			break;
 		case 3:
 			bajaSolicitud(aux, pos);
-			break;
-		case 7:
-			//ModificarTelefono(aux, pos);
 			break;
 		case 0:
 			cout << "¿Volver al menu anterior? (S/N) ";

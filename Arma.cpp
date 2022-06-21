@@ -180,50 +180,61 @@ void Arma::listar()
 
 void Arma::listarPorNumSerie()
 {
-	cout << left;
-	cout << setw(18) << this->getNumSerie();
-	cout << setw(9) << this->getIdArma();
-	cout << setw(18) << this->getModelo();
-	cout << setw(10) << this->getCalibre();
-	cout << setw(15) << this->getidPaisFabricacion();
-	cout << setw(15) << this->getTipoArma();
-	cout << endl;
-
+	if (this->getEstado())
+	{
+		cout << left;
+		cout << setw(18) << this->getNumSerie();
+		cout << setw(9) << this->getIdArma();
+		cout << setw(18) << this->getModelo();
+		cout << setw(10) << this->getCalibre();
+		cout << setw(15) << this->getidPaisFabricacion();
+		cout << setw(15) << this->getTipoArma();
+		cout << endl;
+	}
 }
 
 void Arma::listarPorTipoArma()
 {
-	cout << left;
-	cout << setw(15) << this->getTipoArma();
-	cout << setw(9) << this->getIdArma();
-	cout << setw(18) << this->getModelo();
-	cout << setw(10) << this->getCalibre();
-	cout << setw(15) << this->getidPaisFabricacion();
-	cout << setw(18) << this->getNumSerie();
-	cout << endl;
+	if (this->getEstado())
+	{
+		cout << left;
+		cout << setw(15) << this->getTipoArma();
+		cout << setw(9) << this->getIdArma();
+		cout << setw(18) << this->getModelo();
+		cout << setw(10) << this->getCalibre();
+		cout << setw(15) << this->getidPaisFabricacion();
+		cout << setw(18) << this->getNumSerie();
+		cout << endl;
 
+	}
 }
 
 void Arma::listarPorTipoCalibre() {
-	cout << left;
-	cout << setw(10) << this->getCalibre();
-	cout << setw(9) << this->getIdArma();
-	cout << setw(18) << this->getModelo();
-	cout << setw(15) << this->getTipoArma();
-	cout << setw(15) << this->getidPaisFabricacion();
-	cout << setw(18) << this->getNumSerie();
-	cout << endl;
+	if (this->getEstado())
+	{
+		cout << left;
+		cout << setw(10) << this->getCalibre();
+		cout << setw(9) << this->getIdArma();
+		cout << setw(18) << this->getModelo();
+		cout << setw(15) << this->getTipoArma();
+		cout << setw(15) << this->getidPaisFabricacion();
+		cout << setw(18) << this->getNumSerie();
+		cout << endl;
+	}
 }
 
 void Arma::listarPorIdArma() {
-	cout << left;
-	cout << setw(9) << this->getIdArma();
-	cout << setw(18) << this->getNumSerie();
-	cout << setw(18) << this->getModelo();
-	cout << setw(10) << this->getCalibre();
-	cout << setw(15) << this->getidPaisFabricacion();
-	cout << setw(15) << this->getTipoArma();
-	cout << endl;
+	if (this->getEstado())
+	{
+		cout << left;
+		cout << setw(9) << this->getIdArma();
+		cout << setw(18) << this->getNumSerie();
+		cout << setw(18) << this->getModelo();
+		cout << setw(10) << this->getCalibre();
+		cout << setw(15) << this->getidPaisFabricacion();
+		cout << setw(15) << this->getTipoArma();
+		cout << endl;
+	}
 }
 
 bool Arma::grabarEnDisco() {
@@ -331,7 +342,7 @@ int buscarArmaPorId(int id) {
 	int pos = 0;
 	while (arma.leerDeDisco(pos))
 	{
-		if (arma.getIdArma() == id)
+		if (arma.getIdArma() == id && arma.getEstado())
 		{
 			return pos;
 		}
@@ -351,6 +362,93 @@ void crear_nueva_arma()
 
 }
 
+void eliminarArma(int idArma) {
+	Arma reg;
+	int pos = buscarArmaPorId(idArma);
+	if (pos > -1) {
+		reg.leerDeDisco(pos);
+		reg.setEstado(false);
+		reg.modificarEnDisco(pos);
+	}
+}
+
+void modificar_arma() {
+	int opcion;
+	char confirmarSalida;
+	bool salir = false;
+	bool flag = false;
+	int idaux;
+	int pos = 0;
+	Arma aux;
+
+	while (!salir) {
+
+		do
+		{
+			cout << "Ingrese ID de arma a modificar (0 para volver al menu anterior): ";
+			cin >> idaux;
+
+			if (idaux == 0)
+			{
+				return;
+			}
+
+			pos = buscarArmaPorId(idaux);
+
+			if (pos < 0)
+			{
+				cout << "El ID no se encuentra. Reintente por favor." << endl << endl;
+			}
+			else
+			{
+				flag = true;
+			}
+
+		} while (!flag);
+
+		cls();
+
+		aux.leerDeDisco(pos);
+		aux.mostrarArma();
+
+		cout << "--------------------------------" << endl;
+		cout << "  Seleccione campo a modificar" << endl;
+		cout << "--------------------------------" << endl;
+		cout << "1 - Modificar modelo " << endl;
+		cout << "2 - Modificar calibre " << endl;
+		cout << "3 - Modificar pais de fabricación " << endl;
+		cout << "4 - Modificar número de serie" << endl;
+		cout << "--------------------------------" << endl;
+		cout << "0 - Volver al menú Armas" << endl << endl;
+
+		cout << "Opción: ";
+		cin >> opcion;
+
+		cls();
+
+		switch (opcion) {
+		case 1:
+			ModificarModelo(aux, pos);
+			break;
+		case 2:
+			ModificarCalibre(aux, pos);
+			break;
+		case 3:
+			ModificarPais(aux, pos);
+			break;
+		case 4:
+			ModificarNumSerie(aux, pos);
+			break;
+		case 0:
+			cout << "¿Volver al menu anterior? (S/N) ";
+			cin >> confirmarSalida;
+
+			salir = (tolower(confirmarSalida) == 's');
+			break;
+		}
+	}
+}
+
 void listadoGeneralArmas()
 {
 	Arma arma;
@@ -363,9 +461,9 @@ void listadoGeneralArmas()
 	cout << setw(15) << "ID PAIS FABR.";
 	cout << setw(15) << "TIPO DE ARMA";
 	cout << setw(15) << "NÚMERO DE SERIE" << endl;
-	cout << "----------------------------------------------------------------------------" << endl;
+	cout << "-------------------------------------------------------------------------------" << endl;
 
-	while (arma.leerDeDisco(pos++))
+	while (arma.leerDeDisco(pos++) && arma.getEstado())
 	{
 		arma.listar();
 	}
@@ -373,22 +471,12 @@ void listadoGeneralArmas()
 	anykey();
 }
 
-void eliminarArma(int idArma) {
-	Arma reg;
-	int pos = buscarArmaPorId(idArma);
-	if (pos > -1) {
-		reg.leerDeDisco(pos);
-		reg.setEstado(false);
-		reg.modificarEnDisco(pos);
-	}
-}
-
 void listadoDeArmasPorNumDeSerie() {
 
 	int cantRegArmas = buscarCantidadArmas();
 
 	if (cantRegArmas == 0) {
-		cout << "No existen Armas registradas."<<endl;
+		cout << "No existen Armas registradas." << endl;
 		return;
 	}
 
@@ -407,7 +495,7 @@ int buscarCantidadArmas() {
 
 	FILE* p = fopen("armas.dat", "rb");
 
-	if (p == NULL) {return 0;}
+	if (p == NULL) { return 0; }
 
 	fseek(p, 0, SEEK_END);
 	size_t bytes = ftell(p);
@@ -417,7 +505,7 @@ int buscarCantidadArmas() {
 	return cantidadArmas;
 }
 
-void copiarArmas(Arma *vArma, int tam) {
+void copiarArmas(Arma* vArma, int tam) {
 	for (int i = 0; i < tam; i++) { vArma[i].leerDeDisco(i); }
 }
 
@@ -436,7 +524,8 @@ void ordernarVecPorNumSerie(Arma* vArma, int tam) {
 	}
 }
 
-void mostrarListadoArmas(Arma* vArma, int tam){
+void mostrarListadoArmas(Arma* vArma, int tam) {
+
 	cout << left;
 	cout << setw(18) << "NÚMERO DE SERIE";
 	cout << setw(9) << "ID ARMA";
@@ -650,4 +739,132 @@ void MostrarVectorPorCalibre(Arma* vec, int tam) {
 	{
 		vec[i].listarPorTipoCalibre();
 	}
+}
+
+void ModificarModelo(Arma aux, int pos)
+{
+	bool flag = false;
+	char confirm;
+	bool confirmar = false;
+	char newModel[30];
+
+	cout << "Ingrese modelo nuevo: ";
+	cin.ignore();
+	cin.getline(newModel, 29);
+	aux.setModelo(newModel);
+	aux.modificarEnDisco(pos);
+
+	cout << " -- Los cambios han sido guardados -- " << endl;
+
+	anykey();
+	cls();
+}
+
+void ModificarCalibre(Arma aux, int pos)
+{
+	bool flag = false;
+	char confirm;
+	bool confirmar = false;
+	float newCalibre;
+
+	do {
+
+		cout << "Ingrese nuevo calibre: ";
+		cin >> newCalibre;
+
+		if (newCalibre <= 0)
+		{
+			cout << endl << "Calibre invalido. Reingrese de nuevo, por favor";
+			anykey();
+			cls();
+			flag = false;
+		}
+		else
+		{
+			flag = true;
+		}
+	} while (!flag);
+
+	aux.setCalibre(newCalibre);
+	aux.modificarEnDisco(pos);
+
+	cout << " -- Los cambios han sido guardados -- " << endl;
+
+	anykey();
+	cls();
+}
+
+void ModificarPais(Arma aux, int pos)
+{
+	bool flag = false;
+	char confirm;
+	bool confirmar = false;
+	int newPais;
+
+	do {
+
+		cout << "Ingrese nuevo ID de Pais: ";
+		cin >> newPais;
+
+		if (newPais <= 0)
+		{
+			cout << endl << "Pais inválido. Reingrese de nuevo por favor";
+			anykey();
+			cls();
+			flag = false;
+		}
+		else
+		{
+			flag = true;
+		}
+	} while (!flag);
+
+	aux.setidPaisFabricacion(newPais);
+	aux.modificarEnDisco(pos);
+
+	cout << " -- Los cambios han sido guardados -- " << endl;
+
+	anykey();
+	cls();
+}
+
+void ModificarNumSerie(Arma aux, int pos)
+{
+	bool flag = false;
+	char confirm;
+	bool confirmar = false;
+	int newNum;
+
+	do {
+
+		cout << "Ingrese nuevo número de serie: ";
+		cin >> newNum;
+
+		if (newNum <= 0)
+		{
+			cout << endl << "Número de serie inválido. Reingrese de nuevo por favor";
+			anykey();
+			cls();
+			flag = false;
+		}
+		else if (buscarArmaPorId(newNum) != -1)
+		{
+			cout << endl << "El número de serie ingresado ya existe.";
+			anykey();
+			cls();
+			flag = false;
+		}
+		else
+		{
+			flag = true;
+		}
+	} while (!flag);
+
+	aux.setNumSerie(newNum);
+	aux.modificarEnDisco(pos);
+
+	cout << " -- Los cambios han sido guardados -- " << endl;
+
+	anykey();
+	cls();
 }

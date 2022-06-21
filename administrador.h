@@ -7,6 +7,7 @@
 #include <string>
 #include "rlutil.h"
 
+using namespace std;
 class Administrador
 {
 
@@ -70,3 +71,5 @@ void ModificarApellidoAdmin(Administrador aux, int pos);
 void ModificarContrasenia(Administrador aux, int pos);
 
 void consulta_admin_Por_ID();
+
+string pedirContrasenia();

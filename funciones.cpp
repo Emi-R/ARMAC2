@@ -48,11 +48,10 @@ void instalacionArchivos()
 bool login() {
 
 	int aux;
-	char aux2[30];
 	bool flag = false;
 	bool flag2 = false;
 	int pos = 0;
-	string aux3;
+	string aux2;
 	string password;
 	char caracter;
 	int cont = 0;
@@ -87,32 +86,12 @@ bool login() {
 		else
 		{
 			locate(13, 4);
-
-			caracter = getch();
-
 			admin.leerDeDisco(pos);
 			password = admin.getContrasenia();
-			aux3 = "";
 
-			while (caracter != 13)
-			{
-				if (caracter != 8)
-				{
-					aux3.push_back(caracter);
-					cout << "*";
-				}
-				else
-				{
-					if (aux3.length() > 0)
-					{
-						cout << "\b \b";
-						aux3.pop_back();
-					}
-				}
-				caracter = getch();
-			}
+			aux2 = pedirContrasenia();
 
-			if (aux3 != password)
+			if (aux2 != password)
 			{
 				cls();
 				locate(1, 6);
@@ -135,14 +114,15 @@ bool login() {
 				system("PAUSE");
 				cls();
 				return true;
+
 			}
 		}
 
 		if (cont == 3)
 		{
 			cls();
-			setBackgroundColor(WHITE);
-			setColor(RED);
+			setBackgroundColor(RED);
+			setColor(YELLOW);
 			cout << endl << "\t-- Ha superado el límite de intentos. Contacte a Ángel Simón. --" << endl;
 			anykey();
 			setColor(WHITE);
@@ -204,7 +184,7 @@ bool menuPrincipal() {
 			cout << "¿Desea cerrar la sesion? (S/N) ";
 			cin >> confirmarSalida;
 
-			if (tolower(confirmarSalida)=='s')
+			if (tolower(confirmarSalida) == 's')
 			{
 				cls();
 				return true;
@@ -265,7 +245,7 @@ void menuSocios() {
 			modificar_socio();
 			break;
 		case 3:
-			bajaSocio();
+			baja_socio();
 			break;
 		case 4:
 			cobrar_cuota();
@@ -312,7 +292,7 @@ void menuListadosSocios() {
 
 		switch (opcion) {
 		case 1:
-			listadoGeneralSocios();
+			listado_general_socios();
 			anykey();
 			break;
 		case 2:
@@ -501,10 +481,9 @@ void menuSolicitudes() {
 		cout << "--------------------------" << endl;
 		cout << "1 - Crear nueva solicitud" << endl;
 		cout << "2 - Modificar Solicitud" << endl;
-		cout << "3 - Eliminar Solicitud" << endl;
 		cout << "--------------------------" << endl;
-		cout << "4 - Listados" << endl;
-		cout << "5 - Consultas" << endl;
+		cout << "3 - Listados" << endl;
+		cout << "4 - Consultas" << endl;
 		cout << "--------------------------" << endl;
 		cout << "0 - Volver al menú principal" << endl << endl;
 
@@ -521,12 +500,9 @@ void menuSolicitudes() {
 			modificar_solicitud();
 			break;
 		case 3:
-			anykey();
-			break;
-		case 4:
 			menuListadosSolicitudes();
 			break;
-		case 5:
+		case 4:
 			menuConsultasSolicitudes();
 			break;
 		case 0:
@@ -661,10 +637,9 @@ void menuArmas() {
 		cout << "--------------------------" << endl;
 		cout << "1 - Crear nueva arma " << endl;
 		cout << "2 - Modificar arma " << endl;
-		cout << "3 - Eliminar arma " << endl;
 		cout << "--------------------------" << endl;
-		cout << "4 - Listados" << endl;
-		cout << "5 - Consultas" << endl;
+		cout << "3 - Listados" << endl;
+		cout << "4 - Consultas" << endl;
 		cout << "--------------------------" << endl;
 		cout << "0 - Volver al menú principal" << endl << endl;
 
@@ -678,16 +653,13 @@ void menuArmas() {
 			crear_nueva_arma();
 			break;
 		case 2:
-
+			modificar_arma();
 			break;
 		case 3:
-
+			menuListadosArmas();
 			break;
 		case 4:
-			menuListadosArmas();//Falta desarrollar
-			break;
-		case 5:
-			menuConsultasArmas();//Falta desarrollar
+			menuConsultasArmas();
 			break;
 		case 0:
 			cout << "¿Volver al menu anterior? (S/N) ";
@@ -916,7 +888,7 @@ bool exportarCSVSocios() {
 
 	FILE* p = fopen("socios.dat", "rb");
 	Socio reg;
-	
+
 	if (p == NULL) {
 		cout << "No se pudo abrir el archivo";
 		return false;

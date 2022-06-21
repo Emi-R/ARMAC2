@@ -81,15 +81,21 @@ bool Administrador::getEstado()
 void Administrador::cargar()
 {
 	int aux;
-	char aux2[30];
-	char aux3[30];
+	string pass;
+	string pass2;
+	char caracter;
 	bool flag = false;
 
 	srand(time(NULL));
 
 	do {
-		cout << "Ingrese el DNI: ";
+		cout << "Ingrese el DNI (0 para volver al menu anterior): ";
 		cin >> aux;
+
+		if (aux == 0)
+		{
+			return;
+		}
 
 		if (aux < 1000000)
 		{
@@ -98,6 +104,7 @@ void Administrador::cargar()
 		else if (buscarAdministradorPorDni(aux) > -1)
 		{
 			cout << "El DNI ya ha sido registrado anteriormente." << endl << endl;
+			anykey();
 		}
 		else
 		{
@@ -117,19 +124,21 @@ void Administrador::cargar()
 
 	do {
 		cout << "Ingrese contraseña nueva (sin espacios, máximo 15 caracteres): ";
-		cin >> aux2;
 
-		if (strlen(aux2) > 15)
+		pass = pedirContrasenia();
+
+		if (pass.length() > 15)
 		{
 			cout << "Contraseña demasiado larga." << endl << endl;
 			flag = false;
 		}
 		else
 		{
-			cout << "Repita la contraseña ingresada: ";
-			cin >> aux3;
+			cout << "\nRepita la contraseña ingresada: ";
+			
+			pass2 = pedirContrasenia();
 
-			if (strcmp(aux2, aux3) != 0)
+			if (pass != pass2)
 			{
 				cout << "La contraseña es diferente a la primera ingresada. Por favor, reintente." << endl << endl;
 				flag = false;
@@ -142,7 +151,11 @@ void Administrador::cargar()
 
 	} while (!flag);
 
-	this->setContrasenia(aux2);
+	char contrasenia[30];
+
+	strcpy(contrasenia, pass.c_str());
+
+	this->setContrasenia(contrasenia);
 
 	do {
 		aux = 1 + rand() % 9999;
@@ -167,7 +180,7 @@ void Administrador::cargar()
 	cout << "Apellido: " << this->getApellido() << endl << endl;
 	cout << " - Datos para iniciar sesión: " << endl << endl;
 	cout << "ID: " << this->getIdAdmin() << endl;
-	cout << "Contraseña: " << this->getContrasenia() << endl;
+	anykey();
 
 }
 
@@ -351,7 +364,6 @@ void crear_nuevo_admin()
 
 	aux.cargar();
 	aux.grabarEnDisco();
-	rlutil::anykey();
 }
 
 void modificar_admin()
@@ -368,7 +380,7 @@ void modificar_admin()
 
 		do
 		{
-			cout << "Ingrese ID de administrador a modificar (0 para volver al menu Admins): ";
+			cout << "Ingrese ID de administrador a modificar (0 para volver al menu anterior): ";
 			cin >> idaux;
 
 			if (idaux == 0)
@@ -441,7 +453,7 @@ void baja_admin()
 
 	do {
 		do {
-			cout << "Ingrese ID de administrador a dar de baja (0 para volver al menu Socios): ";
+			cout << "Ingrese ID de administrador a dar de baja (0 para volver al menu anterior): ";
 			cin >> id;
 
 			if (id == 0)
@@ -708,4 +720,32 @@ void consulta_admin_Por_ID()
 		cout << "El ID no fue encontrado en el archivo de administradores" << endl;
 		anykey();
 	}
+}
+
+string pedirContrasenia()
+{
+	string pass;
+	char caracter;
+
+	caracter = getch();
+
+	while (caracter != 13)
+	{
+		if (caracter != 8)
+		{
+			pass.push_back(caracter);
+			cout << "*";
+		}
+		else
+		{
+			if (pass.length() > 0)
+			{
+				cout << "\b \b";
+				pass.pop_back();
+			}
+		}
+		caracter = getch();
+	}
+
+	return pass;
 }

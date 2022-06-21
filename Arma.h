@@ -58,10 +58,10 @@ int checkArchivoArmas();
 int buscarArmaPorId(int );
 
 void crear_nueva_arma();
+void eliminarArma(int idArma);
+void modificar_arma();
 
 void listadoGeneralArmas();
-
-void eliminarArma(int idArma);
 int buscarArmaPorId(int idArma);
 
 void listadoDeArmasPorNumDeSerie();
@@ -84,3 +84,11 @@ void mostrarConsultaArmasPorId(Arma* vecArma, int tamVec, int numId);
 void listados_Armas_Por_Calibre();
 void ordenarVectorPorCalibre(Arma* vec, int tam);
 void MostrarVectorPorCalibre(Arma* vec, int tam);
+
+void ModificarModelo(Arma aux, int pos);
+
+void ModificarCalibre(Arma aux,int pos);
+
+void ModificarPais(Arma aux, int pos);
+
+void ModificarNumSerie(Arma aux, int pos);
