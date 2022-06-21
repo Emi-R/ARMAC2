@@ -95,3 +95,5 @@ void ModificarCalibre(Arma aux,int pos);
 void ModificarPais(Arma aux, int pos);
 
 void ModificarNumSerie(Arma aux, int pos);
+
+void porcentaje_armas_por_tipo();

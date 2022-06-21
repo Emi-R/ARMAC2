@@ -943,17 +943,30 @@ void promedio_solictudes_aprobadas()
 	int pos = 0;
 	int cont = 0;
 	int anio = 0;
+	int totalSolicitudes = 0;
 	bool flag = false;
 
-	while (solicitud.leerDeDisco(pos++))
+	while (solicitud.leerDeDisco(pos))
 	{
-		if (solicitud.getEstado() && solicitud.getAprobado() == 1)
+		if (solicitud.getEstado())
+		{
+			totalSolicitudes++;
+		}
+		pos++;
+	}
+
+	pos = 0;
+
+	while (solicitud.leerDeDisco(pos++)) {
+
+		if (solicitud.getAprobado() == 1)
 		{
 			cont++;
 		}
+		pos++;
 	}
 
-	float prom = (float)cantSolicitudes / cont;
+	float prom = (float)totalSolicitudes / cont;
 
 	cout << " -- El promedio de solicitudes aprobadas es de: " << prom << endl;
 

@@ -792,6 +792,7 @@ void menuInformes() {
 		cout << "3 - Recaudación por administrador" << endl;
 		cout << "4 - Cantidad de solicitudes desaprobadas por año" << endl;
 		cout << "5 - Promedio de solicitudes aprobadas con respecto al total" << endl;
+		cout << "6 - Porcentaje de armas por tipo" << endl;
 		cout << "--------------------------" << endl;
 		cout << "7 - Listar historial de precios de cuota" << endl;
 		cout << "8 - Listar historial de precios de solicitud" << endl;
@@ -820,9 +821,12 @@ void menuInformes() {
 			promedio_solictudes_aprobadas();
 			break;
 		case 6:
-			listar_historial_precios_cuota();
+			porcentaje_armas_por_tipo();
 			break;
 		case 7:
+			listar_historial_precios_cuota();
+			break;
+		case 8:
 			listar_historial_precios_solicitud();
 			break;
 		case 0:

@@ -491,8 +491,6 @@ void listadoDeArmasPorNumDeSerie() {
 	delete armas;
 }
 
-
-
 int buscarCantidadArmas() {
 
 	FILE* p = fopen("armas.dat", "rb");
@@ -858,19 +856,40 @@ void ModificarNumSerie(Arma aux, int pos)
 	cls();
 }
 
-//void listado_armas_por_pais()
-//{
-//	int cantReg = CantidadRegistroPaises();
-//	if (cantReg == 0) {
-//		cout << "No hay paises registrados";
-//		anykey();
-//		return;
-//	}
-//	int* vPaises;
-//	int* vPaises = new int[cantReg];
-//	if (vPaises == NULL) return;
-//	PonerEnCeroVector(vPaises, cantReg);
-//	cargarVectorPaises(vPaises, cantReg);
-//	MostrarVector(vDinamico, cantReg);
-//
-//}
+void porcentaje_armas_por_tipo()
+{
+	int cantReg = CantidadRegistroArmas();
+
+	if (cantReg == 0)
+	{
+		cout << "No se registraron armas al dia de la fecha" << endl;
+		anykey();
+		return;
+	}
+
+	Arma arma;
+	int pos = 0;
+	int cantArmasActivas = 0;
+	const int TIPOSARMAS = 5;
+	int vArmas[TIPOSARMAS] = { 0 };
+	float porc[TIPOSARMAS] = { 0 };
+
+	while (arma.leerDeDisco(pos))
+	{
+		if (arma.getEstado())
+		{
+			cantArmasActivas++;
+
+			vArmas[arma.getTipoArma() - 1]++;
+
+		}
+		pos++;
+	}
+
+	for (int i = 0; i < TIPOSARMAS; i++)
+	{
+		porc[i] = (float) vArmas[i] * 100 / cantArmasActivas;
+	}
+
+
+}
