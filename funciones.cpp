@@ -859,7 +859,7 @@ void menuConfiguracion() {
 		cout << "4 - Hacer copia de seguridad Socios" << endl;
 		cout << "5 - Hacer copia de seguridad Solicitudes" << endl;
 		cout << "6 - Exportar archivo CSV de Socios" << endl;
-		cout << "6 - Exportar archivo CSV de Solicitudes" << endl;
+		cout << "7 - Exportar archivo CSV de Solicitudes" << endl;
 		cout << "----------------------------------" << endl;
 		cout << "0 - Volver al menú principal" << endl << endl;
 
