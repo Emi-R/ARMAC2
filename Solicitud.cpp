@@ -115,7 +115,8 @@ void Solicitud::cargarSolicitud() {
 
 			if (socio.getDeudor())
 			{
-				cout << "El socio n° " << socio.getIdsocio() << " registra deuda al dia de la fecha. \nNo puede generar solicitudes nuevas" << endl;
+				cout << "El socio n° " << socio.getIdsocio() << " registra deuda al dia de la fecha." << endl;
+				cout << "No puede generar solicitudes nuevas." << endl;
 				cout << "Para registrar solicitudes nuevas, regularize su situación.";
 				anykey();
 				cls();

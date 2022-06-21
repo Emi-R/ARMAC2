@@ -292,7 +292,7 @@ int buscarSocioPorID(int id)
 	Socio socio;
 	int pos = 0;
 
-	while (socio.leerDeDisco(pos))
+	while (socio.leerDeDisco(pos) && socio.getEstado())
 	{
 		if (socio.getIdsocio() == id)
 		{
