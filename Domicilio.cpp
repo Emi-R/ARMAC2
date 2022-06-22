@@ -90,33 +90,38 @@ bool Domicilio::getEstado() {
 void Domicilio::cargarDomicilio() {
 	char aux[50];
 	cout << "País: ";
-	/*cin.ignore();
-	cin.getline(_pais, 49);*/
+	cin.ignore();
+	cin.getline(_pais, 49);
 
-	cin >> aux;			//<-Descomentar para ingreso
-	this->setPais(aux);	//<-automatizado con excel y comentar el
-							//<-ingreso con getline
+	/*cin >> aux;
+	this->setPais(aux);*/
+
+	// Usar metodo set para ingreso	automatizado con 
+	// excel o getline para ingreso manual (comentar uno y descomentar el otro)
 
 	cout << "Provincia: ";
-	//cin.getline(_provincia, 49);
+	cin.getline(_provincia, 49);
 
-	cin >> aux;				//<-Descomentar para ingreso
-	this->setProvincia(aux);	//<-automatizado con excel y comentar el
-								//<-ingreso con getline
+	/*cin >> aux;
+	this->setProvincia(aux);*/
 
 	cout << "Localidad: ";
-	//cin.getline(_localidad, 49);
+	cin.getline(_localidad, 49);
 
-	cin >> aux;				//<-Descomentar para ingreso
-	this->setLocalidad(aux);	//<-automatizado con excel y comentar el
-								//<-ingreso con getline
+	/*cin >> aux;
+	this->setLocalidad(aux);*/
+
+	// Usar metodo set para ingreso	automatizado con 
+	// excel o getline para ingreso manual (comentar uno y descomentar el otro)
 
 	cout << "Calle: ";
-	//cin.getline(_calle, 49);
+	cin.getline(_calle, 49);
 
-	cin >> aux;			//<-Descomentar para ingreso
-	this->setCalle(aux);	//<-automatizado con excel y comentar el
-							//<-ingreso con getline
+	/*cin >> aux;
+	this->setCalle(aux);*/
+
+	// Usar metodo set para ingreso	automatizado con 
+	// excel o getline para ingreso manual (comentar uno y descomentar el otro)
 
 	do {
 		cout << "Altura: ";
@@ -128,12 +133,14 @@ void Domicilio::cargarDomicilio() {
 
 	do {
 		cout << "Departamento o piso (si es casa, ingrese PB): ";
-		/*cin.ignore();
-		cin.getline(_dpto, 9);*/
+		cin.ignore();
+		cin.getline(_dpto, 9);
 
-		cin >> aux;			//<-Descomentar para ingreso
-		this->setDpto(aux);	//<-automatizado con excel y comentar el
-								//<-ingreso con getline
+		/*cin >> aux;
+		this->setDpto(aux);*/
+
+		// Usar metodo set para ingreso	automatizado con 
+		// excel o getline para ingreso manual (comentar uno y descomentar el otro)
 
 		if (strlen(_dpto) < 0) {
 			cout << "El depto ingresado es incorrecto. Ingrese nuevamente." << endl;

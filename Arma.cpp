@@ -89,12 +89,15 @@ void Arma::cargarArma() {
 	bool flag = false;
 
 	cout << "Ingrese el Modelo del Arma: ";
+
+	cin >> aux2;					
+	this->setModelo(aux2);	
+	
 	/*cin.ignore();
 	cin.getline(_modelo, 29);*/
 
-	cin >> aux2;				//<-Descomentar para ingreso
-	this->setModelo(aux2);	//<-automatizado con excel y comentar el
-								//<-ingreso con getline
+	// Usar metodo set para ingreso	automatizado con 
+	// excel o getline para ingreso manual (comentar uno y descomentar el otro)
 
 	cout << "Ingrese el Calibre del Arma: ";
 	cin >> _calibre;
