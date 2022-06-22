@@ -10,6 +10,7 @@ private:
 	int _dia, _mes, _anio;
 
 public:
+
 	///Constructor
 	Fecha();
 
