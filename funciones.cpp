@@ -769,6 +769,7 @@ void menuConsultasArmas() {
 			break;
 		case 3:
 			consultaArmasPorModelo();
+			anykey();
 			break;
 		case 0:
 			cout << "¿Volver al menu anterior? (S/N) ";

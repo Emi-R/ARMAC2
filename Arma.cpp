@@ -663,7 +663,6 @@ void consultaArmasPorNumSerie() {
 
 	copiarArmas(vecArmas, cantArmas);
 
-
 	cout << "Ingrese el Numero de Serie: ";
 	cin >> numSerie;
 
@@ -941,21 +940,23 @@ void porcentaje_armas_por_tipo()
 		porc[i] = (float)vArmas[i] * 100 / cantArmasActivas;
 	}
 
-	MostrarVectorArmas(porc, TIPOSARMAS);
+	MostrarVectorArmas(vArmas, porc, TIPOSARMAS);
 
 }
 
-void MostrarVectorArmas(float* porc, int tam)
+void MostrarVectorArmas(int *vArmas, float* porc, int tam)
 {
 	string tipo[5] = { "Pistola","Escopeta","Subfusil","Carabina","Fusil Automático" };
 	cout << left;
 	cout << setw(17) << "TIPO";
+	cout << setw(10) << "CANTIDAD";
 	cout << setw(9) << "PORCENTAJE" << endl;
-	cout << "-----------------------------------------------------------------------------------" << endl;
+	cout << "--------------------------------" << endl;
 
 	for (int i = 0; i < tam; i++)
 	{
 		cout << setw(17) << tipo[i];
+		cout << setw(10) << vArmas[i];
 		cout << setw(1) << "% ";
 		cout << setw(9) << porc[i] << endl;
 	}
