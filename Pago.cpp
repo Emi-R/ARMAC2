@@ -1,6 +1,7 @@
 #include "Pago.h"
 #include "PagoSolicitud.h"
 #include "administrador.h"
+#include "Solicitud.h"
 
 using namespace rlutil;
 
@@ -312,10 +313,11 @@ void actualizarCarteraSocios(Socio* vec, int cantReg) {
 		{
 			if (cantMesesAdeudados >= 12 && vec[i].getUltimoPago().getAnio() != fechaActual.getAnio())
 			{
+				eliminar_solicitudes_pendientes(vec[i].getIdsocio());
 				vec[i].setEstado(false);
 				vec[i].modificarEnDisco(i);
 			}
-			else if (vec[i].getUltimoPago().getMes() != fechaActual.getMes() && vec[i].getUltimoPago().getDia() <= fechaActual.getDia())
+			else if (vec[i].getUltimoPago().getMes() != fechaActual.getMes() && fechaActual.getDia() >= vec[i].getUltimoPago().getDia())
 			{
 				vec[i].setDeudor(true);
 				vec[i].modificarEnDisco(i);

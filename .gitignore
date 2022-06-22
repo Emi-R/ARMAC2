@@ -40,3 +40,7 @@ cuotas.dat
 *.dat
 *.dat
 *.dat
+*.lastcodeanalysissucceeded
+x64/Debug/PagoSolicitud.nativecodeanalysis.xml
+*.xml
+*.sarif

@@ -426,9 +426,11 @@ void baja_socio()
 
 		if (confirm == 's')
 		{
+			eliminar_solicitudes_pendientes(id);
 			aux.setEstado(false);
 			aux.modificarEnDisco(pos);
-			cout << endl << " -- El socio N° " << aux.getIdsocio() << "ha sido dado de baja-- " << endl;
+			cout << endl << " -- El socio N° " << aux.getIdsocio() << "ha sido dado de baja -- " << endl;
+			cout << "Todas los solicitudes pendientes han sido dadas de baja" << endl;
 			anykey();
 			cls();
 			flag = true;

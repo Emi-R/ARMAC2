@@ -929,6 +929,7 @@ bool exportarCSVSocios() {
 	myFile.open("listadoSocios.csv");
 
 	FILE* p = fopen("socios.dat", "rb");
+
 	Socio reg;
 
 	if (p == NULL) {
@@ -939,8 +940,9 @@ bool exportarCSVSocios() {
 	int pos = 0;
 
 	myFile << "ID SOCIO" << ';' << "DNI" << ';' << "APELLIDO" << ';' << "NOMBRE" << ';' << "ULTIMO PAGO" << ';' << "FECHA INGRESO" << endl;
-
+	//Variable para ultimo pago
 	string fecha1;
+	//Variable para fecha de ingreso
 	string fecha2;
 
 	while (reg.leerDeDisco(pos++)) {

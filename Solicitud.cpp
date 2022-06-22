@@ -152,6 +152,14 @@ void Solicitud::cargarSolicitud() {
 	pago.grabarEnDisco();
 
 	armaRegistro.grabarEnDisco();
+
+	if (this->grabarEnDisco()) {
+		cout << "La Solicitud " << this->getIdSolicitud() << " fue Ingresada correctamente.";
+		cout << endl;
+	}
+	else {
+		cout << "Hubo un Error al crear la Solicitud." << endl;
+	}
 }
 void Solicitud::mostrarSolicitud() {
 
@@ -366,15 +374,6 @@ void cargarNuevaSolicitud() {
 
 	solicitud.cargarSolicitud();
 
-	if (solicitud.grabarEnDisco()) {
-		cout << "La Solicitud " << solicitud.getIdSolicitud() << " fue Ingresada correctamente.";
-		cout << endl;
-	}
-	else {
-		cout << "Hubo un Error al crear la Solicitud." << endl;
-	}
-
-	anykey();
 }
 
 void listadoSolicitudesAprobadas()
@@ -905,9 +904,12 @@ int solicitudesDesaprobadasPorAnio(int anio)
 
 	while (solic.leerDeDisco(p++))
 	{
-		if (solic.getAprobado() == -1 && solic.getFechaSolicitud().getAnio() == anio)
+		if (solic.getEstado())
 		{
-			cant++;
+			if (solic.getAprobado() == -1 && solic.getFechaSolicitud().getAnio() == anio)
+			{
+				cant++;
+			}
 		}
 
 	}
@@ -963,5 +965,22 @@ void promedio_solictudes_aprobadas()
 	float prom = (float)cont / totalSolicitudes;
 
 	cout << " -- El promedio de solicitudes aprobadas es de: " << prom << endl;
+
+}
+
+void eliminar_solicitudes_pendientes(int id)
+{
+	Solicitud solicitud;
+	int pos = 0;
+
+	while (solicitud.leerDeDisco(pos))
+	{
+		if (solicitud.getAprobado() == 0 && solicitud.getIdSocio()==id)
+		{
+			solicitud.setEstado(false);
+			solicitud.modificarEnDisco(pos);
+		}
+		pos++;
+	}
 
 }

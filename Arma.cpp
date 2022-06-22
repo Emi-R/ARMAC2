@@ -928,7 +928,7 @@ void porcentaje_armas_por_tipo()
 
 void MostrarVectorArmas(float* porc, int tam)
 {
-	string tipo[12] = { "Pistola","Escopeta","Subfusil","Carabina","Fusil Automático" };
+	string tipo[5] = { "Pistola","Escopeta","Subfusil","Carabina","Fusil Automático" };
 	cout << left;
 	cout << setw(17) << "TIPO";
 	cout << setw(9) << "PORCENTAJE" << endl;

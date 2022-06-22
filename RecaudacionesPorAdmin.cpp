@@ -50,6 +50,7 @@ void inicializarVecRecaudacionPorAdmin(RecaudacionesPorAdmin* vecRecaudacion, in
 
 	for (int i = 0; i < tam; i++) {
 		admin.leerDeDisco(i);
+
 		vecRecaudacion[i].setIdAdmin(admin.getIdAdmin());
 		vecRecaudacion[i].setRecaudacionTotalCuotas(0);
 		vecRecaudacion[i].setRecaudacionTotalSolicitudes(0);
