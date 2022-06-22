@@ -121,7 +121,6 @@ bool Fecha::operator== (Fecha aux)
 	return false;
 }
 
-
 void Fecha::cargarFechaConsultas() {
 
 	int aux = 0;
