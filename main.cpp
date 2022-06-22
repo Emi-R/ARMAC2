@@ -18,35 +18,18 @@ int main()
 	bool flag = false;
 	bool flag2 = false;
 
-	/*Socio socio;
+	instalacionArchivos();
 
-	for (int i = 0; i < 100; i++)
+	do
 	{
-		socio.cargar();
-		socio.grabarEnDisco();
-	}*/
+		flag = login();
 
-	/*Solicitud aux;
+		if (flag)
+		{
+			flag2 = menuPrincipal();
+		}
 
-	for (int i = 0; i < 100; i++)
-	{
-		aux.cargarSolicitud();
-	}*/
-
-	//instalacionArchivos();
-
-	//do
-	//{
-	//	flag = login();
-
-	//	if (flag)
-	//	{
-	//		flag2 = menuPrincipal();
-	//	}
-
-	//} while (flag && flag2);
-
-	menuPrincipal();
+	} while (flag && flag2);
 
 	return 0;
 }
