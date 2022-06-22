@@ -1,4 +1,5 @@
 #include <iostream>
+#include <iomanip>
 #include "Fecha.h"
 #include "Administrador.h"
 #include "Persona.h"

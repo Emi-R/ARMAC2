@@ -1,17 +1,18 @@
 #pragma once
-#include "Fecha.h"
 #include <iomanip>
+#include "Fecha.h"
+#include "rlutil.h"
 
 class ValorCuota
 {
 private:
-	int _valorCuota;
+	float _valorCuota;
 	Fecha _fechaActualizacion;
 
 public:
 	void setValorCuota(int valor);
 	void setFechaActualizacion(Fecha nuevaFecha);
-	int getvalorCuota();
+	float getvalorCuota();
 	Fecha getFechaActualizacion();
 
 	//Funciones de disco

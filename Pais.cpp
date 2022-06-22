@@ -1,8 +1,3 @@
-#include <iostream>
-#include <cstdlib>
-#include <iomanip>
-#include <clocale>
-#include <windows.h>
 #include "Pais.h"
 
 using std::setprecision;

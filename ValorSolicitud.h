@@ -1,16 +1,19 @@
 #pragma once
+
+#include <iomanip>
+#include "rlutil.h"
 #include "Fecha.h"
 
 class ValorSolicitud
 {
 private:
-	int _valorSolicitud;
+	float _valorSolicitud;
 	Fecha _fechaActualizacion;
 
 public:
 	void setValorSolicitud(int valor);
 	void setFechaActualizacion(Fecha nuevaFecha);
-	int getValorSolicitud();
+	float getValorSolicitud();
 	Fecha getFechaActualizacion();
 
 	//Funciones de disco

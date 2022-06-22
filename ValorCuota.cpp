@@ -1,5 +1,4 @@
 #include "ValorCuota.h"
-#include "rlutil.h"
 
 using namespace rlutil;
 
@@ -11,7 +10,7 @@ void ValorCuota::setFechaActualizacion(Fecha nuevaFecha) {
 	_fechaActualizacion = nuevaFecha;
 }
 
-int ValorCuota::getvalorCuota() {
+float ValorCuota::getvalorCuota() {
 	return _valorCuota;
 }
 

@@ -1,4 +1,11 @@
 #pragma once
+
+#include <iostream>
+#include <cstdlib>
+#include <iomanip>
+#include <clocale>
+#include <windows.h>
+
 class Pais
 {
 private:

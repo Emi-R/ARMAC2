@@ -1,6 +1,6 @@
 #include "ValorSolicitud.h"
-#include <iomanip>
-#include "rlutil.h"
+
+
 using namespace rlutil;
 
 void ValorSolicitud::setValorSolicitud(int valor) {
@@ -11,7 +11,7 @@ void  ValorSolicitud::setFechaActualizacion(Fecha nuevaFecha) {
 	_fechaActualizacion = nuevaFecha;
 }
 
-int   ValorSolicitud::getValorSolicitud() {
+float ValorSolicitud::getValorSolicitud() {
 	return _valorSolicitud;
 }
 
@@ -88,6 +88,7 @@ int cantidadRegistrosPreciosSolicitud() {
 	cant_reg = bytes / sizeof(ValorSolicitud);
 	return cant_reg;
 }
+
 float getUltimoPrecioSolicitud()
 {
 	ValorSolicitud aux;

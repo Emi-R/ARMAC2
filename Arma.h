@@ -1,6 +1,9 @@
 #pragma once
 
 #include <iomanip>
+#include <iostream>
+#include <cstring>
+#include "funciones.h"
 #include "Pais.h"
 #include "rlutil.h"
 

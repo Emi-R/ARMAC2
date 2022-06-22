@@ -1,11 +1,7 @@
 #include "Arma.h"
-#include <iostream>
-#include <cstring>
-#include "funciones.h"
 
 using namespace std;
 using namespace rlutil;
-
 
 Arma::Arma(int idArma, const char* modelo, float calibre, int tipoArma, int numSerie, bool estado, int _idPais, int idSocio) {
 	_idArma = idArma;
@@ -558,7 +554,10 @@ int buscarCantidadArmas() {
 	return cantidadArmas;
 }
 void copiarArmas(Arma* vArma, int tam) {
-	for (int i = 0; i < tam; i++) { vArma[i].leerDeDisco(i); }
+	for (int i = 0; i < tam; i++) 
+	{ 
+		vArma[i].leerDeDisco(i); 
+	}
 }
 void ordernarVecPorNumSerie(Arma* vArma, int tam) {
 
@@ -711,7 +710,6 @@ void consultaArmasPorIdArma() {
 
 	copiarArmas(vecArmas, cantArmas);
 
-
 	cout << "Ingrese el Numero de ID: ";
 	cin >> numID;
 
@@ -786,7 +784,6 @@ void MostrarVectorPorCalibre(Arma* vec, int tam) {
 void ModificarModelo(Arma aux, int pos)
 {
 	bool flag = false;
-	char confirm;
 	bool confirmar = false;
 	char newModel[30];
 
@@ -804,7 +801,6 @@ void ModificarModelo(Arma aux, int pos)
 void ModificarCalibre(Arma aux, int pos)
 {
 	bool flag = false;
-	char confirm;
 	bool confirmar = false;
 	float newCalibre;
 
@@ -837,7 +833,6 @@ void ModificarCalibre(Arma aux, int pos)
 void ModificarPais(Arma aux, int pos)
 {
 	bool flag = false;
-	char confirm;
 	bool confirmar = false;
 	int newPais;
 
@@ -870,7 +865,6 @@ void ModificarPais(Arma aux, int pos)
 void ModificarNumSerie(Arma aux, int pos)
 {
 	bool flag = false;
-	char confirm;
 	bool confirmar = false;
 	int newNum;
 

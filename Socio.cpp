@@ -1,3 +1,4 @@
+#include <iomanip>
 #include "Socio.h"
 #include "rlutil.h"
 #include "Pago.h"

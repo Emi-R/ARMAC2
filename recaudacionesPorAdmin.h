@@ -1,6 +1,10 @@
 #pragma once
+
 #include "Pago.h"
 #include "PagoSolicitud.h"
+#include "Administrador.h"
+#include "rlutil.h"
+
 class RecaudacionesPorAdmin
 {
 private:

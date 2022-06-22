@@ -6,6 +6,9 @@
 #include <time.h>
 #include <string>
 #include "rlutil.h"
+#include <iomanip>
+#include "administrador.h"
+
 
 using namespace std;
 class Administrador

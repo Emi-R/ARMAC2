@@ -1,8 +1,6 @@
 #pragma once
 #include "Fecha.h"
 
-
-
 class PagoSolicitud
 {
 private:

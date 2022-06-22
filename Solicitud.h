@@ -3,10 +3,15 @@
 #include <cstring>
 #include <iostream>
 #include <iomanip>
+#include <iostream>
 #include "rlutil.h"
 #include "Fecha.h"
 #include "Arma.h"
 #include "Socio.h"
+#include "administrador.h"
+#include "PagoSolicitud.h"
+#include "ValorSolicitud.h"
+
 
 class Solicitud
 {

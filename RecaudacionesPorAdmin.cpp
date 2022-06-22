@@ -1,6 +1,4 @@
 #include "RecaudacionesPorAdmin.h"
-#include "Administrador.h"
-#include "rlutil.h"
 
 using namespace std;
 using namespace rlutil;
@@ -107,11 +105,13 @@ void listarRecaudacionesPorAdmin(RecaudacionesPorAdmin* vecRecaudacion, int tam)
 
 	for (int i = 0; i < tam; i++) {
 
+		if (vecRecaudacion[i].getIdAdmin() != 0)
+		{
 		cout << setw(12) << vecRecaudacion[i].getIdAdmin();
 		cout << setw(1) << "$";
 		cout << setw(15) << vecRecaudacion[i].getRecaudacionTotalCuotas() + vecRecaudacion[i].getRecaudacionTotalSolicitudes() << endl;
+		}
 	}
-
 	cout << "--------------------------------------" << endl;
 
 	anykey();

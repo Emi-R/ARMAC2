@@ -1,5 +1,3 @@
-#include <iomanip>
-#include "rlutil.h"
 #include "administrador.h"
 
 using namespace std;
@@ -83,7 +81,6 @@ void Administrador::cargar()
 	int aux;
 	string pass;
 	string pass2;
-	char caracter;
 	bool flag = false;
 
 	srand(time(NULL));

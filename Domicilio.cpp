@@ -1,10 +1,4 @@
-#include <iostream>
-#include <cstdlib>
-#include <iomanip>
-#include <clocale>
-#include <windows.h>
 #include "Domicilio.h"
-#include <string.h>
 
 using std::setprecision;
 using namespace std;

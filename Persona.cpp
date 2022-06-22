@@ -1,10 +1,10 @@
 #include "Persona.h"
 #include "Socio.h"
-#include <iostream>
-#include "funciones.h"
+
 using namespace std;
 
 Persona::Persona() {
+
 	_dni = 0;
 	strcpy(_nombre, " ");
 	strcpy(_apellido, " ");

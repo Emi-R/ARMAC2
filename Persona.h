@@ -1,8 +1,9 @@
 #pragma once
-
-#include "Fecha.h"
-#include"Domicilio.h"
+#include "Domicilio.h"
 #include <cstring>
+#include <iostream>
+#include "funciones.h"
+#include "Fecha.h"
 
 class Persona
 {

@@ -4,6 +4,8 @@
 #include <clocale>
 #include <windows.h>
 #include <conio.h>
+#include <fstream>
+#include <sstream>
 #include "funciones.h"
 #include "rlutil.h"
 #include "Administrador.h"
@@ -15,8 +17,6 @@
 #include "ValorSolicitud.h"
 #include "RecaudacionesPorAdmin.h"
 #include "ArmasPorSocio.h"
-#include <fstream>
-#include <sstream>
 
 using namespace std;
 using namespace rlutil;
@@ -54,7 +54,6 @@ bool login() {
 	int pos = 0;
 	string aux2;
 	string password;
-	char caracter;
 	int cont = 0;
 
 	Administrador admin;
@@ -1072,7 +1071,7 @@ bool exportarCSVArmas()
 			break;
 		}
 
-		myFile << reg.getIdArma() << ';' << modelo << ';' << reg.getCalibre() << ';' << reg.getidPaisFabricacion() << ';' << tipo << endl;
+		myFile << reg.getIdArma() << ';' << modelo << ';' << reg.getCalibre() << ';' << reg.getidPaisFabricacion() << ';' << tipo << ';' << reg.getNumSerie() << endl;
 	}
 
 	cout << "Listado 'listadoArmas.csv' exportado correctamente" << endl;

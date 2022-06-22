@@ -1,7 +1,4 @@
 #include "Pago.h"
-#include "PagoSolicitud.h"
-#include "administrador.h"
-#include "Solicitud.h"
 
 using namespace rlutil;
 

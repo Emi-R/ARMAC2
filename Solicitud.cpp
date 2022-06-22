@@ -1,11 +1,4 @@
 #include "Solicitud.h"
-#include "administrador.h"
-#include "rlutil.h"
-#include <iostream>
-#include "Fecha.h"
-#include "Arma.h"
-#include "PagoSolicitud.h"
-#include "ValorSolicitud.h"
 
 using namespace std;
 using namespace rlutil;
@@ -167,15 +160,18 @@ void Solicitud::mostrarSolicitud() {
 	Arma arma;
 	int posArma;
 
-	cout << endl;
-	cout << "SOLICITUD N° " << this->getIdSolicitud();
-	cout << endl;
-	cout << "Id de Solicitud: " << this->getIdSolicitud();
-	cout << endl;
-	cout << "Id del Socio: " << this->getIdSocio();
-	cout << endl;
-	cout << "Id del Administrador: " << this->getIdAdministrador();
-	cout << endl;
+	if (this->getEstado())
+	{
+		cout << endl;
+		cout << "SOLICITUD N° " << this->getIdSolicitud();
+		cout << endl;
+		cout << "Id de Solicitud: " << this->getIdSolicitud();
+		cout << endl;
+		cout << "Id del Socio: " << this->getIdSocio();
+		cout << endl;
+		cout << "Id del Administrador: " << this->getIdAdministrador();
+		cout << endl;
+	}
 
 	//Falta mostrar el Arma de la Solicitud
 	posArma = buscarArmaPorId(this->getIdArma());
@@ -569,7 +565,7 @@ void consultaSolicitudesPorAnio() {
 		vecSolicitudes[i].leerDeDisco(i);
 	}
 
-	int anioConsulta;
+	int anioConsulta = 0;
 
 	cout << " - Listado de Solicitudes por Año - ";
 	cout << endl;
@@ -648,12 +644,20 @@ int buscarSolicitudPorId(int id) {
 	Solicitud solicitud;
 	int pos = 0;
 
-	while (solicitud.leerDeDisco(pos++)) {
-		if (solicitud.getIdSolicitud() == id && solicitud.getEstado()) {
-			return pos;
+	while (solicitud.leerDeDisco(pos++))
+	{
+		if (solicitud.getIdSolicitud() == id)
+		{
+			if (solicitud.getEstado())
+			{
+				return pos;
+			}
+			else
+			{
+				return -1;
+			}
 		}
 	}
-
 	return -1;
 }
 
@@ -690,7 +694,7 @@ void consultaSolicitudesPorFecha() {
 
 	cout << "   -- Solictudes creadas el ";
 	fechaConsulta.mostrarFecha();
-	cout <<" --" << endl << endl;
+	cout << " --" << endl << endl;
 
 	mostrarConsultasPorFecha(vecSolicitudes, cantidadSolicitudes, fechaConsulta);
 
@@ -747,9 +751,10 @@ void modificar_solicitud()
 	bool flag = false;
 	int idaux;
 	int pos = 0;
-	Solicitud aux;
 
 	while (!salir) {
+
+	Solicitud aux;
 
 		do
 		{
@@ -766,6 +771,9 @@ void modificar_solicitud()
 			if (pos <= -1)
 			{
 				cout << "La Solicitud no se encuentra. Reintente por favor." << endl << endl;
+				anykey();
+				cls();
+				flag = false;
 			}
 			else
 			{
@@ -964,8 +972,8 @@ void promedio_solictudes_aprobadas()
 	int totalSolicitudes = 0;
 	bool flag = false;
 
-	while (solicitud.leerDeDisco(pos++)) {
-
+	while (solicitud.leerDeDisco(pos))
+	{
 		if (solicitud.getEstado())
 		{
 			totalSolicitudes++;
@@ -978,9 +986,9 @@ void promedio_solictudes_aprobadas()
 		pos++;
 	}
 
-	float prom = (float)cont / totalSolicitudes;
+	double prom = (double)cont / cantSolicitudes;
 
-	cout << " -- El promedio de solicitudes aprobadas es de: " << prom << endl;
+	cout << " -- El promedio de solicitudes aprobadas es de: " << setprecision(2) << prom << endl;
 
 }
 
@@ -991,7 +999,7 @@ void eliminar_solicitudes_pendientes(int id)
 
 	while (solicitud.leerDeDisco(pos))
 	{
-		if (solicitud.getAprobado() == 0 && solicitud.getIdSocio()==id)
+		if (solicitud.getAprobado() == 0 && solicitud.getIdSocio() == id)
 		{
 			solicitud.setEstado(false);
 			solicitud.modificarEnDisco(pos);

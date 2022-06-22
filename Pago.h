@@ -1,4 +1,7 @@
 #pragma once
+#include "PagoSolicitud.h"
+#include "administrador.h"
+#include "Solicitud.h"
 #include "Fecha.h"
 #include "Socio.h"
 #include "rlutil.h"

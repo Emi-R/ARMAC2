@@ -1,5 +1,10 @@
 #pragma once
-
+#include <iostream>
+#include <cstdlib>
+#include <iomanip>
+#include <clocale>
+#include <windows.h>
+#include <string.h>
 #include <iostream>
 
 class Domicilio
