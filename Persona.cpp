@@ -40,7 +40,7 @@ int Persona::CargarPersona() {
 
 	bool flag = false;
 	int aux;
-	char aux2[30];
+	char aux2[40];
 
 	do {
 		cout << "Ingrese el dni (0 para volver al menu anterior): ";
@@ -73,8 +73,16 @@ int Persona::CargarPersona() {
 	cout << "Ingrese el nombre: ";
 	cin.ignore();
 	cin.getline(_nombre, 29);
+
+	/*cin >> aux2;				//<-Descomentar para ingreso 
+	this->setNombre(aux2);*/	//<-automatizado con excel y comentar el
+								//<-ingreso con getline
 	cout << "Ingrese el apellido: ";
 	cin.getline(aux2, 29);
+
+	/*cin >> aux2;			    //<-Descomentar para ingreso 
+	this->setApellido(aux2);*/	//<-automatizado con excel y comentar el
+								//<-ingreso con getline
 	todoAMayus(aux2);
 	setApellido(aux2);
 
@@ -84,9 +92,15 @@ int Persona::CargarPersona() {
 	_domicilio.cargarDomicilio();
 	cout << "Ingrese email: ";
 	cin.ignore();
-	cin.getline(_email, 30);
+	cin.getline(_email, 29);
+
+	/*cin >> aux2;				//<-Descomentar para ingreso
+	this->setEmail(aux2);*/		//<-automatizado con excel y comentar el
+								//<-ingreso con getline
+
 	cout << "Ingrese el telefono: ";
-	cin.getline(_telefono, 14);
+	cin >> aux2;
+	this->setTelefono(aux2);
 
 	_estado = true;
 

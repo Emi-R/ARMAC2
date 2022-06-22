@@ -984,3 +984,75 @@ void eliminar_solicitudes_pendientes(int id)
 	}
 
 }
+
+void listadoSolicitudesPorIdSocio()
+{
+	int ID = 0;
+	int pos = 0;
+	bool flag = false;
+	Socio socio;
+	Solicitud solicitud;
+
+	do {
+
+		cls();
+		cout << "Ingrese el ID de socio a consultar (0 para volver al menu anterior): ";
+		cin >> ID;
+
+
+		if (ID == 0)
+		{
+			return;
+		}
+
+		if (ID < 1)
+		{
+			cout << endl << "ID invalido. Reintente por favor." << endl;
+			flag = false;
+			anykey();
+		}
+		else
+		{
+			pos = BuscarIdArchivo(ID);
+
+			if (pos < 0)
+			{
+				cout << endl << "El ID no fue encontrado en el archivo de socios" << endl;
+				flag = false;
+				anykey();
+			}
+
+			else
+			{
+				flag = true;
+			}
+		}
+	} while (!flag);
+
+	mostrarSolicitudesPorSocio(ID);
+}
+
+void mostrarSolicitudesPorSocio(int id)
+{
+	Solicitud solic;
+	int p = 0;
+
+	cout << left;
+	cout << setw(15) << "ID SOLICITUD";
+	cout << setw(20) << "ID ADMINISTRADOR";
+	cout << setw(12) << "ID SOCIO";
+	cout << setw(12) << "ID ARMA";
+	cout << setw(15) << "ESTADO";
+	cout << setw(15) << "FECHA CREACION" << endl;
+	cout << "------------------------------------------------------------------------------------------";
+	cout << endl;
+
+	while (solic.leerDeDisco(p))
+	{
+		if (solic.getIdSocio() == id)
+		{
+			solic.listarSolicitud();
+		}
+		p++;
+	}
+}

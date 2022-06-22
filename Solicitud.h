@@ -100,3 +100,7 @@ void backup_solicitudes();
 void promedio_solictudes_aprobadas();
 
 void eliminar_solicitudes_pendientes(int id);
+
+void listadoSolicitudesPorIdSocio();
+
+void mostrarSolicitudesPorSocio(int id);

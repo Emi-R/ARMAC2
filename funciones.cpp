@@ -490,6 +490,7 @@ void menuSolicitudes() {
 		switch (opcion) {
 		case 1:
 			cargarNuevaSolicitud();
+			anykey();
 			break;
 		case 2:
 			modificar_solicitud();
@@ -523,11 +524,12 @@ void menuListadosSolicitudes() {
 		cout << "\tListados Solicitudes" << endl;
 		cout << "--------------------------" << endl;
 		cout << "1 - Listar todas las Solicitudes" << endl;
-		cout << "2 - Listar Solicitudes por orden descendente" << endl;
-		cout << "3 - Listar Solicitudes por fecha Descendente" << endl;
-		cout << "4 - Listar Solicitudes aprobadas" << endl;
-		cout << "5 - Listar Solicitudes pendientes" << endl;
-		cout << "6 - Listar Solicitudes desaprobadas" << endl;
+		cout << "2 - Listar solicitudes por ID de socio" << endl;
+		cout << "3 - Listar Solicitudes por orden descendente" << endl;
+		cout << "4 - Listar Solicitudes por fecha Descendente" << endl;
+		cout << "5 - Listar Solicitudes aprobadas" << endl;
+		cout << "6 - Listar Solicitudes pendientes" << endl;
+		cout << "7 - Listar Solicitudes desaprobadas" << endl;
 		cout << "--------------------------" << endl;
 		cout << "0 - Volver al menú principal" << endl << endl;
 
@@ -542,22 +544,26 @@ void menuListadosSolicitudes() {
 			anykey();
 			break;
 		case 2:
-			listarSolicitudesPorIdDesc();
+			listadoSolicitudesPorIdSocio();
 			anykey();
 			break;
 		case 3:
-			listarSolicitudPorFechaDesc();
+			listarSolicitudesPorIdDesc();
 			anykey();
 			break;
 		case 4:
-			listadoSolicitudesAprobadas();
+			listarSolicitudPorFechaDesc();
 			anykey();
 			break;
 		case 5:
-			listadoSolicitudesPendientes();
+			listadoSolicitudesAprobadas();
 			anykey();
 			break;
 		case 6:
+			listadoSolicitudesPendientes();
+			anykey();
+			break;
+		case 7:
 			listadoSolicitudesDesaprobadas();
 			anykey();
 			break;
@@ -587,7 +593,7 @@ void menuConsultasSolicitudes()
 		cout << "1 - Consulta por ID de Solicitud" << endl;
 		cout << "2 - Consulta por Fecha" << endl;
 		cout << "3 - Consulta por Año" << endl;
-		cout << "3 - Consulta Solicitudes pendientes por Socio" << endl;
+		cout << "4 - Consulta Solicitudes pendientes por Socio" << endl;
 		cout << "--------------------------" << endl;
 		cout << "0 - Volver al menú principal" << endl << endl;
 

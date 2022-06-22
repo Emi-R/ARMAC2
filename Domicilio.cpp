@@ -88,18 +88,35 @@ bool Domicilio::getEstado() {
 
 // Cargar y Mostrar
 void Domicilio::cargarDomicilio() {
+	char aux[50];
 	cout << "País: ";
 	cin.ignore();
 	cin.getline(_pais, 49);
 
+	/*cin >> aux;			//<-Descomentar para ingreso
+	this->setPais(aux);*/	//<-automatizado con excel y comentar el
+							//<-ingreso con getline
+
 	cout << "Provincia: ";
 	cin.getline(_provincia, 49);
+
+	/*cin >> aux;				//<-Descomentar para ingreso
+	this->setProvincia(aux);*/	//<-automatizado con excel y comentar el
+								//<-ingreso con getline
 
 	cout << "Localidad: ";
 	cin.getline(_localidad, 49);
 
+	/*cin >> aux;				//<-Descomentar para ingreso
+	this->setLocalidad(aux);*/	//<-automatizado con excel y comentar el
+								//<-ingreso con getline
+
 	cout << "Calle: ";
 	cin.getline(_calle, 49);
+
+	/*cin >> aux;			//<-Descomentar para ingreso
+	this->setCalle(aux);*/	//<-automatizado con excel y comentar el
+							//<-ingreso con getline
 
 	do {
 		cout << "Altura: ";
@@ -113,6 +130,10 @@ void Domicilio::cargarDomicilio() {
 		cout << "Departamento o piso (si es casa, ingrese PB): ";
 		cin.ignore();
 		cin.getline(_dpto, 9);
+
+		/*cin >> aux;			//<-Descomentar para ingreso
+		this->setDpto(aux);*/	//<-automatizado con excel y comentar el
+								//<-ingreso con getline
 
 		if (strlen(_dpto) < 0) {
 			cout << "El depto ingresado es incorrecto. Ingrese nuevamente." << endl;

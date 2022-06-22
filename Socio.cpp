@@ -207,7 +207,7 @@ void Socio::cargar() {
 			cuotaInicial.setIdAdmin(admin.getIdAdmin());
 			cuotaInicial.grabarEnDisco();
 			flag2 = true;
-			anykey();
+			//anykey();
 		}
 		else
 		{
@@ -221,7 +221,6 @@ void Socio::cargar() {
 	cout << endl << " -- Socio creado correctamente --" << endl << endl;
 	this->mostrar();
 
-	anykey();
 }
 
 void Socio::mostrar() {

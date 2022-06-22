@@ -75,11 +75,16 @@ bool Arma::getEstado() {
 void Arma::cargarArma() {
 
 	int aux;
+	char aux2[30];
 	bool flag = false;
 
 	cout << "Ingrese el Modelo del Arma: ";
 	cin.ignore();
 	cin.getline(_modelo, 29);
+
+	/*cin >> aux2;				//<-Descomentar para ingreso
+	this->setModelo(aux2);*/	//<-automatizado con excel y comentar el
+								//<-ingreso con getline
 
 	cout << "Ingrese el Calibre del Arma: ";
 	cin >> _calibre;
@@ -180,7 +185,7 @@ void Arma::listar()
 	cout << setw(18) << this->getModelo();
 	cout << setw(10) << this->getCalibre();
 	cout << setw(15) << this->getidPaisFabricacion();
-	cout << setw(15);
+	cout << setw(18);
 	mostrarTipoArma(this->getTipoArma());
 	cout << setw(15) << this->getNumSerie();
 	cout << endl;
@@ -364,6 +369,7 @@ int buscarArmaPorId(int id) {
 }
 
 void mostrarTipoArma(int tipo) {
+
 	switch (tipo)
 	{
 	case 1:

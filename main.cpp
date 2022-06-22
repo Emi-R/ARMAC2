@@ -18,9 +18,16 @@ int main()
 	bool flag = false;
 	bool flag2 = false;
 
-	instalacionArchivos();
+	/*Solicitud aux;
 
-	/*do
+	for (int i = 0; i < 100; i++)
+	{
+		aux.cargarSolicitud();
+	}*/
+
+	//instalacionArchivos();
+
+	do
 	{
 		flag = login();
 
@@ -29,7 +36,7 @@ int main()
 			flag2 = menuPrincipal();
 		}
 
-	} while (flag && flag2);*/
+	} while (flag && flag2);
 
 	menuPrincipal();
 
