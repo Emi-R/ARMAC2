@@ -19,7 +19,6 @@ public:
 	float getRecaudacionTotalCuotas();
 	float getRecaudacionTotalSolicitudes();
 
-
 };
 
 void recaudacionPorAdmin();
