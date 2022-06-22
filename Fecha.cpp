@@ -133,7 +133,8 @@ void Fecha::cargarFechaConsultas() {
 		{
 			cout << " El año ingresado es incorrecto, intente nuevamente" << endl;
 		}
-	} while (aux < 0);
+
+	} while (aux < 0 || aux < 1980);
 
 	this->setAnio(aux);
 

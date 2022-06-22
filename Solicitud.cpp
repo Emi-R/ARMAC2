@@ -342,8 +342,8 @@ void Solicitud::listarSolicitud() {
 		cout << left;
 		cout << setw(15) << this->getIdSolicitud();
 		cout << setw(20) << this->getIdAdministrador();
-		cout << setw(12) << this->getIdSocio();
-		cout << setw(12) << this->getIdArma();
+		cout << setw(10) << this->getIdSocio();
+		cout << setw(10) << this->getIdArma();
 		cout << setw(15);
 		mostrarEstadoApSolicitud(this->getAprobado());
 		this->getFechaSolicitud().mostrarFecha();
@@ -573,9 +573,17 @@ void consultaSolicitudesPorAnio() {
 
 	cout << " - Listado de Solicitudes por Año - ";
 	cout << endl;
-	cout << "Ingrese el Año: ";
 
-	cin >> anioConsulta;
+	do {
+		cout << "Año: ";
+		cin >> anioConsulta;
+
+		if (anioConsulta < 0 || anioConsulta < 1980)
+		{
+			cout << " El año ingresado es incorrecto, intente nuevamente" << endl;
+		}
+
+	} while (anioConsulta < 0 || anioConsulta < 1980);
 
 	mostrarConsultasPorAnio(vecSolicitudes, cantidadSolicitudes, anioConsulta);
 
@@ -584,15 +592,16 @@ void consultaSolicitudesPorAnio() {
 
 void mostrarConsultasPorAnio(Solicitud* vecSolicitudes, int tam, int anioConsulta) {
 
-	cout << "CONSULTA DE SOLICITUDES" << endl;
-	cout << "-----------------------------------------------------------------------------------" << endl;
+	cls();
+	cout << "   -- Solictudes creadas en el año " << anioConsulta << " --" << endl << endl;
 	cout << left;
 	cout << setw(15) << "ID SOLICITUD";
 	cout << setw(20) << "ID ADMINISTRADOR";
-	cout << setw(15) << "ID SOCIO";
-	cout << setw(15) << "ID ARMA";
+	cout << setw(10) << "ID SOCIO";
+	cout << setw(10) << "ID ARMA";
 	cout << setw(15) << "ESTADO";
 	cout << setw(15) << "FECHA CREACION" << endl;
+	cout << "------------------------------------------------------------------------------------" << endl;
 
 	for (int i = 0; i < tam; i++) {
 		if (vecSolicitudes[i].getFechaSolicitud().getAnio() == anioConsulta) {
@@ -615,15 +624,15 @@ void consultaSolicitudesPorId() {
 
 	int posReg = buscarSolicitudPorId(idSolicitud) - 1;
 	if (posReg >= 0) {
-		cout << "SOLICITUD #" << idSolicitud << endl;
-		cout << "---------------------------------------------------------------------------------" << endl;
+
 		cout << left;
 		cout << setw(15) << "ID SOLICITUD";
 		cout << setw(20) << "ID ADMINISTRADOR";
-		cout << setw(15) << "ID SOCIO";
-		cout << setw(15) << "ID ARMA";
+		cout << setw(10) << "ID SOCIO";
+		cout << setw(10) << "ID ARMA";
 		cout << setw(15) << "ESTADO";
 		cout << setw(15) << "FECHA CREACION" << endl;
+		cout << "-------------------------------------------------------------------------------------" << endl;
 
 		solicitud.leerDeDisco(posReg);
 		solicitud.listarSolicitud();
@@ -677,6 +686,11 @@ void consultaSolicitudesPorFecha() {
 	cout << endl;
 
 	fechaConsulta.cargarFechaConsultas();
+	cls();
+
+	cout << "   -- Solictudes creadas el ";
+	fechaConsulta.mostrarFecha();
+	cout <<" --" << endl << endl;
 
 	mostrarConsultasPorFecha(vecSolicitudes, cantidadSolicitudes, fechaConsulta);
 
@@ -689,10 +703,11 @@ void mostrarConsultasPorFecha(Solicitud* vecSolicitudes, int tam, Fecha fechaCon
 	cout << left;
 	cout << setw(15) << "ID SOLICITUD";
 	cout << setw(20) << "ID ADMINISTRADOR";
-	cout << setw(15) << "ID SOCIO";
-	cout << setw(15) << "ID ARMA";
+	cout << setw(10) << "ID SOCIO";
+	cout << setw(10) << "ID ARMA";
 	cout << setw(15) << "ESTADO";
 	cout << setw(15) << "FECHA CREACION" << endl;
+	cout << "-------------------------------------------------------------------------------------" << endl;
 
 	for (int i = 0; i < tam; i++) {
 		fechaSoli = vecSolicitudes[i].getFechaSolicitud();

@@ -198,7 +198,7 @@ void Arma::listar()
 	cout << setw(18) << this->getModelo();
 	cout << setw(10) << this->getCalibre();
 	cout << setw(15) << this->getidPaisFabricacion();
-	cout << setw(18);
+	cout << setw(20);
 	mostrarTipoArma(this->getTipoArma());
 	cout << setw(15) << this->getNumSerie();
 	cout << endl;
@@ -210,7 +210,7 @@ void Arma::listarPorNumSerie()
 	if (this->getEstado())
 	{
 		cout << left;
-		cout << setw(18) << this->getNumSerie();
+		cout << setw(15) << this->getNumSerie();
 		cout << setw(9) << this->getIdArma();
 		cout << setw(18) << this->getModelo();
 		cout << setw(10) << this->getCalibre();
@@ -511,9 +511,9 @@ void listadoGeneralArmas()
 	cout << setw(18) << "MODELO";
 	cout << setw(10) << "CALIBRE";
 	cout << setw(15) << "ID PAIS FABR.";
-	cout << setw(15) << "TIPO DE ARMA";
+	cout << setw(20) << "TIPO DE ARMA";
 	cout << setw(15) << "NÚMERO DE SERIE" << endl;
-	cout << "-------------------------------------------------------------------------------" << endl;
+	cout << "------------------------------------------------------------------------------------" << endl;
 
 	while (arma.leerDeDisco(pos++))
 	{
@@ -577,7 +577,7 @@ void ordernarVecPorNumSerie(Arma* vArma, int tam) {
 void mostrarListadoArmas(Arma* vArma, int tam) {
 
 	cout << left;
-	cout << setw(18) << "NÚMERO DE SERIE";
+	cout << setw(15) << "NÚM DE SERIE";
 	cout << setw(9) << "ID ARMA";
 	cout << setw(18) << "MODELO";
 	cout << setw(10) << "CALIBRE";
