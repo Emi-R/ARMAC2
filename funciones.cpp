@@ -874,6 +874,7 @@ void menuConfiguracion() {
 		cout << "5 - Hacer copia de seguridad Solicitudes" << endl;
 		cout << "6 - Exportar archivo CSV de Socios" << endl;
 		cout << "7 - Exportar archivo CSV de Solicitudes" << endl;
+		cout << "8 - Exportar archivo CSV de Armas" << endl;
 		cout << "----------------------------------" << endl;
 		cout << "0 - Volver al menú principal" << endl << endl;
 
@@ -906,6 +907,9 @@ void menuConfiguracion() {
 			break;
 		case 7:
 			exportarCSVSolicitudes();
+			break;
+		case 8:
+			exportarCSVArmas();
 			break;
 		case 0:
 			cout << "¿Volver al menu anterior? (S/N) ";
@@ -1012,3 +1016,59 @@ bool exportarCSVSolicitudes()
 
 	return true;
 }
+
+bool exportarCSVArmas()
+{
+	ofstream myFile;
+	myFile.open("listadoArmas.csv");
+
+	FILE* p = fopen("armas.dat", "rb");
+	Arma reg;
+
+	if (p == NULL) {
+		cout << "No se pudo abrir el archivo";
+		return false;
+	}
+
+	int pos = 0;
+
+	myFile << "ID ARMA" << ';' << "MODELO" << ';' << "CALIBRE" << ';' << "ID PAIS" << ';' << "TIPO DE ARMA" << ';' << "NUM SERIE" << endl;
+
+	string modelo;
+	string tipo;
+
+	while (reg.leerDeDisco(pos++)) {
+
+		modelo = reg.getModelo();
+
+		switch (reg.getTipoArma())
+		{
+		case 1:
+			tipo = "PISTOLA";
+			break;
+		case 2:
+			tipo = "ESCOPETA";
+			break;
+		case 3:
+			tipo = "SUBFUSIL";
+			break;
+		case 4:
+			tipo = "CARABINA";
+			break;
+		case 5:
+			tipo = "FUSIL AUTOMÁTICO";
+			break;
+		default:
+			break;
+		}
+
+		myFile << reg.getIdArma() << ';' << modelo << ';' << reg.getCalibre() << ';' << reg.getidPaisFabricacion() << ';' << tipo << endl;
+	}
+
+	cout << "Listado 'listadoArmas.csv' exportado correctamente" << endl;
+	system("pause");
+	system("cls");
+
+	return true;
+}
+
