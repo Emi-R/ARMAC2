@@ -472,9 +472,9 @@ void MostrarDetalleRecaudacionAnual(float* vec, float* vec2, int tam) {
 
 		cout << setw(12) << meses[i];
 		cout << setw(1) << "$";
-		cout << setw(15) << vec[i];
+		cout << setw(15) << (long)vec[i];
 		cout << setw(1) << "$";
-		cout << setw(10) << vec2[i] << endl;
+		cout << setw(10) << (long)vec2[i] << endl;
 		totalAnio += vec[i];
 		totalAnio2 += vec2[i];
 
@@ -483,13 +483,13 @@ void MostrarDetalleRecaudacionAnual(float* vec, float* vec2, int tam) {
 	cout << "-------------------------------------------------" << endl;
 	cout << setw(12) << "Total año";
 	cout << setw(1) << "$";
-	cout << setw(15) << totalAnio;
+	cout << setw(15) << (long)totalAnio;
 	cout << setw(1) << "$";
-	cout << setw(5) << totalAnio2 << endl;
+	cout << setw(5) << (long)totalAnio2 << endl;
 	cout << "-------------------------------------------------" << endl;
 	cout << setw(21) << "Total recaudado";
 	cout << setw(1) << "$";
-	cout << setw(7) << totalAnio + totalAnio2 << endl;
+	cout << setw(7) << (long)totalAnio + totalAnio2 << endl;
 	cout << "-------------------------------------------------" << endl;
 
 
