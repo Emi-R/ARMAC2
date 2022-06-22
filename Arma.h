@@ -99,3 +99,5 @@ void ModificarNumSerie(Arma aux, int pos);
 
 void porcentaje_armas_por_tipo();
 void MostrarVectorArmas(float* porc, int tam);
+
+void consultaArmasPorModelo();

@@ -1,6 +1,7 @@
 #include "Arma.h"
 #include <iostream>
 #include <cstring>
+#include "funciones.h"
 
 using namespace std;
 using namespace rlutil;
@@ -84,7 +85,7 @@ void Arma::cargarArma() {
 
 	/*cin >> aux2;				//<-Descomentar para ingreso
 	this->setModelo(aux2);*/	//<-automatizado con excel y comentar el
-								//<-ingreso con getline
+	//<-ingreso con getline
 
 	cout << "Ingrese el Calibre del Arma: ";
 	cin >> _calibre;
@@ -108,7 +109,7 @@ void Arma::cargarArma() {
 	this->setidPaisFabricacion(aux);
 
 	do {
-		
+
 		cout << "1 - Pistolas" << endl;
 		cout << "2 - Escopetas" << endl;
 		cout << "3 - Subfusiles" << endl;
@@ -119,7 +120,7 @@ void Arma::cargarArma() {
 
 		if (aux < 1 || aux > 5)
 		{
-			cout <<endl << "Tipo de arma inválido." << endl;
+			cout << endl << "Tipo de arma inválido." << endl;
 			anykey();
 			cls();
 			flag = false;
@@ -502,9 +503,12 @@ void listadoGeneralArmas()
 	cout << setw(15) << "NÚMERO DE SERIE" << endl;
 	cout << "-------------------------------------------------------------------------------" << endl;
 
-	while (arma.leerDeDisco(pos++) && arma.getEstado())
+	while (arma.leerDeDisco(pos++))
 	{
-		arma.listar();
+		if (arma.getEstado())
+		{
+			arma.listar();
+		}
 	}
 }
 
@@ -925,10 +929,10 @@ void porcentaje_armas_por_tipo()
 
 	for (int i = 0; i < TIPOSARMAS; i++)
 	{
-		porc[i] = (float) vArmas[i] * 100 / cantArmasActivas;
+		porc[i] = (float)vArmas[i] * 100 / cantArmasActivas;
 	}
 
-	MostrarVectorArmas(porc,TIPOSARMAS);
+	MostrarVectorArmas(porc, TIPOSARMAS);
 
 }
 
@@ -945,5 +949,40 @@ void MostrarVectorArmas(float* porc, int tam)
 		cout << setw(17) << tipo[i];
 		cout << setw(1) << "% ";
 		cout << setw(9) << porc[i] << endl;
+	}
+}
+
+void consultaArmasPorModelo()
+{
+
+	Arma arma;
+	int pos = 0;
+	char modeloABuscar[30];
+	char modeloArchivo[30];
+
+	cout << "Ingrese el modelo a buscar: ";
+	cin.ignore();
+	cin.getline(modeloABuscar, 29);
+
+	todoAMayus(modeloABuscar);
+
+	cout << left;
+	cout << setw(5) << "ID";
+	cout << setw(18) << "MODELO";
+	cout << setw(10) << "CALIBRE";
+	cout << setw(15) << "ID PAIS FABR.";
+	cout << setw(15) << "TIPO DE ARMA";
+	cout << setw(15) << "NÚMERO DE SERIE" << endl;
+	cout << "-------------------------------------------------------------------------------" << endl;
+
+	while (arma.leerDeDisco(pos++))
+	{
+		strcpy(modeloArchivo, arma.getModelo());
+		todoAMayus(modeloArchivo);
+
+		if (arma.getEstado() && strcmp(modeloABuscar,modeloArchivo) == 0)
+		{
+			arma.listar();
+		}
 	}
 }

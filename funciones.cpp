@@ -748,6 +748,7 @@ void menuConsultasArmas() {
 		cout << "--------------------------" << endl;
 		cout << "1 - Consultas de armas por número de serie" << endl;
 		cout << "2 - Consultas por ID de armas" << endl;
+		cout << "3 - Consulta de armas por modelo" << endl;
 		cout << "--------------------------" << endl;
 		cout << "0 - Volver al menú principal" << endl << endl;
 
@@ -765,7 +766,9 @@ void menuConsultasArmas() {
 			consultaArmasPorIdArma();
 			anykey();
 			break;
-
+		case 3:
+			consultaArmasPorModelo();
+			break;
 		case 0:
 			cout << "¿Volver al menu anterior? (S/N) ";
 			cin >> confirmarSalida;
