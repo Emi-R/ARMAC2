@@ -14,6 +14,7 @@
 #include "ValorCuota.h"
 #include "ValorSolicitud.h"
 #include "RecaudacionesPorAdmin.h"
+#include "ArmasPorSocio.h"
 #include <fstream>
 #include <sstream>
 
@@ -799,12 +800,13 @@ void menuInformes() {
 		cout << "1 - Recaudación anual" << endl;
 		cout << "2 - Recaudación por socio" << endl;
 		cout << "3 - Recaudación por administrador" << endl;
-		cout << "4 - Cantidad de solicitudes desaprobadas por año" << endl;
-		cout << "5 - Promedio de solicitudes aprobadas con respecto al total" << endl;
-		cout << "6 - Porcentaje de armas por tipo" << endl;
+		cout << "4 - Cantidad de armas por socio " << endl;
+		cout << "5 - Cantidad de solicitudes desaprobadas por año" << endl;
+		cout << "6 - Promedio de solicitudes aprobadas con respecto al total" << endl;
+		cout << "7 - Porcentaje de armas por tipo" << endl;
 		cout << "--------------------------" << endl;
-		cout << "7 - Listar historial de precios de cuota" << endl;
-		cout << "8 - Listar historial de precios de solicitud" << endl;
+		cout << "8 - Listar historial de precios de cuota" << endl;
+		cout << "9 - Listar historial de precios de solicitud" << endl;
 		cout << "--------------------------" << endl;
 		cout << "0 - Volver al menú principal" << endl << endl;
 
@@ -824,20 +826,24 @@ void menuInformes() {
 			recaudacionPorAdmin();
 			break;
 		case 4:
-			cantidad_solicitudes_desap_por_anio();
+			cantidad_de_armas_por_socio();
+			anykey();
 			break;
 		case 5:
+			cantidad_solicitudes_desap_por_anio();
+			break;
+		case 6:
 			promedio_solictudes_aprobadas();
 			anykey();
 			break;
-		case 6:
+		case 7:
 			porcentaje_armas_por_tipo();
 			anykey();
 			break;
-		case 7:
+		case 8:
 			listar_historial_precios_cuota();
 			break;
-		case 8:
+		case 9:
 			listar_historial_precios_solicitud();
 			break;
 		case 0:

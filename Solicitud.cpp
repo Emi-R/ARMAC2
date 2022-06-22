@@ -132,6 +132,7 @@ void Solicitud::cargarSolicitud() {
 	this->setIdSocio(aux);
 
 	armaRegistro.cargarArma();
+	armaRegistro.setIdSocio(aux);
 
 	this->setIdArma(armaRegistro.getIdArma());
 

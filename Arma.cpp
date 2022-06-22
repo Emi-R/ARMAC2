@@ -7,18 +7,23 @@ using namespace std;
 using namespace rlutil;
 
 
-Arma::Arma(int idArma, const char* modelo, float calibre, int tipoArma, int numSerie, bool estado, int _idPais) {
+Arma::Arma(int idArma, const char* modelo, float calibre, int tipoArma, int numSerie, bool estado, int _idPais, int idSocio) {
 	_idArma = idArma;
 	strcpy(_modelo, modelo);
 	_calibre = calibre;
 	_idPaisFabricacion = _idPais;
 	_tipoArma = tipoArma;
 	_numSerie = numSerie;
+	_idSocio = idSocio;
 	_estado = estado;
 };
 
 void Arma::setIdArma(int idArma) {
 	_idArma = idArma;
+};
+
+void Arma::setIdSocio(int idSocio) {
+	_idSocio = idSocio;
 };
 
 void Arma::setModelo(const char* modelo) {
@@ -47,6 +52,10 @@ void Arma::setEstado(bool estado) {
 
 int Arma::getIdArma() {
 	return _idArma;
+};
+
+int Arma::getIdSocio() {
+	return _idSocio;
 };
 
 const char* Arma::getModelo() {
@@ -80,12 +89,12 @@ void Arma::cargarArma() {
 	bool flag = false;
 
 	cout << "Ingrese el Modelo del Arma: ";
-	cin.ignore();
-	cin.getline(_modelo, 29);
+	/*cin.ignore();
+	cin.getline(_modelo, 29);*/
 
-	/*cin >> aux2;				//<-Descomentar para ingreso
-	this->setModelo(aux2);*/	//<-automatizado con excel y comentar el
-	//<-ingreso con getline
+	cin >> aux2;				//<-Descomentar para ingreso
+	this->setModelo(aux2);	//<-automatizado con excel y comentar el
+								//<-ingreso con getline
 
 	cout << "Ingrese el Calibre del Arma: ";
 	cin >> _calibre;
@@ -984,5 +993,21 @@ void consultaArmasPorModelo()
 		{
 			arma.listar();
 		}
+	}
+}
+
+void eliminar_armas_socio(int id)
+{
+	Arma arma;
+	int pos = 0;
+
+	while (arma.leerDeDisco(pos))
+	{
+		if (arma.getIdSocio() == id)
+		{
+			arma.setEstado(false);
+			arma.modificarEnDisco(pos);
+		}
+		pos++;
 	}
 }

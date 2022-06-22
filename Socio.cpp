@@ -425,6 +425,7 @@ void baja_socio()
 
 		if (confirm == 's')
 		{
+			eliminar_armas_socio(id);
 			eliminar_solicitudes_pendientes(id);
 			aux.setEstado(false);
 			aux.modificarEnDisco(pos);

@@ -71,17 +71,17 @@ int Persona::CargarPersona() {
 	this->setDni(aux);
 
 	cout << "Ingrese el nombre: ";
-	cin.ignore();
-	cin.getline(_nombre, 29);
+	/*cin.ignore();
+	cin.getline(_nombre, 29);*/
 
-	/*cin >> aux2;				//<-Descomentar para ingreso 
-	this->setNombre(aux2);*/	//<-automatizado con excel y comentar el
+	cin >> aux2;				//<-Descomentar para ingreso 
+	this->setNombre(aux2);	//<-automatizado con excel y comentar el
 								//<-ingreso con getline
 	cout << "Ingrese el apellido: ";
-	cin.getline(aux2, 29);
+	//cin.getline(aux2, 29);
 
-	/*cin >> aux2;			    //<-Descomentar para ingreso 
-	this->setApellido(aux2);*/	//<-automatizado con excel y comentar el
+	cin >> aux2;			    //<-Descomentar para ingreso 
+	this->setApellido(aux2);	//<-automatizado con excel y comentar el
 								//<-ingreso con getline
 	todoAMayus(aux2);
 	setApellido(aux2);
@@ -91,11 +91,11 @@ int Persona::CargarPersona() {
 	cout << "- Domicilio -" << endl;
 	_domicilio.cargarDomicilio();
 	cout << "Ingrese email: ";
-	cin.ignore();
-	cin.getline(_email, 29);
+	/*cin.ignore();
+	cin.getline(_email, 29);*/
 
-	/*cin >> aux2;				//<-Descomentar para ingreso
-	this->setEmail(aux2);*/		//<-automatizado con excel y comentar el
+	cin >> aux2;				//<-Descomentar para ingreso
+	this->setEmail(aux2);	//<-automatizado con excel y comentar el
 								//<-ingreso con getline
 
 	cout << "Ingrese el telefono: ";

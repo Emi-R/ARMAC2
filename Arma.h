@@ -8,6 +8,7 @@ class Arma
 {
 private:
 	int _idArma;
+	int _idSocio;
 	char _modelo[30];
 	float _calibre;
 	int _idPaisFabricacion;
@@ -16,7 +17,7 @@ private:
 	bool _estado;
 
 public:
-	Arma(int idArma = 0, const char* modelo = "", float calibre = 0, int tipoArma = 0, int numSerie = 0, bool estado = 0, int _idPais = 0);
+	Arma(int idArma = 0, const char* modelo = "", float calibre = 0, int tipoArma = 0, int numSerie = 0, bool estado = 0, int _idPais = 0, int idSocio = 0);
 
 	void setIdArma(int idArma);
 	void setModelo(const char* modelo);
@@ -25,6 +26,7 @@ public:
 	void setTipoArma(int tipoArma);
 	void setNumSerie(int numSerie);
 	void setEstado(bool estado);
+	void setIdSocio(int id);
 
 	int getIdArma();
 	const char* getModelo();
@@ -33,6 +35,7 @@ public:
 	int getTipoArma();
 	int getNumSerie();
 	bool getEstado();
+	int getIdSocio();
 
 	void cargarArma();
 	void mostrarArma();
@@ -101,3 +104,5 @@ void porcentaje_armas_por_tipo();
 void MostrarVectorArmas(float* porc, int tam);
 
 void consultaArmasPorModelo();
+
+void eliminar_armas_socio(int id);
