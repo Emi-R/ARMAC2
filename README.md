@@ -1,7 +1,7 @@
 ![alt text](https://github.com/Emi-R/ARMAC2/blob/main/logo.jpg?raw=true)
 
 ##  Que es?
-ARMAC++ es un proyecto de sistema de gestión para la plataforma Windows, cuya finalidad es facilitar la administracion de un poligono de tiro, implementando programacion orientada a objetos.
+ARMAC++ es un proyecto de sistema de gestión para la plataforma Windows, cuya finalidad es facilitar la administración de un polígono de tiro, implementando programación orientada a objetos.
 
  ![](https://img.shields.io/github/release/pandao/editor.md.svg)
 
