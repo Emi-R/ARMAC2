@@ -294,15 +294,7 @@ int checkArchivoSolicitud() {
 
 int generarIdSolicitud() {
 
-	Solicitud soli;
-	int id = 0;
-	int pos = 0;
-
-	while (soli.leerDeDisco(pos++)) {
-		id = soli.getIdSolicitud();
-	};
-
-	return id;
+	return buscarCantidadSolicitudes();
 }
 
 void listadoSolicitudes() {
@@ -548,21 +540,19 @@ void mostrarSolicitudes(Solicitud* vSolicitudes, int tam) {
 int buscarCantidadSolicitudes() {
 
 	FILE* p = fopen("solicitudes.dat", "rb");
-
 	if (p == NULL) {
 		return 0;
 	}
 
+	size_t bytes;
+	int cant_reg;
+
 	fseek(p, 0, SEEK_END);
-
-	size_t bytes = ftell(p);
-
+	bytes = ftell(p);
 	fclose(p);
-
-	unsigned int cantidadSolic = bytes / sizeof Solicitud;
-
-	return cantidadSolic;
-}
+	cant_reg = bytes / sizeof(Solicitud);
+	return cant_reg;
+	}
 
 void consultaSolicitudesPorAnio() {
 

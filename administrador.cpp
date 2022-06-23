@@ -177,6 +177,8 @@ void Administrador::cargar()
 
 	this->setEstado(true);
 
+	this->grabarEnDisco();
+
 	cout << endl << " -- Administrador creado correctamente --" << endl << endl;
 	cout << "Nombre: " << this->getNombre() << endl;
 	cout << "Apellido: " << this->getApellido() << endl << endl;
@@ -198,7 +200,7 @@ void Administrador::mostrar()
 
 void Administrador::listar()
 {
-	if (this->getEstado() == true)
+	if (this->getEstado())
 	{
 
 		cout << left;
@@ -299,7 +301,7 @@ int buscarAdministradorPorID(int id)
 
 	while (admin.leerDeDisco(pos))
 	{
-		if (admin.getIdAdmin() == id)
+		if (admin.getIdAdmin() == id && admin.getEstado())
 		{
 			return pos;
 		}
@@ -365,7 +367,7 @@ void crear_nuevo_admin()
 	Administrador aux;
 
 	aux.cargar();
-	aux.grabarEnDisco();
+	
 }
 
 void modificar_admin()
@@ -474,7 +476,7 @@ void baja_admin()
 				return;
 			}
 
-			pos = buscarAdministradorPorID(id) - 1;
+			pos = buscarAdministradorPorID(id);
 			if (id < 0)
 			{
 				cout << "ID inválido. Reintente por favor";

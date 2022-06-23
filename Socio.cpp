@@ -201,19 +201,29 @@ void Socio::cargar() {
 		cout << endl << "Ingrese el ID de administrador actual: ";
 		cin >> ID;
 
-		pos = buscarAdministradorPorID(ID);
-
-		if (pos > -1) {
-			admin.leerDeDisco(pos);
-			cuotaInicial.setIdAdmin(admin.getIdAdmin());
-			cuotaInicial.grabarEnDisco();
-			flag2 = true;
+		if (ID < 1)
+		{
+			cout << "ID inválido. Reintente por favor" << endl;
+			flag2 = false;
+			anykey();
 		}
 		else
 		{
-			cout << "El ID no fue encontrado en el archivo de administradores" << endl;
-			flag2 = false;
-			anykey();
+
+			pos = buscarAdministradorPorID(ID);
+
+			if (pos > -1) {
+				admin.leerDeDisco(pos);
+				cuotaInicial.setIdAdmin(admin.getIdAdmin());
+				cuotaInicial.grabarEnDisco();
+				flag2 = true;
+			}
+			else
+			{
+				cout << "El ID no fue encontrado en el archivo de administradores" << endl;
+				flag2 = false;
+				anykey();
+			}
 		}
 
 	} while (!flag2);
@@ -606,6 +616,8 @@ void ModificarApellidoSocio(Socio aux, int pos)
 		cout << "Ingrese apellido nuevo: ";
 		cin.ignore();
 		cin.getline(newName, 29);
+
+		todoAMayus(newName);
 		cls();
 		cout << "Nuevo apellido: " << newName << endl << endl;
 
@@ -1069,7 +1081,7 @@ void consultaPorDni() {
 		{
 			pos = BuscarDniArchivo(dniConsulta);
 
-			if (pos <=-1)
+			if (pos <= -1)
 			{
 				cout << endl << "El dni no fue encontrado en el archivo de socios" << endl;
 				flag = false;

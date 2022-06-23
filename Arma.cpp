@@ -83,6 +83,7 @@ void Arma::cargarArma() {
 	int aux;
 	char aux2[30];
 	bool flag = false;
+	int pos = 0;
 
 	cout << "Ingrese el Modelo del Arma: ";
 
@@ -163,7 +164,19 @@ void Arma::cargarArma() {
 		}
 		else
 		{
-			flag = true;
+			pos = buscarArmaPorNumSerie(aux);
+
+			if (pos != -1)
+			{
+				cout << "El número de serie ya ha sido registrado";
+				anykey();
+				cls();
+				flag = false;
+			}
+			else
+			{
+				flag = true;
+			}
 		}
 
 	} while (!flag);
@@ -172,7 +185,7 @@ void Arma::cargarArma() {
 
 	this->setIdArma(generarIdArma() + 1);
 
-	_estado = true;
+	this->setEstado(true);
 
 	cout << endl << "-- Arma agregada con exito. --" << endl << endl;
 
@@ -763,6 +776,23 @@ void mostrarConsultaArmasPorId(Arma* vecArma, int tamVec, int numId) {
 			vecArma[i].listarPorIdArma();
 		}
 	}
+}
+
+int buscarArmaPorNumSerie(int id)
+{
+	Arma arma;
+	int pos = 0;
+
+	while (arma.leerDeDisco(pos))
+	{
+		if (arma.getNumSerie() == id && arma.getEstado())
+		{
+			return pos;
+		}
+		pos++;
+	}
+
+	return -1;
 }
 
 void listados_Armas_Por_Calibre() {
