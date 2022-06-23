@@ -229,8 +229,10 @@ void Socio::mostrar() {
 	cout << "ID de socio: " << this->getIdsocio() << endl;
 	cout << "Fecha de ingreso: ";
 	_fechaIngreso.mostrarFecha();
-
 	MostrarPersona();
+	cout << endl;
+	cout << "Fecha de último pago: ";
+	_UltimoPago.mostrarFecha();
 
 }
 
@@ -277,15 +279,7 @@ void Socio::listar() {
 
 int generarIDSocio()
 {
-	Socio socio;
-	int id = 0;
-	int pos = 0;
-
-	while (socio.leerDeDisco(pos++)) {
-		id = socio.getIdsocio();
-	};
-
-	return id;
+	return CantidadRegistrosSocio();
 }
 
 int buscarSocioPorID(int id)
@@ -293,9 +287,9 @@ int buscarSocioPorID(int id)
 	Socio socio;
 	int pos = 0;
 
-	while (socio.leerDeDisco(pos) && socio.getEstado())
+	while (socio.leerDeDisco(pos))
 	{
-		if (socio.getIdsocio() == id)
+		if (socio.getIdsocio() == id && socio.getEstado())
 		{
 			return pos;
 		}
@@ -312,7 +306,7 @@ bool buscarSocioPorDNI(int dni)
 
 	while (socio.leerDeDisco(pos++))
 	{
-		if (socio.getDni() == dni)
+		if (socio.getDni() == dni && socio.getEstado())
 		{
 			return true;
 		}
@@ -1033,9 +1027,9 @@ void consulta_Por_Id() {
 int BuscarIdArchivo(int Id) {
 	Socio reg;
 	int pos = 0;
-	while (reg.leerDeDisco(pos)&& reg.getEstado())
+	while (reg.leerDeDisco(pos))
 	{
-		if (reg.getIdsocio() == Id)return pos;
+		if (reg.getIdsocio() == Id && reg.getEstado())return pos;
 		pos++;
 	}
 	return -1;

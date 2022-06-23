@@ -150,6 +150,7 @@ void cobrar_cuota()
 {
 	int idaux;
 	int pos = 0;
+	int pos2 = 0;
 	bool flag = false;
 	bool flag2 = false;
 	int ID = 0;
@@ -170,7 +171,7 @@ void cobrar_cuota()
 
 			pos = buscarSocioPorID(idaux);
 
-			if (idaux < 1 || pos < 0)
+			if (pos < 0)
 			{
 				cout << "ID inválido. Por favor, reintente." << endl << endl;
 				flag = false;
@@ -234,10 +235,10 @@ void cobrar_cuota()
 				cout << endl << "Ingrese el ID de administrador actual: ";
 				cin >> ID;
 
-				pos = buscarAdministradorPorID(ID);
+				pos2 = buscarAdministradorPorID(ID);
 
-				if (pos > -1) {
-					admin.leerDeDisco(pos);
+				if (pos2 > -1) {
+					admin.leerDeDisco(pos2);
 					pago.setIdAdmin(admin.getIdAdmin());
 					pago.grabarEnDisco();
 					flag2 = true;
@@ -304,7 +305,7 @@ void actualizarCarteraSocios(Socio* vec, int cantReg) {
 
 	for (int i = 0; i < cantReg; i++)
 	{
-		cantMesesAdeudados = (12 - vec[i].getUltimoPago().getMes()) + fechaActual.getMes();
+		cantMesesAdeudados = 12 - (vec[i].getUltimoPago().getMes() + fechaActual.getMes());
 
 		if (vec[i].getEstado())
 		{

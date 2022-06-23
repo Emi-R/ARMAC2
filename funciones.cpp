@@ -240,6 +240,7 @@ void menuSocios() {
 		switch (opcion) {
 		case 1:
 			cargar_nuevo_socio();
+			anykey();
 			break;
 		case 2:
 			modificar_socio();
