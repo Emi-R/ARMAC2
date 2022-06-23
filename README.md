@@ -3,6 +3,8 @@
 ##  Que es?
 ARMAC++ es un proyecto de sistema de gestión para la plataforma Windows, cuya finalidad es facilitar la administracion de un poligono de tiro, implementando programacion orientada a objetos.
 
+ ![](https://img.shields.io/github/release/pandao/editor.md.svg)
+
 ### Modulos
 
 - Modulo de Socios
