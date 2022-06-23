@@ -24,7 +24,6 @@ public:
 	int getIdSocio();
 	int getCantidadArmas();
 	bool getEstado();
-
 };
 
 void cantidad_de_armas_por_socio();

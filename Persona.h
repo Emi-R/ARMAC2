@@ -1,12 +1,13 @@
 #pragma once
+
 #include "Domicilio.h"
 #include <cstring>
 #include <iostream>
 #include "funciones.h"
 #include "Fecha.h"
 
-class Persona
-{
+class Persona {
+
 protected:
 	int _dni;
 	char _nombre[30];

@@ -692,7 +692,6 @@ void mostrarConsultaArmasPorNumSerie(Arma* vecArma, int tamVec, int numSerie) {
 			vecArma[i].listarPorNumSerie();
 		}
 	}
-
 }
 
 void consultaArmasPorIdArma() {

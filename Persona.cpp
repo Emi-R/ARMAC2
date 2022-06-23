@@ -36,7 +36,8 @@ const char* Persona::getTelefono() { return _telefono; }
 bool Persona::getEstado() { return _estado; }
 
 //	MOSTRAR Y CARGAR
-int Persona::CargarPersona() {
+int Persona::CargarPersona() 
+{
 
 	bool flag = false;
 	int aux;

@@ -71,7 +71,6 @@ void mostrarTipoArma(int tipo);
 
 void listadoGeneralArmas();
 
-
 int buscarArmaPorId(int idArma);
 
 void listadoDeArmasPorNumDeSerie();
