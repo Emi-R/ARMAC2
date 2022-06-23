@@ -99,11 +99,11 @@ bool  PagoSolicitud::modificarEnDisco(int pos) {
 
 int checkArchivoPagosSolicitud()
 {
-	FILE* solicReg = fopen("pagosSolicitud.dat", "rb");
+	FILE* solicReg = fopen("pagosolicitudes.dat", "rb");
 
 	if (solicReg == NULL)
 	{
-		solicReg = fopen("pagosSolicitud.dat", "wb");
+		solicReg = fopen("pagosolicitudes.dat", "wb");
 
 		if (solicReg == NULL)
 		{
