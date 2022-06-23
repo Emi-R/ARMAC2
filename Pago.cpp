@@ -365,7 +365,7 @@ void buscarRecaudacionesPorSocio(float* vecRecaudacion) {
 	while (cuotas.leerDeDisco(pos++)) {
 		int idSocio = cuotas.getIdSocio();
 		float recaudacion = cuotas.getImporte();
-		vecRecaudacion[idSocio - 1] += recaudacion;
+		vecRecaudacion[idSocio-1] += recaudacion;
 	}
 
 	pos = 0;
@@ -375,7 +375,7 @@ void buscarRecaudacionesPorSocio(float* vecRecaudacion) {
 	while (solicitudesCobros.leerEnDisco(pos++)) {
 		int idSocio = solicitudesCobros.getIdSocio();
 		float recaudacion = solicitudesCobros.getImporte();
-		vecRecaudacion[idSocio] += recaudacion;
+		vecRecaudacion[idSocio-1] += recaudacion;
 	}
 
 }
