@@ -131,7 +131,7 @@ int checkArchivoPrecioSolicitud()
 	}
 	else
 	{
-		cout << "Archivo de precio de solicitud: cargado OK" << endl;
+		cout << "Precio de solicitud: cargado OK" << endl;
 	}
 
 	fclose(fReg);

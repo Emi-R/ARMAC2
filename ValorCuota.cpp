@@ -133,7 +133,7 @@ int checkArchivoPrecioCuota()
 	}
 	else
 	{
-		cout << "Archivo de precio de cuotas: creado OK" << endl;
+		cout << "Precio de cuotas: cargado OK" << endl;
 	}
 
 	fclose(fReg);

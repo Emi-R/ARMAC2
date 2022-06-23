@@ -340,7 +340,7 @@ int checkArchivoSocios() {
 	}
 	else
 	{
-		cout << "Archivo de socios: cargado OK" << endl;
+		cout << "Socios: cargado OK" << endl;
 	}
 
 	fclose(fReg);

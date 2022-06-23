@@ -139,7 +139,7 @@ int checkArchivoPagosCuota()
 	}
 	else
 	{
-		cout << "Archivo de pagos de cuotas: cargado OK" << endl;
+		cout << "Pagos de cuotas: cargado OK" << endl;
 	}
 
 	fclose(solicReg);

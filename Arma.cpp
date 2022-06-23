@@ -372,7 +372,7 @@ int checkArchivoArmas() {
 	}
 	else
 	{
-		cout << "Archivo de armas: cargado OK" << endl;
+		cout << "Armas: cargado OK" << endl;
 	}
 
 	fclose(solicReg);

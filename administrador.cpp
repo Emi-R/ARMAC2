@@ -351,7 +351,7 @@ int checkArchivoAdmins() {
 	}
 	else
 	{
-		cout << "Archivo de administradores: cargado OK" << endl;
+		cout << "Administradores: cargado OK" << endl;
 	}
 
 	fclose(fReg);

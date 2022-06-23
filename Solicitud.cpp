@@ -285,7 +285,7 @@ int checkArchivoSolicitud() {
 	}
 	else
 	{
-		cout << "Archivo de solicitudes: cargado OK" << endl;
+		cout << "Solicitudes: cargado OK" << endl;
 	}
 
 	fclose(solicReg);
