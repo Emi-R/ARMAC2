@@ -21,6 +21,14 @@ int main()
 
 	instalacionArchivos();
 
+	/*Pais aux;
+
+	for (int i = 0; i < 10; i++)
+	{
+		aux.CargarPais();
+		aux.grabarEnDisco();
+	}*/
+
 	do
 	{
 		flag = login();

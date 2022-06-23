@@ -13,7 +13,6 @@ private:
 	char  _Nombre[50];
 	bool  _Estado;
 public:
-	Pais();
 
 	/// Setters
 	void setNombre(const char* nombre);
@@ -29,4 +28,10 @@ public:
 	void CargarPais();
 	void MostrarPais();
 
+	bool grabarEnDisco();
+	bool leerDeDisco(int);
+	
+
 };
+
+void mostrarPais(int pais);

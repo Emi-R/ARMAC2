@@ -99,10 +99,20 @@ void Arma::cargarArma() {
 	cin >> _calibre;
 
 	do {
+		cout << "1 - Argentina" << endl;
+		cout << "2 - Brasil" << endl;
+		cout << "3 - USA" << endl;
+		cout << "4 - Rusia" << endl;
+		cout << "5 - Alemania" << endl;
+		cout << "6 - Israel" << endl;
+		cout << "7 - Belgica" << endl;
+		cout << "8 - Francia" << endl;
+		cout << "9 - Italia" << endl;
+		cout << "10 - Austria" << endl << endl;
 		cout << "Ingrese el Pais de Fabricacion: ";
 		cin >> aux;
 
-		if (aux < 0)
+		if (aux < 1 || aux > 10)
 		{
 			cout << "ID de pais incorrecto." << endl;
 			flag = false;
@@ -146,7 +156,7 @@ void Arma::cargarArma() {
 		cout << "Ingrese número de serie: ";
 		cin >> aux;
 
-		if (aux < 0)
+		if (aux < 1)
 		{
 			cout << "Número de serie inválido." << endl;
 			flag = false;
@@ -178,7 +188,8 @@ void Arma::mostrarArma() {
 	cout << endl;
 	cout << "Calibre del Arma: " << this->getCalibre();
 	cout << endl;
-	cout << "Pais de Fabricacion: " << this->getidPaisFabricacion();
+	cout << "Pais de Fabricacion: ";
+	mostrarPais(this->getidPaisFabricacion());
 	cout << endl;
 	cout << "Tipo de Arma: " << this->getTipoArma();
 	cout << endl;
@@ -193,7 +204,8 @@ void Arma::listar()
 	cout << setw(5) << this->getIdArma();
 	cout << setw(18) << this->getModelo();
 	cout << setw(10) << this->getCalibre();
-	cout << setw(15) << this->getidPaisFabricacion();
+	cout << setw(15);
+	mostrarPais(this->getidPaisFabricacion());
 	cout << setw(20);
 	mostrarTipoArma(this->getTipoArma());
 	cout << setw(15) << this->getNumSerie();
@@ -210,7 +222,8 @@ void Arma::listarPorNumSerie()
 		cout << setw(9) << this->getIdArma();
 		cout << setw(18) << this->getModelo();
 		cout << setw(10) << this->getCalibre();
-		cout << setw(15) << this->getidPaisFabricacion();
+		cout << setw(15);
+		mostrarPais(this->getidPaisFabricacion());
 		cout << setw(15) << this->getTipoArma();
 		cout << endl;
 	}
@@ -226,7 +239,8 @@ void Arma::listarPorTipoArma()
 		cout << setw(9) << this->getIdArma();
 		cout << setw(18) << this->getModelo();
 		cout << setw(10) << this->getCalibre();
-		cout << setw(15) << this->getidPaisFabricacion();
+		cout << setw(15);
+		mostrarPais(this->getidPaisFabricacion());
 		cout << setw(18) << this->getNumSerie();
 		cout << endl;
 
@@ -241,7 +255,8 @@ void Arma::listarPorTipoCalibre() {
 		cout << setw(9) << this->getIdArma();
 		cout << setw(18) << this->getModelo();
 		cout << setw(15) << this->getTipoArma();
-		cout << setw(15) << this->getidPaisFabricacion();
+		cout << setw(15);
+		mostrarPais(this->getidPaisFabricacion());
 		cout << setw(18) << this->getNumSerie();
 		cout << endl;
 	}
@@ -255,7 +270,8 @@ void Arma::listarPorIdArma() {
 		cout << setw(18) << this->getNumSerie();
 		cout << setw(18) << this->getModelo();
 		cout << setw(10) << this->getCalibre();
-		cout << setw(15) << this->getidPaisFabricacion();
+		cout << setw(15);
+		mostrarPais(this->getidPaisFabricacion());
 		cout << setw(15) << this->getTipoArma();
 		cout << endl;
 	}
