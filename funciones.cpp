@@ -61,13 +61,13 @@ bool login() {
 
 	do {
 
-		cout << "\tBienvenido a Sistema ARMAC" << endl;
-		cout << "--------------------------" << endl;
-		cout << "ID Administrador: " << endl;
-		cout << "Contraseña: " << endl;
-		cout << "--------------------------" << endl;
+		cout << "    Bienvenido a Sistema ARMAC" << endl;
+		cout << "    --------------------------" << endl;
+		cout << "    ID Administrador: " << endl;
+		cout << "    Contraseña: " << endl;
+		cout << "    --------------------------" << endl;
 
-		locate(19, 3);
+		locate(23, 3);
 		cin >> aux;
 
 		pos = buscarAdministradorPorID(aux);
@@ -76,8 +76,8 @@ bool login() {
 		{
 			cls();
 			setColor(RED);
-			locate(1, 6);
-			cout << "\tID incorrecto." << endl;
+			locate(11, 6);
+			cout << "ID incorrecto." << endl;
 			flag = false;
 			setColor(WHITE);
 			setBackgroundColor(CYAN);
@@ -85,7 +85,7 @@ bool login() {
 		}
 		else
 		{
-			locate(13, 4);
+			locate(17, 4);
 			admin.leerDeDisco(pos);
 			password = admin.getContrasenia();
 
@@ -94,9 +94,9 @@ bool login() {
 			if (aux2 != password)
 			{
 				cls();
-				locate(1, 6);
+				locate(8, 6);
 				setColor(RED);
-				cout << "\tContraseña incorrecta." << endl;
+				cout << "Contraseña incorrecta." << endl;
 				flag = false;
 				setColor(WHITE);
 				locate(1, 1);
@@ -104,11 +104,12 @@ bool login() {
 			}
 			else
 			{
-				locate(1, 6);
-				setBackgroundColor(GREEN);
+				locate(4, 6);
 				setColor(LIGHTGREEN);
-				cout << "\tID y Contraseña correctos. Bienvenido!" << endl;
-				cout << "\t";
+				setBackgroundColor(GREEN);
+				cout << "ID y Contraseña correctos." << endl;
+				locate(11, 7);
+				cout << "Bienvenido!" << endl << endl;
 				setColor(WHITE);
 				setBackgroundColor(CYAN);
 				system("PAUSE");
