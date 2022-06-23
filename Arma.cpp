@@ -86,9 +86,9 @@ void Arma::cargarArma() {
 
 	cout << "Ingrese el Modelo del Arma: ";
 
-	cin >> aux2;					
-	this->setModelo(aux2);	
-	
+	cin >> aux2;
+	this->setModelo(aux2);
+
 	/*cin.ignore();
 	cin.getline(_modelo, 29);*/
 
@@ -372,7 +372,7 @@ int checkArchivoArmas() {
 	}
 	else
 	{
-		cout << "Archivo de armas cargado correctamente" << endl;
+		cout << "Archivo de armas: cargado OK" << endl;
 	}
 
 	fclose(solicReg);
@@ -462,9 +462,20 @@ void modificar_arma() {
 
 			pos = buscarArmaPorId(idaux);
 
-			if (pos < 0)
+			if (idaux < 0)
+			{
+				cout << "ID inválido. Reintente por favor." << endl << endl;
+				anykey();
+				cls();
+				flag = false;
+			}
+			else 
+				if (pos < 0)
 			{
 				cout << "El ID no se encuentra. Reintente por favor." << endl << endl;
+				anykey();
+				cls();
+				flag = false;
 			}
 			else
 			{
@@ -573,9 +584,9 @@ int buscarCantidadArmas() {
 	return cantidadArmas;
 }
 void copiarArmas(Arma* vArma, int tam) {
-	for (int i = 0; i < tam; i++) 
-	{ 
-		vArma[i].leerDeDisco(i); 
+	for (int i = 0; i < tam; i++)
+	{
+		vArma[i].leerDeDisco(i);
 	}
 }
 void ordernarVecPorNumSerie(Arma* vArma, int tam) {
@@ -612,7 +623,6 @@ void listados_Armas_Por_Tipo() {
 	int cantReg = CantidadRegistroArmas();
 	if (cantReg == 0) {
 		cout << "No hay armas registrados";
-		anykey();
 		return;
 	}
 
@@ -759,7 +769,6 @@ void listados_Armas_Por_Calibre() {
 	int cantReg = CantidadRegistroArmas();
 	if (cantReg == 0) {
 		cout << "No hay armas registrados";
-		anykey();
 		return;
 	}
 
@@ -927,7 +936,6 @@ void porcentaje_armas_por_tipo()
 	if (cantReg == 0)
 	{
 		cout << "No se registraron armas al dia de la fecha" << endl;
-		anykey();
 		return;
 	}
 
@@ -958,7 +966,7 @@ void porcentaje_armas_por_tipo()
 	MostrarVectorArmas(vArmas, porc, TIPOSARMAS);
 
 }
-void MostrarVectorArmas(int *vArmas, float* porc, int tam)
+void MostrarVectorArmas(int* vArmas, float* porc, int tam)
 {
 	string tipo[5] = { "Pistola","Escopeta","Subfusil","Carabina","Fusil Automático" };
 	cout << left;
@@ -1004,7 +1012,7 @@ void consultaArmasPorModelo()
 		strcpy(modeloArchivo, arma.getModelo());
 		todoAMayus(modeloArchivo);
 
-		if (arma.getEstado() && strcmp(modeloABuscar,modeloArchivo) == 0)
+		if (arma.getEstado() && strcmp(modeloABuscar, modeloArchivo) == 0)
 		{
 			arma.listar();
 		}

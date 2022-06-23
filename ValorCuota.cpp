@@ -60,7 +60,7 @@ void ValorCuota::mostrar()
 {
 	cout << left;
 	cout << setw(1) << "$";
-	cout << setw(10) << this->getvalorCuota();
+	cout << setw(10) << (long)this->getvalorCuota();
 	this->getFechaActualizacion().mostrarFecha();
 	cout << endl;
 
@@ -120,12 +120,12 @@ int checkArchivoPrecioCuota()
 		else
 		{
 			float aux;
-			cout << "Ingrese precio de cuota inicial: ";
+			cout << endl<<" -- Ingrese precio de cuota inicial: ";
 			cin >> aux;
 
 			modificarPrecio(aux);
 
-			cout << "Archivo de precio de cuotas creado correctamente con precio inicial: "<< aux << endl;
+			cout << "Archivo de precio de cuotas creado correctamente con precio inicial: "<< aux << endl << endl;
 
 			fclose(fReg);
 			return 0;
@@ -133,7 +133,7 @@ int checkArchivoPrecioCuota()
 	}
 	else
 	{
-		cout << "Archivo de precio de cuotas cargado correctamente" << endl;
+		cout << "Archivo de precio de cuotas: creado OK" << endl;
 	}
 
 	fclose(fReg);

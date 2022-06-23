@@ -97,11 +97,16 @@ void Administrador::cargar()
 		if (aux < 1000000)
 		{
 			cout << "DNI inválido. Por favor, reintente." << endl << endl;
+			anykey();
+			cls();
+			flag = false;
 		}
 		else if (buscarAdministradorPorDni(aux) > -1)
 		{
 			cout << "El DNI ya ha sido registrado anteriormente." << endl << endl;
 			anykey();
+			cls();
+			flag = false;
 		}
 		else
 		{
@@ -132,7 +137,7 @@ void Administrador::cargar()
 		else
 		{
 			cout << "\nRepita la contraseña ingresada: ";
-			
+
 			pass2 = pedirContrasenia();
 
 			if (pass != pass2)
@@ -157,7 +162,7 @@ void Administrador::cargar()
 	do {
 		aux = 1 + rand() % 9999;
 
-		if (buscarAdministradorPorID(aux)>-1)
+		if (buscarAdministradorPorID(aux) > -1)
 		{
 			flag = false;
 		}
@@ -193,15 +198,15 @@ void Administrador::mostrar()
 
 void Administrador::listar()
 {
-	if (this->getEstado()==true)
+	if (this->getEstado() == true)
 	{
 
-	cout << left;
-	cout << setw(5) << this->getIdAdmin();
-	cout << setw(15) << this->getDNI();
-	cout << setw(20) << this->getNombre();
-	cout << setw(20) << this->getApellido();
-	cout << endl;
+		cout << left;
+		cout << setw(5) << this->getIdAdmin();
+		cout << setw(15) << this->getDNI();
+		cout << setw(20) << this->getNombre();
+		cout << setw(20) << this->getApellido();
+		cout << endl;
 	}
 
 }
@@ -346,7 +351,7 @@ int checkArchivoAdmins() {
 	}
 	else
 	{
-		cout << "Archivo de administradores cargado correctamente" << endl;
+		cout << "Archivo de administradores: cargado OK" << endl;
 	}
 
 	fclose(fReg);
@@ -387,9 +392,20 @@ void modificar_admin()
 
 			pos = buscarAdministradorPorID(idaux);
 
-			if (pos <= -1)
+			if (idaux < 0)
+			{
+				cout << "ID inválido. Reintente por favor." << endl << endl;
+				anykey();
+				cls();
+				flag = false;
+			}
+			else if (pos <= -1)
 			{
 				cout << "El ID no se encuentra. Reintente por favor." << endl << endl;
+				anykey();
+				cls();
+				flag = false;
+
 			}
 			else
 			{
@@ -457,12 +473,21 @@ void baja_admin()
 			{
 				return;
 			}
-			
-			pos = buscarAdministradorPorID(id) - 1;
 
-			if (pos <= -1 && id != 0)
+			pos = buscarAdministradorPorID(id) - 1;
+			if (id < 0)
+			{
+				cout << "ID inválido. Reintente por favor";
+				anykey();
+				cls();
+				flag = false;
+			}
+			else if (pos <= -1)
 			{
 				cout << "El ID no se encuentra. Reintente por favor." << endl << endl;
+				anykey();
+				cls();
+				flag = false;
 			}
 			else
 			{
@@ -709,7 +734,7 @@ void consulta_admin_Por_ID()
 		admin.mostrar();
 		anykey();
 	}
-	else 
+	else
 	{
 		cout << "El ID no fue encontrado en el archivo de administradores" << endl;
 		anykey();

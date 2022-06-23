@@ -73,9 +73,16 @@ void Solicitud::cargarSolicitud() {
 
 		pos = buscarAdministradorPorID(aux);
 
-		if (pos <= -1)
+		if (aux < 0)
 		{
-			cout << "El ID del Administrador es inválido. Por favor, ingrese un ID correcto." << endl;
+			cout << "ID inválido. Reintente por favor";
+			anykey();
+			cls();
+			verifica = false;
+		}
+		else if (pos <= -1)
+		{
+			cout << "El ID ingresado no esta registrado. Reintente por favor." << endl;
 			anykey();
 			cls();
 			verifica = false;
@@ -97,7 +104,14 @@ void Solicitud::cargarSolicitud() {
 
 		posSocio = buscarSocioPorID(aux);
 
-		if (posSocio < 0)
+		if (aux < 0)
+		{
+			cout << "ID inválido. Reintente por favor";
+			anykey();
+			cls();
+			verifica = false;
+		}
+		else if (posSocio < 0)
 		{
 			cout << "El ID de socio no esta registrado o es incorrecto. Ingrese de nuevo por favor." << endl;
 		}
@@ -268,6 +282,10 @@ int checkArchivoSolicitud() {
 
 			return 0;
 		}
+	}
+	else
+	{
+		cout << "Archivo de solicitudes: cargado OK" << endl;
 	}
 
 	fclose(solicReg);
@@ -482,7 +500,6 @@ void listarSolicitudPorFechaDesc() {
 
 	if (cantReg == 0) {
 		cout << "No hay Solicitudes registradas";
-		anykey();
 		return;
 	}
 
@@ -754,7 +771,7 @@ void modificar_solicitud()
 
 	while (!salir) {
 
-	Solicitud aux;
+		Solicitud aux;
 
 		do
 		{
@@ -917,7 +934,6 @@ void cantidad_solicitudes_desap_por_anio()
 		cout << " -- Se desaprobaron " << aux << " solicitudes en el año " << anio << " --" << endl;
 	}
 
-	anykey();
 }
 
 int solicitudesDesaprobadasPorAnio(int anio)
@@ -961,7 +977,6 @@ void promedio_solictudes_aprobadas()
 
 	if (cantSolicitudes == 0) {
 		cout << "No se registran solicitudes al dia de la fecha" << endl;
-		anykey();
 		return;
 	}
 

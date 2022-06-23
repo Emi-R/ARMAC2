@@ -88,7 +88,7 @@ bool PagoCuota::leerDeDisco(int pos)
 	if (fReg == NULL)
 	{
 		cout << "No se puede abrir el archivo.";
-		system("PAUSE < null");
+		anykey();
 		return false;
 	}
 
@@ -139,7 +139,7 @@ int checkArchivoPagosCuota()
 	}
 	else
 	{
-		cout << "Archivo de pagos de cuotas cargado correctamente" << endl;
+		cout << "Archivo de pagos de cuotas: cargado OK" << endl;
 	}
 
 	fclose(solicReg);
@@ -171,9 +171,18 @@ void cobrar_cuota()
 
 			pos = buscarSocioPorID(idaux);
 
-			if (pos < 0)
+			if (idaux < 0)
 			{
 				cout << "ID inválido. Por favor, reintente." << endl << endl;
+				anykey();
+				cls();
+				flag = false;
+			}
+			else if (pos < 0)
+			{
+				cout << "El ID de socio no existe. Por favor, reintente." << endl << endl;
+				anykey();
+				cls();
 				flag = false;
 			}
 			else
@@ -276,8 +285,7 @@ void actualizarEstadoCuotasSocios()
 	int cantReg = CantidadRegistrosSocio();
 	if (cantReg == 0)
 	{
-		cout << "No hay socios cargados." << endl;
-		anykey();
+		cout << endl << " -- No hay socios cargados al dia de la fecha. --" << endl;
 		return;
 	}
 
@@ -292,8 +300,7 @@ void actualizarEstadoCuotasSocios()
 	copiarSocios(vec, cantReg);
 	actualizarCarteraSocios(vec, cantReg);
 
-	cout << "Estado de socios actualizado correctamente" << endl;
-
+	cout << endl << "Estado de socios actualizado correctamente" << endl;
 
 	delete vec;
 }
@@ -398,7 +405,7 @@ void listarRecaudacionesPorSocio(float* vecRecaudacion, int tam) {
 
 void Informe_Recaudacion_Anual() {
 
-	int Anio = 0;
+	int anio = 0;
 	const int Meses = 12;
 	float* vDinamicoCuota;
 	vDinamicoCuota = new float[Meses];
@@ -410,16 +417,28 @@ void Informe_Recaudacion_Anual() {
 
 	PonerEnCeroVector(vDinamicoCuota, Meses);
 	PonerEnCeroVector(vDinamicoSolicitudes, Meses);
-	cout << "Ingrese el año para consultar su recaudacion (0 para volver al menú anterior): ";
-	cin >> Anio;
 
-	if (Anio == 0)
-	{
-		return;
-	}
+	do {
 
-	RecaudacionAnualCuota(Anio, vDinamicoCuota, Meses);
-	RecaudacionAnualSolictudes(Anio, vDinamicoSolicitudes, Meses);
+		cout << "Ingrese el año para consultar su recaudacion (0 para volver al menú anterior): ";
+		cin >> anio;
+
+		if (anio == 0)
+		{
+			return;
+		}
+
+		if (anio < 0)
+		{
+			cout << "Año inválido. Reintente por favor.";
+			anykey();
+			cls();
+		}
+
+	} while (anio < 0);
+
+	RecaudacionAnualCuota(anio, vDinamicoCuota, Meses);
+	RecaudacionAnualSolictudes(anio, vDinamicoSolicitudes, Meses);
 	MostrarDetalleRecaudacionAnual(vDinamicoCuota, vDinamicoSolicitudes, Meses);
 	anykey();
 

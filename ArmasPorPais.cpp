@@ -59,8 +59,6 @@ void cantidad_de_armas_por_pais()
 	if (cantRegArmas == 0)
 	{
 		cout << "No se registraron armas al dia de la fecha.";
-		anykey();
-		cls();
 		return;
 	}
 
@@ -68,8 +66,6 @@ void cantidad_de_armas_por_pais()
 	if (cantRegPaises == 0)
 	{
 		cout << "No se registraron paises al dia de la fecha.";
-		anykey();
-		cls();
 		return;
 	}
 
@@ -81,6 +77,8 @@ void cantidad_de_armas_por_pais()
 	buscarArmasPorPais(vPaises, cantRegPaises);
 	ordenarVectorPaises(vPaises, cantRegPaises);
 	MostrarVectorPaises(vPaises, cantRegPaises);
+
+	delete vPaises;
 
 }
 

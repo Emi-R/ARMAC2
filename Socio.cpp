@@ -338,7 +338,7 @@ int checkArchivoSocios() {
 	}
 	else
 	{
-		cout << "Archivo de socios cargado correctamente" << endl;
+		cout << "Archivo de socios: cargado OK" << endl;
 	}
 
 	fclose(fReg);
@@ -377,68 +377,6 @@ void cargar_nuevo_socio()
 	aux.grabarEnDisco();
 }
 
-void baja_socio()
-{
-	Socio aux;
-	int id;
-	bool flag = false;
-	int pos = 0;
-	char confirm;
-
-	do {
-		do {
-			cout << "Ingrese ID de socio a dar de baja (0 para volver al menu anterior): ";
-			cin >> id;
-
-			if (id == 0)
-			{
-				return;
-			}
-
-			pos = buscarSocioPorID(id);
-
-			if (pos <= -1 && id != 0)
-			{
-				cout << "El ID no se encuentra. Reintente por favor." << endl << endl;
-			}
-			else
-			{
-				flag = true;
-			}
-		} while (!flag);
-
-		cls();
-
-		aux.leerDeDisco(pos);
-		aux.mostrar();
-		cout << endl;
-
-		cout << "¿Desea dar de baja el socio  N°" << id << "? (S/N): ";
-		cin >> confirm;
-
-		confirm = (tolower(confirm));
-
-		if (confirm == 's')
-		{
-			eliminar_armas_socio(id);
-			eliminar_solicitudes_pendientes(id);
-			aux.setEstado(false);
-			aux.modificarEnDisco(pos);
-			cout << endl << " -- El socio N° " << aux.getIdsocio() << "ha sido dado de baja -- " << endl;
-			cout << "Todas los solicitudes pendientes han sido dadas de baja" << endl;
-			anykey();
-			cls();
-			flag = true;
-		}
-		else
-		{
-			cls();
-			flag = false;
-		}
-	} while (!flag);
-
-}
-
 void modificar_socio()
 {
 	int opcion;
@@ -465,7 +403,9 @@ void modificar_socio()
 
 			if (pos <= -1)
 			{
-				cout << "El ID no se encuentra. Reintente por favor." << endl << endl;
+				cout << "El ID no se encuentra. Reintente por favor.";
+				anykey();
+				cls();
 			}
 			else
 			{
@@ -526,6 +466,70 @@ void modificar_socio()
 			break;
 		}
 	}
+}
+
+void baja_socio()
+{
+	Socio aux;
+	int id;
+	bool flag = false;
+	int pos = 0;
+	char confirm;
+
+	do {
+		do {
+			cout << "Ingrese ID de socio a dar de baja (0 para volver al menu anterior): ";
+			cin >> id;
+
+			if (id == 0)
+			{
+				return;
+			}
+
+			pos = buscarSocioPorID(id);
+
+			if (pos <= -1 && id != 0)
+			{
+				cout << "El ID no se encuentra. Reintente por favor.";
+				anykey();
+				cls();
+			}
+			else
+			{
+				flag = true;
+			}
+		} while (!flag);
+
+		cls();
+
+		aux.leerDeDisco(pos);
+		aux.mostrar();
+		cout << endl;
+
+		cout << "¿Desea dar de baja el socio  N°" << id << "? (S/N): ";
+		cin >> confirm;
+
+		confirm = (tolower(confirm));
+
+		if (confirm == 's')
+		{
+			eliminar_armas_socio(id);
+			eliminar_solicitudes_pendientes(id);
+			aux.setEstado(false);
+			aux.modificarEnDisco(pos);
+			cout << endl << " -- El socio N° " << aux.getIdsocio() << "ha sido dado de baja -- " << endl;
+			cout << "Todas los solicitudes pendientes han sido dadas de baja" << endl;
+			anykey();
+			cls();
+			flag = true;
+		}
+		else
+		{
+			cls();
+			flag = false;
+		}
+	} while (!flag);
+
 }
 
 /////////////////////////////////////

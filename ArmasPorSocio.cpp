@@ -42,7 +42,6 @@ void cantidad_de_armas_por_socio()
 
 	if (cantReg == 0) {
 		cout << "No hay socios registrados";
-		anykey();
 		return;
 	}
 

@@ -118,12 +118,12 @@ int checkArchivoPrecioSolicitud()
 		else
 		{
 			float aux;
-			cout << "Ingrese precio inicial de la solicitud: ";
+			cout << " -- Ingrese precio inicial de la solicitud: ";
 			cin >> aux;
 
 			modificar_importe_solicitud(aux);
 
-			cout << "Archivo de valor de solicitudes creado correctamente con precio inicial: " << aux << endl;
+			cout << "Archivo de valor de solicitudes creado correctamente con precio inicial: " << aux << endl << endl;
 
 			fclose(fReg);
 			return 0;
@@ -131,7 +131,7 @@ int checkArchivoPrecioSolicitud()
 	}
 	else
 	{
-		cout << "Archivo de precio de solicitud cargado correctamente" << endl;
+		cout << "Archivo de precio de solicitud: cargado OK" << endl;
 	}
 
 	fclose(fReg);

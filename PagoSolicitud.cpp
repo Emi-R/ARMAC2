@@ -122,7 +122,7 @@ int checkArchivoPagosSolicitud()
 	}
 	else
 	{
-		cout << "Archivo de pagos de solicitudes cargado correctamente" << endl;
+		cout << "Archivo de pagos de solicitudes: cargado OK" << endl;
 	}
 
 	fclose(solicReg);
