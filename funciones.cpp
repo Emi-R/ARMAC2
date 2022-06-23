@@ -17,6 +17,7 @@
 #include "ValorSolicitud.h"
 #include "RecaudacionesPorAdmin.h"
 #include "ArmasPorSocio.h"
+#include "ArmasPorPais.h"
 
 using namespace std;
 using namespace rlutil;
@@ -802,12 +803,13 @@ void menuInformes() {
 		cout << "2 - Recaudación por socio" << endl;
 		cout << "3 - Recaudación por administrador" << endl;
 		cout << "4 - Cantidad de armas por socio " << endl;
-		cout << "5 - Cantidad de solicitudes desaprobadas por año" << endl;
-		cout << "6 - Promedio de solicitudes aprobadas con respecto al total" << endl;
-		cout << "7 - Porcentaje de armas por tipo" << endl;
+		cout << "5 - Cantidad de armas por pais " << endl;
+		cout << "6 - Cantidad de solicitudes desaprobadas por año" << endl;
+		cout << "7 - Promedio de solicitudes aprobadas con respecto al total" << endl;
+		cout << "8 - Porcentaje de armas por tipo" << endl;
 		cout << "--------------------------" << endl;
-		cout << "8 - Listar historial de precios de cuota" << endl;
-		cout << "9 - Listar historial de precios de solicitud" << endl;
+		cout << "9 - Listar historial de precios de cuota" << endl;
+		cout << "10 - Listar historial de precios de solicitud" << endl;
 		cout << "--------------------------" << endl;
 		cout << "0 - Volver al menú principal" << endl << endl;
 
@@ -831,20 +833,24 @@ void menuInformes() {
 			anykey();
 			break;
 		case 5:
-			cantidad_solicitudes_desap_por_anio();
+			cantidad_de_armas_por_pais();
+			anykey();
 			break;
 		case 6:
+			cantidad_solicitudes_desap_por_anio();
+			break;
+		case 7:
 			promedio_solictudes_aprobadas();
 			anykey();
 			break;
-		case 7:
+		case 8:
 			porcentaje_armas_por_tipo();
 			anykey();
 			break;
-		case 8:
+		case 9:
 			listar_historial_precios_cuota();
 			break;
-		case 9:
+		case 10:
 			listar_historial_precios_solicitud();
 			break;
 		case 0:
@@ -1042,7 +1048,7 @@ bool exportarCSVArmas()
 
 	int pos = 0;
 
-	myFile << "ID ARMA" << ';' << "MODELO" << ';' << "CALIBRE" << ';' << "ID PAIS" << ';' << "TIPO DE ARMA" << ';' << "NUM SERIE" << endl;
+	myFile << "ID ARMA" << ',' << "MODELO" << ',' << "CALIBRE" << ',' << "ID PAIS" << ',' << "TIPO DE ARMA" << ',' << "NUM SERIE" << endl;
 
 	string modelo;
 	string tipo;
@@ -1072,7 +1078,7 @@ bool exportarCSVArmas()
 			break;
 		}
 
-		myFile << reg.getIdArma() << ';' << modelo << ';' << reg.getCalibre() << ';' << reg.getidPaisFabricacion() << ';' << tipo << ';' << reg.getNumSerie() << endl;
+		myFile << reg.getIdArma() << ',' << modelo << ',' << reg.getCalibre() << ',' << reg.getidPaisFabricacion() << ',' << tipo << ',' << reg.getNumSerie() << endl;
 	}
 
 	cout << "Listado 'listadoArmas.csv' exportado correctamente" << endl;

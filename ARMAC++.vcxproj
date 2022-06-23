@@ -141,6 +141,7 @@
   <ItemGroup>
     <ClCompile Include="administrador.cpp" />
     <ClCompile Include="Arma.cpp" />
+    <ClCompile Include="ArmasPorPais.cpp" />
     <ClCompile Include="ArmasPorSocio.cpp" />
     <ClCompile Include="Domicilio.cpp" />
     <ClCompile Include="Fecha.cpp" />
@@ -159,6 +160,7 @@
   <ItemGroup>
     <ClInclude Include="administrador.h" />
     <ClInclude Include="Arma.h" />
+    <ClInclude Include="ArmasPorPais.h" />
     <ClInclude Include="ArmasPorSocio.h" />
     <ClInclude Include="Domicilio.h" />
     <ClInclude Include="Fecha.h" />

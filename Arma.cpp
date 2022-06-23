@@ -206,7 +206,7 @@ void Arma::listar()
 	cout << setw(10) << this->getCalibre();
 	cout << setw(15);
 	mostrarPais(this->getidPaisFabricacion());
-	cout << setw(20);
+	cout << setw(18);
 	mostrarTipoArma(this->getTipoArma());
 	cout << setw(15) << this->getNumSerie();
 	cout << endl;
@@ -218,13 +218,14 @@ void Arma::listarPorNumSerie()
 	if (this->getEstado())
 	{
 		cout << left;
-		cout << setw(15) << this->getNumSerie();
+		cout << setw(18) << this->getNumSerie();
 		cout << setw(9) << this->getIdArma();
 		cout << setw(18) << this->getModelo();
 		cout << setw(10) << this->getCalibre();
 		cout << setw(15);
 		mostrarPais(this->getidPaisFabricacion());
-		cout << setw(15) << this->getTipoArma();
+		cout << setw(20);
+		mostrarTipoArma(this->getTipoArma());
 		cout << endl;
 	}
 }
@@ -254,7 +255,8 @@ void Arma::listarPorTipoCalibre() {
 		cout << setw(10) << this->getCalibre();
 		cout << setw(9) << this->getIdArma();
 		cout << setw(18) << this->getModelo();
-		cout << setw(15) << this->getTipoArma();
+		cout << setw(18);
+		mostrarTipoArma(this->getTipoArma());
 		cout << setw(15);
 		mostrarPais(this->getidPaisFabricacion());
 		cout << setw(18) << this->getNumSerie();
@@ -272,7 +274,8 @@ void Arma::listarPorIdArma() {
 		cout << setw(10) << this->getCalibre();
 		cout << setw(15);
 		mostrarPais(this->getidPaisFabricacion());
-		cout << setw(15) << this->getTipoArma();
+		cout << setw(18);
+		mostrarTipoArma(this->getTipoArma());
 		cout << endl;
 	}
 }
@@ -522,10 +525,10 @@ void listadoGeneralArmas()
 	cout << setw(5) << "ID";
 	cout << setw(18) << "MODELO";
 	cout << setw(10) << "CALIBRE";
-	cout << setw(15) << "ID PAIS FABR.";
-	cout << setw(20) << "TIPO DE ARMA";
-	cout << setw(15) << "NÚMERO DE SERIE" << endl;
-	cout << "------------------------------------------------------------------------------------" << endl;
+	cout << setw(15) << "PAIS FABR.";
+	cout << setw(18) << "TIPO DE ARMA";
+	cout << setw(16) << "NÚMERO DE SERIE" << endl;
+	cout << "-----------------------------------------------------------------------------------" << endl;
 
 	while (arma.leerDeDisco(pos++))
 	{
@@ -596,8 +599,8 @@ void mostrarListadoArmas(Arma* vArma, int tam) {
 	cout << setw(9) << "ID ARMA";
 	cout << setw(18) << "MODELO";
 	cout << setw(10) << "CALIBRE";
-	cout << setw(15) << "ID PAIS FABR.";
-	cout << setw(15) << "TIPO DE ARMA" << endl;
+	cout << setw(15) << "PAIS FABR.";
+	cout << setw(18) << "TIPO DE ARMA" << endl;
 	cout << "-----------------------------------------------------------------------------------" << endl;
 
 	for (int i = 0; i < tam; i++) {
@@ -655,9 +658,9 @@ void MostrarVector(Arma* vec, int tam) {
 	cout << setw(9) << "ID ARMA";
 	cout << setw(18) << "MODELO";
 	cout << setw(10) << "CALIBRE";
-	cout << setw(15) << "ID PAIS FABR.";
+	cout << setw(15) << "PAIS FABR.";
 	cout << setw(18) << "NÚMERO DE SERIE" << endl;
-	cout << "-----------------------------------------------------------------------------------" << endl;
+	cout << "--------------------------------------------------------------------------------------" << endl;
 
 	for (int i = 0; i < tam; i++)
 	{
@@ -698,9 +701,9 @@ void mostrarConsultaArmasPorNumSerie(Arma* vecArma, int tamVec, int numSerie) {
 	cout << setw(9) << "ID ARMA";
 	cout << setw(18) << "MODELO";
 	cout << setw(10) << "CALIBRE";
-	cout << setw(15) << "ID PAIS FABR.";
-	cout << setw(15) << "TIPO DE ARMA" << endl;
-	cout << "-----------------------------------------------------------------------------------" << endl;
+	cout << setw(15) << "PAIS FABR.";
+	cout << setw(20) << "TIPO DE ARMA" << endl;
+	cout << "---------------------------------------------------------------------------------------" << endl;
 
 
 	for (int i = 0; i < tamVec; i++) {
@@ -740,9 +743,9 @@ void mostrarConsultaArmasPorId(Arma* vecArma, int tamVec, int numId) {
 	cout << setw(18) << "NÚMERO DE SERIE";
 	cout << setw(18) << "MODELO";
 	cout << setw(10) << "CALIBRE";
-	cout << setw(15) << "ID PAIS FABR.";
-	cout << setw(15) << "TIPO DE ARMA" << endl;
-	cout << "-----------------------------------------------------------------------------------" << endl;
+	cout << setw(15) << "PAIS FABR.";
+	cout << setw(18) << "TIPO DE ARMA" << endl;
+	cout << "---------------------------------------------------------------------------------------" << endl;
 
 
 	for (int i = 0; i < tamVec; i++) {
@@ -785,10 +788,10 @@ void MostrarVectorPorCalibre(Arma* vec, int tam) {
 	cout << setw(10) << "CALIBRE";
 	cout << setw(9) << "ID ARMA";
 	cout << setw(18) << "MODELO";
-	cout << setw(15) << "TIPO DE ARMA";
-	cout << setw(15) << "ID PAIS FABR.";
+	cout << setw(18) << "TIPO DE ARMA";
+	cout << setw(15) << "PAIS FABR.";
 	cout << setw(18) << "NÚMERO DE SERIE" << endl;
-	cout << "-----------------------------------------------------------------------------------" << endl;
+	cout << "--------------------------------------------------------------------------------------" << endl;
 
 	for (int i = 0; i < tam; i++)
 	{
@@ -955,7 +958,6 @@ void porcentaje_armas_por_tipo()
 	MostrarVectorArmas(vArmas, porc, TIPOSARMAS);
 
 }
-
 void MostrarVectorArmas(int *vArmas, float* porc, int tam)
 {
 	string tipo[5] = { "Pistola","Escopeta","Subfusil","Carabina","Fusil Automático" };
@@ -992,10 +994,10 @@ void consultaArmasPorModelo()
 	cout << setw(5) << "ID";
 	cout << setw(18) << "MODELO";
 	cout << setw(10) << "CALIBRE";
-	cout << setw(15) << "ID PAIS FABR.";
-	cout << setw(15) << "TIPO DE ARMA";
+	cout << setw(15) << "PAIS FABR.";
+	cout << setw(18) << "TIPO DE ARMA";
 	cout << setw(15) << "NÚMERO DE SERIE" << endl;
-	cout << "-------------------------------------------------------------------------------" << endl;
+	cout << "----------------------------------------------------------------------------------" << endl;
 
 	while (arma.leerDeDisco(pos++))
 	{
