@@ -89,8 +89,8 @@ void Arma::cargarArma() {
 	cin >> aux2;
 	this->setModelo(aux2);
 
-	/*cin.ignore();
-	cin.getline(_modelo, 29);*/
+	//cin.ignore();
+	//cin.getline(_modelo, 29);
 
 	// Usar metodo set para ingreso	automatizado con 
 	// excel o getline para ingreso manual (comentar uno y descomentar el otro)

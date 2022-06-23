@@ -72,20 +72,20 @@ int Persona::CargarPersona()
 	this->setDni(aux);
 
 	cout << "Ingrese el nombre: ";
-	cin.ignore();
-	cin.getline(_nombre, 29);
+	//cin.ignore();
+	//cin.getline(_nombre, 29);
 
-	// cin >> aux2;
-	// this->setNombre(aux2);
+	 cin >> aux2;
+	 this->setNombre(aux2);
 
 	// Usar metodo set para ingreso	automatizado con 
 	// excel o getline para ingreso manual (comentar uno y descomentar el otro)
 
 	cout << "Ingrese el apellido: ";
-	cin.getline(aux2, 29);
+	//cin.getline(aux2, 29);
 
-	/*cin >> aux2;
-	this->setApellido(aux2);*/
+	cin >> aux2;
+	this->setApellido(aux2);
 
 	// Usar metodo set para ingreso	automatizado con 
 	// excel o getline para ingreso manual (comentar uno y descomentar el otro)
@@ -98,11 +98,11 @@ int Persona::CargarPersona()
 	cout << "- Domicilio -" << endl;
 	_domicilio.cargarDomicilio();
 	cout << "Ingrese email: ";
-	cin.ignore();
-	cin.getline(_email, 29);
+	//cin.ignore();
+	//cin.getline(_email, 29);
 
-	//cin >> aux2;
-	//this->setEmail(aux2);
+	cin >> aux2;
+	this->setEmail(aux2);
 
 	// Usar metodo set para ingreso	automatizado con 
 	// excel o getline para ingreso manual (comentar uno y descomentar el otro)
