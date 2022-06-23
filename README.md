@@ -1,4 +1,4 @@
-#ARMAC++
+# ARMAC++
 
 ##  Que es?
 ARMAC++ es un proyecto de sistema de gestión para la plataforma Windows para la administracion de un poligono de tiro, implementando programacion orientada a objetos.
