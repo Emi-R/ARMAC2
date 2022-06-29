@@ -21,7 +21,7 @@ int main()
 
 	instalacionArchivos();
 
-	/*do
+	do
 	{
 		flag = login();
 
@@ -30,24 +30,24 @@ int main()
 			flag2 = menuPrincipal();
 		}
 
-	} while (flag && flag2);*/
+	} while (flag && flag2);
+	/*
+	Socio aux;
 
-	//Socio aux;
-
-	//for (int i = 0; i < 100; i++)
-	//{
-	//	aux.cargar();
-	//}
-
+	for (int i = 0; i < 100; i++)
+	{
+	aux.cargar();
+	}
+	*/
 	menuPrincipal();
+	/*
+	Solicitud aux2;
 
-	//Solicitud aux2;
+	for (int i = 0; i < 100; i++)
+	{
+		aux2.cargarSolicitud();
 
-	//for (int i = 0; i < 100; i++)
-	//{
-	//	aux2.cargarSolicitud();
-
-	//}
-
+	}
+	*/
 	return 0;
 }
