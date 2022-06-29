@@ -997,6 +997,78 @@ void promedio_solictudes_aprobadas()
 
 }
 
+void promedio_solictudes_desaprobadas()
+{
+	int cantSolicitudes = buscarCantidadSolicitudes();
+
+	if (cantSolicitudes == 0) {
+		cout << "No se registran solicitudes al dia de la fecha" << endl;
+		return;
+	}
+
+	Solicitud solicitud;
+	int pos = 0;
+	int cont = 0;
+	int anio = 0;
+	int totalSolicitudes = 0;
+	bool flag = false;
+
+	while (solicitud.leerDeDisco(pos))
+	{
+		if (solicitud.getEstado())
+		{
+			totalSolicitudes++;
+
+			if (solicitud.getAprobado() == -1)
+			{
+				cont++;
+			}
+		}
+		pos++;
+	}
+
+	double prom = (double)cont / cantSolicitudes;
+
+	cout << " -- El promedio de solicitudes desaprobadas es de: " << setprecision(2) << prom << endl;
+
+}
+
+void promedio_solictudes_pendientes()
+{
+	int cantSolicitudes = buscarCantidadSolicitudes();
+
+	if (cantSolicitudes == 0) {
+		cout << "No se registran solicitudes al dia de la fecha" << endl;
+		return;
+	}
+
+	Solicitud solicitud;
+	int pos = 0;
+	int cont = 0;
+	int anio = 0;
+	int totalSolicitudes = 0;
+	bool flag = false;
+
+	while (solicitud.leerDeDisco(pos))
+	{
+		if (solicitud.getEstado())
+		{
+			totalSolicitudes++;
+
+			if (solicitud.getAprobado() == 0)
+			{
+				cont++;
+			}
+		}
+		pos++;
+	}
+
+	double prom = (double)cont / cantSolicitudes;
+
+	cout << " -- El promedio de solicitudes pendientes es de: " << setprecision(2) << prom << endl;
+
+}
+
 void eliminar_solicitudes_pendientes(int id)
 {
 	Solicitud solicitud;

@@ -805,7 +805,9 @@ void menuInformes() {
 		cout << "    5 - Cantidad de armas por pais " << endl;
 		cout << "    6 - Cantidad de solicitudes desaprobadas por año" << endl;
 		cout << "    7 - Promedio de solicitudes aprobadas con respecto al total" << endl;
-		cout << "    8 - Porcentaje de armas por tipo" << endl;
+		cout << "    8 - Promedio de solicitudes desaprobadas con respecto al total" << endl;
+		cout << "    9 - Promedio de solicitudes pendientes con respecto al total" << endl;
+		cout << "    10 - Porcentaje de armas por tipo" << endl;
 		cout << "-----------------------------------------------------------------" << endl;
 		cout << "    9 - Listar historial de precios de cuota" << endl;
 		cout << "    10 - Listar historial de precios de solicitud" << endl;
@@ -844,13 +846,21 @@ void menuInformes() {
 			anykey();
 			break;
 		case 8:
-			porcentaje_armas_por_tipo();
+			promedio_solictudes_desaprobadas();
 			anykey();
 			break;
 		case 9:
-			listar_historial_precios_cuota();
+			promedio_solictudes_pendientes();
+			anykey();
 			break;
 		case 10:
+			porcentaje_armas_por_tipo();
+			anykey();
+			break;
+		case 11:
+			listar_historial_precios_cuota();
+			break;
+		case 12:
 			listar_historial_precios_solicitud();
 			break;
 		case 0:

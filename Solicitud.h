@@ -103,6 +103,8 @@ int solicitudesDesaprobadasPorAnio(int anio);
 void backup_solicitudes();
 
 void promedio_solictudes_aprobadas();
+void promedio_solictudes_desaprobadas();
+void promedio_solictudes_pendientes();
 
 void eliminar_solicitudes_pendientes(int id);
 
