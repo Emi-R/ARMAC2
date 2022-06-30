@@ -1009,8 +1009,8 @@ void MostrarVectorArmas(int* vArmas, float* porc, int tam)
 	{
 		cout << setw(17) << tipo[i];
 		cout << setw(10) << vArmas[i];
-		cout << setw(1) << "% ";
-		cout << setw(9) << porc[i] << endl;
+		cout << setw(1) << porc[i] ;
+		cout << setw(9) << "% " << endl;
 	}
 }
 
