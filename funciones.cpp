@@ -1114,6 +1114,9 @@ bool exportarCSVArmas()
 	system("pause");
 	system("cls");
 
+
+	fclose(p);
+
 	return true;
 }
 
