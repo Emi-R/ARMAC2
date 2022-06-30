@@ -32,6 +32,7 @@ int main()
 		}
 
 	} while (flag && flag2);
+	
 	/*
 	Socio aux;
 
@@ -40,6 +41,7 @@ int main()
 	aux.cargar();
 	}
 	*/
+	
 	menuPrincipal();
 	/*
 	Solicitud aux2;

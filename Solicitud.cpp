@@ -948,6 +948,73 @@ int solicitudesDesaprobadasPorAnio(int anio)
 
 }
 
+void cantidad_solicitudes_aprobadas_por_anio()
+{
+	int anio;
+	bool flag = false;
+
+	do
+	{
+		cout << "Ingrese el año (0 para volver al menu anterior): ";
+		cin >> anio;
+
+		if (anio == 0)
+		{
+			return;
+		}
+
+		if (anio < 0)
+		{
+			cout << "Año invalido. Reingrese de nuevo por favor" << endl;
+			anykey();
+			cls();
+		}
+		else
+		{
+			flag = true;
+		}
+
+	} while (!flag);
+
+	int aux = solicitudesAprobadasPorAnio(anio);
+
+	if (aux == 0)
+	{
+		cout << " -- No se aprobaron solicitudes en el año " << anio << " --" << endl;
+	}
+	else if (aux == 1)
+	{
+		cout << " -- Se aprobó " << aux << " solicitud en el año " << anio << " --" << endl;
+	}
+	else
+	{
+		cout << " -- Se aprobaron " << aux << " solicitudes en el año " << anio << " --" << endl;
+	}
+
+}
+
+int solicitudesAprobadasPorAnio(int anio)
+{
+	Solicitud solic;
+	int p = 0;
+	int cant = 0;
+
+	while (solic.leerDeDisco(p++))
+	{
+		if (solic.getEstado())
+		{
+			if (solic.getAprobado() == 1 && solic.getFechaSolicitud().getAnio() == anio)
+			{
+				cant++;
+			}
+		}
+
+	}
+
+	return cant;
+
+}
+
 void backup_solicitudes()
 {
 	Solicitud aux;

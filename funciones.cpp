@@ -810,14 +810,16 @@ void menuInformes() {
 		cout << "    3 - Recaudación por administrador" << endl;
 		cout << "    4 - Cantidad de armas por socio " << endl;
 		cout << "    5 - Cantidad de armas por pais " << endl;
-		cout << "    6 - Cantidad de solicitudes desaprobadas por año" << endl;
-		cout << "    7 - Promedio de solicitudes aprobadas con respecto al total" << endl;
-		cout << "    8 - Promedio de solicitudes desaprobadas con respecto al total" << endl;
-		cout << "    9 - Promedio de solicitudes pendientes con respecto al total" << endl;
-		cout << "    10 - Porcentaje de armas por tipo" << endl;
+		cout << "    6 - Cantidad de armas por tipo " << endl;
+		cout << "    7 - Cantidad de solicitudes aprobadas por año" << endl;
+		cout << "    8 - Cantidad de solicitudes desaprobadas por año" << endl;
+		cout << "    9 - Promedio de solicitudes aprobadas con respecto al total" << endl;
+		cout << "   10 - Promedio de solicitudes desaprobadas con respecto al total" << endl;
+		cout << "   11 - Promedio de solicitudes pendientes con respecto al total" << endl;
+		cout << "   12 - Porcentaje de armas por tipo" << endl;
 		cout << "-----------------------------------------------------------------" << endl;
-		cout << "    11 - Listar historial de precios de cuota" << endl;
-		cout << "    12 - Listar historial de precios de solicitud" << endl;
+		cout << "   13 - Listar historial de precios de cuota" << endl;
+		cout << "   14 - Listar historial de precios de solicitud" << endl;
 		cout << "-----------------------------------------------------------------" << endl;
 		cout << "0 - Volver al menú principal" << endl << endl;
 
@@ -845,29 +847,37 @@ void menuInformes() {
 			anykey();
 			break;
 		case 6:
-			cantidad_solicitudes_desap_por_anio();
+			cantidad_armas_por_tipo();
 			anykey();
 			break;
 		case 7:
-			promedio_solictudes_aprobadas();
+			cantidad_solicitudes_aprobadas_por_anio();
 			anykey();
 			break;
 		case 8:
-			promedio_solictudes_desaprobadas();
+			cantidad_solicitudes_desap_por_anio();
 			anykey();
 			break;
 		case 9:
-			promedio_solictudes_pendientes();
+			promedio_solictudes_aprobadas();
 			anykey();
 			break;
 		case 10:
-			porcentaje_armas_por_tipo();
+			promedio_solictudes_desaprobadas();
 			anykey();
 			break;
 		case 11:
-			listar_historial_precios_cuota();
+			promedio_solictudes_pendientes();
+			anykey();
 			break;
 		case 12:
+			porcentaje_armas_por_tipo();
+			anykey();
+			break;
+		case 13:
+			listar_historial_precios_cuota();
+			break;
+		case 14:
 			listar_historial_precios_solicitud();
 			break;
 		case 0:
@@ -1103,123 +1113,10 @@ bool exportarCSVArmas()
 	system("cls");
 
 	return true;
-}/*
-
-//CANTIDAD DE ARMAS POR TIPO
-int CantidadArmas()
-{
-	FILE* p = fopen("armas.dat", "rb");
-	if (p == NULL) {
-		return 0;
-	}
-
-	size_t bytes;
-	int cant_reg;
-
-	fseek(p, 0, SEEK_END);
-	bytes = ftell(p);
-	fclose(p);
-	cant_reg = bytes / sizeof(armas);
-	return cant_reg;
 }
 
-void cantidad_de_armas_por_tipo()
-{
-	int cantReg = CantidadArmas();
 
-	if (cantReg == 0) {
-		cout << "No hay armas registradas";
-		return;
-	}
 
-	ArmasPorTipo* vecArmasTipo = new ArmasPorTipo[cantReg];
-	if (vecArmasTipo == NULL) return;
-
-	inicializarVecArmasTipo(vecArmasTipo, cantReg);
-	buscarArmasPorTipo(vecArmasTipo, cantReg);
-	ordenarVector(vecArmasTipo, cantReg);
-	listarVector(vecArmasTipo, cantReg);
-
-	delete vecArmasTipo;
-}
-
-void inicializarVecArmasTipo(ArmasPorTipo* vecArmasTipo, int cantReg)
-{
-	Arma arma;
-
-	for (int i = 0; i < cantReg; i++) {
-		socio.leerDeDisco(i);
-
-		vecArmasTipo[i].setIdSocio(arma.getIdsocio());
-		vecArmasTipo[i].setEstado(arma.getEstado());
-	}
-}
-
-void buscarArmasPorTipo(ArmasPorTipo* vecArmasTipo, int cantReg)
-{
-	int pos = 0;
-	int posTipo = 0;
-	int totalArmasTipo;
-
-	Arma arma;
-
-	while (arma.leerDeDisco(pos))
-	{
-		posTipo = buscarPosTipo(arma.getIdSocio(), vecArmasTipo, cantReg);
-		vecArmasTipo[posTipo.setCantidadArmas(vecArmasTipo[posTipo].getCantidadArmas() + 1);
-		pos++;
-	}
-}
-
-int buscarPosTipo(int idSocio, ArmasPorTipo* vecArmasTipo, int cantReg)
-{
-	for (int pos = 0; pos < cantReg; pos++) {
-		if (vecArmasTipo[pos].getIdSocio() == idSocio) {
-			return pos;
-		}
-	}
-	return -1;
-}
-
-void ordenarVector(ArmasPorTipo* vecArmasTipo, int cantReg)
-{
-
-	ArmasPorTipo aux;
-
-	for (int i = 0; i < cantReg - 1; i++) {
-		for (int j = i + 1; j < cantReg; j++) {
-			if (vecArmasTipo[j].getCantidadArmas() > vecArmasTipo[i].getCantidadArmas()) {
-				aux = vecArmasTipo[i];
-				vecArmasTipo[i] = vecArmasTipo[j];
-				vecArmasTipo[j] = aux;
-			}
-		}
-	}
-
-}
-
-void listarVector(ArmasPorTipo* vecArmasTipo, int cantReg)
-{
-	cout << endl << "--------------------------------------";
-	cout << endl << "   -- Cantidad de armas por tipo--   " << endl;
-	cout << "--------------------------------------" << endl;
-
-	cout << left;
-	cout << setw(11) << "ID Socio";
-	cout << setw(15) << "TIPO" << endl;
-	cout << "--------------------------------------" << endl;
-
-	for (int i = 0; i < cantReg; i++) {
-		if (vecArmasTipo[i].getEstado())
-		{
-			cout << setw(12) << vecArmasTipo[i].getIdSocio();
-			cout << setw(15) << vecArmasTipo[i].getCantidadArmas() << endl;
-		}
-	}
-
-	cout << "--------------------------------------" << endl;
-}
-*/
 	
 void mostrarIntegrantes() {
 	locate(25, 10);

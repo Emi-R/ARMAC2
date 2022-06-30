@@ -1064,3 +1064,51 @@ void eliminar_armas_socio(int id)
 		pos++;
 	}
 }
+
+void cantidad_armas_por_tipo()
+{
+	int cantReg = CantidadRegistroArmas();
+
+	if (cantReg == 0)
+	{
+		cout << "No se registraron armas al dia de la fecha" << endl;
+		return;
+	}
+
+	Arma arma;
+	int pos = 0;
+	int cantArmasActivas = 0;
+	const int TIPOSARMAS = 5;
+	int vArmas[TIPOSARMAS] = { 0 };
+
+
+	while (arma.leerDeDisco(pos))
+	{
+		if (arma.getEstado())
+		{
+			cantArmasActivas++;
+
+			vArmas[arma.getTipoArma() - 1]++;
+
+		}
+		pos++;
+	}
+
+	MostrarVectorCantArmas(vArmas, TIPOSARMAS);
+
+}
+void MostrarVectorCantArmas(int* vArmas, int tam)
+{
+	string tipo[5] = { "Pistola","Escopeta","Subfusil","Carabina","Fusil Automático" };
+	cout << left;
+	cout << setw(17) << "TIPO";
+	cout << setw(10) << "CANTIDAD" << endl;
+	cout << "--------------------------------" << endl;
+
+	for (int i = 0; i < tam; i++)
+	{
+		cout << setw(17) << tipo[i];
+		cout << setw(10) << vArmas[i] << endl;
+
+	}
+}

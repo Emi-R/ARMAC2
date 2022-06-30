@@ -110,10 +110,9 @@ void consultaArmasPorModelo();
 
 void eliminar_armas_socio(int id);
 
-//PARA PROBAR INFORME ARMAS
-/*
-void cantidadArmas();
-void cantidad_de_armas_por_tipo();
-void inicializarVecArmasTipo();
-void buscarArmasPorTipo();
-*/
+//CANTIDAD DE ARMAS POR TIPO
+
+void cantidad_armas_por_tipo();
+void MostrarVectorCantArmas(int* vArmas, int tam);
+
+

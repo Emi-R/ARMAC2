@@ -111,3 +111,8 @@ void eliminar_solicitudes_pendientes(int id);
 void listadoSolicitudesPorIdSocio();
 
 void mostrarSolicitudesPorSocio(int id);
+
+//NUEVO REPORTE APROBADAS POR ANIO
+void cantidad_solicitudes_aprobadas_por_anio();
+int solicitudesAprobadasPorAnio(int anio);
+
