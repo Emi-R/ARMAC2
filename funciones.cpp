@@ -49,7 +49,7 @@ void instalacionArchivos()
 
 bool login() {
 	
-	//setBackgroundColor(DARKGREY);
+	
 	int aux;
 	bool flag = false;
 	bool flag2 = false;
