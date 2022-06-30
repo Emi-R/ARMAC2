@@ -127,13 +127,13 @@ bool login() {
 			setColor(YELLOW);
 			cout << endl << "\t-- Ha superado el límite de intentos. Contacte a Ángel Simón. --" << endl;
 			anykey();
-			/*
+			
 			setColor(WHITE);
-			setBackgroundColor(CYAN);
+			setBackgroundColor(BLUE);
 			setColor(WHITE);
 			rlutil::cls();
 			login();
-			*/
+			
 			return false;
 		
 			
