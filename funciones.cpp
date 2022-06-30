@@ -25,7 +25,7 @@ using namespace rlutil;
 void instalacionArchivos()
 {
 
-	setBackgroundColor(CYAN);
+	setBackgroundColor(BLUE);
 	setColor(WHITE);
 	cls();
 
@@ -48,7 +48,8 @@ void instalacionArchivos()
 }
 
 bool login() {
-
+	
+	//setBackgroundColor(DARKGREY);
 	int aux;
 	bool flag = false;
 	bool flag2 = false;
@@ -60,6 +61,7 @@ bool login() {
 	Administrador admin;
 
 	do {
+		setColor(WHITE);
 		cout << "    Bienvenido a Sistema ARMAC" << endl;
 		cout << "    --------------------------" << endl;
 		cout << "    ID Administrador: " << endl;
@@ -143,13 +145,13 @@ bool login() {
 }
 
 bool menuPrincipal() {
+setBackgroundColor(DARKGREY);
 
 	int opcion;
 	char confirmarSalida;
 	bool salir = false;
 
 	while (!salir) {
-		setBackgroundColor(BLUE);
 		setColor(WHITE);
 		cls();
 		cout << "\tSistema ARMAC" << endl;
@@ -226,7 +228,7 @@ void menuSocios() {
 	while (!salir) {
 
 		setColor(WHITE);
-		setBackgroundColor(BLUE);
+		setBackgroundColor(DARKGREY);
 		cls();
 		cout << "\tSocios" << endl;
 		cout << "---------------------------------" << endl;
@@ -283,7 +285,7 @@ void menuListadosSocios() {
 	while (!salir) {
 
 		setColor(WHITE);
-		setBackgroundColor(BLUE);
+		setBackgroundColor(DARKGREY);
 		cls();
 		cout << "\tListados Socios" << endl;
 		cout << "-------------------------------" << endl;
@@ -333,7 +335,7 @@ void menuConsultasSocios() {
 	while (!salir) {
 
 		setColor(WHITE);
-		setBackgroundColor(BLUE);
+		setBackgroundColor(DARKGREY);
 		cls();
 		cout << "\tConsultas Socios" << endl;
 		cout << "-------------------------------" << endl;
@@ -478,7 +480,7 @@ void menuSolicitudes() {
 	while (!salir) {
 
 		setColor(WHITE);
-		setBackgroundColor(BLUE);
+		setBackgroundColor(DARKGREY);
 		cls();
 		cout << "\tSolicitudes" << endl;
 		cout << "---------------------------------" << endl;
