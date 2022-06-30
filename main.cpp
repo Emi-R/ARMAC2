@@ -19,7 +19,14 @@ int main()
 	bool flag = false;
 	bool flag2 = false;
 
+	mostrarLogo();
 	instalacionArchivos();
+	
+	/*
+	anykey();
+	system("cls");
+	*/
+	
 
 	do
 	{

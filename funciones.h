@@ -39,4 +39,10 @@ bool exportarCSVSocios();
 bool exportarCSVSolicitudes();
 bool exportarCSVArmas();
 
+//Estetica
+void mostrarLogo();
+void animacion();
+void mostrarIntegrantes();
+
+
 #endif // FUNCIONES_H_INCLUDED

@@ -60,7 +60,6 @@ bool login() {
 	Administrador admin;
 
 	do {
-
 		cout << "    Bienvenido a Sistema ARMAC" << endl;
 		cout << "    --------------------------" << endl;
 		cout << "    ID Administrador: " << endl;
@@ -126,11 +125,13 @@ bool login() {
 			setColor(YELLOW);
 			cout << endl << "\t-- Ha superado el límite de intentos. Contacte a Ángel Simón. --" << endl;
 			anykey();
+			/*
 			setColor(WHITE);
 			setBackgroundColor(CYAN);
 			setColor(WHITE);
 			rlutil::cls();
 			login();
+			*/
 			return false;
 		
 			
@@ -1102,5 +1103,65 @@ bool exportarCSVArmas()
 	system("cls");
 
 	return true;
+}
+	
+void mostrarIntegrantes() {
+	locate(18, 10);
+	cout << "UTN - Universidad Tecnológica Nacional - FRGP" << endl;
+	cout << endl;
+	locate(6, 12);
+	cout <<  "Alumnos: " << endl;
+	cout << endl;
+	cout << "> " << "Falduti Matías" << endl;
+	cout << "> " << "Gottig Marianella" << endl;
+	cout << "> " << "Illanes María José" << endl;
+	cout << "> " << "Ramírez Emiliano" << endl;
+	cout << endl;
+	cout << "---------------------------------------------------------------------------------------" << endl;
+	system("pause");
+}
+void mostrarLogo() {
+	//setBackgroundColor(BLUE);
+	animacion();
+	for (int i = 0; i < 3; i++)
+	{
+		setColor(CYAN);
+		locate(16, 1);
+		cout << "     /.\      '||'''| '||\   /||`      /.\       .|''''," << endl;
+		animacion();
+		locate(16, 2);
+		cout << "    // \\      ||   || ||\\.//||      // \\      ||       |   |  " << endl;
+		animacion();
+		locate(16, 3);
+		cout << "   //...\\     ||...|' ||    ||     //...\\     ||      -|- -|- " << endl;
+		animacion();
+		locate(16, 4);
+		cout << "  //     \\    || \\    ||    ||    //     \\    ||       |   |  " << endl;
+		animacion();
+		locate(16, 5);
+		cout << ".//       \\. .||  \\. .||    ||. .//       \\.  `|....'        " << endl;
+		animacion();
+		
+		locate(16, 8);
+		cout << "Sistema de Gestión desarrollado por el equipo GUN´S && CODES" << endl;
+		locate(6, 9);
+		cout << "Para la materia Laboratorio II de la Carrera Técnico Universitario en Programación " << endl;
+							
+	}
+	
+	
+	mostrarIntegrantes();
+
+} 
+
+void animacion()
+{
+	int segs = 2;
+
+	while (segs >= 1)
+	{
+		Sleep(24);
+		segs--;
+	}
 }
 
