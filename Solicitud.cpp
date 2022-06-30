@@ -1029,7 +1029,7 @@ void promedio_solictudes_desaprobadas()
 
 	double prom = (double)cont / cantSolicitudes;
 
-	cout << " -- El promedio de solicitudes desaprobadas es de: " << setprecision(2) << prom << endl;
+	cout << " -- El promedio de solicitudes desaprobadas es de: " << setprecision(2) << prom<< endl;
 
 }
 
@@ -1065,7 +1065,7 @@ void promedio_solictudes_pendientes()
 
 	double prom = (double)cont / cantSolicitudes;
 
-	cout << " -- El promedio de solicitudes pendientes es de: " << setprecision(2) << prom << endl;
+	cout << " -- El promedio de solicitudes pendientes es de: " << setprecision(2) << prom<< endl;
 
 }
 

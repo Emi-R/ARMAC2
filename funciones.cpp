@@ -816,8 +816,8 @@ void menuInformes() {
 		cout << "    9 - Promedio de solicitudes pendientes con respecto al total" << endl;
 		cout << "    10 - Porcentaje de armas por tipo" << endl;
 		cout << "-----------------------------------------------------------------" << endl;
-		cout << "    9 - Listar historial de precios de cuota" << endl;
-		cout << "    10 - Listar historial de precios de solicitud" << endl;
+		cout << "    11 - Listar historial de precios de cuota" << endl;
+		cout << "    12 - Listar historial de precios de solicitud" << endl;
 		cout << "-----------------------------------------------------------------" << endl;
 		cout << "0 - Volver al menú principal" << endl << endl;
 
