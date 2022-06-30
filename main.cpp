@@ -22,12 +22,6 @@ int main()
 	mostrarLogo();
 	instalacionArchivos();
 	
-	/*
-	anykey();
-	system("cls");
-	*/
-	
-
 	do
 	{
 		flag = login();

@@ -1103,10 +1103,126 @@ bool exportarCSVArmas()
 	system("cls");
 
 	return true;
+}/*
+
+//CANTIDAD DE ARMAS POR TIPO
+int CantidadArmas()
+{
+	FILE* p = fopen("armas.dat", "rb");
+	if (p == NULL) {
+		return 0;
+	}
+
+	size_t bytes;
+	int cant_reg;
+
+	fseek(p, 0, SEEK_END);
+	bytes = ftell(p);
+	fclose(p);
+	cant_reg = bytes / sizeof(armas);
+	return cant_reg;
 }
+
+void cantidad_de_armas_por_tipo()
+{
+	int cantReg = CantidadArmas();
+
+	if (cantReg == 0) {
+		cout << "No hay armas registradas";
+		return;
+	}
+
+	ArmasPorTipo* vecArmasTipo = new ArmasPorTipo[cantReg];
+	if (vecArmasTipo == NULL) return;
+
+	inicializarVecArmasTipo(vecArmasTipo, cantReg);
+	buscarArmasPorTipo(vecArmasTipo, cantReg);
+	ordenarVector(vecArmasTipo, cantReg);
+	listarVector(vecArmasTipo, cantReg);
+
+	delete vecArmasTipo;
+}
+
+void inicializarVecArmasTipo(ArmasPorTipo* vecArmasTipo, int cantReg)
+{
+	Arma arma;
+
+	for (int i = 0; i < cantReg; i++) {
+		socio.leerDeDisco(i);
+
+		vecArmasTipo[i].setIdSocio(arma.getIdsocio());
+		vecArmasTipo[i].setEstado(arma.getEstado());
+	}
+}
+
+void buscarArmasPorTipo(ArmasPorTipo* vecArmasTipo, int cantReg)
+{
+	int pos = 0;
+	int posTipo = 0;
+	int totalArmasTipo;
+
+	Arma arma;
+
+	while (arma.leerDeDisco(pos))
+	{
+		posTipo = buscarPosTipo(arma.getIdSocio(), vecArmasTipo, cantReg);
+		vecArmasTipo[posTipo.setCantidadArmas(vecArmasTipo[posTipo].getCantidadArmas() + 1);
+		pos++;
+	}
+}
+
+int buscarPosTipo(int idSocio, ArmasPorTipo* vecArmasTipo, int cantReg)
+{
+	for (int pos = 0; pos < cantReg; pos++) {
+		if (vecArmasTipo[pos].getIdSocio() == idSocio) {
+			return pos;
+		}
+	}
+	return -1;
+}
+
+void ordenarVector(ArmasPorTipo* vecArmasTipo, int cantReg)
+{
+
+	ArmasPorTipo aux;
+
+	for (int i = 0; i < cantReg - 1; i++) {
+		for (int j = i + 1; j < cantReg; j++) {
+			if (vecArmasTipo[j].getCantidadArmas() > vecArmasTipo[i].getCantidadArmas()) {
+				aux = vecArmasTipo[i];
+				vecArmasTipo[i] = vecArmasTipo[j];
+				vecArmasTipo[j] = aux;
+			}
+		}
+	}
+
+}
+
+void listarVector(ArmasPorTipo* vecArmasTipo, int cantReg)
+{
+	cout << endl << "--------------------------------------";
+	cout << endl << "   -- Cantidad de armas por tipo--   " << endl;
+	cout << "--------------------------------------" << endl;
+
+	cout << left;
+	cout << setw(11) << "ID Socio";
+	cout << setw(15) << "TIPO" << endl;
+	cout << "--------------------------------------" << endl;
+
+	for (int i = 0; i < cantReg; i++) {
+		if (vecArmasTipo[i].getEstado())
+		{
+			cout << setw(12) << vecArmasTipo[i].getIdSocio();
+			cout << setw(15) << vecArmasTipo[i].getCantidadArmas() << endl;
+		}
+	}
+
+	cout << "--------------------------------------" << endl;
+}
+*/
 	
 void mostrarIntegrantes() {
-	locate(18, 10);
+	locate(25, 10);
 	cout << "UTN - Universidad Tecnológica Nacional - FRGP" << endl;
 	cout << endl;
 	locate(6, 12);
